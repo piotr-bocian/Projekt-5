@@ -1,0 +1,1 @@
+Wszystkie funkcje, obiekty lub stałe które pomagają w pisaniu kodu, a które mogą być wydzielone z logiki samego komponentu i nie są hookiem.

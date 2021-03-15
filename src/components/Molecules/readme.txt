@@ -1,0 +1,1 @@
+Tutaj wrzucamy komponenty zbudowane z atomów. O wiekszej złożoności ale wciąż proste np kombinacja label + input;

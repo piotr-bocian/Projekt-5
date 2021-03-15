@@ -1,0 +1,1 @@
+Tutaj dodajemy komponenty stworzone z organizmów lub organizmów + atomów. Tworzą zamkniętą złożoną całość.
