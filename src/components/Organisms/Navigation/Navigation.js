@@ -9,14 +9,14 @@ import styled from 'styled-components';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import { AnimaShelterLogo } from '../../Atoms/Logo/AnimalShelterLogo';
-import GridTitle from '../../Atoms/AnimalShelterTitle/AnimalShelterTitle';
-import { Wrapper } from '../../stylesContainer/FlexWrapper';
+import GridItemTitle from '../../Atoms/AnimalShelterTitle/AnimalShelterTitle';
+import { FlexWrapper } from '../../stylesContainer/FlexWrapper';
 import NavMenu from '../../Molecules/NavigationMenu/NavigationMenu';
 import NavigationText from '../../Atoms/NavigationText/NavigationText';
-import GridNavigationWrapper from '../../stylesContainer/GridNavigationWrapper';
-import GridWrapper from '../../stylesContainer/GridWrapper';
+import GridContainerNavigationWrapper from '../../stylesContainer/GridContainerNavigationWrapper';
+import GridItemMenuWrapper from '../../stylesContainer/GridItemMenuWrapper';
 
-const RegistrationWrapper = styled.div`
+const GridItemRegistrationWrapper = styled.div`
   align-self: start;
   justify-self: end;
   grid-column: 3/4;
@@ -46,16 +46,16 @@ const Navigation = () => {
     'Wirtualna adopcja',
   ];
   return (
-    <GridNavigationWrapper>
+    <GridContainerNavigationWrapper>
       <AnimaShelterLogo />
-      <GridTitle />
+      <GridItemTitle />
 
-      <RegistrationWrapper>
+      <GridItemRegistrationWrapper>
         <NavigationText mainText="Rejestracja/Logowanie" />
-      </RegistrationWrapper>
+      </GridItemRegistrationWrapper>
 
-      <GridWrapper>
-        <Wrapper>
+      <GridItemMenuWrapper>
+        <FlexWrapper>
           <NavigationText mainText="Aktualności" />
           <NavMenu mainText="Zwierzęta" menuIterator={animalTextMenu} />
           <NavMenu mainText="Adopcja" menuIterator={adoptionTextMenu} />
@@ -65,9 +65,9 @@ const Navigation = () => {
           <NavigationText mainText="Kontakt" />
           <InstagramIcon style={styles} />
           <FacebookIcon />
-        </Wrapper>
-      </GridWrapper>
-    </GridNavigationWrapper>
+        </FlexWrapper>
+      </GridItemMenuWrapper>
+    </GridContainerNavigationWrapper>
   );
 };
 

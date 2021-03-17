@@ -28,7 +28,7 @@ const ShelterTitle = () => (
   </>
 );
 
-const GridTitle = styled(ShelterTitle)`
+const GridItemTitle = styled(ShelterTitle)`
   grid-column: 1/2;
 `;
-export default GridTitle;
+export default GridItemTitle;
