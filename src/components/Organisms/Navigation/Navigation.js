@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -47,22 +42,42 @@ const Navigation = () => {
   ];
   return (
     <GridContainerNavigationWrapper>
-      <AnimaShelterLogo />
+      <NavLink to="/">
+        <AnimaShelterLogo />
+      </NavLink>
+
       <GridItemTitle />
 
       <GridItemRegistrationWrapper>
-        <NavigationText mainText="Rejestracja/Logowanie" />
+        <NavLink to="/registration" exact>
+          <NavigationText mainText="Rejestracja/Logowanie" />
+        </NavLink>
       </GridItemRegistrationWrapper>
 
       <GridItemMenuWrapper>
         <FlexWrapper>
-          <NavigationText mainText="Aktualności" />
-          <NavMenu mainText="Zwierzęta" menuIterator={animalTextMenu} />
-          <NavMenu mainText="Adopcja" menuIterator={adoptionTextMenu} />
-          <NavigationText mainText="Edukacja" />
-          <NavMenu mainText="Jak pomóc" menuIterator={howToHelpTextMenu} />
-          <NavigationText mainText="O nas" />
-          <NavigationText mainText="Kontakt" />
+          <NavLink to="/news" exact>
+            <NavigationText mainText="Aktualności" />
+          </NavLink>
+          <NavLink to="/animals" exact>
+            <NavMenu mainText="Zwierzęta" menuIterator={animalTextMenu} />
+          </NavLink>
+          <NavLink to="/adoption" exact>
+            <NavMenu mainText="Adopcja" menuIterator={adoptionTextMenu} />
+          </NavLink>
+          <NavLink to="/education" exact>
+            <NavigationText mainText="Edukacja" />
+          </NavLink>
+          <NavLink to="/howtohelp" exact>
+            <NavMenu mainText="Jak pomóc" menuIterator={howToHelpTextMenu} />
+          </NavLink>
+          <NavLink to="/about" exact>
+            <NavigationText mainText="O nas" />
+          </NavLink>
+          <NavLink to="/contact" exact>
+            <NavigationText mainText="Kontakt" />
+          </NavLink>
+
           <InstagramIcon style={styles} />
           <FacebookIcon />
         </FlexWrapper>
