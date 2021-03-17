@@ -18,6 +18,10 @@ const GridItemRegistrationWrapper = styled.div`
   grid-row: 1/2;
 `;
 
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+`;
+
 const styles = { marginRight: 10, marginLeft: 10 };
 
 const Navigation = () => {
@@ -49,34 +53,34 @@ const Navigation = () => {
       <GridItemTitle />
 
       <GridItemRegistrationWrapper>
-        <NavLink to="/registration" exact>
+        <StyledNavLink to="/registration" exact>
           <NavigationText mainText="Rejestracja/Logowanie" />
-        </NavLink>
+        </StyledNavLink>
       </GridItemRegistrationWrapper>
 
       <GridItemMenuWrapper>
         <FlexWrapper>
-          <NavLink to="/news" exact>
+          <StyledNavLink to="/news" exact>
             <NavigationText mainText="Aktualności" />
-          </NavLink>
-          <NavLink to="/animals" exact>
+          </StyledNavLink>
+          <StyledNavLink to="/animals" exact>
             <NavMenu mainText="Zwierzęta" menuIterator={animalTextMenu} />
-          </NavLink>
-          <NavLink to="/adoption" exact>
+          </StyledNavLink>
+          <StyledNavLink to="/adoption" exact>
             <NavMenu mainText="Adopcja" menuIterator={adoptionTextMenu} />
-          </NavLink>
-          <NavLink to="/education" exact>
+          </StyledNavLink>
+          <StyledNavLink to="/education" exact>
             <NavigationText mainText="Edukacja" />
-          </NavLink>
-          <NavLink to="/howtohelp" exact>
+          </StyledNavLink>
+          <StyledNavLink to="/howtohelp" exact>
             <NavMenu mainText="Jak pomóc" menuIterator={howToHelpTextMenu} />
-          </NavLink>
-          <NavLink to="/about" exact>
+          </StyledNavLink>
+          <StyledNavLink to="/about" exact>
             <NavigationText mainText="O nas" />
-          </NavLink>
-          <NavLink to="/contact" exact>
+          </StyledNavLink>
+          <StyledNavLink to="/contact" exact>
             <NavigationText mainText="Kontakt" />
-          </NavLink>
+          </StyledNavLink>
 
           <InstagramIcon style={styles} />
           <FacebookIcon />
