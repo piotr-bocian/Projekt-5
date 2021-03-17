@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography } from '@material-ui/core';
-import AppleIcon from '@material-ui/icons/Apple';
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,8 +13,6 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Wrapper>
-      <Typography variant="h1">Hello world!</Typography>
-      <AppleIcon style={{ fontSize: 130 }} />
     </Wrapper>
   );
 }
