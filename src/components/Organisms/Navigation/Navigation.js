@@ -24,7 +24,7 @@ export const StyledNavLink = styled(NavLink).attrs({
   &.activeLink {
     background-color: #aa90d7;
     transition: 0.5s;
-    border-radius: 5px; 
+    border-radius: 5px;
   }
 `;
 
@@ -32,24 +32,24 @@ const styles = { marginRight: 10, marginLeft: 10 };
 
 const Navigation = () => {
   const animalTextMenu = [
-    'Koty do adopcji',
-    'Psy do adopcji',
-    'Inne zwierzęta',
-    'Zaginione/znalezione',
+    { name: 'Koty do adopcji', route: 'cats' },
+    { name: 'Psy do adopcji', route: 'dogs' },
+    { name: 'Inne zwierzęta', route: 'others' },
+    { name: 'Zaginione/znalezione', route: 'found' },
   ];
   const adoptionTextMenu = [
-    'Koty do adopcji',
-    'Jak przebiega adopcja',
-    'Zanim zdecydujesz się na psa',
-    'Zanim zdecydujesz się na zwierzę',
-    'Wirtualna adopcja',
+    { name: 'Jak przebiega adopcja', route: 'adoption101' },
+    { name: 'Zanim zdecydujesz się na psa', route: 'about-dogs' },
+    { name: 'Zanim zdecydujesz się na zwierzę', route: 'about-cats' },
+    { name: 'Wirtualna adopcja', route: 'virtual-adoption' },
   ];
   const howToHelpTextMenu = [
-    'Pomoc rzeczowa',
-    'Pomoc finansowa',
-    'Wolonariat',
-    'Wirtualna adopcja',
+    { name: 'Pomoc rzeczowa', route: 'material-assistane' },
+    { name: 'Pomoc finansowa', route: 'financial-support' },
+    { name: 'Wolonariat', route: 'voluntering' },
+    { name: 'Wirtualna adopcja', route: 'virtual-adoption' },
   ];
+
   return (
     <>
       <NavLink to="/">
@@ -70,16 +70,25 @@ const Navigation = () => {
             <NavigationText mainText="Aktualności" />
           </StyledNavLink>
           <StyledNavLink to="/animals" exact>
-            <NavMenu mainText="Zwierzęta" menuIterator={animalTextMenu} />
+            <NavMenu
+              mainText="Zwierzęta"
+              menuIterator={animalTextMenu}
+            />
           </StyledNavLink>
           <StyledNavLink to="/adoption" exact>
-            <NavMenu mainText="Adopcja" menuIterator={adoptionTextMenu} />
+            <NavMenu
+              mainText="Adopcja"
+              menuIterator={adoptionTextMenu}
+            />
           </StyledNavLink>
           <StyledNavLink to="/education" exact>
             <NavigationText mainText="Edukacja" />
           </StyledNavLink>
           <StyledNavLink to="/howtohelp" exact>
-            <NavMenu mainText="Jak pomóc" menuIterator={howToHelpTextMenu} />
+            <NavMenu
+              mainText="Jak pomóc"
+              menuIterator={howToHelpTextMenu}
+            />
           </StyledNavLink>
           <StyledNavLink to="/about" exact>
             <NavigationText mainText="O nas" />

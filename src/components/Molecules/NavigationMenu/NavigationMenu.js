@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { NavLink, useRouteMatch } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -38,7 +40,11 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function AnimalMenu({ menuIterator, mainText }) {
+export default function AnimalMenu({
+  menuIterator,
+  mainText,
+}) {
+  let { path, url } = useRouteMatch(); //pytanie czy to zadziałą po deplumencie skoro nie może działać na localhost
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -61,11 +67,11 @@ export default function AnimalMenu({ menuIterator, mainText }) {
       >
         {menuIterator.map((text, id) => {
           return (
-            <StyledMenuItem key={id}>
+            <StyledMenuItem key={id} component={NavLink} to={`${url}${text.route}`}>
               <ListItemIcon>
                 <PetsOutlinedIcon fontSize="small" />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text.name} />
             </StyledMenuItem>
           );
         })}
