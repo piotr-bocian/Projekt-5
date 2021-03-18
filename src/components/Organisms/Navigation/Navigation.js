@@ -8,7 +8,6 @@ import GridItemTitle from '../../Atoms/AnimalShelterTitle/AnimalShelterTitle';
 import { FlexWrapper } from '../../stylesContainer/FlexWrapper';
 import NavMenu from '../../Molecules/NavigationMenu/NavigationMenu';
 import NavigationText from '../../Atoms/NavigationText/NavigationText';
-import GridContainerNavigationWrapper from '../../stylesContainer/GridContainerNavigationWrapper';
 import GridItemMenuWrapper from '../../stylesContainer/GridItemMenuWrapper';
 
 const GridItemRegistrationWrapper = styled.div`
@@ -18,8 +17,15 @@ const GridItemRegistrationWrapper = styled.div`
   grid-row: 1/2;
 `;
 
-export const StyledNavLink = styled(NavLink)`
+export const StyledNavLink = styled(NavLink).attrs({
+  activeClassName: 'activeLink',
+})`
   text-decoration: none;
+  &.activeLink {
+    background-color: #aa90d7;
+    transition: 0.5s;
+    border-radius: 5px; 
+  }
 `;
 
 const styles = { marginRight: 10, marginLeft: 10 };
@@ -45,7 +51,7 @@ const Navigation = () => {
     'Wirtualna adopcja',
   ];
   return (
-    <GridContainerNavigationWrapper>
+    <>
       <NavLink to="/">
         <AnimaShelterLogo />
       </NavLink>
@@ -86,7 +92,7 @@ const Navigation = () => {
           <FacebookIcon />
         </FlexWrapper>
       </GridItemMenuWrapper>
-    </GridContainerNavigationWrapper>
+    </>
   );
 };
 
