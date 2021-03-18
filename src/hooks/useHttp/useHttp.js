@@ -36,6 +36,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
     } catch (error) {
       setError(error);
       console.log(error);
+      return error;
     }
   };
 

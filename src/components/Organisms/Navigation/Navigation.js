@@ -52,48 +52,41 @@ const Navigation = () => {
 
   return (
     <>
-      <NavLink to="/">
+      <NavLink to="/" exact>
         <AnimaShelterLogo />
+        <GridItemTitle />
       </NavLink>
 
-      <GridItemTitle />
-
       <GridItemRegistrationWrapper>
-        <StyledNavLink to="/registration" exact>
-          <NavigationText mainText="Rejestracja/Logowanie" />
+        <StyledNavLink to="/registration">
+          <NavigationText mainText="Rejestracja" />
+        </StyledNavLink>
+        <StyledNavLink to="/login">
+          <NavigationText mainText="Logowanie" />
         </StyledNavLink>
       </GridItemRegistrationWrapper>
 
       <GridItemMenuWrapper>
         <FlexWrapper>
-          <StyledNavLink to="/news" exact>
+          <StyledNavLink to="/news">
             <NavigationText mainText="Aktualności" />
           </StyledNavLink>
-          <StyledNavLink to="/animals" exact>
-            <NavMenu
-              mainText="Zwierzęta"
-              menuIterator={animalTextMenu}
-            />
+          <StyledNavLink to="/animals">
+            <NavMenu mainText="Zwierzęta" menuIterator={animalTextMenu} />
           </StyledNavLink>
-          <StyledNavLink to="/adoption" exact>
-            <NavMenu
-              mainText="Adopcja"
-              menuIterator={adoptionTextMenu}
-            />
+          <StyledNavLink to="/adoption">
+            <NavMenu mainText="Adopcja" menuIterator={adoptionTextMenu} />
           </StyledNavLink>
-          <StyledNavLink to="/education" exact>
+          <StyledNavLink to="/education">
             <NavigationText mainText="Edukacja" />
           </StyledNavLink>
-          <StyledNavLink to="/howtohelp" exact>
-            <NavMenu
-              mainText="Jak pomóc"
-              menuIterator={howToHelpTextMenu}
-            />
+          <StyledNavLink to="/howtohelp">
+            <NavMenu mainText="Jak pomóc" menuIterator={howToHelpTextMenu} />
           </StyledNavLink>
-          <StyledNavLink to="/about" exact>
+          <StyledNavLink to="/about">
             <NavigationText mainText="O nas" />
           </StyledNavLink>
-          <StyledNavLink to="/contact" exact>
+          <StyledNavLink to="/contact">
             <NavigationText mainText="Kontakt" />
           </StyledNavLink>
 

@@ -18,10 +18,12 @@ const Wrapper = styled.div`
 
 const NavigationTemplate = ({ children }) => {
   return (
-    <GridContainerNavigationWrapper>
-      <Navigation />
+    <>
+      <GridContainerNavigationWrapper>
+        <Navigation />
+      </GridContainerNavigationWrapper>
       {children}
-    </GridContainerNavigationWrapper>
+    </>
   );
 };
 
@@ -34,6 +36,9 @@ function NavigationView() {
         </Switch>
         <Switch>
           <Route path="/registration"></Route>
+        </Switch>
+        <Switch>
+          <Route path="/login"></Route>
         </Switch>
         <Switch>
           <Route path="/news"></Route>

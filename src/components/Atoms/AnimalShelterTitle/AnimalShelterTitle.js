@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import animalShelterTitle from '../../../assets/logo/animalShelterTitle.png';
 import pawTitle from '../../../assets/logo/pawTitle.png';
- 
+
 const AnimalShelterTitle = styled.div`
   background: url(${animalShelterTitle});
   background-repeat: no-repeat;
