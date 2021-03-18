@@ -28,7 +28,23 @@ export const StyledNavLink = styled(NavLink).attrs({
   }
 `;
 
-const styles = { marginRight: 10, marginLeft: 10 };
+export const StyledFacebookIcon = styled(FacebookIcon)`
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease-in;
+  }
+`;
+
+export const StyledInstagramIcon = styled(InstagramIcon)`
+  margin-right: 10px;
+  margin-left: 10px;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease-in;
+  }
+`;
+
+const styles = {};
 
 const Navigation = () => {
   const animalTextMenu = [
@@ -90,8 +106,8 @@ const Navigation = () => {
             <NavigationText mainText="Kontakt" />
           </StyledNavLink>
 
-          <InstagramIcon style={styles} />
-          <FacebookIcon />
+          <StyledInstagramIcon style={styles} />
+          <StyledFacebookIcon />
         </FlexWrapper>
       </GridItemMenuWrapper>
     </>
