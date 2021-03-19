@@ -49,7 +49,6 @@ export default function AnimalMenu({
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-
   };
 
   const handleClose = () => {
@@ -64,7 +63,7 @@ export default function AnimalMenu({
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}
+        onClick={handleClose}
       >
         {menuIterator.map((text, id) => {
           return (
@@ -72,7 +71,7 @@ export default function AnimalMenu({
               <ListItemIcon>
                 <PetsOutlinedIcon fontSize="small" />
               </ListItemIcon>
-              <ListItemText component={NavLink} primary={text.name} />
+              <ListItemText primary={text.name} />
             </StyledMenuItem>
           );
         })}

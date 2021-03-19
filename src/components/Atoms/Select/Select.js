@@ -1,6 +1,6 @@
 import React from 'react';
 import { Label } from '../Label/Label';
-import { Wrapper } from '../../Molecules/PaymentFormField/PaymentFormField';
+import { Wrapper } from '../../Molecules/PaymentFormField/PaymentFormFieldWrapper.styles';
 import { NativeSelect } from '@material-ui/core';
 
 const SelectPay = ({ onChange, optionType, name, id, label }) => {

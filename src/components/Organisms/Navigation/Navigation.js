@@ -1,50 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
 import { AnimaShelterLogo } from '../../Atoms/Logo/AnimalShelterLogo';
 import GridItemTitle from '../../Atoms/AnimalShelterTitle/AnimalShelterTitle';
 import { FlexWrapper } from '../../stylesContainer/FlexWrapper';
 import NavMenu from '../../Molecules/NavigationMenu/NavigationMenu';
 import NavigationText from '../../Atoms/NavigationText/NavigationText';
 import GridItemMenuWrapper from '../../stylesContainer/GridItemMenuWrapper';
+import {GridItemRegistrationWrapper, StyledNavLink, StyledFacebookIcon, StyledInstagramIcon} from './Navigation.style'
 
-const GridItemRegistrationWrapper = styled.div`
-  align-self: start;
-  justify-self: end;
-  grid-column: 3/4;
-  grid-row: 1/2;
-`;
-
-export const StyledNavLink = styled(NavLink).attrs({
-  activeClassName: 'activeLink',
-})`
-  text-decoration: none;
-  &.activeLink {
-    background-color: #aa90d7;
-    transition: 0.5s;
-    border-radius: 5px;
-  }
-`;
-
-export const StyledFacebookIcon = styled(FacebookIcon)`
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.5s ease-in;
-  }
-`;
-
-export const StyledInstagramIcon = styled(InstagramIcon)`
-  margin-right: 10px;
-  margin-left: 10px;
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.5s ease-in;
-  }
-`;
-
-const styles = {};
 
 const Navigation = () => {
   const animalTextMenu = [
@@ -106,7 +69,7 @@ const Navigation = () => {
             <NavigationText mainText="Kontakt" />
           </StyledNavLink>
 
-          <StyledInstagramIcon style={styles} />
+          <StyledInstagramIcon />
           <StyledFacebookIcon />
         </FlexWrapper>
       </GridItemMenuWrapper>

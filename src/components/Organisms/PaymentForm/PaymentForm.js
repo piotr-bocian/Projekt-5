@@ -1,21 +1,13 @@
 import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
 import SelectPay from '../../Atoms/Select/Select';
 import PaymentFormField from '../../Molecules/PaymentFormField/PaymentFormField';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
+import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
+import {Wrapper} from './PaymentForm.style'
 
-const Wrapper = styled.form`
-  width: 20vw;
-  padding: 2em;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  margin: 15px auto;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`;
 
 const initialState = {
   typeOfPayment: '',
@@ -39,8 +31,8 @@ const PaymentForm = ({ title }) => {
   const [paymentState, setPaymentState] = useState(initialState);
 
   const handler = useHttp(
-    'https://best-animal-shelter.herokuapp.com/api/payments',
-    httpMethods.POST,
+    'https://best-animal-shelter.herokuapp.com/api/animals',
+    httpMethods.GET,
     paymentState,
     validatePayment
   );
@@ -52,7 +44,11 @@ const PaymentForm = ({ title }) => {
     });
   };
 
-  return (
+  return handler.isLoading ? (
+    <Wrapper>
+      <CircularLoader />
+    </Wrapper>
+  ) : (
     <Wrapper>
       <h2>{title}</h2>
       <PaymentFormField
