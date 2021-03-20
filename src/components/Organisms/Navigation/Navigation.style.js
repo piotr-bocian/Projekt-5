@@ -12,6 +12,11 @@ export const GridItemRegistrationWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  @media (max-width: 1090px){
+    grid-column: 2/3;
+    justify-self: center;
+    align-self: center;
+  }
 `;
 
 export const StyledNavLink = styled(NavLink).attrs({

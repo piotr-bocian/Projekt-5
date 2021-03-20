@@ -10,6 +10,9 @@ const AnimalShelterTitle = styled.div`
   height: 88px;
   left: 246px;
   top: 39px;
+  @media (max-width: 1090px){
+    display:none;
+  }
 `;
 
 const PawTitle = styled.div`
@@ -20,6 +23,9 @@ const PawTitle = styled.div`
   height: 54px;
   left: 490px;
   top: 40px;
+  @media (max-width: 1090px){
+    display:none;
+  }
 `;
 
 const ShelterTitle = () => (

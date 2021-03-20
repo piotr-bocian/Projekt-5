@@ -19,8 +19,8 @@ describe('navigation test', () => {
   expect(screen.getByText(/Aktualności/i)).toBeInTheDocument()
 
   const leftClick = { button: 0 }
-  userEvent.click(screen.getByText(/O nas/i), leftClick)
-// tutaj neleży zmienić linijkę kody gdy aplikacja będzie wyświetlała poprawny dokument
-  expect(screen.getByText(/Hello World/i)).toBeInTheDocument()
+  userEvent.click(screen.getByText(/Pomoc finansowa/i), leftClick)
+
+  expect(screen.getByText(/Kwota Przelewu/i)).toBeInTheDocument()
   })
 })
