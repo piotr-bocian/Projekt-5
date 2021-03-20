@@ -7,7 +7,6 @@ export const GridItemRegistrationWrapper = styled.div`
   align-self: start;
   justify-self: end;
   grid-column: 3/4;
-  grid-row: 1/2;
   gap: 20px;
   display: flex;
   justify-content: center;

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const GridContainerNavigationWrapper = styled.div`
-  margin: 0 auto;
-  width: 90%;
+  background-color: #e7d9d1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  padding: 20px;
 `;
 
 export default GridContainerNavigationWrapper;

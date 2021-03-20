@@ -46,13 +46,11 @@ export default function AnimalMenu({ menuIterator, mainText }) {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log('klik');
   };
 
   const handleClose = (e) => {
     e.stopPropagation();
     setAnchorEl(null);
-    console.log('mysz');
   };
 
   return (

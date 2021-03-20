@@ -47,7 +47,7 @@ function NavigationView() {
           <Route path="/news"></Route>
         </Switch>
         <Switch>
-          <Route path="/animals"></Route>
+          <Route path="/animals">{/* odpowiedni komponent */}</Route>
         </Switch>
         <Switch>
           <Route path="/adoption"></Route>
@@ -56,7 +56,9 @@ function NavigationView() {
           <Route path="/education"></Route>
         </Switch>
         <Switch>
-          <Route path="/howtohelp"></Route>
+          <Route path="/howtohelp">
+            <PaymentForm />
+          </Route>
         </Switch>
         <Switch>
           <Route path="/about">
@@ -68,11 +70,6 @@ function NavigationView() {
         </Switch>
         <Switch>
           <Route path="/contact"></Route>
-        </Switch>
-        <Switch>
-          <Route path="/financial-support">
-            <PaymentForm />
-          </Route>
         </Switch>
       </NavigationTemplate>
     </Router>

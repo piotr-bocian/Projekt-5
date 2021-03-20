@@ -31,8 +31,8 @@ const PaymentForm = ({ title }) => {
   const [paymentState, setPaymentState] = useState(initialState);
 
   const handler = useHttp(
-    'https://best-animal-shelter.herokuapp.com/api/animals',
-    httpMethods.GET,
+    'https://best-animal-shelter.herokuapp.com/api/payments',
+    httpMethods.POST,
     paymentState,
     validatePayment
   );
