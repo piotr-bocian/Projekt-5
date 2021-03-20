@@ -7,4 +7,5 @@ export const Wrapper = styled.form`
   flex-direction: column;
   margin: 15px auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: ${({ theme }) => theme.colors.white};
 `;

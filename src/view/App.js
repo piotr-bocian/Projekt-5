@@ -6,9 +6,11 @@ import { theme } from '../Context/styles';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <NavigationView />
-    </ThemeProvider>
+    <div>
+      <ThemeProvider theme={theme}>
+        <NavigationView />
+      </ThemeProvider>
+    </div>
   );
 }
 

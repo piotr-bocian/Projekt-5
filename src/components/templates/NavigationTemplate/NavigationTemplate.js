@@ -32,7 +32,10 @@ function NavigationView() {
     <Router>
       <NavigationTemplate>
         <Switch>
-          <Route path="/"> {/* odpowiedni komponent */}</Route>
+          <Route path="/" exact>
+            {' '}
+            {/* odpowiedni komponent */}
+          </Route>
         </Switch>
         <Switch>
           <Route path="/registration"></Route>

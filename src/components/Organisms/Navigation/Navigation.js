@@ -6,8 +6,13 @@ import { FlexWrapper } from '../../stylesContainer/FlexWrapper';
 import NavMenu from '../../Molecules/NavigationMenu/NavigationMenu';
 import NavigationText from '../../Atoms/NavigationText/NavigationText';
 import GridItemMenuWrapper from '../../stylesContainer/GridItemMenuWrapper';
-import {GridItemRegistrationWrapper, StyledNavLink, StyledFacebookIcon, StyledInstagramIcon} from './Navigation.style'
-
+import {
+  GridItemRegistrationWrapper,
+  StyledNavLink,
+  StyledFacebookIcon,
+  StyledInstagramIcon,
+} from './Navigation.style';
+import PetsIcon from '@material-ui/icons/Pets';
 
 const Navigation = () => {
   const animalTextMenu = [
@@ -40,6 +45,7 @@ const Navigation = () => {
         <StyledNavLink to="/registration">
           <NavigationText mainText="Rejestracja" />
         </StyledNavLink>
+        <PetsIcon fontSize="small" />
         <StyledNavLink to="/login">
           <NavigationText mainText="Logowanie" />
         </StyledNavLink>

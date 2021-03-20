@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
 const StyledButton = withStyles(() => ({
@@ -11,9 +12,9 @@ const StyledButton = withStyles(() => ({
     },
   },
 }))(Button);
-const NavigationText = ({ mainText, variant = 'text', handleClick = null }) => {
+const NavigationText = ({ mainText, variant = 'Link', handleClick = null }) => {
   return (
-    <>
+    <div>
       <StyledButton
         aria-controls="customized-menu"
         aria-haspopup="true"
@@ -22,8 +23,9 @@ const NavigationText = ({ mainText, variant = 'text', handleClick = null }) => {
         onClick={handleClick}
       >
         {mainText}
+        {handleClick && <ArrowDropDownIcon fontSize="small" />}
       </StyledButton>
-    </>
+    </div>
   );
 };
 

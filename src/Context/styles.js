@@ -4,6 +4,7 @@ export const theme= {
      clickedNav: '#aa90d7',
      grey: '#d3d4d5',
      black: '#3e3e3e',
+     white: '#fff'
    },
    fontSize: {
      xl: '24px',
