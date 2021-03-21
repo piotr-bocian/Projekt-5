@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import { ThemeProvider } from '@material-ui/styles';
 
-import { Wrapper, centerText, avatarStyle} from './AdoptionVisitForm.style';
+import { Wrapper, centerText, avatarStyle, theme} from './AdoptionVisitForm.style';
 
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
 import SelectDateTime from '../../Molecules/SelectDateTime';
@@ -76,30 +77,32 @@ const VisitForm = () => {
                 <AssignmentIcon />
             </Avatar>
             <h2 style={centerText}>WIZYTA ADOPCYJNA</h2>
-            <SelectDateTime
-                onChangeDate={(e) => setVisitDate(e)}
-                labelDate='Data wizyty'
-                valueDate={visitDate}
-                idDate='date-picker'
-                minDate={minDate}
-                maxDate={maxDate}
-                onChangeTime={(e) => setVisitTime(timeToString(e))}
-                labelTime='Godzina wizyty'
-                valueTime={stringToTime(visitTime)}
-                idTime='time-picker'
-            />
+            <ThemeProvider theme={theme}>
+                <SelectDateTime
+                    onChangeDate={(e) => setVisitDate(e)}
+                    labelDate='Data wizyty'
+                    valueDate={visitDate}
+                    idDate='date-picker'
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    onChangeTime={(e) => setVisitTime(timeToString(e))}
+                    labelTime='Godzina wizyty'
+                    valueTime={stringToTime(visitTime)}
+                    idTime='time-picker'
+                />
 
-            <SelectDuration 
-                label='Czas trwania'
-                id='select-duration'
-                value={duration}
-                optionValues={durationValues}
-                onChange={(e) => setDuration(e.target.value)}
-            />
-            <FormButton
-                onClick={sendForm}
-                text="Wyślij"
-            />
+                <SelectDuration 
+                    label='Czas trwania'
+                    id='select-duration'
+                    value={duration}
+                    optionValues={durationValues}
+                    onChange={(e) => setDuration(e.target.value)}
+                />
+                <FormButton
+                    onClick={sendForm}
+                    text="Wyślij"
+                />
+            </ThemeProvider>
 
         </Wrapper>
     )

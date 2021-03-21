@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { createMuiTheme } from '@material-ui/core/styles';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 
 export const Wrapper = styled.form`
     width: 30vw;
@@ -14,7 +16,7 @@ export const Wrapper = styled.form`
 
 export const centerText = {
     fontSize: '1.25em',
-    fontWeight: '600',
+    fontWeight: '300',
     textAlign: 'center',
     margin: '0'
 };
@@ -28,3 +30,9 @@ export const avatarStyle = {
 export const buttonStyle = {
     color: '#0292C9'
 }
+
+export const theme = createMuiTheme({
+    palette: {
+      primary: blueGrey,
+    },
+});

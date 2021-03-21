@@ -23,6 +23,8 @@ const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, m
                 value={valueTime}
                 minutesStep={15}
                 ampm={false}
+                minTime={new Date(0, 0, 0, 9)}
+                maxTime={new Date(0, 0, 0, 17)}
             />
         </MuiPickersUtilsProvider>
     );
