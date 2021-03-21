@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import VisitForm from '../components/Organisms/AdoptionVisit/AdoptionVisitForm';
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +15,7 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Wrapper>
+      <VisitForm />
     </Wrapper>
   );
 }
