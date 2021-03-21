@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Wrapper } from './AdoptionVisitForm.style';
+import Avatar from '@material-ui/core/Avatar';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+
+import { Wrapper, centerText, avatarStyle} from './AdoptionVisitForm.style';
 
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
 import SelectDateTime from '../../Molecules/SelectDateTime';
@@ -38,10 +41,13 @@ const VisitForm = () => {
     const [duration, setDuration] = useState(30);
 
     const sendForm = (e) => {
+        let visitState = {
+            visitDate: visitDate,
+            visitTime: visitTime,
+            duration: duration
+        }
         e.preventDefault();
-        console.log(visitDate);
-        console.log(visitTime);
-        console.log(duration);
+        console.log(visitState);
     }
 
     // convert Time to valid database type
@@ -65,8 +71,11 @@ const VisitForm = () => {
     }
 
     return (
-        <Wrapper>
-
+        <Wrapper >
+            <Avatar style={avatarStyle}>
+                <AssignmentIcon />
+            </Avatar>
+            <h2 style={centerText}>WIZYTA ADOPCYJNA</h2>
             <SelectDateTime
                 onChangeDate={(e) => setVisitDate(e)}
                 labelDate='Data wizyty'
@@ -87,8 +96,7 @@ const VisitForm = () => {
                 optionValues={durationValues}
                 onChange={(e) => setDuration(e.target.value)}
             />
-
-            <FormButton 
+            <FormButton
                 onClick={sendForm}
                 text="Wyślij"
             />
