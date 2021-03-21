@@ -1,32 +1,12 @@
 import React from 'react';
-import { Typography, TextField, CssBaseline, Container, makeStyles, Grid, FormControlLabel, Checkbox, Button, Link } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Typography, CssBaseline, Container, Grid, FormControlLabel, Button, Link } from '@material-ui/core';
 import useStyles from './registrationStyles';
-import pawInHeart from '../../../assets/pawInHeart.png';
+import BlueTextField from '../../Atoms/blueTextField';
+import Avatar from '../../Atoms/avatar';
+import BlueCheckbox from '../../Atoms/blueCheckbox';
 
 
-const Avatar = () => {
-    const useStyles = makeStyles((theme) => ({
-        avatar: {
-            margin: theme.spacing(1),
-        }
-    }));
-    const classes = useStyles();
 
-    return (
-        <img className={classes.avatar} src={pawInHeart} alt='avatar'></img>
-    )
-}
-
-const BlueCheckbox = withStyles({
-    root: {
-      color: '#0292C9',
-      '&$checked': {
-        color: '#0292C9',
-      },
-    },
-    checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
 
 const RegistrationForm = () => {
     const classes = useStyles();
@@ -41,7 +21,7 @@ const RegistrationForm = () => {
                 <form className={classes.registrationForm} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
-                            <TextField
+                            <BlueTextField
                                 name="firstName"
                                 variant="outlined"
                                 required
@@ -52,7 +32,7 @@ const RegistrationForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <TextField
+                            <BlueTextField
                                 name="lastName"
                                 variant="outlined"
                                 required
@@ -62,7 +42,7 @@ const RegistrationForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
+                            <BlueTextField
                                 name="mobile"
                                 variant="outlined"
                                 required
@@ -73,7 +53,7 @@ const RegistrationForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
+                            <BlueTextField
                                 name="email"
                                 variant="outlined"
                                 required
@@ -84,7 +64,7 @@ const RegistrationForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
+                            <BlueTextField
                                 name="password"
                                 variant="outlined"
                                 required
@@ -96,7 +76,7 @@ const RegistrationForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
+                            <BlueTextField
                                 name="repeatPassword"
                                 variant="outlined"
                                 required
