@@ -17,12 +17,12 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
 
-    registrationForm: {
+    accountForm: {
         width: '100%',
         marginTop: theme.spacing(3),
     },
 
-    register: {
+    confirmButton: {
         margin: theme.spacing(3, 0, 2),
         backgroundColor: '#0292C9',
         color: '#FFF'

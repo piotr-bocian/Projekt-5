@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, CssBaseline, Container, Grid, FormControlLabel, Button, Link } from '@material-ui/core';
-import useStyles from './registrationStyles';
+import useStyles from './signUpInStyles';
 import BlueTextField from '../../Atoms/blueTextField';
 import Avatar from '../../Atoms/avatar';
 import BlueCheckbox from '../../Atoms/blueCheckbox';
@@ -8,7 +8,7 @@ import BlueCheckbox from '../../Atoms/blueCheckbox';
 
 
 
-const RegistrationForm = () => {
+const SignUpForm = () => {
     const classes = useStyles();
     return(
         <Container className={classes.container} component='main' maxWidth="xs">
@@ -18,7 +18,7 @@ const RegistrationForm = () => {
                 <Typography component='h1' variant='h5'>
                     Rejestracja
                 </Typography>
-                <form className={classes.registrationForm} noValidate>
+                <form className={classes.accountForm} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <BlueTextField
@@ -89,7 +89,13 @@ const RegistrationForm = () => {
                         <Grid item xs={12}>
                             <FormControlLabel
                             control={<BlueCheckbox value="acceptTerms" color="primary" />}
-                            label={<div><span>Zapoznałem się i akceptuję </span><Link href="#">regulamin </Link> <span>Schroniska.</span></div>}
+                            label={
+                                <div>
+                                    <span>Zapoznałem się i akceptuję </span>
+                                    <Link href="#">regulamin </Link>
+                                    <span>Schroniska.</span>
+                                </div>
+                                }
                             />
                         </Grid>
                     </Grid>
@@ -98,7 +104,7 @@ const RegistrationForm = () => {
                         fullWidth
                         variant="contained"
                         color="primary"
-                        className={classes.register}
+                        className={classes.confirmButton}
                         >
                             Zarejestruj się
                     </Button>
@@ -114,7 +120,7 @@ const RegistrationForm = () => {
         </Container>
 )}
 
-export { RegistrationForm }
+export default SignUpForm
 
 // import React, { useState } from 'react';
 // import { TextField, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
