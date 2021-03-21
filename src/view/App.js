@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VolunteerForm from '../components/Organisms/RegistrationForm/RegistrationForm';
+import RegistrationForm from '../components/Organisms/RegistrationForm/RegistrationForm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,7 +14,8 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Wrapper>
-      <VolunteerForm />
+      <RegistrationForm />
+      {/* <VolunteerForm /> */}
     </Wrapper>
   );
 }
