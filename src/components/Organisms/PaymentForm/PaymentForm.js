@@ -6,28 +6,19 @@ import PaymentFormField from '../../Molecules/PaymentFormField/PaymentFormField'
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
-import {Wrapper} from './PaymentForm.style'
-
-
-const initialState = {
-  typeOfPayment: '',
-  amount: 0,
-  paymentMethod: '',
-};
+import { Wrapper } from './PaymentForm.style';
+import {
+  paymentMethod,
+  typeOfPayment,
+} from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
+import SpringModal from '../../Molecules/Modal/Modal';
 
 const PaymentForm = ({ title }) => {
-  const [typeOfPayment, setTypeOfPayment] = useState([
-    'Opłata adopcyjna',
-    'Jednorazowy przelew',
-    'Wirtualny opiekun-opłata cykliczna',
-  ]);
-  const [paymentMethod, setPaymentMethod] = useState([
-    'Karta płatnicza',
-    'Blik',
-    'Przelew bankowy',
-    'Apple Pay',
-    'Google Pay',
-  ]);
+  const initialState = {
+    typeOfPayment: '',
+    amount: 0,
+    paymentMethod: '',
+  };
   const [paymentState, setPaymentState] = useState(initialState);
 
   const handler = useHttp(
@@ -36,7 +27,6 @@ const PaymentForm = ({ title }) => {
     paymentState,
     validatePayment
   );
-
   const inputPaymentHandler = (e) => {
     setPaymentState({
       ...paymentState,
@@ -50,6 +40,7 @@ const PaymentForm = ({ title }) => {
     </Wrapper>
   ) : (
     <Wrapper>
+      <SpringModal optionalMessage={handler.data.message} statement={handler.data }/>
       <h2>{title}</h2>
       <PaymentFormField
         label="Kwota Przelewu"

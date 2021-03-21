@@ -42,9 +42,9 @@ const Navigation = () => {
 
       <GridItemMenuWrapper>
         <FlexWrapper>
-          {navigationArrayWithRoutes.map((nav) => {
+          {navigationArrayWithRoutes.map((nav, id) => {
             return (
-              <NavigationTextWithRoutes text={nav.name} route={nav.route} />
+              <NavigationTextWithRoutes key={id} text={nav.name} route={nav.route} />
             );
           })}
           <StyledInstagramIcon />

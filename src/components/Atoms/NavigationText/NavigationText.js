@@ -2,10 +2,9 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
-
 const StyledButton = withStyles(() => ({
   root: {
-    fontSize: 18,
+    fontSize: 16,
     marginRight: 10,
     '&:hover': {
       transition: '.3s ease-in',
@@ -14,8 +13,7 @@ const StyledButton = withStyles(() => ({
   },
 }))(Button);
 
-
-const NavigationText = ({ mainText, variant = 'Link', handleClick = null }) => {
+const NavigationText = ({ mainText, variant = 'text', handleClick = null }) => {
   return (
     <div>
       <StyledButton
