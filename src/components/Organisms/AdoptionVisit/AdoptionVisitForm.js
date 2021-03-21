@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { TextField, Button, MenuItem } from '@material-ui/core';
 import { Wrapper } from './AdoptionVisitForm.style';
 
-import DateFnsUtils from '@date-io/date-fns'
-import { MuiPickersUtilsProvider, DatePicker, TimePicker } from '@material-ui/pickers'
-
+import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
+import SelectDateTime from '../../Molecules/SelectDateTime';
+import FormButton from '../../Atoms/AdoptionVisit/FormButton';
 
 let date = new Date();
 const minDate = date.setDate(date.getDate() + 1);
@@ -67,49 +66,33 @@ const VisitForm = () => {
 
     return (
         <Wrapper>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DatePicker 
-                    disableToolbar
-                    inputVariant='outlined'
-                    id='date-picker'
-                    format='dd/MM/yyyy'
-                    margin='normal'
-                    label='Data wizyty'
-                    onChange={(e) => setVisitDate(e)}
-                    value={visitDate}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                />
 
-                <TimePicker
-                    inputVariant='outlined'
-                    id='time-picker'
-                    margin='normal'
-                    label='Godzina wizyty'
-                    onChange={(e) => setVisitTime(timeToString(e))}
-                    value={stringToTime(visitTime)}
-                    minutesStep={15}
-                    ampm={false}
-                    defaultTime="09:00"
-                />
-            </MuiPickersUtilsProvider>
+            <SelectDateTime
+                onChangeDate={(e) => setVisitDate(e)}
+                labelDate='Data wizyty'
+                valueDate={visitDate}
+                idDate='date-picker'
+                minDate={minDate}
+                maxDate={maxDate}
+                onChangeTime={(e) => setVisitTime(timeToString(e))}
+                labelTime='Godzina wizyty'
+                valueTime={stringToTime(visitTime)}
+                idTime='time-picker'
+            />
 
-            <TextField
-                variant='outlined'
-                id='select-duration'
-                select
+            <SelectDuration 
                 label='Czas trwania'
+                id='select-duration'
                 value={duration}
+                optionValues={durationValues}
                 onChange={(e) => setDuration(e.target.value)}
-            >
-                {durationValues.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                </MenuItem>
-                ))}
-            </TextField>
+            />
 
-            <Button className='full-width' variant='contained' type='submit' onClick={sendForm}>Wyślij</Button>
+            <FormButton 
+                onClick={sendForm}
+                text="Wyślij"
+            />
+
         </Wrapper>
     )
 }
