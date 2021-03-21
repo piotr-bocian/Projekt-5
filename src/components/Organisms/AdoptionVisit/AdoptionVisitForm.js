@@ -3,7 +3,7 @@ import { TextField, Button, MenuItem } from '@material-ui/core';
 import { Wrapper } from './AdoptionVisitForm.style';
 
 import DateFnsUtils from '@date-io/date-fns'
-import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers'
+import { MuiPickersUtilsProvider, DatePicker, TimePicker } from '@material-ui/pickers'
 
 
 let date = new Date();
@@ -35,7 +35,7 @@ const durationValues = [
 
 const VisitForm = () => {
     const [visitDate, setVisitDate] = useState(minDate);
-    const [visitTime, setVisitTime] = useState('09:00');
+    const [visitTime, setVisitTime] = useState("09:00");
     const [duration, setDuration] = useState(30);
 
     const sendForm = (e) => {
@@ -43,6 +43,26 @@ const VisitForm = () => {
         console.log(visitDate);
         console.log(visitTime);
         console.log(duration);
+    }
+
+    // convert Time to valid database type
+    const addZero = (i) => {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+    }
+
+    const timeToString = (e) => {
+        return `${addZero(e.getHours())}:${addZero(e.getMinutes())}`
+    }
+
+    const stringToTime = (time) => {
+        let hours = parseInt(time.substring(0, 2));
+        let minutes = parseInt(time.substring(3, 5));
+        let startTime = date.setHours(hours);
+        startTime = date.setMinutes(minutes);
+        return startTime;
     }
 
     return (
@@ -60,22 +80,19 @@ const VisitForm = () => {
                     minDate={minDate}
                     maxDate={maxDate}
                 />
-            </MuiPickersUtilsProvider>
 
-            <TextField
-                variant='outlined'
-                id='time'
-                label='Godzina wizyty'
-                type='time'
-                defaultValue= {visitTime}
-                InputLabelProps={{
-                shrink: true,
-                }}
-                inputProps={{
-                step: 900, // 15 min
-                }}
-                onChange={(e) => setVisitTime(e.target.value)}
-            />
+                <TimePicker
+                    inputVariant='outlined'
+                    id='time-picker'
+                    margin='normal'
+                    label='Godzina wizyty'
+                    onChange={(e) => setVisitTime(timeToString(e))}
+                    value={stringToTime(visitTime)}
+                    minutesStep={15}
+                    ampm={false}
+                    defaultTime="09:00"
+                />
+            </MuiPickersUtilsProvider>
 
             <TextField
                 variant='outlined'
