@@ -27,10 +27,6 @@ export const avatarStyle = {
     backgroundColor: '#0292C9'
 }
 
-export const buttonStyle = {
-    color: '#0292C9'
-}
-
 export const theme = createMuiTheme({
     palette: {
       primary: blueGrey,
