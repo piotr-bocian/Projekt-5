@@ -1,60 +1,140 @@
 import React from 'react';
-import { TextField, CssBaseline, Container } from '@material-ui/core';
-import useStyles from './registrationStyles'
+import { Typography, TextField, CssBaseline, Container, makeStyles, Grid, FormControlLabel, Checkbox, Button, Link } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import useStyles from './registrationStyles';
+import pawInHeart from '../../../assets/pawInHeart.png';
+
+
+const Avatar = () => {
+    const useStyles = makeStyles((theme) => ({
+        avatar: {
+            margin: theme.spacing(1),
+        }
+    }));
+    const classes = useStyles();
+
+    return (
+        <img className={classes.avatar} src={pawInHeart} alt='avatar'></img>
+    )
+}
+
+const BlueCheckbox = withStyles({
+    root: {
+      color: '#0292C9',
+      '&$checked': {
+        color: '#0292C9',
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox color="default" {...props} />);
 
 const RegistrationForm = () => {
     const classes = useStyles();
     return(
-        <>
+        <Container className={classes.container} component='main' maxWidth="xs">
             <CssBaseline />
-            <div className={classes.container}>
-                <Container maxWidth='xs'>
-                    <form className="registrationForm" align='center'>
-                        <TextField variant="standard" required="true" label="Imię" />
-                        <TextField variant="standard" required="true" label="Nazwisko" />
-                        <TextField variant="standard" required="true" label="Telefon" />
-                        <TextField variant="standard" required="true" type="email" label="email" />
-                        <TextField variant="standard" required="true"  type="password" label="Hasło" />
-                        <TextField variant="standard" required="true" type="password" label="Powtórz hasło" />
-                    </form>
-                </Container>
+            <div className={classes.formContainer}>
+                <Avatar/>
+                <Typography component='h1' variant='h5'>
+                    Rejestracja
+                </Typography>
+                <form className={classes.registrationForm} noValidate>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="firstName"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="firstName"
+                                label="Imię"
+                                autoFocus
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="lastName"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="lastName"
+                                label="Nazwisko"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="mobile"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="mobile"
+                                label="Telefon"
+                                autoComplete="mobile"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="email"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Adres email"
+                                autoComplete="email"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="password"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                type="password"
+                                id="password"
+                                label="Hasło"
+                                autoComplete="current-password"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="repeatPassword"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                type="password"
+                                id="repeatPassword"
+                                label="Powtórz hasło"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormControlLabel
+                            control={<BlueCheckbox value="acceptTerms" color="primary" />}
+                            label={<div><span>Zapoznałem się i akceptuję </span><Link href="#">regulamin </Link> <span>Schroniska.</span></div>}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.register}
+                        >
+                            Zarejestruj się
+                    </Button>
+                    <Grid container justify="flex-end">
+                        <Grid item>
+                            <Link href="#" variant="body2">
+                                Masz już konto? Zaloguj się
+                            </Link>
+                        </Grid>
+                    </Grid>
+                </form>
             </div>
-        </>
+        </Container>
+)}
 
-
-
-        // <Button variant="contained" color="primary">
-        //     Rejestracja
-        // </Button>
-        
-    )
-}
-
-export default RegistrationForm
-
-//     return (
-//         <form className="form">
-//             <TextField variant="standard" label="Imię" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-//             <TextField variant="standard" label="Nazwisko" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-//             <TextField variant="standard" label="Telefon" value={mobile} onChange={(e) => setMobile(e.target.value)} />
-//             <TextField variant="standard" helperText="Data urodzenia" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} type="date"/>
-//             <TextField className="full-width" variant="standard" label="Czym się zajmujesz? " value={occupation} onChange={(e) => setOccupation(e.target.value)} />
-
-//             <RadioGroup className="full-width" row value={preferredTask} onChange={(e) => {setPreferredTask(e.target.value)}}>
-//                 <FormControlLabel value="praca z psami" control={<Radio />} label="Praca z psami" />
-//                 <FormControlLabel value="praca z kotami" control={<Radio />} label="Praca z kotami" />
-//                 <FormControlLabel value="promocja schroniska" control={<Radio />} label="Promocja schroniska" />
-//             </RadioGroup>
-
-//             <Button className="full-width" variant="contained" type="submit" onClick={sendForm}>Wyślij</Button>
-//         </form>
-//     )
-// }
-
-// export default RegistrationForm;
-
-
-
+export { RegistrationForm }
 
 // import React, { useState } from 'react';
 // import { TextField, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
@@ -78,3 +158,23 @@ export default RegistrationForm
 //         console.log(occupation);
 //         console.log(preferredTask);
 //     }
+//     return (
+//         <form className="form">
+//             <TextField variant="outlined" label="Imię" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+//             <TextField variant="outlined" label="Nazwisko" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+//             <TextField variant="outlined" label="Telefon" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+//             <TextField variant="outlined" helperText="Data urodzenia" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} type="date"/>
+//             <TextField className="full-width" variant="outlined" label="Czym się zajmujesz? " value={occupation} onChange={(e) => setOccupation(e.target.value)} />
+
+//             <RadioGroup className="full-width" row value={preferredTask} onChange={(e) => {setPreferredTask(e.target.value)}}>
+//                 <FormControlLabel value="praca z psami" control={<Radio />} label="Praca z psami" />
+//                 <FormControlLabel value="praca z kotami" control={<Radio />} label="Praca z kotami" />
+//                 <FormControlLabel value="promocja schroniska" control={<Radio />} label="Promocja schroniska" />
+//             </RadioGroup>
+
+//             <Button className="full-width" variant="contained" type="submit" onClick={sendForm}>Wyślij</Button>
+//         </form>
+//     )
+// }
+
+// export default RegistrationForm;
