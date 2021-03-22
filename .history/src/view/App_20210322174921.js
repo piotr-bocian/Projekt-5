@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AdotpionForm from '../components/Organisms/AdotpionForm/AdotpionForm';
+import VolunteerForm from '../components/Organisms/AdotpionForm/AdotpionForm';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 
 const Wrapper = styled.div`

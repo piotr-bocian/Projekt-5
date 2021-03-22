@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AdotpionForm from '../components/Organisms/AdotpionForm/AdotpionForm';
+import VolunteerForm from '../components/Organisms/AdotpionForm/VolunteerForm';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 
 const Wrapper = styled.div`
@@ -27,7 +27,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
-        <AdotpionForm />
+        <VolunteerForm />
       </Wrapper>
     </ThemeProvider>
   );
