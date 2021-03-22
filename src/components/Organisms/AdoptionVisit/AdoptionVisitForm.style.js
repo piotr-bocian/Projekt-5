@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { createMuiTheme } from '@material-ui/core/styles';
-import blueGrey from '@material-ui/core/colors/blueGrey';
 
 export const Wrapper = styled.form`
     width: 30vw;
@@ -28,7 +27,11 @@ export const avatarStyle = {
 }
 
 export const theme = createMuiTheme({
-    palette: {
-      primary: blueGrey,
-    },
+    palette:{
+        primary:{
+          light: '#0292c9',
+          main: '#0093CA',
+          dark: '#0274A2'
+        }
+    }
 });

@@ -1,9 +1,10 @@
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider, DatePicker, TimePicker } from '@material-ui/pickers'
+import { pl } from 'date-fns/locale';
 
 const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, maxDate, onChangeTime, labelTime, valueTime, idTime}) => {
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={pl}>
             <DatePicker 
                 disableToolbar
                 inputVariant='outlined'
@@ -14,6 +15,7 @@ const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, m
                 value={valueDate}
                 minDate={minDate}
                 maxDate={maxDate}
+                cancelLabel="Anuluj"
             />
             <TimePicker
                 inputVariant='outlined'
@@ -25,6 +27,7 @@ const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, m
                 ampm={false}
                 minTime={new Date(0, 0, 0, 9)}
                 maxTime={new Date(0, 0, 0, 17)}
+                cancelLabel="Anuluj"
             />
         </MuiPickersUtilsProvider>
     );
