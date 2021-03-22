@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
+import modalBackground from '../../../assets/modalBackground/cat-649164_640.jpg';
 import { Typography } from '@material-ui/core';
-
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -13,11 +13,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    height: '50vw',
-    backgroundColor: 'white',
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
+    height: '30vw',
+    border: '2px solid #3e3e3e',
+    boxShadow: theme.shadows[9],
     padding: theme.spacing(2, 4, 3),
+    backgroundImage: `url(${modalBackground})`,
+    backgroundRepeat: 'no-repeat',
   },
 }));
 

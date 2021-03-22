@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 const StyledButton = withStyles(() => ({
   root: {
     margin: '0 auto',
+    fontWeight: 400,
     fontSize: 18,
     '&:hover': {
       transition: '.3s ease-in',
@@ -14,7 +15,12 @@ const StyledButton = withStyles(() => ({
   },
 }))(Button);
 
-const NavigationText = ({ mainText, variant = 'text', handleClick = null }) => {
+const NavigationText = ({
+  margin = '30px',
+  mainText,
+  variant = 'text',
+  handleClick = null,
+}) => {
   return (
     <div>
       <StyledButton
@@ -22,6 +28,7 @@ const NavigationText = ({ mainText, variant = 'text', handleClick = null }) => {
         aria-haspopup="true"
         variant={variant}
         onClick={handleClick}
+        style={{ marginRight: margin }}
       >
         {mainText}
       </StyledButton>

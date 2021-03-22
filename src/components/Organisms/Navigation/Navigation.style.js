@@ -7,15 +7,10 @@ export const GridItemRegistrationWrapper = styled.div`
   align-self: start;
   justify-self: end;
   grid-column: 3/4;
-  gap: 20px;
+  grid-row: 1/2;
   display: flex;
   justify-content: center;
   align-content: center;
-  @media (max-width: 1090px) {
-    grid-column: 2/3;
-    justify-self: center;
-    align-self: center;
-  }
 `;
 
 export const StyledNavLink = styled(NavLink).attrs({

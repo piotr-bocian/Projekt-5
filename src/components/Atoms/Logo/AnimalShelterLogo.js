@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import logo from '../../../assets/logo/LogoAndTitle.png';
+import { ReactComponent as Logo } from '../../../assets/logo/LogoAndTitleSVG.svg';
 
-export const AnimaShelterLogo = styled.div`
-  background: url(${logo});
-  background-repeat: no-repeat;
-  height: 140px;
+export const AnimaShelterLogo  = styled(Logo)`
+  height: 100px;
 `;

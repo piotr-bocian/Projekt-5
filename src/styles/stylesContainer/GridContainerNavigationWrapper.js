@@ -8,7 +8,7 @@ const GridContainerNavigationWrapper = styled.div`
   z-index: 1;
   background-color: ${({ theme }) => theme.colors.navBackground};
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding: 1em;
 `;
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../../styles/styles';
 import { Typography } from '@material-ui/core';
 import AppleIcon from '@material-ui/icons/Apple';
 import Navigation from '../../Organisms/Navigation/Navigation';
-import GridContainerNavigationWrapper from '../../stylesContainer/GridContainerNavigationWrapper';
+import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 
 const Wrapper = styled.div`
@@ -29,11 +31,11 @@ const NavigationTemplate = ({ children }) => {
 
 function NavigationView() {
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <NavigationTemplate>
         <Switch>
           <Route path="/" exact>
-            {' '}
             {/* odpowiedni komponent */}
           </Route>
         </Switch>
@@ -73,6 +75,7 @@ function NavigationView() {
         </Switch>
       </NavigationTemplate>
     </Router>
+    </ThemeProvider>
   );
 }
 
