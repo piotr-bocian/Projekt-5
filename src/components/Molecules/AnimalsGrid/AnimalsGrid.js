@@ -10,7 +10,7 @@ export function AllAnimalsGrid (props) {
           <div>
           <Grid container spacing={10}>
               {props.animals.map((animal) =>(
-                    <Grid item>
+                    <Grid item key={animal._id}>
                         <AnimalCard animal={animal} key={animal._id}></AnimalCard>
                     </Grid>
                   )

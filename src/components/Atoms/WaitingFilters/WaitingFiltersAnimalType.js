@@ -11,9 +11,9 @@ export const WaitingFiltersAnimalType = (props) => {
     return (
       <div>
         <ButtonGroup variant="text">
-          <StyledButton onClick ={setType}>Kot</StyledButton>
-          <StyledButton onClick ={setType}>Pies</StyledButton>
-          <StyledButton onClick ={setType}>Inne</StyledButton>
+          <StyledButton onClick={setType}>Kot</StyledButton>
+          <StyledButton onClick={setType}>Pies</StyledButton>
+          <StyledButton onClick={setType}>Inne</StyledButton>
         </ButtonGroup>
       </div>
     );

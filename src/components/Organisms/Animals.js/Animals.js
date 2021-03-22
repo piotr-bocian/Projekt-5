@@ -24,7 +24,7 @@ export function Animals () {
                         setAnimals(a =>[...a, e])  
                 })
             });
-    } , [])
+    }, [])
 
 
     console.log(animals);
