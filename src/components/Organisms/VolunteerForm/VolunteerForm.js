@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
+import useHttp from '../../../hooks/useHttp/useHttp';
 
 import './VolunteerForm.css';
 
@@ -10,20 +11,23 @@ const VolunteerForm = () => {
     const [mobile, setMobile] = useState('');
     const [birthDate, setBirthDate] = useState('');
     const [occupation, setOccupation] = useState('');
-    const [preferredTask, setPreferredTask] = useState('');
+    const [preferredTasks, setPreferredTasks] = useState('');
 
-    const sendForm = (e) => {
-        e.preventDefault();
-        console.log(firstName);
-        console.log(lastName);
-        console.log(mobile);
-        console.log(birthDate);
-        console.log(occupation);
-        console.log(preferredTask);
-    }
+    const handler = useHttp(
+        'https://best-animal-shelter.herokuapp.com/api/volunteerForms',
+        'POST',
+        {
+            firstName: firstName,
+            lastName: lastName,
+            mobile: mobile,
+            birthDate: birthDate,
+            occupation: occupation,
+            preferredTasks: preferredTasks
+        }
+    );
 
     return (
-        <form className="form" onSubmit={sendForm}>
+        <form className="form">
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField 
@@ -69,14 +73,14 @@ const VolunteerForm = () => {
                         variant="outlined"
                         label="Czym się zajmujesz? Uczysz się? Studiujesz? Pracujesz?"
                         multiline
-                        rows={2}
+                        rows={4}
                         value={occupation} onChange={(e) => setOccupation(e.target.value)} 
                         fullWidth 
                     />
                 </Grid>
                 
                 <Grid item xs={12}>
-                    <RadioGroup row value={preferredTask} onChange={(e) => {setPreferredTask(e.target.value)}}>
+                    <RadioGroup row value={preferredTasks} onChange={(e) => {setPreferredTasks(e.target.value)}}>
                         <FormControlLabel 
                             value="praca z psami" 
                             control={<Radio color="primary" disableRipple />} 
@@ -99,7 +103,7 @@ const VolunteerForm = () => {
                     <Button 
                         color="primary"
                         variant="contained" 
-                        type="submit"
+                        onClick={handler.makeHttpRequest}
                         fullWidth 
                     >
                         Wyślij
