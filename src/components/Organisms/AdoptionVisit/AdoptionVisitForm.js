@@ -7,6 +7,7 @@ import { Wrapper, centerText, avatarStyle } from './AdoptionVisitForm.style';
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
 import SelectDateTime from '../../Molecules/SelectDateTime';
 import FormButton from '../../Atoms/AdoptionVisit/FormButton';
+import AnimalNameField from '../../Atoms/AdoptionVisit/AnimalNameField'
 
 let date = new Date();
 const minDate = date.setDate(date.getDate() + 1);
@@ -35,7 +36,7 @@ const durationValues = [
     }
 ];
 
-const VisitForm = () => {
+const VisitForm = ({ animalName }) => {
     const [visitDate, setVisitDate] = useState(minDate);
     const [visitTime, setVisitTime] = useState("09:00");
     const [duration, setDuration] = useState(30);
@@ -70,7 +71,40 @@ const VisitForm = () => {
         return startTime;
     }
 
-    return (
+    return animalName ? (
+        <Wrapper >
+            <Avatar style={avatarStyle}>
+                <AssignmentIcon />
+            </Avatar>
+            <h2 style={centerText}>WIZYTA ADOPCYJNA</h2>
+            <AnimalNameField text={animalName}/>
+            <SelectDateTime
+                onChangeDate={(e) => setVisitDate(e)}
+                labelDate='Data wizyty'
+                valueDate={visitDate}
+                idDate='date-picker'
+                minDate={minDate}
+                maxDate={maxDate}
+                onChangeTime={(e) => setVisitTime(timeToString(e))}
+                labelTime='Godzina wizyty'
+                valueTime={stringToTime(visitTime)}
+                idTime='time-picker'
+            />
+
+            <SelectDuration 
+                label='Czas trwania'
+                id='select-duration'
+                value={duration}
+                optionValues={durationValues}
+                onChange={(e) => setDuration(e.target.value)}
+            />
+            <FormButton
+                onClick={sendForm}
+                text="Wyślij"
+            />
+
+        </Wrapper>
+    ) : (
         <Wrapper >
             <Avatar style={avatarStyle}>
                 <AssignmentIcon />
