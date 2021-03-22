@@ -71,13 +71,13 @@ const VisitForm = ({ animalName }) => {
         return startTime;
     }
 
-    return animalName ? (
+    return  (
         <Wrapper >
             <Avatar style={avatarStyle}>
                 <AssignmentIcon />
             </Avatar>
             <h2 style={centerText}>WIZYTA ADOPCYJNA</h2>
-            <AnimalNameField text={animalName}/>
+            {animalName ? (<AnimalNameField text={animalName}/>):('')}
             <SelectDateTime
                 onChangeDate={(e) => setVisitDate(e)}
                 labelDate='Data wizyty'
@@ -104,39 +104,7 @@ const VisitForm = ({ animalName }) => {
             />
 
         </Wrapper>
-    ) : (
-        <Wrapper >
-            <Avatar style={avatarStyle}>
-                <AssignmentIcon />
-            </Avatar>
-            <h2 style={centerText}>WIZYTA ADOPCYJNA</h2>
-            <SelectDateTime
-                onChangeDate={(e) => setVisitDate(e)}
-                labelDate='Data wizyty'
-                valueDate={visitDate}
-                idDate='date-picker'
-                minDate={minDate}
-                maxDate={maxDate}
-                onChangeTime={(e) => setVisitTime(timeToString(e))}
-                labelTime='Godzina wizyty'
-                valueTime={stringToTime(visitTime)}
-                idTime='time-picker'
-            />
-
-            <SelectDuration 
-                label='Czas trwania'
-                id='select-duration'
-                value={duration}
-                optionValues={durationValues}
-                onChange={(e) => setDuration(e.target.value)}
-            />
-            <FormButton
-                onClick={sendForm}
-                text="Wyślij"
-            />
-
-        </Wrapper>
-    )
+    ) 
 }
 
 export default VisitForm;
