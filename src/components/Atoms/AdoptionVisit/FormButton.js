@@ -3,10 +3,7 @@ import { Button } from '@material-ui/core';
 const FormButton = ({ onClick, text }) => {
     return (
         <Button 
-            style={{
-                backgroundColor: '#0292C9',
-                color:'#fff'
-            }}
+            color='primary'
             variant='contained' 
             type='submit' 
             onClick={onClick}

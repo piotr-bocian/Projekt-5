@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { createMuiTheme } from '@material-ui/core/styles';
 
 export const Wrapper = styled.form`
     width: 30vw;
@@ -25,13 +24,3 @@ export const avatarStyle = {
     color: '#fff',
     backgroundColor: '#0292C9'
 }
-
-export const theme = createMuiTheme({
-    palette:{
-        primary:{
-          light: '#0292c9',
-          main: '#0093CA',
-          dark: '#0274A2'
-        }
-    }
-});
