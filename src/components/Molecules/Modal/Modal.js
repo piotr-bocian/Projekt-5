@@ -53,16 +53,14 @@ Fade.propTypes = {
 };
 
 export default function SpringModal({
-  statement = true,
+  statement,
   message = 'Twoje wsparcie jest dla nas bardzo ważne',
   optionalMessage = null,
 }) {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
-
   const handleClose = () => {
     setOpen(false);
-    statement = false;
   };
 
   return statement ? (

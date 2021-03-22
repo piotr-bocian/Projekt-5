@@ -9,6 +9,7 @@ import {
   StyledNavLink,
   StyledFacebookIcon,
   StyledInstagramIcon,
+  Spring,
 } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';

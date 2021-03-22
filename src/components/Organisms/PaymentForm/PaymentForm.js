@@ -21,12 +21,14 @@ const PaymentForm = ({ title }) => {
   };
   const [paymentState, setPaymentState] = useState(initialState);
 
+
   const handler = useHttp(
     'https://best-animal-shelter.herokuapp.com/api/payments',
     httpMethods.POST,
     paymentState,
     validatePayment
   );
+
   const inputPaymentHandler = (e) => {
     setPaymentState({
       ...paymentState,
@@ -40,7 +42,10 @@ const PaymentForm = ({ title }) => {
     </Wrapper>
   ) : (
     <Wrapper>
-      <SpringModal optionalMessage={handler.data.message} statement={handler.data }/>
+      <SpringModal
+        optionalMessage={handler.data.message}
+        statement={handler.data}
+      />
       <h2>{title}</h2>
       <PaymentFormField
         label="Kwota Przelewu"

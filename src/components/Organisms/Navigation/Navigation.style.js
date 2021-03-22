@@ -22,11 +22,6 @@ export const StyledNavLink = styled(NavLink).attrs({
   activeClassName: 'activeLink',
 })`
   text-decoration: none;
-  &.activeLink {
-    background-color: ${({ theme }) => theme.colors.clickedNav};
-    transition: 0.5s;
-    border-radius: 5px;
-  }
 `;
 
 export const StyledFacebookIcon = styled(FacebookIcon)`
