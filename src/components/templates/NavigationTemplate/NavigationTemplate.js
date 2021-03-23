@@ -8,6 +8,7 @@ import AppleIcon from '@material-ui/icons/Apple';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
+import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
 `;
 
 const NavigationTemplate = ({ children }) => {
@@ -32,49 +33,53 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-    <Router>
-      <NavigationTemplate>
-        <Switch>
-          <Route path="/" exact>
-            {/* odpowiedni komponent */}
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/registration"></Route>
-        </Switch>
-        <Switch>
-          <Route path="/login"></Route>
-        </Switch>
-        <Switch>
-          <Route path="/news"></Route>
-        </Switch>
-        <Switch>
-          <Route path="/animals">{/* odpowiedni komponent */}</Route>
-        </Switch>
-        <Switch>
-          <Route path="/adoption"></Route>
-        </Switch>
-        <Switch>
-          <Route path="/education"></Route>
-        </Switch>
-        <Switch>
-          <Route path="/howtohelp">
-            <PaymentForm />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/about">
-            <Wrapper>
-              <Typography variant="h1">Hello world!</Typography>
-              <AppleIcon style={{ fontSize: 130 }} />
-            </Wrapper>
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/contact"></Route>
-        </Switch>
-      </NavigationTemplate>
-    </Router>
+      <Router>
+        <NavigationTemplate>
+          <Switch>
+            <Route path="/" exact>
+              {/* odpowiedni komponent */}
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/registration"></Route>
+          </Switch>
+          <Switch>
+            <Route path="/login"></Route>
+          </Switch>
+          <Switch>
+            <Route path="/news"></Route>
+          </Switch>
+          <Switch>
+            <Route path="/animals">{/* odpowiedni komponent */}</Route>
+          </Switch>
+          <Switch>
+            <Route path="/adoption">
+              <Wrapper>
+                <VisitForm />
+              </Wrapper>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/education"></Route>
+          </Switch>
+          <Switch>
+            <Route path="/howtohelp">
+              <PaymentForm />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/about">
+              <Wrapper>
+                <Typography variant="h1">Hello world!</Typography>
+                <AppleIcon style={{ fontSize: 130 }} />
+              </Wrapper>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/contact"></Route>
+          </Switch>
+        </NavigationTemplate>
+      </Router>
     </ThemeProvider>
   );
 }
