@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { TextField, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import useHttp from '../../../hooks/useHttp/useHttp';
@@ -6,53 +6,98 @@ import useHttp from '../../../hooks/useHttp/useHttp';
 import './VolunteerForm.css';
 
 const VolunteerForm = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [mobile, setMobile] = useState('');
-    const [birthDate, setBirthDate] = useState('');
-    const [occupation, setOccupation] = useState('');
-    const [preferredTasks, setPreferredTasks] = useState('');
+    const [form, setForm] = useState({
+        firstName: '',
+        lastName: '',
+        mobile: '',
+        birthDate: '',
+        occupation: '',
+        preferredTasks: ''
+    });
+
+    const [firstNameErr, setFirstNameErr] = useState(false);
+    const [lastNameErr, setLastNameErr] = useState(false);
+
+    const updateForm = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const validateForm = () => {
+        let valid = true;
+
+        if(!form.firstName){
+            setFirstNameErr(true);
+            valid = false;
+        }
+        if(!form.lastName){
+            setLastNameErr(true);
+            valid = false;
+        }
+
+        return valid;
+    }
 
     const handler = useHttp(
         'https://best-animal-shelter.herokuapp.com/api/volunteerForms',
         'POST',
-        {
-            firstName: firstName,
-            lastName: lastName,
-            mobile: mobile,
-            birthDate: birthDate,
-            occupation: occupation,
-            preferredTasks: preferredTasks
-        }
+        form
     );
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if(validateForm()){
+            handler.makeHttpRequest();
+            console.log('Wysylam zapytanie')
+        }
+    }
+
     return (
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField 
                         variant="outlined" 
-                        label="Imię" value={firstName} 
-                        onChange={(e) => setFirstName(e.target.value)}
-                        fullWidth 
+                        label="Imię"
+                        name="firstName"
+                        value={form.firstName}
+                        onChange={
+                            (e) => {
+                                setFirstNameErr(false);
+                                updateForm(e);
+                            }
+                        }
+                        fullWidth
+                        error={firstNameErr}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>    
                     <TextField 
                         variant="outlined" 
-                        label="Nazwisko" 
-                        value={lastName} 
-                        onChange={(e) => setLastName(e.target.value)} 
+                        label="Nazwisko"
+                        name="lastName"
+                        value={form.lastName} 
+                        onChange={
+                            (e) => {
+                                setLastNameErr(false);
+                                updateForm(e);
+                            }
+                        } 
                         fullWidth
+                        error={lastNameErr}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>    
                     <TextField 
                         variant="outlined"
-                        label="Telefon" 
-                        value={mobile} 
-                        onChange={(e) => setMobile(e.target.value)} 
-                        fullWidth 
+                        label="Telefon"
+                        name="mobile" 
+                        value={form.mobile} 
+                        onChange={updateForm} 
+                        fullWidth
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -62,8 +107,9 @@ const VolunteerForm = () => {
                         InputLabelProps={{
                             shrink: true,
                         }} 
-                        value={birthDate} 
-                        onChange={(e) => setBirthDate(e.target.value)} 
+                        name="birthDate"
+                        value={form.birthDate} 
+                        onChange={updateForm} 
                         type="date"
                         fullWidth 
                     />
@@ -74,13 +120,15 @@ const VolunteerForm = () => {
                         label="Czym się zajmujesz? Uczysz się? Studiujesz? Pracujesz?"
                         multiline
                         rows={4}
-                        value={occupation} onChange={(e) => setOccupation(e.target.value)} 
-                        fullWidth 
+                        name="occupation"
+                        value={form.occupation} 
+                        onChange={updateForm} 
+                        fullWidth
                     />
                 </Grid>
                 
                 <Grid item xs={12}>
-                    <RadioGroup row value={preferredTasks} onChange={(e) => {setPreferredTasks(e.target.value)}}>
+                    <RadioGroup row name="preferredTasks" value={form.preferredTasks} onChange={updateForm}>
                         <FormControlLabel 
                             value="praca z psami" 
                             control={<Radio color="primary" disableRipple />} 
@@ -103,7 +151,7 @@ const VolunteerForm = () => {
                     <Button 
                         color="primary"
                         variant="contained" 
-                        onClick={handler.makeHttpRequest}
+                        type="submit"
                         fullWidth 
                     >
                         Wyślij
