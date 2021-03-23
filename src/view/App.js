@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import VolunteerForm from '../components/Organisms/VolunteerForm/VolunteerForm';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,9 +27,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Wrapper>
-        <VolunteerForm />
-      </Wrapper>
+      <NavigationView />
     </ThemeProvider>
   );
 }

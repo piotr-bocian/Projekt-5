@@ -3,7 +3,7 @@ import { useState } from 'react';
 const useHttp = (url, method, payload = '', validateFunction = null) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-
+  const [data, setData] = useState('');
   const httpRequest = async () => {
     const fetchOptions =
       method === 'GET'
@@ -22,6 +22,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
             },
             body: JSON.stringify(payload),
           };
+          console.log(url);
     return fetch(url, fetchOptions);
   };
 
@@ -30,12 +31,13 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
     try {
       const response = await httpRequest();
       const data = await response.json();
-      console.log(data);
       setIsLoading(false);
+      setData(data);
       return data;
     } catch (error) {
       setError(error);
       console.log(error);
+      return error;
     }
   };
 
@@ -50,7 +52,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
     }
   };
 
-  return { isLoading, handleHttpRequest, makeHttpRequest };
+  return { isLoading, handleHttpRequest, makeHttpRequest, data, error };
 };
 
 export default useHttp;
