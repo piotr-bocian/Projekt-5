@@ -1,5 +1,7 @@
 import React from 'react';
+
 import styled from 'styled-components';
+import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
 // import { Animals } from '../components/Organisms/Animals.js/Animals.js'
 
 const Wrapper = styled.div`
@@ -9,8 +11,9 @@ const Wrapper = styled.div`
 
 function App() {
   return (
-    <Wrapper>
-    </Wrapper>
+    <>
+        <NavigationView />
+    </>
   );
 }
 
