@@ -41,7 +41,7 @@ const VolunteerForm = () => {
             setLastNameErr(true);
             valid = false;
         }
-        if(form.mobile.length !== 9){
+        if(form.mobile.length !== 9 || isNaN(parseInt(form.mobile))){
             setMobileErr(true);
             valid = false;
         }
@@ -80,20 +80,6 @@ const VolunteerForm = () => {
         <form className="form" onSubmit={handleSubmit}>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
-                    {/* <TextField 
-                        variant="outlined" 
-                        label="Imię"
-                        name="firstName"
-                        value={form.firstName}
-                        onChange={
-                            (e) => {
-                                setFirstNameErr(false);
-                                updateForm(e);
-                            }
-                        }
-                        fullWidth
-                        error={firstNameErr}
-                    /> */}
                     <VolunteerFormTextField 
                         label="Imię" 
                         name="firstName" 
@@ -104,20 +90,6 @@ const VolunteerForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>    
-                    {/* <TextField 
-                        variant="outlined" 
-                        label="Nazwisko"
-                        name="lastName"
-                        value={form.lastName} 
-                        onChange={
-                            (e) => {
-                                setLastNameErr(false);
-                                updateForm(e);
-                            }
-                        } 
-                        fullWidth
-                        error={lastNameErr}
-                    /> */}
                     <VolunteerFormTextField 
                         label="Nazwisko" 
                         name="lastName" 
@@ -128,20 +100,6 @@ const VolunteerForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>    
-                    {/* <TextField 
-                        variant="outlined"
-                        label="Telefon"
-                        name="mobile" 
-                        value={form.mobile} 
-                        onChange={
-                            (e) => {
-                                setMobileErr(false);
-                                updateForm(e);
-                            }
-                        }
-                        fullWidth
-                        error={mobileErr}
-                    /> */}
                     <VolunteerFormTextField 
                         label="Telefon" 
                         name="mobile" 
