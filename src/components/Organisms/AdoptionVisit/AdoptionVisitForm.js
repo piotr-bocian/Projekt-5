@@ -5,7 +5,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import { Wrapper, centerText, avatarStyle } from './AdoptionVisitForm.style';
 
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
-import SelectDateTime from '../../Molecules/SelectDateTime';
+import SelectDateTime from '../../Molecules/AdoptionVisit/SelectDateTime';
 import FormButton from '../../Atoms/AdoptionVisit/FormButton';
 import AnimalNameField from '../../Atoms/AdoptionVisit/AnimalNameField'
 
