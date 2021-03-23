@@ -22,6 +22,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
             },
             body: JSON.stringify(payload),
           };
+          console.log(url);
     return fetch(url, fetchOptions);
   };
 
@@ -30,7 +31,6 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
     try {
       const response = await httpRequest();
       const data = await response.json();
-      console.log(data);
       setIsLoading(false);
       setData(data);
       return data;
