@@ -21,13 +21,13 @@ export function Animals () {
             .then((result) => {
                 console.log(result)
                 result.animals.results.forEach(e => {
-                        setAnimals(a =>[...a, e])  
+                        setAnimals(a =>[...a, e])
                 })
             });
     }, [])
 
 
-    console.log(animals);
+    // console.log(animals);
     return handler.isLoading ? (
         <div></div>) :
         (
