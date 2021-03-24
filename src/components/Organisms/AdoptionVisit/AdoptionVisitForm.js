@@ -40,6 +40,7 @@ const VisitForm = ({ animalName }) => {
     const [visitDate, setVisitDate] = useState(minDate);
     const [visitTime, setVisitTime] = useState("09:00");
     const [duration, setDuration] = useState(30);
+    const [errors, setErrors] = useState();
 
     const sendForm = (e) => {
         let visitState = {
@@ -85,10 +86,20 @@ const VisitForm = ({ animalName }) => {
                 idDate='date-picker'
                 minDate={minDate}
                 maxDate={maxDate}
-                onChangeTime={(e) => setVisitTime(timeToString(e))}
+                onChangeTime={(e) => {
+                    let time = timeToString(e)
+                    setErrors({timeError: ''})
+                    setVisitTime(time);
+                    let regTime = new RegExp(/(1[0-5]|[0]?[9]):([0-5]?[0-9])|(16):(00)$/).test(time)
+                    if (!regTime) {
+                        setErrors({timeError: 'Proszę wybrać godzinę wizyty między 09:00 a 16:00'})
+                    }
+                }}
                 labelTime='Godzina wizyty'
                 valueTime={stringToTime(visitTime)}
                 idTime='time-picker'
+                error={Boolean(errors?.timeError)}
+                helperText={(errors?.timeError)}
             />
 
             <SelectDuration 
