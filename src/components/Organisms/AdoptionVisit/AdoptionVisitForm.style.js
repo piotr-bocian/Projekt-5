@@ -10,6 +10,7 @@ export const Wrapper = styled.form`
     padding: 1.5em;
     border: 0.06em solid #0292C9;
     box-shadow: 0px 0.25em 0.25em #0292C9;
+    background-color: white;
 `;
 
 export const centerText = {
