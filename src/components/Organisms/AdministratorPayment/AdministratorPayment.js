@@ -9,10 +9,14 @@ const StyledPaymentText = styled.span`
 `;
 
 function AdministratorPayment({ payment, take }) {
+  let idHandler = () => take(payment._id);
+  if (!take) {
+    idHandler = null;
+  }
   return (
     <>
       <Grid
-        onClick={() => take(payment._id)}
+        onClick={idHandler}
         key={payment._id}
         item
         xs={4}
@@ -38,7 +42,7 @@ function AdministratorPayment({ payment, take }) {
         <Typography>
           <StyledPaymentText>Data płatności: </StyledPaymentText>
           <StyledPaymentText text="Data płatności: " />
-          {payment.paymentDate}
+          {payment.paymentDate ? payment.paymentDate.substr(0, 10) : ''}
         </Typography>
         <Typography>
           <StyledPaymentText>Metoda płatności: </StyledPaymentText>
