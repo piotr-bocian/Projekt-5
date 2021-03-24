@@ -11,14 +11,13 @@ const useStyles = makeStyles((theme) => ({
     },
 
     formContainer: {
-        margin: theme.spacing(8, 3, 1, 3),
+        margin: theme.spacing(2, 3, 1, 3),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
 
     accountForm: {
-        width: '100%',
         marginTop: theme.spacing(3),
     },
 

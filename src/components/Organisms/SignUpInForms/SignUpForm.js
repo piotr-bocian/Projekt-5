@@ -1,9 +1,8 @@
 import React from 'react';
-import { Typography, CssBaseline, Container, Grid, FormControlLabel, Button, Link } from '@material-ui/core';
+import { Typography, CssBaseline, TextField, Container, Grid, Button, Link } from '@material-ui/core';
 import useStyles from './signUpInStyles';
-import BlueTextField from '../../Atoms/blueTextField';
-import Avatar from '../../Atoms/avatar';
-import BlueCheckbox from '../../Atoms/blueCheckbox';
+import Avatar from '../../Atoms/SignUpInAtoms/avatar';
+import { TermsCheckBox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
 
 
 
@@ -18,10 +17,10 @@ const SignUpForm = () => {
                 <Typography component='h1' variant='h5'>
                     Rejestracja
                 </Typography>
-                <form className={classes.accountForm} noValidate>
+                <form className={classes.accountForm}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
-                            <BlueTextField
+                            <TextField
                                 name="firstName"
                                 variant="outlined"
                                 required
@@ -32,7 +31,7 @@ const SignUpForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <BlueTextField
+                            <TextField
                                 name="lastName"
                                 variant="outlined"
                                 required
@@ -42,7 +41,7 @@ const SignUpForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <BlueTextField
+                            <TextField
                                 name="mobile"
                                 variant="outlined"
                                 required
@@ -53,7 +52,7 @@ const SignUpForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <BlueTextField
+                            <TextField
                                 name="email"
                                 variant="outlined"
                                 required
@@ -64,7 +63,7 @@ const SignUpForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <BlueTextField
+                            <TextField
                                 name="password"
                                 variant="outlined"
                                 required
@@ -76,7 +75,7 @@ const SignUpForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <BlueTextField
+                            <TextField
                                 name="repeatPassword"
                                 variant="outlined"
                                 required
@@ -87,16 +86,7 @@ const SignUpForm = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormControlLabel
-                            control={<BlueCheckbox value="acceptTerms" color="primary" />}
-                            label={
-                                <div>
-                                    <span>Zapoznałem się i akceptuję </span>
-                                    <Link href="#">regulamin </Link>
-                                    <span>Schroniska.</span>
-                                </div>
-                                }
-                            />
+                            <TermsCheckBox />
                         </Grid>
                     </Grid>
                     <Button

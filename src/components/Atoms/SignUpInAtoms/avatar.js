@@ -1,4 +1,4 @@
-import pawInHeart from '../../assets/pawInHeart.png';
+import pawInHeart from '../../../assets/pawInHeart.png';
 import { makeStyles } from '@material-ui/core/styles';
 
 const Avatar = () => {

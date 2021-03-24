@@ -1,9 +1,12 @@
 import React from 'react';
-import { Typography, CssBaseline, Container, Grid, FormControlLabel, Button, Link } from '@material-ui/core';
+import {CssBaseline, Container, Grid, FormControlLabel } from '@material-ui/core';
 import useStyles from '../SignUpInForms/signUpInStyles';
-import BlueTextField from '../../Atoms/blueTextField';
-import Avatar from '../../Atoms/avatar';
-import BlueCheckbox from '../../Atoms/blueCheckbox';
+import Avatar from '../../Atoms/SignUpInAtoms/avatar';
+import SignUpInTitle from '../../Atoms/SignUpInAtoms/signUpInTitle';
+import SignInTxtFields from '../../Molecules/SignUpInMolecules/signInTextFields'
+import { BlueCheckbox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
+import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import SignUpInLink from '../../Atoms/SignUpInAtoms/signUpInLink';
 
 
 
@@ -15,34 +18,10 @@ const SignInForm = () => {
             <CssBaseline />
             <div className={classes.formContainer}>
                 <Avatar/>
-                <Typography component='h1' variant='h5'>
-                    Logowanie
-                </Typography>
+                <SignUpInTitle title="Logowanie" />
                 <form className={classes.accountForm} noValidate>
                     <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <BlueTextField
-                                name="email"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Adres email"
-                                autoComplete="email"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <BlueTextField
-                                name="password"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                type="password"
-                                id="password"
-                                label="Hasło"
-                                autoComplete="current-password"
-                            />
-                        </Grid>
+                        <SignInTxtFields />
                         <Grid item xs={12}>
                             <FormControlLabel
                             control={<BlueCheckbox value="rememberMe" color="primary" />}
@@ -50,22 +29,8 @@ const SignInForm = () => {
                             />
                         </Grid>
                     </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.confirmButton}
-                        >
-                            Zaloguj się
-                    </Button>
-                    <Grid container justify="flex-end">
-                        <Grid item>
-                            <Link href="#" variant="body2">
-                                Nie masz konta? Zarejestruj się
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <SignUpInButton btnText="Zaloguj się"/>
+                    <SignUpInLink linkText="Nie masz konta? Zarejestruj się"/>
                 </form>
             </div>
         </Container>
