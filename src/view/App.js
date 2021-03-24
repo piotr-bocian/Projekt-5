@@ -1,11 +1,34 @@
 import React from 'react';
+import styled from 'styled-components';
+import VolunteerForm from '../components/Organisms/VolunteerForm/VolunteerForm';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+
+const theme = createMuiTheme({
+  palette:{
+    primary:{
+      light: '#0292c9',
+      main: '#0093CA',
+      dark: '#0274A2'
+    }
+  }
+});
+
 
 function App() {
   return (
-    <>
-        <NavigationView />
-    </>
+    <ThemeProvider theme={theme}>
+      <NavigationView />
+    </ThemeProvider>
   );
 }
 
