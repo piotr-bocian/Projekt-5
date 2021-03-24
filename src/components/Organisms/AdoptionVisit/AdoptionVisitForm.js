@@ -49,7 +49,12 @@ const VisitForm = ({ animalName }) => {
             duration: duration
         }
         e.preventDefault();
-        console.log(visitState);
+
+        if (Boolean(errors?.timeError)) {
+            console.log('Popraw formularz')
+        } else {
+            console.log(visitState);
+        }
     }
 
     // convert Time to valid database type
