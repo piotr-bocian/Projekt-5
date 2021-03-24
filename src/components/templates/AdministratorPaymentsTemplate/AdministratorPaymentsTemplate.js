@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import AdministratorPayment from '../../Organisms/AdministratorPayment/AdministratorPayment';
 import SelectPay from '../../Atoms/Select/Select';
 import { Button } from '@material-ui/core';
-import CircularLoader from '../../Loaders/CircularLoader/CircularLoader'
+import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 
 const Center = styled.div`
   display: flex;
@@ -50,13 +50,16 @@ const AdministratorPaymentsTemplate = () => {
 
   const onLoadPayments = (e) => setFilter(e.target.value);
   const onLoadAllPayments = () => setFilter('');
+
   return handler.isLoading ? (
     <Center>
       <CircularLoader />
     </Center>
   ) : (
     <>
-    <h1 style={{textAlign: 'center', marginTop: '50px'}}>WIDOK ADMINISTRATORA (PŁATNOŚCI)</h1>
+      <h1 style={{ textAlign: 'center', marginTop: '50px' }}>
+        WIDOK ADMINISTRATORA (PŁATNOŚCI)
+      </h1>
       <Grid
         style={{ marginTop: '150px' }}
         container
@@ -95,8 +98,8 @@ const AdministratorPaymentsTemplate = () => {
           justify="center"
           alignItems="center"
         >
-          {payments.map((payment) => {
-            return <AdministratorPayment payment={payment} />;
+          {payments.map((payment, id) => {
+            return <AdministratorPayment key={id} payment={payment} />;
           })}
         </Grid>
       </Grid>
