@@ -2,18 +2,11 @@ import React from 'react';
 
 const TextSeparator = ({
   text = '|',
-  fontSize = '40px',
-  textAlign = 'center',
+  styles = { textAlign: 'center', fontSize: '40px', color: '#3e3e3e' },
 }) => {
   return (
     <>
-      <span
-        style={{
-          textAlign: { textAlign },
-          fontSize: { fontSize },
-          color: '#3e3e3e',
-        }}
-      >
+      <span style={styles}>
         {text}
       </span>
     </>

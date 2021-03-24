@@ -1,17 +1,20 @@
-import Typography from '@material-ui/core/Container';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import Grid from '@material-ui/core/Grid';
-import AdministratorPayment from '../../Atoms/AdministratorPayment/AdministratorPayment';
+import AdministratorPayment from '../../Organisms/AdministratorPayment/AdministratorPayment';
 import SelectPay from '../../Atoms/Select/Select';
 import { Button } from '@material-ui/core';
+import CircularLoader from '../../Loaders/CircularLoader/CircularLoader'
 
-export const Wrapper = styled.div`
-  border: 0.06em solid #0292c9;
-  box-shadow: 0px 0.25em 0.25em #0292c9;
-  background-color: white;
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
 `;
 
 const AdministratorPaymentsTemplate = () => {
@@ -48,9 +51,12 @@ const AdministratorPaymentsTemplate = () => {
   const onLoadPayments = (e) => setFilter(e.target.value);
   const onLoadAllPayments = () => setFilter('');
   return handler.isLoading ? (
-    <Typography>Loading...</Typography>
+    <Center>
+      <CircularLoader />
+    </Center>
   ) : (
     <>
+    <h1 style={{textAlign: 'center', marginTop: '50px'}}>WIDOK ADMINISTRATORA (PŁATNOŚCI)</h1>
       <Grid
         style={{ marginTop: '150px' }}
         container
