@@ -20,12 +20,6 @@ const useStyles = makeStyles((theme) => ({
     accountForm: {
         marginTop: theme.spacing(3),
     },
-
-    confirmButton: {
-        margin: theme.spacing(3, 0, 2),
-        backgroundColor: '#0292C9',
-        color: '#FFF'
-    },
 }));
 
 export default useStyles;

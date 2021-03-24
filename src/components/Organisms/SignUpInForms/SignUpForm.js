@@ -1,8 +1,12 @@
 import React from 'react';
-import { Typography, CssBaseline, TextField, Container, Grid, Button, Link } from '@material-ui/core';
+import { CssBaseline, Container } from '@material-ui/core';
 import useStyles from './signUpInStyles';
+import SignUpInTitle from '../../Atoms/SignUpInAtoms/signUpInTitle';
 import Avatar from '../../Atoms/SignUpInAtoms/avatar';
+import SignUpTxtFields from '../../Molecules/SignUpInMolecules/signUpTextFields';
 import { TermsCheckBox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
+import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import SignUpInLink from '../../Atoms/SignUpInAtoms/signUpInLink';
 
 
 
@@ -14,97 +18,12 @@ const SignUpForm = () => {
             <CssBaseline />
             <div className={classes.formContainer}>
                 <Avatar/>
-                <Typography component='h1' variant='h5'>
-                    Rejestracja
-                </Typography>
+                <SignUpInTitle title="Rejestracja" />
                 <form className={classes.accountForm}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="firstName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="firstName"
-                                label="Imię"
-                                autoFocus
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="lastName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="lastName"
-                                label="Nazwisko"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="mobile"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="mobile"
-                                label="Telefon"
-                                autoComplete="mobile"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="email"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Adres email"
-                                autoComplete="email"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="password"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                type="password"
-                                id="password"
-                                label="Hasło"
-                                autoComplete="current-password"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="repeatPassword"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                type="password"
-                                id="repeatPassword"
-                                label="Powtórz hasło"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TermsCheckBox />
-                        </Grid>
-                    </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.confirmButton}
-                        >
-                            Zarejestruj się
-                    </Button>
-                    <Grid container justify="flex-end">
-                        <Grid item>
-                            <Link href="#" variant="body2">
-                                Masz już konto? Zaloguj się
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <SignUpTxtFields />
+                    <TermsCheckBox />
+                    <SignUpInButton btnText="Zarejestruj się"/>
+                    <SignUpInLink linkText="Masz już konto? Zaloguj się"/>
                 </form>
             </div>
         </Container>

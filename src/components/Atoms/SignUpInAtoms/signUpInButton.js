@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     confirmButton: {
-        margin: theme.spacing(3, 0, 3),
+        margin: theme.spacing(2, 0, 3),
     },
 }));
 

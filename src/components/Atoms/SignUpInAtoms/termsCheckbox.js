@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core/styles';
-import { Checkbox, FormControlLabel, Link } from '@material-ui/core';
+import { Checkbox, Grid, FormControlLabel, Link } from '@material-ui/core';
 
 const BlueCheckbox = withStyles({
     root: {
@@ -13,16 +13,20 @@ const BlueCheckbox = withStyles({
 
 const TermsCheckBox = () => {
   return (
-    <FormControlLabel
-      control={<BlueCheckbox value="acceptTerms" color="primary" />}
-      label={
-        <div>
-            <span>Zapoznałem się i akceptuję </span>
-            <Link href="#">regulamin </Link>
-            <span>Schroniska.</span>
-        </div>
-        }
-    />
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <FormControlLabel
+          control={<BlueCheckbox value="acceptTerms" color="primary" />}
+          label={
+            <div>
+                <span>Zapoznałem się i akceptuję </span>
+                <Link href="#">regulamin </Link>
+                <span>Schroniska.</span>
+            </div>
+            }
+        />
+      </Grid>
+    </Grid>
   )
 }
 

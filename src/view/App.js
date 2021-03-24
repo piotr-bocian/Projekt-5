@@ -29,8 +29,8 @@ function App() {
   return (
     <Wrapper>
       <ThemeProvider theme={theme}>
-        {/* <SignUpForm /> */}
-        <SignInForm />
+        <SignUpForm />
+        {/* <SignInForm /> */}
       </ThemeProvider>
     </Wrapper>
   );
