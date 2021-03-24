@@ -33,7 +33,8 @@ const AdministratorPaymentsTemplate = () => {
     'Wirtualny opiekun-opłata cykliczna',
   ];
   const [filter, setFilter] = useState('');
-  const querry = filter.length === 0 ? '' : `?search=${filter}`;
+  const [id, setId] = useState('');
+  const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
   const handler = useHttp(
     'http://localhost:5000/api/payments' + querry,
     httpMethods.GET
@@ -41,15 +42,27 @@ const AdministratorPaymentsTemplate = () => {
   const [payments, setPayments] = useState([]);
 
   useEffect(() => {
+    console.log(1);
     const getPayments = async () => {
       const data = await handler.makeHttpRequest();
-      setPayments(data.payments.results);
+      if (data.payment) {
+        setPayments(data.payment);
+      } else {
+        setPayments(data.payments.results);
+      }
     };
     getPayments();
-  }, [filter]);
+  }, [filter, id]);
 
   const onLoadPayments = (e) => setFilter(e.target.value);
-  const onLoadAllPayments = () => setFilter('');
+  const onLoadAllPayments = () => {
+    setFilter('');
+    setId('');
+  };
+  const takeOneId = (handler) => {
+    const route = '/' + handler;
+    setId(route);
+  };
 
   return handler.isLoading ? (
     <Center>
@@ -98,9 +111,19 @@ const AdministratorPaymentsTemplate = () => {
           justify="center"
           alignItems="center"
         >
-          {payments.map((payment, id) => {
-            return <AdministratorPayment key={id} payment={payment} />;
-          })}
+          {Array.isArray(payments) && payments.length !== 0 ? (
+            payments.map((payment, id) => {
+              return (
+                <AdministratorPayment
+                  take={takeOneId}
+                  key={id}
+                  payment={payment}
+                />
+              );
+            })
+          ) : (
+            <AdministratorPayment key={id} payment={payments} />
+          )}
         </Grid>
       </Grid>
     </>

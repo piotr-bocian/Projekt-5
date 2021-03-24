@@ -8,10 +8,11 @@ const StyledPaymentText = styled.span`
   font-weight: 700;
 `;
 
-function AdministratorPayment({ payment }) {
+function AdministratorPayment({ payment, take }) {
   return (
     <>
       <Grid
+        onClick={() => take(payment._id)}
         key={payment._id}
         item
         xs={4}
