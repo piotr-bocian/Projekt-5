@@ -2,7 +2,7 @@ import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider, DatePicker, TimePicker } from '@material-ui/pickers'
 import { pl } from 'date-fns/locale';
 
-const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, maxDate, onChangeTime, labelTime, valueTime, idTime}) => {
+const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, maxDate, onChangeTime, labelTime, valueTime, idTime, error, helperText}) => {
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={pl}>
             <DatePicker 
@@ -25,9 +25,9 @@ const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, m
                 value={valueTime}
                 minutesStep={15}
                 ampm={false}
-                minTime={new Date(0, 0, 0, 9)}
-                maxTime={new Date(0, 0, 0, 17)}
                 cancelLabel="Anuluj"
+                error = {error}
+                helperText = {helperText ? helperText : 'Schronisko działa w godzinach 09:00-16:00'}
             />
         </MuiPickersUtilsProvider>
     );
