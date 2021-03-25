@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SignUpForm from '../components/Organisms/SignUpInForms/SignUpForm';
-import SignInForm from '../components/Organisms/SignUpInForms/SignInForm';
-import SignInTxtFields from '../components/Molecules/SignUpInMolecules/signInTextFields'
+// import SignInForm from '../components/Organisms/SignUpInForms/SignInForm';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 
 

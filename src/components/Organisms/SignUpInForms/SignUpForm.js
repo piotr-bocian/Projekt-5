@@ -3,9 +3,7 @@ import { CssBaseline, Container } from '@material-ui/core';
 import useStyles from './signUpInStyles';
 import SignUpInTitle from '../../Atoms/SignUpInAtoms/signUpInTitle';
 import Avatar from '../../Atoms/SignUpInAtoms/avatar';
-import SignUpTxtFields from '../../Molecules/SignUpInMolecules/signUpTextFields';
-import { TermsCheckBox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
-import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import SignUpRawForm from '../../Molecules/SignUpInMolecules/signUpRawForm';
 import SignUpInLink from '../../Atoms/SignUpInAtoms/signUpInLink';
 
 
@@ -19,12 +17,8 @@ const SignUpForm = () => {
             <div className={classes.formContainer}>
                 <Avatar/>
                 <SignUpInTitle title="Rejestracja" />
-                <form className={classes.accountForm}>
-                    <SignUpTxtFields />
-                    <TermsCheckBox />
-                    <SignUpInButton btnText="Zarejestruj się"/>
-                    <SignUpInLink linkText="Masz już konto? Zaloguj się"/>
-                </form>
+                <SignUpRawForm />
+                <SignUpInLink linkText="Masz już konto? Zaloguj się"/>
             </div>
         </Container>
 )}

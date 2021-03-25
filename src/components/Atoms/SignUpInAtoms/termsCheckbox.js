@@ -11,7 +11,7 @@ const BlueCheckbox = withStyles({
     checked: {},
   })((props) => <Checkbox color="default" {...props} />);
 
-const TermsCheckBox = () => {
+const TermsCheckbox = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -30,6 +30,6 @@ const TermsCheckBox = () => {
   )
 }
 
-export { TermsCheckBox, BlueCheckbox }
+export { TermsCheckbox, BlueCheckbox }
 
   
