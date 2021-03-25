@@ -2,8 +2,9 @@ import React from 'react';
 import { Label } from '../Label/Label';
 import { Wrapper } from '../../Molecules/PaymentFormField/PaymentFormFieldWrapper.styles';
 import { NativeSelect } from '@material-ui/core';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
-const SelectPay = ({ onChange, optionType, name, id, label }) => {
+const SelectPay = ({ onChange, optionType, name, id, label, error }) => {
   return (
     <Wrapper>
       <Label htmlFor={id}>
@@ -20,6 +21,7 @@ const SelectPay = ({ onChange, optionType, name, id, label }) => {
             </option>
           ))}
         </NativeSelect>
+        <FormHelperText style={{ color: 'red' }}>{error}</FormHelperText>
       </Label>
     </Wrapper>
   );

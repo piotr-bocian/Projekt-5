@@ -53,6 +53,11 @@ const PaymentForm = ({ title }) => {
         name="amount"
         value={paymentState.amount}
         onChange={inputPaymentHandler}
+        errorHandler={
+          handler.error === 'Kwota przelewu musi być większa niż 5PLN'
+            ? handler.error
+            : null
+        }
       />
       <SelectPay
         label="Typ płatności"
@@ -61,6 +66,11 @@ const PaymentForm = ({ title }) => {
         value={paymentState.typeOfPayment}
         optionType={typeOfPayment}
         onChange={inputPaymentHandler}
+        error={
+          handler.error === 'Proszę określic typ przelewu'
+            ? handler.error
+            : null
+        }
       />
       <SelectPay
         label="Metoda płatności"
@@ -69,9 +79,16 @@ const PaymentForm = ({ title }) => {
         value={paymentState.paymentMethod}
         optionType={paymentMethod}
         onChange={inputPaymentHandler}
+        error={
+          handler.error === 'Proszę wybrać metodę płatności'
+            ? handler.error
+            : null
+        }
       />
       <FormHelperText style={{ textAlign: 'center', color: 'red' }}>
-        {handler.error}
+        {handler.error === 'Pole Kwota Przelewu jest wymagane'
+          ? handler.error
+          : null}
       </FormHelperText>
       <Button
         style={{ marginTop: 10 }}
