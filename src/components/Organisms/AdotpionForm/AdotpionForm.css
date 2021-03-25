@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 @media (max-width: 768px){
-    .form{
+    .formAdoption{
         width: 70vw;
     }
 }

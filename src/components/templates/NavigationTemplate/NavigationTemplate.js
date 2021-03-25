@@ -9,7 +9,7 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
-
+import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,7 +37,9 @@ function NavigationView() {
         <NavigationTemplate>
           <Switch>
             <Route path="/" exact>
-              {/* odpowiedni komponent */}
+              <Wrapper>
+                <AdotpionForm />
+              </Wrapper>
             </Route>
           </Switch>
           <Switch>
@@ -63,7 +65,7 @@ function NavigationView() {
           </Switch>
           <Switch>
             <Route path="/education">
-            <Wrapper>
+              <Wrapper>
                 <VolunteerForm />
               </Wrapper>
             </Route>
@@ -74,8 +76,7 @@ function NavigationView() {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/about">
-            </Route>
+            <Route path="/about"></Route>
           </Switch>
           <Switch>
             <Route path="/contact"></Route>
