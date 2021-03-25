@@ -1,0 +1,11 @@
+.form{
+    width: 50vw;
+    border-radius: 20px;
+    border:
+}
+
+@media (max-width: 768px){
+    .form{
+        width: 80vw;
+    }
+}

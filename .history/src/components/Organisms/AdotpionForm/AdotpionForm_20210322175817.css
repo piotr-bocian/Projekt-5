@@ -1,0 +1,10 @@
+.form{
+    width: 50vw;
+    bo
+}
+
+@media (max-width: 768px){
+    .form{
+        width: 80vw;
+    }
+}
