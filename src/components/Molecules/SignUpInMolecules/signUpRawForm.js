@@ -4,6 +4,7 @@ import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import { TermsCheckbox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import useHttp from '../../../hooks/useHttp/useHttp';
 
 const SignUpRawForm = () => {
     const classes = useStyles();
@@ -17,7 +18,6 @@ const SignUpRawForm = () => {
         mobileErr: '',
         email: '',
         emailErr: '',
-        image: '',
         password: '',
         passwordErr: '',
         repPassword: '',
@@ -87,11 +87,26 @@ const SignUpRawForm = () => {
         return isError;
     }
 
+    const httpHandler = useHttp(
+        'https://best-animal-shelter.herokuapp.com/api/users',
+        'POST',        
+        {
+            firstName: form.firstName,
+            lastName: form.lastName,
+            mobile: form.mobile,
+            email: form.email,
+            image: '',
+            password: form.password
+        }
+    );
+
     const handleForm = (e) => {
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            console.log(form);
+            // console.log(form);
+            httpHandler.makeHttpRequest();
+            console.log('Wysłano dane do rejestracji konta');
             setForm({
                 //clear form
                 firstName: '',
