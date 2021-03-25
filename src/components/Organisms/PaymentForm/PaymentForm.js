@@ -12,6 +12,7 @@ import {
   typeOfPayment,
 } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
 import SpringModal from '../../Molecules/Modal/Modal';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const PaymentForm = ({ title }) => {
   const initialState = {
@@ -20,7 +21,6 @@ const PaymentForm = ({ title }) => {
     paymentMethod: '',
   };
   const [paymentState, setPaymentState] = useState(initialState);
-
 
   const handler = useHttp(
     'https://best-animal-shelter.herokuapp.com/api/payments',
@@ -70,6 +70,9 @@ const PaymentForm = ({ title }) => {
         optionType={paymentMethod}
         onChange={inputPaymentHandler}
       />
+      <FormHelperText style={{ textAlign: 'center', color: 'red' }}>
+        {handler.error}
+      </FormHelperText>
       <Button
         style={{ marginTop: 10 }}
         color="primary"
