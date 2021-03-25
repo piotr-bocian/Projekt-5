@@ -8,7 +8,6 @@ import GridContainerNavigationWrapper from '../../../styles/stylesContainer/Grid
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
-import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -62,11 +61,7 @@ function NavigationView() {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/education">
-            <Wrapper>
-                <VolunteerForm />
-              </Wrapper>
-            </Route>
+            <Route path="/education"></Route>
           </Switch>
           <Switch>
             <Route path="/howtohelp">
