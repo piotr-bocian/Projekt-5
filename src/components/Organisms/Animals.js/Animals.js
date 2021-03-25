@@ -20,9 +20,7 @@ export function Animals (props) {
         handler.makeHttpRequest()
             .then((result) => {
                 console.log(result)
-                result.animals.results.forEach(e => {
-                        setAnimals(a =>[...a, e])
-                })
+                    setAnimals(result.animals.results);
             });
     }, [])
 
