@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // import AdotpionForm from '../components/Organisms/AdotpionForm/AdotpionForm';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
+import VolunteerForm from '../components/Organisms/VolunteerForm/VolunteerForm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,24 +14,21 @@ const Wrapper = styled.div`
   height: 100vh;
 `;
 
-// const theme = createMuiTheme({
-//   palette:{
-//     primary:{
-//       light: '#0292c9',
-//       main: '#0093CA',
-//       dark: '#0274A2'
-//     }
-//   }
-// });
+const theme = createMuiTheme({
+  palette:{
+    primary:{
+      light: '#0292c9',
+      main: '#0093CA',
+      dark: '#0274A2'
+    }
+  }
+});
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavigationView />
-      <Wrapper>
-        {/* <AdotpionForm /> */}
-      </Wrapper>
     </ThemeProvider>
   );
 }
