@@ -16,7 +16,7 @@ const TermsCheckbox = () => {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <FormControlLabel
-          control={<BlueCheckbox value="acceptTerms" color="primary" />}
+          control={<BlueCheckbox value="acceptTerms" color="primary" required />}
           label={
             <div>
                 <span>Zapoznałem się i akceptuję </span>
