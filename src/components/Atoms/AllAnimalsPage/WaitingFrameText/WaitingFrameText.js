@@ -8,4 +8,5 @@ export const WaitingText = styled.h3`
   color: black;
   text-align: left;
   letter-spacing: 0.1em;
+  padding: 10px 40px;
 `;

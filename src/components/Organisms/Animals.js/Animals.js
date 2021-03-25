@@ -6,7 +6,7 @@ import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import useHttp from '../../../hooks/useHttp/useHttp';
 
 
-export function Animals () {
+export function Animals (props) {
     // const classes = useStyles();
     const [animals, setAnimals] = useState([]);
     // const [selectedButton, setSelectedButton] = useState('');
