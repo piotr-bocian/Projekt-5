@@ -4,24 +4,73 @@ import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import RememberMeCheckbox from '../../Atoms/SignUpInAtoms/rememberMeCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import useHttp from '../../../hooks/useHttp/useHttp';
 
 const SignInRawForm = () => {
     const classes = useStyles();
     const [form, setForm] = useState({
         email: '',
-        password: ''
-    })
+        emailErr: '',
+        password: '',
+        passwordErr: '',
+    });
 
     const updateForm = (e) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value
-        })
+        });
     }
+
+    const validateForm = () => {
+        let isError = false;
+        const errors = {
+            emailErr: '',
+            passwordErr: '',
+        };
+
+        if(!/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(form.email)) {
+            isError = true;
+            errors.emailErr = 'Nieprawidłowy email.';
+        }
+
+        if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z<>!@#$%^&*?_=+-]{8,}$/i.test(form.password)) {
+            isError = true;
+            errors.passwordErr = 'Nieprawidłowe hasło.';
+        }
+
+        setForm({
+            ...form,
+            ...errors
+        });
+
+        return isError;
+    }
+
+    const httpHandler = useHttp(
+        'https://best-animal-shelter.herokuapp.com/api/login',
+        'POST',        
+        {
+            email: form.email,
+            password: form.password
+        }
+    );
 
     const handleForm = (e) => {
         e.preventDefault();
-        console.log(form);
+        const err = validateForm();
+        if(!err) {
+            // console.log(form);
+            httpHandler.makeHttpRequest();
+            console.log('Wysłano dane do rejestracji konta');
+            setForm({
+                //clear form
+                email: '',
+                emailErr: '',
+                password: '',
+                passwordErr: '',
+            });
+        }
     }
 
     return(
@@ -35,6 +84,8 @@ const SignInRawForm = () => {
                         type="email"
                         autoFocus={true}
                         value={form.email}
+                        helperText={form.emailErr}
+                        err={form.emailErr}
                         updateForm={updateForm}
                     />
                 </Grid>
@@ -45,6 +96,8 @@ const SignInRawForm = () => {
                         label="Hasło"
                         type="password"
                         value={form.password}
+                        helperText={form.passwordErr}
+                        err={form.passwordErr}
                         updateForm={updateForm}
                     />
                 </Grid>
