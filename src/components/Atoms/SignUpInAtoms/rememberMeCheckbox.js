@@ -6,7 +6,7 @@ const RememberMeCheckbox = () => {
         <Grid container spacing={2}>
             <Grid item xs={12}>
                 <FormControlLabel
-                control={<BlueCheckbox value="rememberMe" color="primary" required />}
+                control={<BlueCheckbox value="rememberMe" color="primary" />}
                 label='Zapamiętaj mnie'
                 />
             </Grid>
