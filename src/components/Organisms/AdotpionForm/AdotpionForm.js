@@ -19,11 +19,9 @@ const AdotpionForm = () => {
     const handleClickOpen = () => {
         setOpen(true);
       };
-    
       const handleClose = () => {
         setOpen(false);
       };
-
     return (
         <div>
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
