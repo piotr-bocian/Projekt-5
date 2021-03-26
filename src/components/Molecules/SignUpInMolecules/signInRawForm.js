@@ -60,9 +60,8 @@ const SignInRawForm = () => {
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            // console.log(form);
             httpHandler.makeHttpRequest();
-            console.log('Wysłano dane do rejestracji konta');
+            console.log('Logowanie...');
             setForm({
                 //clear form
                 email: '',

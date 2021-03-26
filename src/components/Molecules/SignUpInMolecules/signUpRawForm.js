@@ -199,7 +199,7 @@ const SignUpRawForm = () => {
                     />
                 </Grid>
             </Grid>
-            <TermsCheckbox checked={form.isChecked} />
+            <TermsCheckbox />
             <SignUpInButton btnText="Zarejestruj się"/>
         </form>
     )

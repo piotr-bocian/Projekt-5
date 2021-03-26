@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import SignUpForm from '../components/Organisms/SignUpInForms/SignUpForm';
-import SignInForm from '../components/Organisms/SignUpInForms/SignInForm';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 
 
@@ -28,8 +26,6 @@ function App() {
   return (
     <Wrapper>
       <ThemeProvider theme={theme}>
-        {/* <SignUpForm /> */}
-        <SignInForm />
       </ThemeProvider>
     </Wrapper>
   );
