@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
@@ -10,6 +10,7 @@ import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,56 +34,45 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <NavigationTemplate>
-          <Switch>
-            <Route path="/" exact>
-              <Wrapper>
-                <AdotpionForm />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/registration"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/login"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/news"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/animals">
-              <Animals />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/adoption">
-              <Wrapper>
-                <VisitForm />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/education">
-              <Wrapper>
-                <VolunteerForm />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/howtohelp">
-              <PaymentForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/about"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/contact"></Route>
-          </Switch>
-        </NavigationTemplate>
-      </Router>
+      <NavigationTemplate>
+        <Switch>
+          <Route path="/" exact>
+            <Wrapper>
+              <AdotpionForm />
+            </Wrapper>
+          </Route>
+
+          <Route path="/registration"></Route>
+
+          <Route path="/login"></Route>
+
+          <Route path="/news"></Route>
+
+          <Route path="/animals">
+            <Animals />
+          </Route>
+
+          <Route path="/adoption">
+            <Wrapper>
+              <VisitForm />
+            </Wrapper>
+          </Route>
+
+          <Route path="/education">
+            <Wrapper>
+              <VolunteerForm />
+            </Wrapper>
+          </Route>
+
+          <Route path="/howtohelp">
+            <PaymentForm />
+          </Route>
+
+          <Route path="/about"></Route>
+
+          <Route path="/contact"></Route>
+        </Switch>
+      </NavigationTemplate>
     </ThemeProvider>
   );
 }
