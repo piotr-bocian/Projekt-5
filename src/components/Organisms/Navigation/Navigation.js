@@ -7,18 +7,11 @@ import GridItemMenuWrapper from '../../../styles/stylesContainer/GridItemMenuWra
 import { GridItemRegistrationWrapper, StyledNavLink } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
+import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 
-const Navigation = () => {
-  const navigationArrayWithRoutes = [
-    { name: 'Aktualności', route: '/news' },
-    { name: 'Zwierzęta', route: '/animals' },
-    { name: 'Adopcja', route: '/adoption' },
-    { name: 'Edukacja', route: '/education' },
-    { name: 'Jak pomóc', route: '/howtohelp' },
-    { name: 'O nas', route: '/about' },
-    { name: 'Kontakt', route: '/contact' },
-  ];
-
+const Navigation = (makeNavigation = navigationArrayWithRoutes) => {
+  const arrayWithRoutes = makeNavigation
+  console.log(arrayWithRoutes)
   return (
     <>
       <NavLink to="/" exact>

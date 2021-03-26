@@ -9,7 +9,7 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

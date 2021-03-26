@@ -3,12 +3,14 @@ import AdministratorPaymentsTemplate from '../components/templates/Administrator
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../styles/styles';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
+import AdministratorNavigation from '../components/templates/AdministratorNavigation/AdministratorNavigation';
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AdministratorPaymentsTemplate />
+       {/* <AdministratorNavigation /> */}
+       <NavigationView/>
       </ThemeProvider>
     </>
   );
