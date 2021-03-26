@@ -10,6 +10,8 @@ import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
+import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,10 +45,14 @@ function NavigationView() {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/registration"></Route>
+            <Route path="/registration">
+              <SignUpForm />
+            </Route>
           </Switch>
           <Switch>
-            <Route path="/login"></Route>
+            <Route path="/login">
+              <SignInForm />
+            </Route>
           </Switch>
           <Switch>
             <Route path="/news"></Route>
