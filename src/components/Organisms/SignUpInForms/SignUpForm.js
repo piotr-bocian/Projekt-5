@@ -5,6 +5,7 @@ import SignUpInTitle from '../../Atoms/SignUpInAtoms/signUpInTitle';
 import Avatar from '../../Atoms/SignUpInAtoms/avatar';
 import SignUpRawForm from '../../Molecules/SignUpInMolecules/signUpRawForm';
 import SignUpInLink from '../../Atoms/SignUpInAtoms/signUpInLink';
+import { StyledNavLink } from '../Navigation/Navigation.style';
 
 
 
@@ -18,7 +19,9 @@ const SignUpForm = () => {
                 <Avatar/>
                 <SignUpInTitle title="Rejestracja" />
                 <SignUpRawForm />
-                <SignUpInLink linkText="Masz już konto? Zaloguj się"/>
+                <StyledNavLink to={"/login"} className={classes.alignRight}>
+                    <SignUpInLink linkText="Masz już konto? Zaloguj się"/>
+                </StyledNavLink>
             </div>
         </Container>
 )}

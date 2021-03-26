@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     accountForm: {
         marginTop: theme.spacing(3),
     },
+
+    alignRight: {
+        alignSelf: "flex-end",
+    }
 }));
 
 export default useStyles;
