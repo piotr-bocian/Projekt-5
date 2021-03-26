@@ -7,7 +7,7 @@ import AdministratorPayment from '../../Organisms/AdministratorPayment/Administr
 import SelectPay from '../../Atoms/Select/Select';
 import { Button } from '@material-ui/core';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
-import {AnimalsForAdoption} from '../../Atoms/HeaderAnimalsForAdoption/HeaderAnimalsForAdoption'
+
 const Center = styled.div`
   display: flex;
   flex-direction: column;
@@ -70,15 +70,7 @@ const AdministratorPaymentsTemplate = () => {
     </Center>
   ) : (
     <>
-      <AnimalsForAdoption style={{ textAlign: 'center', marginTop: '50px' }}>
-        WIDOK ADMINISTRATORA (PŁATNOŚCI)
-      </AnimalsForAdoption>
-      <Grid
-        style={{ marginTop: '150px' }}
-        container
-        direction="row"
-        spacing={3}
-      >
+      <Grid style={{ marginTop: '50px' }} container direction="row" spacing={3}>
         <Grid
           container
           item

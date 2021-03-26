@@ -8,7 +8,7 @@ import GridContainerNavigationWrapper from '../../../styles/stylesContainer/Grid
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
-
+import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation />
+        <Navigation makeNavigation={navigationArrayWithRoutes}/>
       </GridContainerNavigationWrapper>
       {children}
     </>

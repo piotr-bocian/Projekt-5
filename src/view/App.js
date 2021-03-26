@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-       {/* <AdministratorNavigation /> */}
-       <NavigationView/>
+       <AdministratorNavigation />
+       {/* <NavigationView/> */}
       </ThemeProvider>
     </>
   );
