@@ -1,0 +1,16 @@
+.form{
+    padding: 20px;
+    border: 1px solid #0292C9;
+    box-shadow: 0px 2px 2px #0292C9;
+}
+.exitButton{
+    position: absolute !important;
+    right: 15px;
+    top:15px;
+    cursor: pointer;
+}
+@media (max-width: 768px){
+    .formAdoption{
+        width: 70vw;
+    }
+}
