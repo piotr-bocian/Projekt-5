@@ -23,6 +23,7 @@ const PaymentFormField = ({
         id={id}
         type={type}
         onChange={onChange}
+        error={errorHandler}
       />
       <FormHelperText style={{ color: 'red' }}>{errorHandler}</FormHelperText>
     </Wrapper>
