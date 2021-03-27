@@ -3,20 +3,24 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Container';
 
 import styled from 'styled-components';
+import { Button } from '@material-ui/core';
+import { FlexWrapper } from '../../../styles/stylesContainer/FlexWrapper';
 
 const StyledPaymentText = styled.span`
   font-weight: 700;
 `;
 
-function AdministratorPayment({ payment, take }) {
+function AdministratorPayment({ payment, take, deletePayment }) {
   let idHandler = () => take(payment._id);
-  if (!take) {
+  let deleteOnePayment = () => deletePayment(payment._id);
+  if (!take || !deletePayment) {
     idHandler = null;
+    deleteOnePayment = null;
   }
+
   return (
     <>
       <Grid
-        onClick={idHandler}
         key={payment._id}
         item
         xs={4}
@@ -54,6 +58,17 @@ function AdministratorPayment({ payment, take }) {
             {payment.userId}
           </Typography>
         ) : null}
+        <FlexWrapper style={{ margin: '20px 20px 0' }}>
+          <Button onClick={idHandler}>Wyświelt płatność</Button>
+          <Button
+            onClick={deleteOnePayment}
+            variant="outlined"
+            color="secondary"
+          >
+            Usuń płatność
+          </Button>
+          <Button>Uaktualnij płatność</Button>
+        </FlexWrapper>
       </Grid>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState} from 'react';
 import styled from 'styled-components';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
@@ -16,8 +16,26 @@ const Center = styled.div`
   width: 100%;
   height: 70vh;
 `;
+const initialState = {
+  url: 'http://localhost:5000/api/payments',
+  request: 'GET',
+};
+
+const httpReducer = (initialState, action) => {
+  switch (action.type) {
+    case httpMethods.GET:
+      return { ...initialState, request: httpMethods.GET };
+    case httpMethods.POST:
+      return httpMethods.POST;
+    case httpMethods.DELETE:
+      return { ...initialState, request: httpMethods.DELETE };
+    default:
+      return initialState;
+  }
+};
 
 const AdministratorPaymentsTemplate = () => {
+  const [state, dispatch] = useReducer(httpReducer, initialState);
   const paymentMethods = [
     '',
     'Blik',
@@ -35,16 +53,22 @@ const AdministratorPaymentsTemplate = () => {
   const [filter, setFilter] = useState('');
   const [id, setId] = useState('');
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
-  const handler = useHttp(
+
+  const { makeHttpRequest, isLoading } = useHttp(
     'http://localhost:5000/api/payments' + querry,
-    httpMethods.GET
+    state.request
   );
+
+  console.log(state.request);
+
   const [payments, setPayments] = useState([]);
 
   useEffect(() => {
     console.log(1);
+
     const getPayments = async () => {
-      const data = await handler.makeHttpRequest();
+      const data = await makeHttpRequest();
+      console.log(data);
       if (data.payment) {
         setPayments(data.payment);
       } else {
@@ -52,19 +76,28 @@ const AdministratorPaymentsTemplate = () => {
       }
     };
     getPayments();
-  }, [filter, id]);
+  }, [filter, id, state]);
 
   const onLoadPayments = (e) => setFilter(e.target.value);
-  const onLoadAllPayments = () => {
+
+  const onLoadAllPayments = async () => {
     setFilter('');
     setId('');
+    dispatch({ type: httpMethods.GET });
   };
-  const takeOneId = (handler) => {
+
+  const takeOneId = async (handler) => {
     const route = '/' + handler;
     setId(route);
   };
 
-  return handler.isLoading ? (
+  const deleteOnePayment = async (handler) => {
+    const route = '/' + handler;
+    setId(route);
+    dispatch({ type: httpMethods.DELETE });
+  };
+
+  return isLoading ? (
     <Center>
       <CircularLoader />
     </Center>
@@ -95,6 +128,7 @@ const AdministratorPaymentsTemplate = () => {
             Wyświetl wszystkie płatnośći
           </Button>
         </Grid>
+
         <Grid
           container
           item
@@ -108,6 +142,7 @@ const AdministratorPaymentsTemplate = () => {
               return (
                 <AdministratorPayment
                   take={takeOneId}
+                  deletePayment={deleteOnePayment}
                   key={id}
                   payment={payment}
                 />
