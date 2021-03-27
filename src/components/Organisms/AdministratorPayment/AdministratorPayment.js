@@ -1,19 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Container';
-
+import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import { FlexWrapper } from '../../../styles/stylesContainer/FlexWrapper';
 
 const StyledPaymentText = styled.span`
   font-weight: 700;
+  margin-right: 15px;
 `;
 
-function AdministratorPayment({ payment, take, deletePayment }) {
+const StyledTypography = withStyles(() => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'start',
+    alignItems: 'baseline',
+    padding: '15px',
+  },
+}))(Typography);
+
+function AdministratorPayment({
+  payment,
+  take,
+  deletePayment,
+  updatePayment = null,
+}) {
+  const [toggle, setToggle] = useState(false);
+  const initialState = {
+    typeOfPayment: payment.typeOfPayment,
+    amount: payment.amount,
+    paymentMethod: payment.paymentMethod,
+    paymentDate: payment.paymentDate,
+  };
+
+  const [paymentState, setPaymentState] = useState(initialState);
+
+  const inputPaymentHandler = (e) => {
+    setPaymentState({
+      ...paymentState,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   let idHandler = () => take(payment._id);
   let deleteOnePayment = () => deletePayment(payment._id);
-  if (!take || !deletePayment) {
+  if (!take || !deletePayment || !updatePayment) {
     idHandler = null;
     deleteOnePayment = null;
   }
@@ -31,32 +63,46 @@ function AdministratorPayment({ payment, take, deletePayment }) {
           backgroundColor: 'white',
         }}
       >
-        <Typography>
+        <StyledTypography>
           <StyledPaymentText>Id płatności: </StyledPaymentText>
           {payment._id}
-        </Typography>
-        <Typography>
+        </StyledTypography>
+
+        <StyledTypography>
           <StyledPaymentText>Kwota: </StyledPaymentText>
-          {payment.amount} PLN
-        </Typography>
-        <Typography>
+          {toggle ? (
+            <TextField
+              name="amount"
+              value={paymentState.amount}
+              onChange={inputPaymentHandler}
+            />
+          ) : (
+            <TextField value={payment.amount} disabled />
+          )}
+          PLN
+        </StyledTypography>
+
+        <StyledTypography>
           <StyledPaymentText>Typ płatności: </StyledPaymentText>
-          {payment.typeOfPayment}
-        </Typography>
-        <Typography>
+          <TextField fullWidth value={payment.typeOfPayment} disabled />
+        </StyledTypography>
+
+        <StyledTypography>
           <StyledPaymentText>Data płatności: </StyledPaymentText>
           <StyledPaymentText text="Data płatności: " />
           {payment.paymentDate ? payment.paymentDate.substr(0, 10) : ''}
-        </Typography>
-        <Typography>
+        </StyledTypography>
+
+        <StyledTypography>
           <StyledPaymentText>Metoda płatności: </StyledPaymentText>
-          {payment.paymentMethod}
-        </Typography>
+          <TextField value={payment.paymentMethod} disabled />
+        </StyledTypography>
+
         {payment.userID ? (
-          <Typography>
+          <StyledTypography>
             <StyledPaymentText>Użytkownik: </StyledPaymentText>
             {payment.userId}
-          </Typography>
+          </StyledTypography>
         ) : null}
         <FlexWrapper style={{ margin: '20px 20px 0' }}>
           <Button onClick={idHandler}>Wyświelt płatność</Button>
@@ -67,7 +113,20 @@ function AdministratorPayment({ payment, take, deletePayment }) {
           >
             Usuń płatność
           </Button>
-          <Button>Uaktualnij płatność</Button>
+          <Button
+            onClick={() => {
+              setToggle(!toggle);
+            }}
+          >
+            Uaktualnij płatność
+          </Button>
+          <Button
+            onClick={() => {
+              updatePayment(payment._id, paymentState);
+            }}
+          >
+            Wyślij płatność
+          </Button>
         </FlexWrapper>
       </Grid>
     </>

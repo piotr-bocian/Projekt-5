@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState} from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import styled from 'styled-components';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
@@ -7,6 +7,7 @@ import AdministratorPayment from '../../Organisms/AdministratorPayment/Administr
 import SelectPay from '../../Atoms/Select/Select';
 import { Button } from '@material-ui/core';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
+import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
 
 const Center = styled.div`
   display: flex;
@@ -19,6 +20,8 @@ const Center = styled.div`
 const initialState = {
   url: 'http://localhost:5000/api/payments',
   request: 'GET',
+  validate: null,
+  payload: null,
 };
 
 const httpReducer = (initialState, action) => {
@@ -29,6 +32,13 @@ const httpReducer = (initialState, action) => {
       return httpMethods.POST;
     case httpMethods.DELETE:
       return { ...initialState, request: httpMethods.DELETE };
+    case httpMethods.PUT:
+      return {
+        ...initialState,
+        request: httpMethods.PUT,
+        validate: action.validate,
+        payload: action.payload,
+      };
     default:
       return initialState;
   }
@@ -56,10 +66,11 @@ const AdministratorPaymentsTemplate = () => {
 
   const { makeHttpRequest, isLoading } = useHttp(
     'http://localhost:5000/api/payments' + querry,
-    state.request
+    state.request,
+    state.payload,
+    state.validate
   );
 
-  console.log(state.request);
 
   const [payments, setPayments] = useState([]);
 
@@ -95,6 +106,17 @@ const AdministratorPaymentsTemplate = () => {
     const route = '/' + handler;
     setId(route);
     dispatch({ type: httpMethods.DELETE });
+  };
+
+  const updateOnePayment = async (handler, payload) => {
+    const route = '/' + handler;
+    setId(route);
+
+    dispatch({
+      type: httpMethods.PUT,
+      validate: validatePayment,
+      payload: payload,
+    });
   };
 
   return isLoading ? (
@@ -143,6 +165,7 @@ const AdministratorPaymentsTemplate = () => {
                 <AdministratorPayment
                   take={takeOneId}
                   deletePayment={deleteOnePayment}
+                  updatePayment={updateOnePayment}
                   key={id}
                   payment={payment}
                 />
