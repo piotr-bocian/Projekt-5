@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
-import { Button, TextField } from '@material-ui/core';
+import { Button, FormHelperText, TextField } from '@material-ui/core';
 import { FlexWrapper } from '../../../styles/stylesContainer/FlexWrapper';
 
 const StyledPaymentText = styled.span`
@@ -17,6 +17,7 @@ const StyledTypography = withStyles(() => ({
     justifyContent: 'start',
     alignItems: 'baseline',
     padding: '15px',
+    flexWrap: 'wrap',
   },
 }))(Typography);
 
@@ -81,7 +82,21 @@ function AdministratorPayment({
 
         <StyledTypography>
           <StyledPaymentText>Typ płatności: </StyledPaymentText>
-          <TextField fullWidth value={payment.typeOfPayment} disabled />
+          {toggle ? (
+            <>
+              <TextField
+                name="typeOfPayment"
+                value={paymentState.typeOfPayment}
+                onChange={inputPaymentHandler}
+              />
+              <FormHelperText>
+                Dostępne opcje: 'Opłata adopcyjna', 'Jednorazowy przelew',
+                'Wirtualny opiekun-opłata cykliczna',
+              </FormHelperText>
+            </>
+          ) : (
+            <TextField fullWidth value={paymentState.typeOfPayment} disabled />
+          )}
         </StyledTypography>
 
         <StyledTypography>
@@ -92,7 +107,21 @@ function AdministratorPayment({
 
         <StyledTypography>
           <StyledPaymentText>Metoda płatności: </StyledPaymentText>
-          <TextField value={payment.paymentMethod} disabled />
+          {toggle ? (
+            <>
+              <TextField
+                name="paymentMethod"
+                value={paymentState.paymentMethod}
+                onChange={inputPaymentHandler}
+              />
+              <FormHelperText>
+                Dostępne opcje: 'Karta płatnicza', 'Blik', 'Przelew bankowy',
+                'Apple Pay', 'Google Pay',
+              </FormHelperText>
+            </>
+          ) : (
+            <TextField value={payment.paymentMethod} disabled />
+          )}
         </StyledTypography>
 
         {payment.userID ? (

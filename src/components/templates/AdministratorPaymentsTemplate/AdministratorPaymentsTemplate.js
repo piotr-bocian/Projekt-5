@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import styled from 'styled-components';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import Grid from '@material-ui/core/Grid';
@@ -8,61 +7,30 @@ import SelectPay from '../../Atoms/Select/Select';
 import { Button } from '@material-ui/core';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
+import httpReducer from '../../../helpers/httpReducer/httpReducer';
+import { paymentMethod } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
+import { Center } from './AdministratorPaymentsTemplate.styles';
 
-const Center = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 70vh;
-`;
-const initialState = {
-  url: 'http://localhost:5000/api/payments',
-  request: 'GET',
-  validate: null,
-  payload: null,
-};
-
-const httpReducer = (initialState, action) => {
-  switch (action.type) {
-    case httpMethods.GET:
-      return { ...initialState, request: httpMethods.GET };
-    case httpMethods.POST:
-      return httpMethods.POST;
-    case httpMethods.DELETE:
-      return { ...initialState, request: httpMethods.DELETE };
-    case httpMethods.PUT:
-      return {
-        ...initialState,
-        request: httpMethods.PUT,
-        validate: action.validate,
-        payload: action.payload,
-      };
-    default:
-      return initialState;
-  }
-};
 
 const AdministratorPaymentsTemplate = () => {
-  const [state, dispatch] = useReducer(httpReducer, initialState);
-  const paymentMethods = [
-    '',
-    'Blik',
-    'Apple Pay',
-    'Google Pay',
-    'Przelew bankowy',
-    'Karta płatnicza',
-  ];
+  const initialState = {
+    url: 'http://localhost:5000/api/payments',
+    request: 'GET',
+    validate: null,
+    payload: null,
+  };
   const typeOfPayment = [
     '',
     'Opłata adopcyjna',
     'Jednorazowy przelew',
     'Wirtualny opiekun-opłata cykliczna',
   ];
+  const [state, dispatch] = useReducer(httpReducer, initialState);
+
   const [filter, setFilter] = useState('');
   const [id, setId] = useState('');
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
+  console.log(querry)
 
   const { makeHttpRequest, isLoading } = useHttp(
     'http://localhost:5000/api/payments' + querry,
@@ -96,8 +64,6 @@ const AdministratorPaymentsTemplate = () => {
     setId('');
     dispatch({ type: httpMethods.GET });
   };
-
-
 
   const deleteOnePayment = async (handler) => {
     const route = '/' + handler;
@@ -133,7 +99,7 @@ const AdministratorPaymentsTemplate = () => {
         >
           <SelectPay
             label="Filtr metoda płatności"
-            optionType={paymentMethods}
+            optionType={paymentMethod}
             onChange={onLoadPayments}
             id="Metody płatności"
           />
@@ -144,7 +110,7 @@ const AdministratorPaymentsTemplate = () => {
             id="Typ płatności"
           />
           <Button onClick={onLoadAllPayments}>
-            Wyświetl wszystkie płatnośći
+            Wyświetl wszystkie płatności
           </Button>
         </Grid>
 
