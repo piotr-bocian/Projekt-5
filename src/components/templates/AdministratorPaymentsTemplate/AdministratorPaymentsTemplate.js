@@ -8,9 +8,11 @@ import { Button } from '@material-ui/core';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
 import httpReducer from '../../../helpers/httpReducer/httpReducer';
-import { paymentMethod, typeOfPayment } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
+import {
+  paymentMethod,
+  typeOfPayment,
+} from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
 import { Center } from './AdministratorPaymentsTemplate.styles';
-
 
 const AdministratorPaymentsTemplate = () => {
   const initialState = {
@@ -19,13 +21,13 @@ const AdministratorPaymentsTemplate = () => {
     validate: null,
     payload: null,
   };
-
+  const [payments, setPayments] = useState([]);
   const [state, dispatch] = useReducer(httpReducer, initialState);
-
   const [filter, setFilter] = useState('');
   const [id, setId] = useState('');
+
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
-  console.log(querry)
+  console.log(querry);
 
   const { makeHttpRequest, isLoading } = useHttp(
     'http://localhost:5000/api/payments' + querry,
@@ -34,11 +36,7 @@ const AdministratorPaymentsTemplate = () => {
     state.validate
   );
 
-
-  const [payments, setPayments] = useState([]);
-
   useEffect(() => {
-    console.log(1);
 
     const getPayments = async () => {
       const data = await makeHttpRequest();
@@ -52,7 +50,9 @@ const AdministratorPaymentsTemplate = () => {
     getPayments();
   }, [filter, id, state]);
 
-  const onLoadPayments = (e) => setFilter(e.target.value);
+
+
+  const searchBy = (e) => setFilter(e.target.value);
 
   const onLoadAllPayments = async () => {
     setFilter('');
@@ -95,13 +95,13 @@ const AdministratorPaymentsTemplate = () => {
           <SelectPay
             label="Filtr metoda płatności"
             optionType={paymentMethod}
-            onChange={onLoadPayments}
+            onChange={searchBy}
             id="Metody płatności"
           />
           <SelectPay
-            label="Filtr typ płatnośći"
+            label="Filtr typ płatności"
             optionType={typeOfPayment}
-            onChange={onLoadPayments}
+            onChange={searchBy}
             id="Typ płatności"
           />
           <Button onClick={onLoadAllPayments}>
