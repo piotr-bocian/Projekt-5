@@ -10,11 +10,16 @@ import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate
 import httpReducer from '../../../helpers/httpReducer/httpReducer';
 import {
   paymentMethod,
-  typeOfPayment,
 } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
 import { Center } from './AdministratorPaymentsTemplate.styles';
 
 const AdministratorPaymentsTemplate = () => {
+  const arr = [
+    '',
+    'Opłata adopcyjna',
+    'Jednorazowy przelew',
+    'Wirtualny opiekun-opłata cykliczna',
+  ]
   const initialState = {
     url: 'http://localhost:5000/api/payments',
     request: 'GET',
@@ -53,7 +58,7 @@ const AdministratorPaymentsTemplate = () => {
 
 
   const searchBy = (e) => setFilter(e.target.value);
-
+ 
   const onLoadAllPayments = async () => {
     setFilter('');
     setId('');
@@ -100,7 +105,7 @@ const AdministratorPaymentsTemplate = () => {
           />
           <SelectPay
             label="Filtr typ płatności"
-            optionType={typeOfPayment}
+            optionType={arr}
             onChange={searchBy}
             id="Typ płatności"
           />
