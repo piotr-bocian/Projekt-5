@@ -97,10 +97,7 @@ const AdministratorPaymentsTemplate = () => {
     dispatch({ type: httpMethods.GET });
   };
 
-  const takeOneId = async (handler) => {
-    const route = '/' + handler;
-    setId(route);
-  };
+
 
   const deleteOnePayment = async (handler) => {
     const route = '/' + handler;
@@ -163,7 +160,6 @@ const AdministratorPaymentsTemplate = () => {
             payments.map((payment, id) => {
               return (
                 <AdministratorPayment
-                  take={takeOneId}
                   deletePayment={deleteOnePayment}
                   updatePayment={updateOnePayment}
                   key={id}

@@ -22,7 +22,6 @@ const StyledTypography = withStyles(() => ({
 
 function AdministratorPayment({
   payment,
-  take,
   deletePayment,
   updatePayment = null,
 }) {
@@ -43,10 +42,8 @@ function AdministratorPayment({
     });
   };
 
-  let idHandler = () => take(payment._id);
   let deleteOnePayment = () => deletePayment(payment._id);
-  if (!take || !deletePayment || !updatePayment) {
-    idHandler = null;
+  if (!deletePayment || !updatePayment) {
     deleteOnePayment = null;
   }
 
@@ -105,7 +102,6 @@ function AdministratorPayment({
           </StyledTypography>
         ) : null}
         <FlexWrapper style={{ margin: '20px 20px 0' }}>
-          <Button onClick={idHandler}>Wyświelt płatność</Button>
           <Button
             onClick={deleteOnePayment}
             variant="outlined"
@@ -118,14 +114,14 @@ function AdministratorPayment({
               setToggle(!toggle);
             }}
           >
-            Uaktualnij płatność
+            Edytuj płatność
           </Button>
           <Button
             onClick={() => {
               updatePayment(payment._id, paymentState);
             }}
           >
-            Wyślij płatność
+            Uaktualnij płatność
           </Button>
         </FlexWrapper>
       </Grid>
