@@ -8,7 +8,7 @@ import { Button } from '@material-ui/core';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
 import httpReducer from '../../../helpers/httpReducer/httpReducer';
-import { paymentMethod } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
+import { paymentMethod, typeOfPayment } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
 import { Center } from './AdministratorPaymentsTemplate.styles';
 
 
@@ -19,12 +19,7 @@ const AdministratorPaymentsTemplate = () => {
     validate: null,
     payload: null,
   };
-  const typeOfPayment = [
-    '',
-    'Opłata adopcyjna',
-    'Jednorazowy przelew',
-    'Wirtualny opiekun-opłata cykliczna',
-  ];
+
   const [state, dispatch] = useReducer(httpReducer, initialState);
 
   const [filter, setFilter] = useState('');
