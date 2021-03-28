@@ -1,52 +1,45 @@
 import React, { useEffect, useReducer, useState } from 'react';
+import Grid from '@material-ui/core/Grid';
+import { Button } from '@material-ui/core';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
-import Grid from '@material-ui/core/Grid';
 import AdministratorPayment from '../../Organisms/AdministratorPayment/AdministratorPayment';
 import SelectPay from '../../Atoms/Select/Select';
-import { Button } from '@material-ui/core';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
 import httpReducer from '../../../helpers/httpReducer/httpReducer';
 import {
   paymentMethod,
+  typeOfPayment,
 } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
 import { Center } from './AdministratorPaymentsTemplate.styles';
 
 const AdministratorPaymentsTemplate = () => {
-  const arr = [
-    '',
-    'Opłata adopcyjna',
-    'Jednorazowy przelew',
-    'Wirtualny opiekun-opłata cykliczna',
-  ]
   const initialState = {
     url: 'http://localhost:5000/api/payments',
     request: 'GET',
     validate: null,
     payload: null,
   };
-  const [payments, setPayments] = useState([]);
+
   const [state, dispatch] = useReducer(httpReducer, initialState);
+  const [payments, setPayments] = useState([]);
   const [filter, setFilter] = useState('');
   const [id, setId] = useState('');
-console.log('stan',payments)
+
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
 
-
   const { makeHttpRequest, isLoading } = useHttp(
-    'http://localhost:5000/api/payments' + querry,
+    state.url + querry,
     state.request,
     state.payload,
     state.validate
   );
 
-
   useEffect(() => {
-
     const getPayments = async () => {
       const data = await makeHttpRequest();
-      console.log(data);
+
       if (data.payment) {
         setPayments(data.payment);
       } else {
@@ -55,8 +48,6 @@ console.log('stan',payments)
     };
     getPayments();
   }, [filter, id, state]);
-
-
 
   const searchBy = (e) => setFilter(e.target.value);
 
@@ -69,13 +60,14 @@ console.log('stan',payments)
   const deleteOnePayment = async (handler) => {
     const route = '/' + handler;
     setId(route);
+    setFilter('');
     dispatch({ type: httpMethods.DELETE });
   };
 
   const updateOnePayment = async (handler, payload) => {
     const route = '/' + handler;
     setId(route);
-
+    setFilter('');
     dispatch({
       type: httpMethods.PUT,
       validate: validatePayment,
@@ -106,7 +98,7 @@ console.log('stan',payments)
           />
           <SelectPay
             label="Filtr typ płatności"
-            optionType={arr}
+            optionType={typeOfPayment}
             onChange={searchBy}
             id="Typ płatności"
           />

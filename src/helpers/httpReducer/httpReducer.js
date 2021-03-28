@@ -5,7 +5,12 @@ const httpReducer = (initialState, action) => {
     case httpMethods.GET:
       return { ...initialState, request: httpMethods.GET };
     case httpMethods.POST:
-      return httpMethods.POST;
+      return {
+        ...initialState,
+        request: httpMethods.PUT,
+        validate: action.validate,
+        payload: action.payload,
+      };
     case httpMethods.DELETE:
       return { ...initialState, request: httpMethods.DELETE };
     case httpMethods.PUT:

@@ -22,7 +22,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
             },
             body: JSON.stringify(payload),
           };
-          console.log(url);
+
     return fetch(url, fetchOptions);
   };
 

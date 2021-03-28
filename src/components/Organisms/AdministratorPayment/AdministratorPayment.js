@@ -26,7 +26,6 @@ function AdministratorPayment({
   deletePayment,
   updatePayment = null,
 }) {
-  const [toggle, setToggle] = useState(false);
   const initialState = {
     typeOfPayment: payment.typeOfPayment,
     amount: payment.amount,
@@ -34,6 +33,12 @@ function AdministratorPayment({
     paymentDate: payment.paymentDate,
   };
 
+  let deleteOnePayment = () => deletePayment(payment._id);
+  if (!deletePayment) {
+    deleteOnePayment = null;
+  }
+
+  const [toggle, setToggle] = useState(false);
   const [paymentState, setPaymentState] = useState(initialState);
 
   const inputPaymentHandler = (e) => {
@@ -42,11 +47,6 @@ function AdministratorPayment({
       [e.target.name]: e.target.value,
     });
   };
-
-  let deleteOnePayment = () => deletePayment(payment._id);
-  if (!deletePayment || !updatePayment) {
-    deleteOnePayment = null;
-  }
 
   return (
     <>
@@ -85,6 +85,7 @@ function AdministratorPayment({
           {toggle ? (
             <>
               <TextField
+                fullWidth
                 name="typeOfPayment"
                 value={paymentState.typeOfPayment}
                 onChange={inputPaymentHandler}
