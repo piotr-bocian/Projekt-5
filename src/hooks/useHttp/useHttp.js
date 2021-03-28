@@ -22,6 +22,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
             },
             body: JSON.stringify(payload),
           };
+          console.log(url);
     return fetch(url, fetchOptions);
   };
 
@@ -41,7 +42,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
   };
 
   const handleHttpRequest = async (e) => {
-    console.log(4);
+
     e.preventDefault();
     const error = await validateFunction(payload);
     if (!error) {

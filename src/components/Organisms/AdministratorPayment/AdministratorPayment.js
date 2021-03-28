@@ -95,7 +95,7 @@ function AdministratorPayment({
               </FormHelperText>
             </>
           ) : (
-            <TextField fullWidth value={paymentState.typeOfPayment} disabled />
+            <TextField fullWidth value={payment.typeOfPayment} disabled />
           )}
         </StyledTypography>
 

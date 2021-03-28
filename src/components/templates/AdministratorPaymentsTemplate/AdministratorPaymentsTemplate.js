@@ -30,9 +30,9 @@ const AdministratorPaymentsTemplate = () => {
   const [state, dispatch] = useReducer(httpReducer, initialState);
   const [filter, setFilter] = useState('');
   const [id, setId] = useState('');
-
+console.log('stan',payments)
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
-  console.log(querry);
+
 
   const { makeHttpRequest, isLoading } = useHttp(
     'http://localhost:5000/api/payments' + querry,
@@ -40,6 +40,7 @@ const AdministratorPaymentsTemplate = () => {
     state.payload,
     state.validate
   );
+
 
   useEffect(() => {
 
@@ -58,7 +59,7 @@ const AdministratorPaymentsTemplate = () => {
 
 
   const searchBy = (e) => setFilter(e.target.value);
- 
+
   const onLoadAllPayments = async () => {
     setFilter('');
     setId('');
