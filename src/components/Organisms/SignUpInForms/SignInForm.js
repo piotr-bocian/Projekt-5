@@ -1,5 +1,5 @@
 import React from 'react';
-import {CssBaseline, Container } from '@material-ui/core';
+import { CssBaseline, Container } from '@material-ui/core';
 import useStyles from '../SignUpInForms/signUpInStyles';
 import Avatar from '../../Atoms/SignUpInAtoms/avatar';
 import SignUpInTitle from '../../Atoms/SignUpInAtoms/signUpInTitle';

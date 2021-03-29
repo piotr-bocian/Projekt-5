@@ -4,7 +4,7 @@ import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import RememberMeCheckbox from '../../Atoms/SignUpInAtoms/rememberMeCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
-import useHttp from '../../../hooks/useHttp/useHttp';
+// import useHttp from '../../../hooks/useHttp/useHttp';
 
 const SignInRawForm = () => {
     const classes = useStyles();
@@ -47,21 +47,43 @@ const SignInRawForm = () => {
         return isError;
     }
 
-    const httpHandler = useHttp(
-        'https://best-animal-shelter.herokuapp.com/api/login',
-        'POST',        
-        {
-            email: form.email,
-            password: form.password
-        }
-    );
+    // const httpHandler = useHttp(
+    //     // 'https://best-animal-shelter.herokuapp.com/api/login',
+    //     'http://localhost:5000/api/login',
+    //     'POST',        
+    //     {
+    //         email: form.email,
+    //         password: form.password
+    //     }
+    // );
 
-    const handleForm = (e) => {
+    // const setTokenInLocalStorage = async () => {
+    //     const resData = await httpHandler.makeHttpRequest();
+    //     const authToken = resData.token;
+    //     window.localStorage.setItem('x-auth-token', authToken);
+    //     return;
+    // }
+
+    const handleForm = async (e) => {
+        const url = 'http://localhost:3000/api/login';
+        // const url = 'https://best-animal-shelter.herokuapp.com/api/login';
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            httpHandler.makeHttpRequest();
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email: form.email,
+                    password: form.password
+                })
+            });
+            const content = await response.json();
             console.log('Logowanie...');
+            console.log(content);
+            // setTokenInLocalStorage();
             setForm({
                 //clear form
                 email: '',

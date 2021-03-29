@@ -45,7 +45,7 @@ const SignUpRawForm = () => {
         if(!form.firstName || form.firstName.length < 2){
             isError = true;
             errors.firstNameErr = 'Imię jest za krótkie.'
-        } else if (!/^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]{3,50}$/i.test(form.firstName)) {
+        } else if (!/^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]{2,50}$/i.test(form.firstName)) {
             isError = true;
             errors.firstNameErr = 'Imię musi zawierać same litery.'
         }
@@ -53,7 +53,7 @@ const SignUpRawForm = () => {
         if(!form.lastName || form.lastName.length < 2){
             isError = true;
             errors.lastNameErr = 'Nazwisko jest za krótkie.'
-        } else if (!/^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]{3,50}$/i.test(form.lastName)) {
+        } else if (!/^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]{2,50}$/i.test(form.lastName)) {
             isError = true;
             errors.lastNameErr = 'Nazwisko musi zawierać same litery.'
         }
@@ -88,7 +88,8 @@ const SignUpRawForm = () => {
     }
 
     const httpHandler = useHttp(
-        'https://best-animal-shelter.herokuapp.com/api/users',
+        // 'https://best-animal-shelter.herokuapp.com/api/users',
+        'http://localhost:5000/api/users',
         'POST',        
         {
             firstName: form.firstName,
