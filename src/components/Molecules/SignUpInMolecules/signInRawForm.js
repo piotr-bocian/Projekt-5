@@ -73,17 +73,19 @@ const SignInRawForm = () => {
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            await fetch(url, {
+            const loginResponse = await fetch(url, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
-                    'Content-Type': 'application/json'},
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     email: form.email,
                     password: form.password
                 })
             });
-
+            const data = await loginResponse.json();
+            window.localStorage.setItem('x-auth-token', data.token);
             console.log('Logowanie...');
 
             // setTokenInLocalStorage();
