@@ -8,6 +8,10 @@ import GridContainerNavigationWrapper from '../../../styles/stylesContainer/Grid
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
+import NewPosts from '../../Organisms/Posts/newPosts';
+import LatestPosts from '../../Organisms/Posts/LatestPosts';
+import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import OnePost from '../../Organisms/Posts/OnePost';
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,7 +40,8 @@ function NavigationView() {
         <NavigationTemplate>
           <Switch>
             <Route path="/" exact>
-              {/* odpowiedni komponent */}
+              <LatestPosts />
+              <AdotpionForm />
             </Route>
           </Switch>
           <Switch>
@@ -46,7 +51,8 @@ function NavigationView() {
             <Route path="/login"></Route>
           </Switch>
           <Switch>
-            <Route path="/news"></Route>
+            <Route path="/news" exact component={NewPosts} />
+            <Route path="/news/:id" component={OnePost} />
           </Switch>
           <Switch>
             <Route path="/animals">

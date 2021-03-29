@@ -1,0 +1,8 @@
+.postCard{
+    padding: 5px;
+    border: 1px solid #0292C9;
+    box-shadow: 0px 2px 2px #0292C9;
+}
+.cardActions{
+    justify-content: flex-end;
+}

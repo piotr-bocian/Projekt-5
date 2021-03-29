@@ -5,7 +5,6 @@ import { AnimalCard } from '../../Atoms/AnimalCard/AnimalCard.js'
 
 export function AllAnimalsGrid (props) {
     // const classes = useStyles();
-  
       return (
           <div>
           <Grid container spacing={10}>

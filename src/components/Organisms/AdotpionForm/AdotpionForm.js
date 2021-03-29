@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Typography, TextField, Button, Dialog  } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import LocalPostOfficeIcon  from '@material-ui/icons/LocalPostOffice';
 import { Grid } from '@material-ui/core';
 
 import './AdotpionForm.css';
@@ -28,10 +29,13 @@ const AdotpionForm = () => {
             Zapytaj o zwięrzę
         </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <form className="form" onSubmit={sendForm}>
+                <form className="formAdoption" onSubmit={sendForm}>
                     <Grid container spacing={3} justify="center">
                         <Grid item xs={12} sm={12} md={12}>
                             <CloseIcon className="exitButton" onClick={handleClose} color="primary" />
+                        </Grid>
+                        <Grid item xs={1} sm={1} md={1} jusify="center" >
+                            <LocalPostOfficeIcon color="primary" style={{ fontSize: 50 }}/>
                         </Grid>
                         <Grid item xs={12} sm={12} md={12}>
                             <Typography

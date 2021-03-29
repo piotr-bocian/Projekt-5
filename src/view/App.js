@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-// import AdotpionForm from '../components/Organisms/AdotpionForm/AdotpionForm';
+
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
 import VolunteerForm from '../components/Organisms/VolunteerForm/VolunteerForm';
+
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,13 +26,14 @@ const theme = createMuiTheme({
   }
 });
 
-
 function App() {
+
   return (
     <ThemeProvider theme={theme}>
       <NavigationView />
     </ThemeProvider>
   );
+
 }
 
 export default App;
