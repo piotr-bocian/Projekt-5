@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
+import { Redirect } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import { TermsCheckbox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
-import useHttp from '../../../hooks/useHttp/useHttp';
+// import useHttp from '../../../hooks/useHttp/useHttp';
 
 const SignUpRawForm = () => {
     const classes = useStyles();
@@ -23,6 +24,8 @@ const SignUpRawForm = () => {
         repPassword: '',
         repPasswordErr: '',
     });
+
+    const [redirect, setRedirect] = useState(false);
 
     const updateForm = (e) => {
         setForm({
@@ -87,29 +90,47 @@ const SignUpRawForm = () => {
         return isError;
     }
 
-    const httpHandler = useHttp(
-        // 'https://best-animal-shelter.herokuapp.com/api/users',
-        'http://localhost:5000/api/users',
-        'POST',        
-        {
-            firstName: form.firstName,
-            lastName: form.lastName,
-            mobile: form.mobile,
-            email: form.email,
-            image: '',
-            password: form.password
-        }
-    );
+    // const httpHandler = useHttp(
+    //     // 'https://best-animal-shelter.herokuapp.com/api/users',
+    //     'http://localhost:5000/api/users',
+    //     'POST',        
+    //     {
+    //         firstName: form.firstName,
+    //         lastName: form.lastName,
+    //         mobile: form.mobile,
+    //         email: form.email,
+    //         image: '',
+    //         password: form.password
+    //     }
+    // );
 
-    const handleForm = (e) => {
+    const handleForm = async (e) => {
+        const url = 'http://localhost:3000/api/users';
+        // const url = 'https://best-animal-shelter.herokuapp.com/api/users';
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            // console.log(form);
-            httpHandler.makeHttpRequest();
+            await fetch(url, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    firstName: form.firstName,
+                    lastName: form.lastName,
+                    mobile: form.mobile,
+                    email: form.email,
+                    password: form.password,
+                    image: ''
+                })
+            });
+
+            // httpHandler.makeHttpRequest();
             console.log('Wysłano dane do rejestracji konta');
+            console.log('Logowanie...');
+            console.log(form);
+            //clear form
             setForm({
-                //clear form
                 firstName: '',
                 firstNameErr: '',
                 lastName: '',
@@ -123,8 +144,14 @@ const SignUpRawForm = () => {
                 repPassword: '',
                 repPasswordErr: ''
             });
+
+            setRedirect(true);
         }
         
+    }
+
+    if(redirect) {
+        return <Redirect to="/useraccount" />;
     }
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>

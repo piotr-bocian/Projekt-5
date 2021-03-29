@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
@@ -14,6 +15,8 @@ const SignInRawForm = () => {
         password: '',
         passwordErr: '',
     });
+
+    const [redirect, setRedirect] = useState(false);
 
     const updateForm = (e) => {
         setForm({
@@ -70,7 +73,7 @@ const SignInRawForm = () => {
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            const response = await fetch(url, {
+            await fetch(url, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -80,9 +83,9 @@ const SignInRawForm = () => {
                     password: form.password
                 })
             });
-            const content = await response.json();
+
             console.log('Logowanie...');
-            console.log(content);
+
             // setTokenInLocalStorage();
             setForm({
                 //clear form
@@ -91,7 +94,14 @@ const SignInRawForm = () => {
                 password: '',
                 passwordErr: '',
             });
+
+            setRedirect(true);
+            
         }
+    }
+
+    if (redirect) {
+        return <Redirect to="/useraccount" />;
     }
 
     return(

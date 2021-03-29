@@ -12,6 +12,7 @@ import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import UserPage from '../../Organisms/UserPage/UserPage';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,49 +44,34 @@ function NavigationView() {
                 <AdotpionForm />
               </Wrapper>
             </Route>
-          </Switch>
-          <Switch>
             <Route path="/registration">
               <SignUpForm />
             </Route>
-          </Switch>
-          <Switch>
             <Route path="/login">
               <SignInForm />
             </Route>
-          </Switch>
-          <Switch>
             <Route path="/news"></Route>
-          </Switch>
-          <Switch>
             <Route path="/animals">
               <Animals />
             </Route>
-          </Switch>
-          <Switch>
             <Route path="/adoption">
               <Wrapper>
                 <VisitForm />
               </Wrapper>
             </Route>
-          </Switch>
-          <Switch>
             <Route path="/education">
               <Wrapper>
                 <VolunteerForm />
               </Wrapper>
             </Route>
-          </Switch>
-          <Switch>
             <Route path="/howtohelp">
               <PaymentForm />
             </Route>
-          </Switch>
-          <Switch>
             <Route path="/about"></Route>
-          </Switch>
-          <Switch>
             <Route path="/contact"></Route>
+            <Route path="/useraccount">
+              <UserPage />
+            </Route>
           </Switch>
         </NavigationTemplate>
       </Router>
