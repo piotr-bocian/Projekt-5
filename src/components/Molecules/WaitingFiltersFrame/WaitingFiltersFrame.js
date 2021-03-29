@@ -35,7 +35,7 @@ export function WaitingFiltersFrame (props) {
         <div className={classes.root}>
         <Grid container spacing={10}>
           <Grid item>
-            <WaitingFiltersAnimalType filterFunction={props.filterFunction}></WaitingFiltersAnimalType>
+            <WaitingFiltersAnimalType></WaitingFiltersAnimalType>
           </Grid>
           <Grid item>
             <WaitingFiltersSize></WaitingFiltersSize>

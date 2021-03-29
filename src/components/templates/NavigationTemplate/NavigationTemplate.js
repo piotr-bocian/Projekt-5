@@ -8,6 +8,8 @@ import GridContainerNavigationWrapper from '../../../styles/stylesContainer/Grid
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
+import { MainPage } from '../../Organisms/MainPage/MainPage';
+import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,6 +39,7 @@ function NavigationView() {
           <Switch>
             <Route path="/" exact>
               {/* odpowiedni komponent */}
+              <MainPage />
             </Route>
           </Switch>
           <Switch>
@@ -49,9 +52,8 @@ function NavigationView() {
             <Route path="/news"></Route>
           </Switch>
           <Switch>
-            <Route path="/animals">
-              <Animals />
-            </Route>
+            <Route path="/animals" exact component={Animals} />
+            <Route path="/animals/:id" component={AnimalPage} />
           </Switch>
           <Switch>
             <Route path="/adoption">
