@@ -49,7 +49,6 @@ export const ConfirmationWrapper = styled.div`
     display: grid;
     grid-template-columns: 0.5fr 3fr;
     font-family: Montserrat, sans-serif;
-    align-self: center;
     justify-self: center;
     align-items: center;
     letter-spacing: 0.05em;

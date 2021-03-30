@@ -38,7 +38,7 @@ const durationValues = [
     }
 ];
 
-const VisitForm = ({ animalName }) => {
+const VisitForm = ({ animal }) => {
     const [visitDate, setVisitDate] = useState(minDate);
     const [visitTime, setVisitTime] = useState("09:00");
     const [duration, setDuration] = useState(30);
@@ -48,17 +48,26 @@ const VisitForm = ({ animalName }) => {
 
     const sendForm = (e) => {
         e.preventDefault();
-        let visitState = {
-            visitDate: visitDate,
-            visitTime: visitTime,
-            duration: duration
+        let visitState;
+        if (animal) {
+            visitState = {
+                visitDate: visitDate,
+                visitTime: visitTime,
+                duration: duration,
+                animalID: animal.id
+            }
+        } else {
+            visitState = {
+                visitDate: visitDate,
+                visitTime: visitTime,
+                duration: duration
+            }
         }
 
         if (Boolean(errors?.timeError)) {
             console.log('Popraw formularz')
         } else {
             console.log(visitState);
-            // setOpen(false);
             setConfirmation(true);
         }
     }
@@ -110,7 +119,7 @@ const VisitForm = ({ animalName }) => {
                 {!confirmation ? (
                     <>
                         <h2 style={centerText}>WIZYTA ADOPCYJNA</h2>
-                        {animalName ? (<AnimalNameField text={animalName}/>):null}
+                        {animal ? (<AnimalNameField text={animal.name}/>):null}
                         <SelectDateTime
                             onChangeDate={(e) => setVisitDate(e.toISOString().slice(0, 10))}
                             labelDate='Data wizyty'
@@ -150,7 +159,7 @@ const VisitForm = ({ animalName }) => {
                     <>
                         <h2 style={confirmationHeader}>POTWIERDZENIE<br/>WIZYTY ADOPCYJNEJ</h2>
                         <ConfirmationWrapper>
-                            {animalName ? (<><PetsIcon color="primary"/> <p>Imię zwierzaka: <span>{animalName}</span></p></>):null}
+                            {animal ? (<><PetsIcon color="primary"/> <p>Imię zwierzaka: <span>{animal.name}</span></p></>):null}
                             <PetsIcon color="primary"/> <p>Data wizyty: <span>{visitDate}</span></p>
                             <PetsIcon color="primary"/> <p>Godzina wizyty: <span >{visitTime}</span></p>
                             <PetsIcon color="primary"/> <p>Czas trwania wizyty: <span >{duration} minut</span></p>
