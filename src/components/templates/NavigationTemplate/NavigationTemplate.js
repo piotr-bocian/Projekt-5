@@ -6,7 +6,7 @@ import { theme } from '../../../styles/styles';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
-import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
+import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { Animals } from '../../Organisms/Animals.js/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
@@ -65,7 +65,7 @@ function NavigationView() {
           <Switch>
             <Route path="/adoption">
               <Wrapper>
-                <VisitForm />
+                <AdoptionVisitPage />
               </Wrapper>
             </Route>
           </Switch>
