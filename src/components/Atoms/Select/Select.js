@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     margin: 10px auto;
   }
 `;
-const SelectPay = ({ onChange, optionType, name, id, label='Filtr płatności' }) => {
+const SelectPay = ({ onChange, optionType, name=null, id, label='Filtr płatności' }) => {
   return (
     <Wrapper>
       <Label htmlFor={id}>
@@ -21,6 +21,7 @@ const SelectPay = ({ onChange, optionType, name, id, label='Filtr płatności' }
         <NativeSelect
           style={{ display: 'block', marginTop: '10px',marginRight: '50px' }}
           id={id}
+          name={name}
           onChange={onChange}
         >
           {optionType.map((type, index) => (

@@ -49,7 +49,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
       makeHttpRequest();
     } else {
       setError(error);
-      console.log(error.message);
+      console.log(error);
     }
   };
 
