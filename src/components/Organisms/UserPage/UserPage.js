@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router';
 
 const UserPage = () => {
     const url = 'http://localhost:3000/api/users/me';
     // const url = 'https://best-animal-shelter.herokuapp.com/api/users/me;
 
-    const[name, setName] = useState('');
+    const[user, setUser] = useState({});
 
     useEffect( () => {
         (
@@ -16,16 +17,16 @@ const UserPage = () => {
                         'x-auth-token': window.localStorage.getItem('x-auth-token')
                     },
                 });
-                const user = await response.json();
-                
-                setName(user.firstName);
+                const userData = await response.json();
+                console.log(userData);
+                setUser(userData);
             }
         )();
-    })
+    }, []);
 
     return(
         <div>
-            Witaj {name}!
+            {user.firstName ? `Hi ${user.firstName}` : <Redirect to="/" exact />}
         </div>
     )
 }
