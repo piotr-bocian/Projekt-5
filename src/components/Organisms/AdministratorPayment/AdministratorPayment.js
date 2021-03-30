@@ -7,12 +7,14 @@ import { Button, FormHelperText, TextField } from '@material-ui/core';
 import { FlexWrapper } from '../../../styles/stylesContainer/FlexWrapper';
 
 const StyledPaymentText = styled.span`
-  font-weight: 700;
+  font-family: 'Roboto';
+  font-weight: 550;
   margin-right: 15px;
 `;
 
 const StyledTypography = withStyles(() => ({
   root: {
+    fontFamily: 'Roboto',
     display: 'flex',
     justifyContent: 'start',
     alignItems: 'baseline',
@@ -159,4 +161,4 @@ function AdministratorPayment({
   );
 }
 
-export default AdministratorPayment;
+export default React.memo(AdministratorPayment);

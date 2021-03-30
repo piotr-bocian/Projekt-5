@@ -7,7 +7,7 @@ import AdministratorPaymentsTemplate from '../AdministratorPaymentsTemplate/Admi
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import { administratorNavigation } from '../../../helpers/navigationNamesAndRoutes/administratorNavigation';
-import { AnimalsForAdoption } from '../../Atoms/HeaderAnimalsForAdoption/HeaderAnimalsForAdoption';
+import { AnimalsForAdoption as Title } from '../../Atoms/HeaderAnimalsForAdoption/HeaderAnimalsForAdoption';
 
 const NavigationTemplate = ({ children }) => {
   return (
@@ -25,11 +25,11 @@ function AdministratorNavigation() {
     <ThemeProvider theme={theme}>
       <Router>
         <NavigationTemplate>
-          <AnimalsForAdoption
+          <Title
             style={{ textAlign: 'center', marginTop: '50px' }}
           >
             Panel Administratora
-          </AnimalsForAdoption>
+          </Title>
           <Switch>
             <Route path="/" exact>
               {/* odpowiedni komponent */}
