@@ -31,12 +31,12 @@ function AdministratorNavigation() {
             Panel Administratora
           </Title>
           <Switch>
-            <Route path="/" exact>
+            <Route path="/a" exact>
               {/* odpowiedni komponent */}
             </Route>
             <Route path="/login"></Route>
 
-            <Route path="/payments">
+            <Route path="/">
               {/* <Wrapper> */}
               <AdministratorPaymentsTemplate />
               {/* </Wrapper> */}

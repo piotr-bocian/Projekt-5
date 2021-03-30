@@ -28,7 +28,7 @@ const AdministratorPaymentsTemplate = () => {
   const [id, setId] = useState('');
 
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
-
+console.log(payments)
   const { makeHttpRequest, isLoading } = useHttp(
     state.url + querry,
     state.request,
