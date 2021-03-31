@@ -8,6 +8,7 @@ import GridContainerNavigationWrapper from '../../../styles/stylesContainer/Grid
 import Navigation from '../../Organisms/Navigation/Navigation';
 import { administratorNavigation } from '../../../helpers/navigationNamesAndRoutes/administratorNavigation';
 import { AnimalsForAdoption as Title } from '../../Atoms/HeaderAnimalsForAdoption/HeaderAnimalsForAdoption';
+import { administratorPaymentConfig} from '../../../Config/administratorViewConfigFile';
 
 const NavigationTemplate = ({ children }) => {
   return (
@@ -38,7 +39,7 @@ function AdministratorNavigation() {
 
             <Route path="/payments">
               {/* <Wrapper> */}
-              <AdministratorPaymentsTemplate />
+              <AdministratorPaymentsTemplate administratorConfig={administratorPaymentConfig} />
               {/* </Wrapper> */}
             </Route>
           </Switch>

@@ -28,6 +28,7 @@ function AdministratorPayment({
   deletePayment,
   updatePayment = null,
 }) {
+  //CAŁY OBIEKT STANU
   const initialState = {
     typeOfPayment: payment.typeOfPayment,
     amount: payment.amount,
