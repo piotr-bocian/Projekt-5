@@ -9,16 +9,16 @@ import httpReducer from '../../../helpers/httpReducer/httpReducer';
 import { Center } from './AdministratorViewTemplate.styles';
 
 const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
+  const renderData = administratorConfig.configChildComponent;
+  const makeState = administratorConfig.initialState;
+
+
   const initialState = {
     url: administratorConfig.url,
     request: 'GET',
     validate: null,
     payload: null,
   };
-
-  //tutaj istnieje
-  const renderData = administratorConfig.configChildComponent;
-  const makeState = administratorConfig.initialState;
 
   const [state, dispatch] = useReducer(httpReducer, initialState);
   const [dataFromAPI, setDataFromAPI] = useState([]);
@@ -89,9 +89,10 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
           justify="center"
           alignItems="center"
         >
-          {administratorConfig.select.map((config) => {
+          {administratorConfig.select.map((config, id) => {
             return (
               <SelectPay
+                key={id}
                 label={config.label}
                 optionType={config.filterOptions}
                 onChange={searchBy}

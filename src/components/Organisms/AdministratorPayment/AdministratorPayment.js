@@ -30,11 +30,9 @@ function AdministratorPayment({
   deletePayment,
   updatePayment = null,
 }) {
-  //CAŁY OBIEKT STANU
-  let initialState = {};
-
+  //PROBLEM, TWORZY SIE TYLKO JEDNO POLE STANU, W INPUTACH NIE WIDAĆ DANYCH W MOMENCIE AKTUALIZACJI
+  let initialState;
   for (let [key, value] of Object.entries(createState)) {
-    console.log(key, value);
     initialState = {
       [key]: payment[value],
     };
@@ -47,7 +45,6 @@ function AdministratorPayment({
 
   const [toggle, setToggle] = useState(false);
   const [state, setState] = useState(initialState);
-
   const inputPaymentHandler = (e) => {
     setState({
       ...state,
@@ -79,9 +76,9 @@ function AdministratorPayment({
           {payment.paymentDate ? payment.paymentDate.substr(0, 10) : ''}
         </StyledTypography>
 
-        {renderData.map((iterate) => {
+        {renderData.map((iterate, id) => {
           return (
-            <StyledTypography>
+            <StyledTypography key={id}>
               <StyledPaymentText>{iterate.title} </StyledPaymentText>
               {toggle ? (
                 <>

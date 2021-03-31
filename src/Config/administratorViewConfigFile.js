@@ -38,15 +38,8 @@ export const administratorPaymentConfig = {
   ],
   initialState: {
     amount: 'amount',
-    paymentDate: 'paymentDate',
     paymentMethod: 'paymentMethod',
     typeOfPayment: 'typeOfPayment',
+    paymentDate: 'paymentDate',
   },
 };
-
-// [
-//   ['typeOfPayment', 'payment.typeOfPayment'],
-//   ['amount', 'payment.amount'],
-//   ['paymentMethod', 'payment.paymentMethod'],
-//   ['paymentDate', 'payment.paymentDate'],
-// ]

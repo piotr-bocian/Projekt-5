@@ -41,7 +41,7 @@ function AdministratorNavigation() {
               <AdministratorViewTemplate
                 administratorConfig={administratorPaymentConfig}
                 componentName={<AdministratorPayment />}
-              ></AdministratorViewTemplate>
+              />
               {/* </Wrapper> */}
             </Route>
           </Switch>
