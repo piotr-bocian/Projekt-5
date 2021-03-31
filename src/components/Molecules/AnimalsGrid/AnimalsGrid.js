@@ -29,7 +29,6 @@ export function AllAnimalsGrid (props) {
                         <AnimalCard animal={animal}></AnimalCard>
                     </Grid>
                   </Link>
-                  {console.log(animal)}
                   </div>
                   )
               )}

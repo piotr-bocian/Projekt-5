@@ -14,24 +14,24 @@ export function Animals (props) {
     const handler = useHttp(
         `https://best-animal-shelter.herokuapp.com/api/animals`,
         httpMethods.GET
-    );
+    );    
 
     useEffect(() => {
         handler.makeHttpRequest()
-            .then((result) => {
-                console.log(result)
+            .then((result) => {                
                     setAnimals(result.animals.results);
+                    console.log('elo')
             });
     }, [])
 
 
-    // console.log(animals);
+    console.log(animals);
     return handler.isLoading ? (
         <div></div>) :
         (
         <div>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
-            <WaitingFiltersFrame></WaitingFiltersFrame>
+            <WaitingFiltersFrame setAnimals={setAnimals}></WaitingFiltersFrame>
             <AllAnimalsGrid animals={animals}></AllAnimalsGrid>
         </div>
     );
