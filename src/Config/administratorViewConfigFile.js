@@ -17,25 +17,3 @@ export const administratorPaymentConfig = {
   buttonText: 'Wyświetl wszystkie płatności',
 };
 
-//CZY TO ZADZIAŁA???
-export const administratorPaymentChildrenProps = {
-  initialState: {
-    //TO NIE ZADZIAŁA
-    typeOfPayment: 'payment.typeOfPayment',
-    amount: 'payment.amount',
-    paymentMethod: 'payment.paymentMethod',
-    paymentDate: 'payment.paymentDate',
-  },
-  displayText: [
-    'Id płatności: ',
-    'Kwota: ',
-    'Typ płatności: ',
-    'Data płatności: ',
-    'Metoda płatności: ',
-    'Użytkownik: ',
-  ],
-  //   name,
-  //   value,
-  //   helperText,
-  //   buttonTexts,
-};

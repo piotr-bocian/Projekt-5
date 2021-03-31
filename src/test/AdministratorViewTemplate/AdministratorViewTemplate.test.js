@@ -4,7 +4,9 @@ import { setupServer } from 'msw/node';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import AdministratorPaymentsTemplate from '../../components/templates/AdministratorPaymentsTemplate/AdministratorPaymentsTemplate';
+import { administratorPaymentConfig } from '../../Config/administratorViewConfigFile';
+import AdministratorPayment from '../../components/Organisms/AdministratorPayment/AdministratorPayment';
+import AdministratorViewTemplate from '../../components/templates/AdministratorViewTemplate/AdministratorViewTemplate';
 
 const fetchedPaymentsArray = {
   payments: {
@@ -32,7 +34,12 @@ afterAll(() => server.close());
 
 describe('Is Administrator Payments View with data fetched from API correct render', () => {
   it('should load data from /payments and display it', async () => {
-    render(<AdministratorPaymentsTemplate />);
+    render(
+      <AdministratorViewTemplate
+        administratorConfig={administratorPaymentConfig}
+        componentName={<AdministratorPayment />}
+      />
+    );
 
     await waitFor(() => screen.getByText(/Kwota/i));
     await waitFor(() => screen.getByText(/Id płatności:/i));
@@ -46,21 +53,36 @@ describe('Is Administrator Payments View with data fetched from API correct rend
   });
 
   it('should display menu with options after user left click "Filtr metoda płatności"', async () => {
-    render(<AdministratorPaymentsTemplate />);
+    render(
+      <AdministratorViewTemplate
+        administratorConfig={administratorPaymentConfig}
+        componentName={<AdministratorPayment />}
+      />
+    );
     await waitFor(() => screen.getByText('Filtr metoda płatności'));
     fireEvent.click(screen.getByText(/Filtr metoda płatności/i));
     expect(screen.getByText(/Blik/i)).toBeInTheDocument();
   });
 
   it('should display menu with options after user left click on "Filtr Typ płatności"', async () => {
-    render(<AdministratorPaymentsTemplate />);
+    render(
+      <AdministratorViewTemplate
+        administratorConfig={administratorPaymentConfig}
+        componentName={<AdministratorPayment />}
+      />
+    );
     await waitFor(() => screen.getByText('Filtr typ płatności'));
     fireEvent.click(screen.getByText(/Filtr typ płatności/i));
     expect(screen.getByText(/opłata adopcyjna/i)).toBeInTheDocument();
   });
 
   it('should display correct buttons', async () => {
-    render(<AdministratorPaymentsTemplate />);
+    render(
+      <AdministratorViewTemplate
+        administratorConfig={administratorPaymentConfig}
+        componentName={<AdministratorPayment />}
+      />
+    );
     await waitFor(() => screen.getByText('Usuń płatność'));
     await waitFor(() => screen.getByText('Edytuj płatność'));
     await waitFor(() => screen.getByText('Uaktualnij płatność'));
