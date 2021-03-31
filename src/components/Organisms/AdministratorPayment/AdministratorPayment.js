@@ -24,17 +24,21 @@ const StyledTypography = withStyles(() => ({
 }))(Typography);
 
 function AdministratorPayment({
+  renderData,
+  createState,
   payment,
   deletePayment,
   updatePayment = null,
 }) {
   //CAŁY OBIEKT STANU
-  const initialState = {
-    typeOfPayment: payment.typeOfPayment,
-    amount: payment.amount,
-    paymentMethod: payment.paymentMethod,
-    paymentDate: payment.paymentDate,
-  };
+  let initialState = {};
+
+  for (let [key, value] of Object.entries(createState)) {
+    console.log(key, value);
+    initialState = {
+      [key]: payment[value],
+    };
+  }
 
   let deleteOnePayment = () => deletePayment(payment._id);
   if (!deletePayment) {
@@ -42,11 +46,11 @@ function AdministratorPayment({
   }
 
   const [toggle, setToggle] = useState(false);
-  const [paymentState, setPaymentState] = useState(initialState);
+  const [state, setState] = useState(initialState);
 
   const inputPaymentHandler = (e) => {
-    setPaymentState({
-      ...paymentState,
+    setState({
+      ...state,
       [e.target.name]: e.target.value,
     });
   };
@@ -70,63 +74,33 @@ function AdministratorPayment({
         </StyledTypography>
 
         <StyledTypography>
-          <StyledPaymentText>Kwota: </StyledPaymentText>
-          {toggle ? (
-            <TextField
-              name="amount"
-              value={paymentState.amount}
-              onChange={inputPaymentHandler}
-            />
-          ) : (
-            <TextField value={payment.amount} disabled />
-          )}
-          PLN
-        </StyledTypography>
-
-        <StyledTypography>
-          <StyledPaymentText>Typ płatności: </StyledPaymentText>
-          {toggle ? (
-            <>
-              <TextField
-                fullWidth
-                name="typeOfPayment"
-                value={paymentState.typeOfPayment}
-                onChange={inputPaymentHandler}
-              />
-              <FormHelperText>
-                Dostępne opcje: 'Opłata adopcyjna', 'Jednorazowy przelew',
-                'Wirtualny opiekun-opłata cykliczna',
-              </FormHelperText>
-            </>
-          ) : (
-            <TextField fullWidth value={payment.typeOfPayment} disabled />
-          )}
-        </StyledTypography>
-
-        <StyledTypography>
           <StyledPaymentText>Data płatności: </StyledPaymentText>
           <StyledPaymentText text="Data płatności: " />
           {payment.paymentDate ? payment.paymentDate.substr(0, 10) : ''}
         </StyledTypography>
 
-        <StyledTypography>
-          <StyledPaymentText>Metoda płatności: </StyledPaymentText>
-          {toggle ? (
-            <>
-              <TextField
-                name="paymentMethod"
-                value={paymentState.paymentMethod}
-                onChange={inputPaymentHandler}
-              />
-              <FormHelperText>
-                Dostępne opcje: 'Karta płatnicza', 'Blik', 'Przelew bankowy',
-                'Apple Pay', 'Google Pay',
-              </FormHelperText>
-            </>
-          ) : (
-            <TextField value={payment.paymentMethod} disabled />
-          )}
-        </StyledTypography>
+        {renderData.map((iterate) => {
+          return (
+            <StyledTypography>
+              <StyledPaymentText>{iterate.title} </StyledPaymentText>
+              {toggle ? (
+                <>
+                  <TextField
+                    fullWidth
+                    name={iterate.value}
+                    value={state[iterate.value]}
+                    onChange={inputPaymentHandler}
+                  />
+                  {iterate.helper && (
+                    <FormHelperText>{iterate.helperText}</FormHelperText>
+                  )}
+                </>
+              ) : (
+                <TextField fullWidth value={payment[iterate.value]} disabled />
+              )}
+            </StyledTypography>
+          );
+        })}
 
         {payment.userID ? (
           <StyledTypography>
@@ -134,6 +108,7 @@ function AdministratorPayment({
             {payment.userId}
           </StyledTypography>
         ) : null}
+
         <FlexWrapper style={{ margin: '20px 20px 0' }}>
           <Button
             onClick={deleteOnePayment}
@@ -151,7 +126,7 @@ function AdministratorPayment({
           </Button>
           <Button
             onClick={() => {
-              updatePayment(payment._id, paymentState);
+              updatePayment(payment._id, state);
             }}
           >
             Uaktualnij płatność

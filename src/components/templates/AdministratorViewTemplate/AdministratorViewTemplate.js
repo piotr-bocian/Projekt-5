@@ -8,16 +8,17 @@ import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 import httpReducer from '../../../helpers/httpReducer/httpReducer';
 import { Center } from './AdministratorViewTemplate.styles';
 
-const AdministratorViewTemplate = ({
-  administratorConfig,
-  componentName,
-}) => {
+const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const initialState = {
     url: administratorConfig.url,
     request: 'GET',
     validate: null,
     payload: null,
   };
+
+  //tutaj istnieje
+  const renderData = administratorConfig.configChildComponent;
+  const makeState = administratorConfig.initialState;
 
   const [state, dispatch] = useReducer(httpReducer, initialState);
   const [dataFromAPI, setDataFromAPI] = useState([]);
@@ -88,18 +89,16 @@ const AdministratorViewTemplate = ({
           justify="center"
           alignItems="center"
         >
-          <SelectPay
-            label={administratorConfig.label[0].label}
-            optionType={administratorConfig.filterOptions.paymentMethod}
-            onChange={searchBy}
-            id={administratorConfig.label[0].id}
-          />
-          <SelectPay
-            label={administratorConfig.label[1].label}
-            optionType={administratorConfig.filterOptions.typeOfPayment}
-            onChange={searchBy}
-            id={administratorConfig.label[1].id}
-          />
+          {administratorConfig.select.map((config) => {
+            return (
+              <SelectPay
+                label={config.label}
+                optionType={config.filterOptions}
+                onChange={searchBy}
+                id={config.id}
+              />
+            );
+          })}
           <Button onClick={onLoadAllData}>
             {administratorConfig.buttonText}
           </Button>
@@ -116,13 +115,20 @@ const AdministratorViewTemplate = ({
           {Array.isArray(dataFromAPI) && dataFromAPI.length !== 0
             ? dataFromAPI.map((data, id) => {
                 return cloneElement(componentName, {
+                  renderData: renderData,
+                  createState: makeState,
                   payment: data,
                   key: id,
                   deletePayment: deleteOne,
                   updatePayment: updateOne,
                 });
               })
-            : cloneElement(componentName, { payment: dataFromAPI, key: id })}
+            : cloneElement(componentName, {
+                payment: dataFromAPI,
+                key: id,
+                renderData: renderData,
+                createState: makeState,
+              })}
         </Grid>
       </Grid>
     </>
