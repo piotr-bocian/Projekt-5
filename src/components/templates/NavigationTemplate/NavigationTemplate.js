@@ -8,16 +8,12 @@ import GridContainerNavigationWrapper from '../../../styles/stylesContainer/Grid
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { Animals } from '../../Organisms/Animals.js/Animals';
-<<<<<<< HEAD
-import { MainPage } from '../../Organisms/MainPage/MainPage';
-import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
-
-=======
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import { MainPage } from '../../Organisms/MainPage/MainPage';
+import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
->>>>>>> development
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -45,14 +41,11 @@ function NavigationView() {
         <NavigationTemplate>
           <Switch>
             <Route path="/" exact>
-<<<<<<< HEAD
               {/* odpowiedni komponent */}
               <MainPage />
-=======
-              <Wrapper>
+              {/* <Wrapper>
                 <AdotpionForm />
-              </Wrapper>
->>>>>>> development
+              </Wrapper> */}
             </Route>
           </Switch>
           <Switch>
