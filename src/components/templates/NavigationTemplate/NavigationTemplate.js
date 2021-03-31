@@ -6,11 +6,18 @@ import { theme } from '../../../styles/styles';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
-import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
+import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { Animals } from '../../Organisms/Animals.js/Animals';
+<<<<<<< HEAD
 import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 
+=======
+import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
+import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
+import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+>>>>>>> development
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,15 +45,25 @@ function NavigationView() {
         <NavigationTemplate>
           <Switch>
             <Route path="/" exact>
+<<<<<<< HEAD
               {/* odpowiedni komponent */}
               <MainPage />
+=======
+              <Wrapper>
+                <AdotpionForm />
+              </Wrapper>
+>>>>>>> development
             </Route>
           </Switch>
           <Switch>
-            <Route path="/registration"></Route>
+            <Route path="/registration">
+              <SignUpForm />
+            </Route>
           </Switch>
           <Switch>
-            <Route path="/login"></Route>
+            <Route path="/login">
+              <SignInForm />
+            </Route>
           </Switch>
           <Switch>
             <Route path="/news"></Route>
@@ -58,12 +75,16 @@ function NavigationView() {
           <Switch>
             <Route path="/adoption">
               <Wrapper>
-                <VisitForm />
+                <AdoptionVisitPage />
               </Wrapper>
             </Route>
           </Switch>
           <Switch>
-            <Route path="/education"></Route>
+            <Route path="/education">
+              <Wrapper>
+                <VolunteerForm />
+              </Wrapper>
+            </Route>
           </Switch>
           <Switch>
             <Route path="/howtohelp">
@@ -71,8 +92,7 @@ function NavigationView() {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/about">
-            </Route>
+            <Route path="/about"></Route>
           </Switch>
           <Switch>
             <Route path="/contact"></Route>
