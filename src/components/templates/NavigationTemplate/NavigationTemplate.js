@@ -12,6 +12,7 @@ import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import UserNavigationTemplate from '../../Organisms/UserNavigationPage/UserNavigationTemplate'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -85,12 +86,16 @@ function NavigationView() {
             <Route path="/about"></Route>
           </Switch>
           <Switch>
-            <Route path="/contact"></Route>
+            <Route path="/contact">
+              <UserNavigationTemplate props={defaultuser}/>
+            </Route>
           </Switch>
         </NavigationTemplate>
       </Router>
     </ThemeProvider>
   );
 }
+
+let defaultuser={name: "Robert", lastName: "Makłowicz", email: "robert.maklowicz@gmail.com", mobile: "123-456-789", isVolunteer: true, userID: "123"}
 
 export default NavigationView;
