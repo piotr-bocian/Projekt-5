@@ -26,7 +26,7 @@ const VolunteerForm = () => {
     const updateForm = (e) => {
         setForm({
             ...form,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         })
     }
 
@@ -41,7 +41,7 @@ const VolunteerForm = () => {
             setLastNameErr(true);
             valid = false;
         }
-        if(form.mobile.length !== 9 || isNaN(parseInt(form.mobile))){
+        if(form.mobile.length !== 9 || isNaN(Number(form.mobile))){
             setMobileErr(true);
             valid = false;
         }
@@ -62,9 +62,13 @@ const VolunteerForm = () => {
     }
 
     const handler = useHttp(
-        'https://best-animal-shelter.herokuapp.com/api/volunteerForms',
+        'http://localhost:4000/api/volunteerForms',
+        // 'https://best-animal-shelter.herokuapp.com/api/volunteerForms',
         'POST',
-        form
+        {
+            ...form,
+            mobile: form.mobile.slice(0, 3) + '-' + form.mobile.slice(3, 6) + '-' + form.mobile.slice(6, 9)
+        }
     );
 
     const handleSubmit = (e) => {
@@ -72,7 +76,7 @@ const VolunteerForm = () => {
 
         if(validateForm()){
             handler.makeHttpRequest();
-            console.log('Wysylam zapytanie')
+            //console.log('Wysylam zapytanie');
         }
     }
 
