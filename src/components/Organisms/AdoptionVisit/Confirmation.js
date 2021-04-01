@@ -1,13 +1,13 @@
 import { TextField } from '@material-ui/core';
 
-const AnimalNameField = ({ text }) => {
+const AnimalNameField = () => {
     return (
         <TextField
             variant="outlined"
             disabled
             id="animal-name"
             label="Imię zwierzaka"
-            defaultValue={text}
+            defaultValue="GRATULACJE"
             InputProps={{
                 readOnly: true,
             }}

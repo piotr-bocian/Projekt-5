@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
-export const StyledButton = withStyles(() => ({
+export const AnimalPageBackBtn = withStyles(() => ({
     root: {
       'font-family': 'Amatic SC, sans-sarif',
       'letter-spacing': '0.1em',

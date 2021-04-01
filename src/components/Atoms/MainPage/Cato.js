@@ -2,18 +2,23 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import cato from '../../../assets/cato/cato.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        height: '300px',
+        height: '31vh',
         display: 'flex',
         flexWrap: 'wrap',
-        width: '300px',
-        marginLeft: '30px',
+        backgroundColor: 'white',
+        width: '15vw',
+        filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5))',
     },
     image: {
-        height: '100%',
-        width: '100%',
+        height: '50%',
+        width: '45%',
+        backgroundImage: `url(${cato})`,
+        boxSizing: 'border-box',
+        backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('xs')]: {
           width: '100% !important', // Overrides inline-style
           height: '100%',
@@ -23,34 +28,24 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       bottom: '0px',
       zIndex: 2,
-      width: '300px',
+      width: '15vw',
       color: 'white',
       fontFamily: 'Amatic SC, sans-sarif',
       letterSpacing: '0.1em',
-      fontSize: '3em',
+      fontSize: '2.75em',
       fontWeight: 'bold',
       backgroundColor: '#0292C9',
       opacity: '70%',
     },
   }));
   
-  export function AnimalCard(props) {
+  export function Cato() {
     const classes = useStyles();
-
-
-    function AnimalImage(p){
-        if(p.isImage !== undefined){
-          return <img src={`data:image/jpeg;base64,${Buffer.from(props.animal.image).toString('base64')}`} alt="animal" className={classes.image}/>
-        }
-        return null;
-    }
    
     return (
-      <ButtonBase key={props.animal._id} className={classes.root}>
-        <AnimalImage isImage={typeof props.animal.image} className={classes.image}/>
-        <Typography variant="subtitle1" color="inherit" className={classes.imageTitle}>
-          {props.animal.name}
-        </Typography>
+      <ButtonBase className={classes.root}>
+        <div className={classes.image}></div>
+        <Typography variant="subtitle1" color="inherit" className={classes.imageTitle}>KOTY DO ADOPCJI</Typography>
       </ButtonBase>
     );
   }
