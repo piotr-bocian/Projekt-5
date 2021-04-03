@@ -6,9 +6,7 @@ const TextSeparator = ({
 }) => {
   return (
     <>
-      <span style={styles}>
-        {text}
-      </span>
+      <span style={{textAlign: 'center', fontSize: '30px', color: 'black'}}>|</span>
     </>
   );
 };
