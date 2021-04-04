@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {Switch, Route } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
@@ -10,6 +10,7 @@ import { administratorNavigation } from '../../../helpers/navigationNamesAndRout
 import { AnimalsForAdoption as Title } from '../../Atoms/HeaderAnimalsForAdoption/HeaderAnimalsForAdoption';
 import { administratorPaymentConfig } from '../../../Config/administratorViewConfigFile';
 import AdministratorPayment from '../../Organisms/AdministratorPayment/AdministratorPayment';
+import { administratorAnimalsConfig } from '../../../Config/animalViewConfigFile';
 
 const NavigationTemplate = ({ children }) => {
   return (
@@ -25,28 +26,34 @@ const NavigationTemplate = ({ children }) => {
 function AdministratorNavigation() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <NavigationTemplate>
-          <Title style={{ textAlign: 'center', marginTop: '50px' }}>
-            Panel Administratora
-          </Title>
-          <Switch>
-            <Route path="/" exact>
-              {/* odpowiedni komponent */}
-            </Route>
-            <Route path="/login"></Route>
+      <NavigationTemplate>
+        <Title style={{ textAlign: 'center', marginTop: '50px' }}>
+          Panel Administratora
+        </Title>
+        <Switch>
+          <Route path="/" exact>
+            {/* odpowiedni komponent */}
+          </Route>
+          <Route path="/login"></Route>
 
-            <Route path="/payments">
-              {/* <Wrapper> */}
-              <AdministratorViewTemplate
-                administratorConfig={administratorPaymentConfig}
-                componentName={<AdministratorPayment />}
-              />
-              {/* </Wrapper> */}
-            </Route>
-          </Switch>
-        </NavigationTemplate>
-      </Router>
+          <Route path="/payments">
+            {/* <Wrapper> */}
+            <AdministratorViewTemplate
+              administratorConfig={administratorPaymentConfig}
+              componentName={<AdministratorPayment />}
+            />
+            {/* </Wrapper> */}
+          </Route>
+          <Route path="/shelteranimals">
+            {/* <Wrapper> */}
+            <AdministratorViewTemplate
+              administratorConfig={administratorAnimalsConfig}
+              componentName={<AdministratorPayment />}
+            />
+            {/* </Wrapper> */}
+          </Route>
+        </Switch>
+      </NavigationTemplate>
     </ThemeProvider>
   );
 }

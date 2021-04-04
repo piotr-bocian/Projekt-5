@@ -70,21 +70,26 @@ function AdministratorPayment({
           {payment._id}
         </StyledTypography>
 
-        <StyledTypography>
+        {/* <StyledTypography>
           <StyledPaymentText>Data płatności: </StyledPaymentText>
-          <StyledPaymentText text="Data płatności: " />
+          <StyledPaymentText
+            text="Data płatności: "
+            value={payment.paymentDate}
+          />
           {payment.paymentDate ? payment.paymentDate.substr(0, 10) : ''}
-        </StyledTypography>
+        </StyledTypography> */}
 
         {renderData.map((iterate, id) => {
           return (
             <StyledTypography key={id}>
-              <StyledPaymentText>{iterate.title} </StyledPaymentText>
+              <StyledPaymentText>{iterate.title}</StyledPaymentText>
               {toggle ? (
                 <>
                   <TextField
                     fullWidth
-                    name={iterate.value}
+                    name={
+                      iterate.value
+                    }
                     value={state[iterate.value]}
                     onChange={inputPaymentHandler}
                   />

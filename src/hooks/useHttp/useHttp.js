@@ -4,6 +4,9 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [data, setData] = useState('');
+  const controller = new AbortController();
+  const { signal } = controller;
+
   const httpRequest = async () => {
     const fetchOptions =
       method === 'GET' || method === 'DELETE'
@@ -23,7 +26,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
             body: JSON.stringify(payload),
           };
 
-    return fetch(url, fetchOptions);
+    return fetch(url, { signal }, fetchOptions);
   };
 
   const makeHttpRequest = async () => {
@@ -37,13 +40,11 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
       return data;
     } catch (error) {
       setError(error);
-      console.log(error);
       return error;
     }
   };
 
   const handleHttpRequest = async (e) => {
-
     e.preventDefault();
     const error = await validateFunction(payload);
     if (!error) {
@@ -54,7 +55,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
     }
   };
 
-  return { isLoading, handleHttpRequest, makeHttpRequest, data, error };
+  return { isLoading, handleHttpRequest, makeHttpRequest, data, error, controller };
 };
 
 export default useHttp;

@@ -3,9 +3,9 @@ import {
   paymentMethod,
   typeOfPayment,
 } from '../helpers/paymentHelpers/paymenttypeAndMethodConst';
-
+import { URL } from '../helpers/URL/url';
 export const administratorPaymentConfig = {
-  url: 'http://localhost:5000/api/payments',
+  url: `${URL}/payments`,
   dataKey: ['payment', 'payments', 'results'],
   validate: validatePayment,
   select: [
@@ -22,6 +22,7 @@ export const administratorPaymentConfig = {
   ],
   buttonText: 'Wyświetl wszystkie płatności',
   configChildComponent: [
+    { title: 'Data płatności :', value: 'paymentDate', helper: false },
     { title: 'Kwota: ', value: 'amount', helper: false },
     {
       title: 'Typ płatności: ',

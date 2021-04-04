@@ -31,7 +31,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation makeNavigation={navigationArrayWithRoutes}/>
+        <Navigation makeNavigation={navigationArrayWithRoutes} />
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -41,61 +41,37 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <NavigationTemplate>
-          <Switch>
-            <Route path="/" exact>
-              {/* odpowiedni komponent */}
-              <MainPage />
-              {/* <Wrapper>
-                <AdotpionForm />
-              </Wrapper> */}
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/registration">
-              <SignUpForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/login">
-              <SignInForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/news"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/animals" exact component={Animals} />
-            <Route path="/animals/:id" component={AnimalPage} />
-          </Switch>
-          <Switch>
-            <Route path="/adoption">
-              <Wrapper>
-                <AdoptionVisitPage />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/education">
-              <Wrapper>
-                <VolunteerForm />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/howtohelp">
-              <PaymentForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/about"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/contact"></Route>
-          </Switch>
-        </NavigationTemplate>
-      </Router>
+      <NavigationTemplate>
+        <Switch>
+          <Route path="/" exact>
+            <MainPage />
+          </Route>
+          <Route path="/registration">
+            <SignUpForm />
+          </Route>
+          <Route path="/login">
+            <SignInForm />
+          </Route>
+          <Route path="/news"></Route>
+          <Route path="/animals" exact component={Animals} />
+          <Route path="/animals/:id" component={AnimalPage} />
+          <Route path="/adoption">
+            <Wrapper>
+              <AdoptionVisitPage />
+            </Wrapper>
+          </Route>
+          <Route path="/education">
+            <Wrapper>
+              <VolunteerForm />
+            </Wrapper>
+          </Route>
+          <Route path="/howtohelp">
+            <PaymentForm />
+          </Route>
+          <Route path="/about"></Route>
+          <Route path="/contact"></Route>
+        </Switch>
+      </NavigationTemplate>
     </ThemeProvider>
   );
 }

@@ -12,7 +12,6 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const renderData = administratorConfig.configChildComponent;
   const makeState = administratorConfig.initialState;
 
-
   const initialState = {
     url: administratorConfig.url,
     request: 'GET',
@@ -26,8 +25,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const [id, setId] = useState('');
 
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
-  const { makeHttpRequest, isLoading } = useHttp(
-    state.url + querry,
+  const { makeHttpRequest, isLoading, controller } = useHttp( administratorConfig.url + querry,
     state.request,
     state.payload,
     state.validate
@@ -36,17 +34,20 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   useEffect(() => {
     const getData = async () => {
       const data = await makeHttpRequest();
-
-      if (data[administratorConfig.dataKey[0]]) {
-        setDataFromAPI(data[administratorConfig.dataKey[0]]);
-      } else {
-        setDataFromAPI(
-          data[administratorConfig.dataKey[1]][administratorConfig.dataKey[2]]
-        );
+      try {
+        if (data[administratorConfig.dataKey[0]]) {
+          setDataFromAPI(data[administratorConfig.dataKey[0]]);
+        } else {
+          setDataFromAPI(
+            data[administratorConfig.dataKey[1]][administratorConfig.dataKey[2]]
+          );
+        }
+      } catch (error) {
+        console.log(error);
       }
     };
     getData();
-  }, [filter, id, state]);
+  }, [filter, id, state, administratorConfig.dataKey]);
 
   const searchBy = (e) => setFilter(e.target.value);
 
@@ -91,13 +92,15 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
         >
           {administratorConfig.select.map((config, id) => {
             return (
-              <SelectPay
-                key={id}
-                label={config.label}
-                optionType={config.filterOptions}
-                onChange={searchBy}
-                id={config.id}
-              />
+              <>
+                <SelectPay
+                  key={id}
+                  label={config.label}
+                  optionType={config.filterOptions}
+                  onChange={searchBy}
+                  id={config.id}
+                />
+              </>
             );
           })}
           <Button onClick={onLoadAllData}>
