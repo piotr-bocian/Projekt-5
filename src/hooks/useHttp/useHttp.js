@@ -4,8 +4,6 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [data, setData] = useState('');
-  const controller = new AbortController();
-  const { signal } = controller;
 
   const httpRequest = async () => {
     const fetchOptions =
@@ -26,7 +24,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
             body: JSON.stringify(payload),
           };
 
-    return fetch(url, { signal }, fetchOptions);
+    return fetch(url, fetchOptions);
   };
 
   const makeHttpRequest = async () => {
@@ -55,7 +53,7 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
     }
   };
 
-  return { isLoading, handleHttpRequest, makeHttpRequest, data, error, controller };
+  return { isLoading, handleHttpRequest, makeHttpRequest, data, error };
 };
 
 export default useHttp;

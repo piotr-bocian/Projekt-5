@@ -25,12 +25,14 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const [id, setId] = useState('');
 
   const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
-  const { makeHttpRequest, isLoading, controller } = useHttp( administratorConfig.url + querry,
+  const { makeHttpRequest, isLoading } = useHttp(
+    administratorConfig.url + querry,
     state.request,
     state.payload,
     state.validate
   );
 
+  console.log('PATYRZ TUTAJ', state);
   useEffect(() => {
     const getData = async () => {
       const data = await makeHttpRequest();
@@ -92,15 +94,13 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
         >
           {administratorConfig.select.map((config, id) => {
             return (
-              <>
-                <SelectPay
-                  key={id}
-                  label={config.label}
-                  optionType={config.filterOptions}
-                  onChange={searchBy}
-                  id={config.id}
-                />
-              </>
+              <SelectPay
+                key={id}
+                label={config.label}
+                optionType={config.filterOptions}
+                onChange={searchBy}
+                id={config.id}
+              />
             );
           })}
           <Button onClick={onLoadAllData}>
