@@ -6,7 +6,7 @@ import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import useHttp from '../../../hooks/useHttp/useHttp';
 
 
-export function Animals (props) {
+export function Animals () {
     // const classes = useStyles();
     const [animals, setAnimals] = useState([]);
     // const [selectedButton, setSelectedButton] = useState('');
@@ -25,11 +25,10 @@ export function Animals (props) {
     }, [])
 
 
-    console.log(animals);
     return handler.isLoading ? (
-        <div></div>) :
+        <div data-testid="loading"></div>) :
         (
-        <div>
+        <div className='animals'>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
             <WaitingFiltersFrame setAnimals={setAnimals}></WaitingFiltersFrame>
             <AllAnimalsGrid animals={animals}></AllAnimalsGrid>

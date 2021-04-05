@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import { Link } from '@material-ui/core';
 import dogo from '../../../assets/dogo/dogo.png'
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +44,11 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
    
     return (
-      <ButtonBase className={classes.root}>
-        <div className={classes.image}></div>
-        <Typography variant="subtitle1" color="inherit" className={classes.imageTitle}>PSY DO ADOPCJI</Typography>
-      </ButtonBase>
+        <Link href='/animals'>
+          <ButtonBase className={classes.root}>
+            <div className={classes.image}></div>
+            <Typography variant="subtitle1" color="inherit" className={classes.imageTitle}>PSY DO ADOPCJI</Typography>
+          </ButtonBase>
+        </Link>
     );
   }

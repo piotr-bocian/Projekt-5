@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         width: '300px',
         marginLeft: '30px',
+        marginBottom: '30px',
     },
     image: {
         height: '100%',
