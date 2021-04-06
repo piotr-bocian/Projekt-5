@@ -12,7 +12,9 @@ import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
-import UserNavigationTemplate from '../../Organisms/UserNavigationPage/UserNavigationTemplate'
+import UserNavigationPage from '../../Organisms/UserNavigationPage/UserNavigationPage'
+import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
+import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,7 +89,39 @@ function NavigationView() {
           </Switch>
           <Switch>
             <Route path="/contact">
-              <UserNavigationTemplate props={defaultuser}/>
+              <UserNavigationPage props={defaultuser}/>
+            </Route>
+          </Switch>
+          {/* USER PROFILE ROUTES */}
+          <Switch>
+            <Route path="/volunteerform">
+              <UserPageVolunteerForm link={"/contact"}/>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/mypayments">
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/adoptionvist">
+              <UserPageVisitForm link={"/contact"}/>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/myadoptionvisits">
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/post">
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/myposts">
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/editprofile">
+              <h1>EDYCJA</h1>
             </Route>
           </Switch>
         </NavigationTemplate>
