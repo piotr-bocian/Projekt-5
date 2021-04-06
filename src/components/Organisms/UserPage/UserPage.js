@@ -1,34 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router';
+import React from 'react';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const UserPage = () => {
-    const url = 'http://localhost:3000/api/users/me';
-    // const url = 'https://best-animal-shelter.herokuapp.com/api/users/me;
+    const { currentUser, err, logout } = useAuth();
+    function handleLogout() {
+        logout();
+    }
 
-    const[user, setUser] = useState({});
+    if(err){
+        return(
+            <div>
+                <h2>{ err }</h2>
+            </div>
+        )
+    } else {
+        return(
+            <div>
+                Hi { currentUser.firstName }
+                <pre>
+                    { JSON.stringify(currentUser) }
+                </pre>
 
-    useEffect( () => {
-        (
-            async () => {
-                const response = await fetch(url, {
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        'x-auth-token': window.localStorage.getItem('x-auth-token')
-                    },
-                });
-                const userData = await response.json();
-                console.log(userData);
-                setUser(userData);
-            }
-        )();
-    }, []);
-
-    return(
-        <div>
-            {user.firstName ? `Hi ${user.firstName}` : <Redirect to="/" exact />}
-        </div>
-    )
+                <button onClick={ handleLogout }>Wyloguj</button>
+                
+            </div>
+        )
+    }
+    
 }
 
 export default UserPage;
