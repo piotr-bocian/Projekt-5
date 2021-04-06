@@ -98,7 +98,7 @@ function AdministratorPayment({
                   )}
                 </>
               ) : (
-                <TextField fullWidth value={payment[iterate.value]} disabled />
+                <TextField textarea='true' fullWidth value={payment[iterate.value]} disabled />
               )}
             </StyledTypography>
           );
@@ -117,21 +117,21 @@ function AdministratorPayment({
             variant="outlined"
             color="secondary"
           >
-            Usuń płatność
+            Usuń
           </Button>
           <Button
             onClick={() => {
               setToggle(!toggle);
             }}
           >
-            Edytuj płatność
+            Edytuj
           </Button>
           <Button
             onClick={() => {
               updatePayment(payment._id, state);
             }}
           >
-            Uaktualnij płatność
+            Uaktualnij
           </Button>
         </FlexWrapper>
       </Grid>
