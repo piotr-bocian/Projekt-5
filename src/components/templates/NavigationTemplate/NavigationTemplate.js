@@ -13,6 +13,7 @@ import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import UserPage from '../../Organisms/UserPage/UserPage';
+import { AuthProvider } from '../../../contexts/AuthContext';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,45 +37,47 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <NavigationTemplate>
-          <Switch>
-            <Route path="/" exact>
-              <Wrapper>
-                <AdotpionForm />
-              </Wrapper>
-            </Route>
-            <Route path="/registration">
-              <SignUpForm />
-            </Route>
-            <Route path="/login">
-              <SignInForm />
-            </Route>
-            <Route path="/news"></Route>
-            <Route path="/animals">
-              <Animals />
-            </Route>
-            <Route path="/adoption">
-              <Wrapper>
-                <VisitForm />
-              </Wrapper>
-            </Route>
-            <Route path="/education">
-              <Wrapper>
-                <VolunteerForm />
-              </Wrapper>
-            </Route>
-            <Route path="/howtohelp">
-              <PaymentForm />
-            </Route>
-            <Route path="/about"></Route>
-            <Route path="/contact"></Route>
-            <Route path="/useraccount">
-              <UserPage />
-            </Route>
-          </Switch>
-        </NavigationTemplate>
-      </Router>
+        <Router>
+          <NavigationTemplate>
+            <Switch>
+              <AuthProvider>
+                <Route path="/" exact>
+                  <Wrapper>
+                    <AdotpionForm />
+                  </Wrapper>
+                </Route>
+                <Route path="/registration">
+                  <SignUpForm />
+                </Route>
+                <Route path="/login">
+                  <SignInForm />
+                </Route>
+                <Route path="/news"></Route>
+                <Route path="/animals">
+                  <Animals />
+                </Route>
+                <Route path="/adoption">
+                  <Wrapper>
+                    <VisitForm />
+                  </Wrapper>
+                </Route>
+                <Route path="/education">
+                  <Wrapper>
+                    <VolunteerForm />
+                  </Wrapper>
+                </Route>
+                <Route path="/howtohelp">
+                  <PaymentForm />
+                </Route>
+                <Route path="/about"></Route>
+                <Route path="/contact"></Route>
+                <Route path="/useraccount">
+                  <UserPage />
+                </Route>
+              </AuthProvider>
+            </Switch>
+          </NavigationTemplate>
+        </Router>
     </ThemeProvider>
   );
 }
