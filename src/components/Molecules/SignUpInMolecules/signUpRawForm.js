@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import { TermsCheckbox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
-// import useHttp from '../../../hooks/useHttp/useHttp';
 
 const SignUpRawForm = () => {
     const classes = useStyles();
@@ -24,8 +23,9 @@ const SignUpRawForm = () => {
         repPassword: '',
         repPasswordErr: '',
     });
-
-    const [redirect, setRedirect] = useState(false);
+    const [apiError, setApiError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     const updateForm = (e) => {
         setForm({
@@ -90,27 +90,15 @@ const SignUpRawForm = () => {
         return isError;
     }
 
-    // const httpHandler = useHttp(
-    //     // 'https://best-animal-shelter.herokuapp.com/api/users',
-    //     'http://localhost:5000/api/users',
-    //     'POST',        
-    //     {
-    //         firstName: form.firstName,
-    //         lastName: form.lastName,
-    //         mobile: form.mobile,
-    //         email: form.email,
-    //         image: '',
-    //         password: form.password
-    //     }
-    // );
-
     const handleForm = async (e) => {
-        const url = 'http://localhost:3000/api/users';
+        const url = 'http://localhost:5000/api/users';
         // const url = 'https://best-animal-shelter.herokuapp.com/api/users';
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            await fetch(url, {
+            setApiError('');
+            setLoading(true);
+            const signUpResponse = await fetch(url, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -124,38 +112,41 @@ const SignUpRawForm = () => {
                     image: ''
                 })
             });
-
-            // httpHandler.makeHttpRequest();
-            console.log('Wysłano dane do rejestracji konta');
-            console.log('Logowanie...');
-            console.log(form);
-            //clear form
-            setForm({
-                firstName: '',
-                firstNameErr: '',
-                lastName: '',
-                lastNameErr: '',
-                mobile: '',
-                mobileErr: '',
-                email: '',
-                emailErr: '',
-                password: '',
-                passwordErr: '',
-                repPassword: '',
-                repPasswordErr: ''
-            });
-
-            setRedirect(true);
+            const data = await signUpResponse.json();
+            if (signUpResponse.status === 201){
+                window.localStorage.setItem('x-auth-token', data.token);
+                console.log('Wysłano dane do rejestracji konta');
+                console.log('Logowanie...');
+                console.log(form);
+                //clear form
+                setForm({
+                    firstName: '',
+                    firstNameErr: '',
+                    lastName: '',
+                    lastNameErr: '',
+                    mobile: '',
+                    mobileErr: '',
+                    email: '',
+                    emailErr: '',
+                    password: '',
+                    passwordErr: '',
+                    repPassword: '',
+                    repPasswordErr: ''
+                });
+                
+                history.push("/useraccount");
+            } else {
+                setApiError(data.message);
+            }
+            
         }
-        
+        setLoading(false);
     }
 
-    if(redirect) {
-        return <Redirect to="/useraccount" />;
-    }
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>
             <Grid container spacing={2}>
+                {apiError && <h4 style={{color:'red', marginBottom:'5px'}}>{apiError}</h4>}
                 <Grid item xs={12} sm={6}>
                     <SignUpInTxtField
                         name="firstName"
@@ -228,7 +219,7 @@ const SignUpRawForm = () => {
                 </Grid>
             </Grid>
             <TermsCheckbox />
-            <SignUpInButton btnText="Zarejestruj się"/>
+            <SignUpInButton disabled={loading} btnText="Zarejestruj się"/>
         </form>
     )
 }

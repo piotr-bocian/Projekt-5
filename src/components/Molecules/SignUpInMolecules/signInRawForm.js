@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import RememberMeCheckbox from '../../Atoms/SignUpInAtoms/rememberMeCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
-// import useHttp from '../../../hooks/useHttp/useHttp';
 
 const SignInRawForm = () => {
     const classes = useStyles();
@@ -16,7 +15,8 @@ const SignInRawForm = () => {
         passwordErr: '',
     });
 
-    const [redirect, setRedirect] = useState(false);
+    const [apiError, setApiError] = useState('');
+    const history = useHistory();
 
     const updateForm = (e) => {
         setForm({
@@ -50,29 +50,13 @@ const SignInRawForm = () => {
         return isError;
     }
 
-    // const httpHandler = useHttp(
-    //     // 'https://best-animal-shelter.herokuapp.com/api/login',
-    //     'http://localhost:5000/api/login',
-    //     'POST',        
-    //     {
-    //         email: form.email,
-    //         password: form.password
-    //     }
-    // );
-
-    // const setTokenInLocalStorage = async () => {
-    //     const resData = await httpHandler.makeHttpRequest();
-    //     const authToken = resData.token;
-    //     window.localStorage.setItem('x-auth-token', authToken);
-    //     return;
-    // }
-
     const handleForm = async (e) => {
-        const url = 'http://localhost:3000/api/login';
+        const url = 'http://localhost:5000/api/login';
         // const url = 'https://best-animal-shelter.herokuapp.com/api/login';
         e.preventDefault();
         const err = validateForm();
         if(!err) {
+            setApiError('');
             const loginResponse = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -85,30 +69,30 @@ const SignInRawForm = () => {
                 })
             });
             const data = await loginResponse.json();
-            window.localStorage.setItem('x-auth-token', data.token);
-            console.log('Logowanie...');
+            if(loginResponse.status >= 200 && loginResponse.status < 300){
+                window.localStorage.setItem('x-auth-token', data.token);
+                console.log('Logowanie...');
 
-            // setTokenInLocalStorage();
-            setForm({
-                //clear form
-                email: '',
-                emailErr: '',
-                password: '',
-                passwordErr: '',
-            });
-
-            setRedirect(true);
+                setForm({
+                    //clear form
+                    email: '',
+                    emailErr: '',
+                    password: '',
+                    passwordErr: '',
+                });
+                history.push("/useraccount");
+            } else {
+                setApiError(data.message);
+            }
+            
             
         }
-    }
-
-    if (redirect) {
-        return <Redirect to="/useraccount" />;
     }
 
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>
             <Grid container spacing={2}>
+                {apiError && <h4 style={{color:'red', marginBottom:'5px'}}>{apiError}</h4>}
                 <Grid item xs={12}>
                     <SignUpInTxtField 
                         name="email"
