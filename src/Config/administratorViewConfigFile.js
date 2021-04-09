@@ -22,7 +22,7 @@ export const administratorPaymentConfig = {
   ],
   buttonText: 'Wyświetl wszystkie płatności',
   configChildComponent: [
-    { title: 'Data płatności :', value: 'paymentDate', helper: false },
+    { title: 'Data płatności:', value: 'paymentDate', helper: false },
     { title: 'Kwota: ', value: 'amount', helper: false },
     {
       title: 'Typ płatności: ',

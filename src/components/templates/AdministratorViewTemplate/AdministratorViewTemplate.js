@@ -32,7 +32,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     state.validate
   );
 
-  console.log('PATYRZ TUTAJ', state);
+ 
   useEffect(() => {
     const getData = async () => {
       const data = await makeHttpRequest();

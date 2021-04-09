@@ -46,7 +46,7 @@ describe('Is Administrator Payments View with data fetched from API correct rend
     await waitFor(() => screen.getByText(/Data płatności:/i));
     expect(screen.getByText(/Kwota/i)).toBeInTheDocument();
     expect(screen.getByDisplayValue(/34/i)).toBeInTheDocument();
-    expect(screen.getByText(/2021-03-28/i)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(/2021-03-28/i)).toBeInTheDocument();
     expect(screen.getByText(/60609e9058b9550015ffe8d4/i)).toBeInTheDocument();
     expect(screen.getByText(/Id płatności:/i)).toBeInTheDocument();
     expect(screen.getByText(/Data płatności:/i)).toBeInTheDocument();
@@ -83,11 +83,11 @@ describe('Is Administrator Payments View with data fetched from API correct rend
         componentName={<AdministratorPayment />}
       />
     );
-    await waitFor(() => screen.getByText('Usuń płatność'));
-    await waitFor(() => screen.getByText('Edytuj płatność'));
-    await waitFor(() => screen.getByText('Uaktualnij płatność'));
-    expect(screen.getByText(/Usuń płatność/i)).toBeInTheDocument();
-    expect(screen.getByText(/Edytuj płatność/i)).toBeInTheDocument();
-    expect(screen.getByText(/Uaktualnij płatność/i)).toBeInTheDocument();
+    await waitFor(() => screen.getByText('Usuń'));
+    await waitFor(() => screen.getByText('Edytuj'));
+    await waitFor(() => screen.getByText('Uaktualnij'));
+    expect(screen.getByText(/Usuń/i)).toBeInTheDocument();
+    expect(screen.getByText(/Edytuj/i)).toBeInTheDocument();
+    expect(screen.getByText(/Uaktualnij/i)).toBeInTheDocument();
   });
 });
