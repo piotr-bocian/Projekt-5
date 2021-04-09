@@ -25,7 +25,7 @@ export const administratorAnimalsConfig = {
     {
       label: 'Status Adopcji',
       id: 'isAdopted',
-      filterOptions: ['', 'true', 'false'],
+      filterOptions: ['', 'Adoptowany', 'Nie adoptowany'],
     },
   ],
   buttonText: 'Wyświetl wszystkie zwierzęta',

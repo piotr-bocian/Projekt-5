@@ -58,13 +58,13 @@ describe('administrator navigation test', () => {
     const leftClick = { button: 0 };
     userEvent.click(screen.getByText(/Płatności/i), leftClick);
     await waitFor(() => screen.getByText(/Kwota/i));
-    await waitFor(() => screen.getByText(/Id płatności:/i));
+    await waitFor(() => screen.getByText(/Id dokumentu:/i));
     await waitFor(() => screen.getByText(/Data płatności:/i));
     expect(screen.getByText(/Kwota/i)).toBeInTheDocument();
     expect(screen.getByDisplayValue(/34/i)).toBeInTheDocument();
     expect(screen.getByDisplayValue(/2021-03-28/i)).toBeInTheDocument();
     expect(screen.getByText(/60609e9058b9550015ffe8d4/i)).toBeInTheDocument();
-    expect(screen.getByText(/Id płatności:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Id dokumentu:/i)).toBeInTheDocument();
     expect(screen.getByText(/Data płatności:/i)).toBeInTheDocument();
   });
 });

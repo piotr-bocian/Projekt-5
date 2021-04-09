@@ -72,7 +72,7 @@ function AdministratorPayment({
         }}
       >
         <StyledTypography>
-          <StyledPaymentText>Id płatności: </StyledPaymentText>
+          <StyledPaymentText>Id dokumentu: </StyledPaymentText>
           {payment._id}
         </StyledTypography>
 

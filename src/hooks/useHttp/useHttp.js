@@ -32,7 +32,6 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
     try {
       const response = await httpRequest();
       const data = await response.json();
-      // console.log(data);
       setIsLoading(false);
       setData(data);
       return data;

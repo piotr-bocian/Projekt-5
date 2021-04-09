@@ -1,6 +1,6 @@
 import React, { cloneElement, useEffect, useReducer, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import SelectPay from '../../Atoms/Select/Select';
@@ -26,6 +26,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const [search, setSearch] = useState('search');
 
   const querry = filter.length === 0 ? `${id}` : `?${search}=${filter}`;
+
   const { makeHttpRequest, isLoading } = useHttp(
     administratorConfig.url + querry,
     state.request,
@@ -33,12 +34,15 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     state.validate
   );
 
-  console.log( querry, dataFromAPI.length);
+  useEffect(() => {
+    setFilter('');
+    setId('');
+    setSearch('');
+  }, [administratorConfig.url]);
 
   useEffect(() => {
     const getData = async () => {
       const data = await makeHttpRequest();
-      console.log(data);
       try {
         if (data[administratorConfig.dataKey[0]]) {
           setDataFromAPI(data[administratorConfig.dataKey[0]]);
@@ -57,9 +61,12 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   //actions to api
   const searchBy = (e) => {
     setSearch(e.target.id);
-    if (e.target.value === 'Tak') {
+    if (e.target.value === 'Tak' || e.target.value === 'Adoptowany') {
       return setFilter('true');
-    } else if (e.target.value === 'Nie') {
+    } else if (
+      e.target.value === 'Nie' ||
+      e.target.value === 'Nie adoptowany'
+    ) {
       return setFilter('false');
     }
     setFilter(e.target.value);
