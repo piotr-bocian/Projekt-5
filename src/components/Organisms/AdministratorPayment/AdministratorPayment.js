@@ -52,7 +52,13 @@ function AdministratorPayment({
     });
   };
 
-  return (
+  return payment.length === 0 ? (
+    <FlexWrapper>
+      <StyledTypography style={{ fontSize: '40px' }}>
+        Brak Danych
+      </StyledTypography>
+    </FlexWrapper>
+  ) : (
     <>
       <Grid
         key={payment._id}
@@ -87,9 +93,7 @@ function AdministratorPayment({
                 <>
                   <TextField
                     fullWidth
-                    name={
-                      iterate.value
-                    }
+                    name={iterate.value}
                     value={state[iterate.value]}
                     onChange={inputPaymentHandler}
                   />
@@ -98,7 +102,12 @@ function AdministratorPayment({
                   )}
                 </>
               ) : (
-                <TextField textarea='true' fullWidth value={payment[iterate.value]} disabled />
+                <TextField
+                  textarea="true"
+                  fullWidth
+                  value={payment[iterate.value]}
+                  disabled
+                />
               )}
             </StyledTypography>
           );

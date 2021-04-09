@@ -33,7 +33,8 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     state.validate
   );
 
-  console.log(administratorConfig.url + querry);
+  console.log( querry, dataFromAPI.length);
+
   useEffect(() => {
     const getData = async () => {
       const data = await makeHttpRequest();
@@ -51,11 +52,16 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
       }
     };
     getData();
-  }, [filter, id, state, administratorConfig.dataKey]);
+  }, [filter, search, id, state, administratorConfig.dataKey]);
 
   //actions to api
   const searchBy = (e) => {
-    setSearch(e.target.id)
+    setSearch(e.target.id);
+    if (e.target.value === 'Tak') {
+      return setFilter('true');
+    } else if (e.target.value === 'Nie') {
+      return setFilter('false');
+    }
     setFilter(e.target.value);
   };
 

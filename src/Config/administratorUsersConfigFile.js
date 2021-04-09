@@ -8,12 +8,12 @@ export const administratorUsersConfig = {
     {
       label: 'Wyszukaj wszystkich pracowników',
       id: 'isAdmin',
-      filterOptions: ['', 'true', 'false'],
+      filterOptions: ['', 'Tak', 'Nie'],
     },
     {
       label: 'Wyszukaj wszystkich wolontariuszy',
       id: 'isVolunteer',
-      filterOptions: ['', 'true', 'false'],
+      filterOptions: ['', 'Tak', 'Nie'],
     },
   ],
   buttonText: 'Wyświetl wszystkich użytkowników',
