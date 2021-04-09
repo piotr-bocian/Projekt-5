@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+  margin-right: 30px;
   ${Label} {
     margin: 10px auto;
   }

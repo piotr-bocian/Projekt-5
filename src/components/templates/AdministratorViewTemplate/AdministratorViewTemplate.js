@@ -32,10 +32,11 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     state.validate
   );
 
- 
+console.log( administratorConfig.url + querry)
   useEffect(() => {
     const getData = async () => {
       const data = await makeHttpRequest();
+      console.log(data)
       try {
         if (data[administratorConfig.dataKey[0]]) {
           setDataFromAPI(data[administratorConfig.dataKey[0]]);
@@ -51,6 +52,8 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     getData();
   }, [filter, id, state, administratorConfig.dataKey]);
 
+
+//actions to api
   const searchBy = (e) => setFilter(e.target.value);
 
   const onLoadAllData = async () => {

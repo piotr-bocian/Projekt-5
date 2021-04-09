@@ -47,7 +47,7 @@ describe('administrator navigation test', () => {
     expect(screen.getByText(/Użytkownicy/i)).toBeInTheDocument();
   });
 
-  it('checks that the data is downloaded after the user performed an action  ', async () => {
+  it('checks that the data is downloaded after the user performed an action', async () => {
     const history = createMemoryHistory();
     render(
       <Router history={history}>

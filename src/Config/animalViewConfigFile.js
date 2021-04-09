@@ -1,8 +1,8 @@
 import { validatePayment } from '../helpers/paymentHelpers/paymentValidate';
 import { URL } from '../helpers/URL/url';
-const type = [' ', 'pies', 'kot', 'inne'];
-const płeć = [' ', 'męska', 'żeńska'];
-const wielkość = [' ', 'mały', 'mały/średni', 'średni', 'średni/duży', 'duży'];
+const type = ['', 'pies', 'kot', 'inne'];
+const gender = ['', 'męska', 'żeńska'];
+const size = [' ', 'mały', 'mały/średni', 'średni', 'średni/duży', 'duży'];
 export const administratorAnimalsConfig = {
   url: `${URL}/animals`,
   dataKey: ['animal', 'animals', 'results'],
@@ -16,12 +16,12 @@ export const administratorAnimalsConfig = {
     {
       label: 'Filtr płeć',
       id: 'Płeć',
-      filterOptions: płeć,
+      filterOptions: gender,
     },
     {
       label: 'Filtr wielkość',
       id: 'Wielkośc',
-      filterOptions: wielkość,
+      filterOptions: size,
     },
   ],
   buttonText: 'Wyświetl wszystkie zwierzęta',
