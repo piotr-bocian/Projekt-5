@@ -5,11 +5,6 @@ export const administratorVolunteerFormConfig = {
   dataKey: ['results', 'volunteerForms', 'results'],
   validate: null,
   select: [
-    {
-      label: 'Godzina',
-      id: 'Godzina wizyty',
-      filterOptions: ['dopisać', 'filtr'],
-    },
   ],
   buttonText: 'Wyświetl wszystkich wolontariuszy',
   configChildComponent: [

@@ -107,7 +107,7 @@ function AdministratorPayment({
         {payment.userID ? (
           <StyledTypography>
             <StyledPaymentText>Użytkownik: </StyledPaymentText>
-            {payment.userId}
+            {payment.userId || payment.userID}
           </StyledTypography>
         ) : null}
 

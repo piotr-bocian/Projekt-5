@@ -5,11 +5,7 @@ export const administratorVisitsConfig = {
   dataKey: ['results', 'adoption', 'results'],
   validate: null,
   select: [
-    {
-      label: 'Godzina',
-      id: 'Godzina wizyty',
-      filterOptions: ['dopisać', 'filtr'],
-    },
+
   ],
   buttonText: 'Wyświetl wszystkie wizyty',
   configChildComponent: [
@@ -17,7 +13,6 @@ export const administratorVisitsConfig = {
     { title: 'Godzina wizyty :', value: 'visitTime', helper: false },
     { title: 'Czas trwania :', value: 'duration', helper: false },
     { title: 'Czy wizyta się odbyła :', value: 'isVisitDone', helper: false },
-    { title: 'Uzytkownik :', value: 'userID', helper: false },
     { title: 'Zwierzę :', value: 'animalID', helper: false },
   ],
   initialState: {

@@ -62,6 +62,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const onLoadAllData = async () => {
     setFilter('');
     setId('');
+    setSearch('');
     dispatch({ type: httpMethods.GET });
   };
 
@@ -69,6 +70,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     const route = '/' + handler;
     setId(route);
     setFilter('');
+    setSearch('');
     dispatch({ type: httpMethods.DELETE });
   };
 
@@ -76,6 +78,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     const route = '/' + handler;
     setId(route);
     setFilter('');
+    setSearch('');
     dispatch({
       type: httpMethods.PUT,
       validate: administratorConfig.validate,

@@ -5,11 +5,7 @@ export const administratorAdoptionConfig = {
   dataKey: [false, 'adoption', 'results'], //DO POPRAWY NA BACKENDZIE
   validate: null,
     select: [
-      {
-        label: 'BRAK FILTROW',
-        id: 'BRAK',
-        filterOptions: ['NIE', 'MA', 'FILTRÓW'],
-      },
+
     ],
   buttonText: 'Wyświetl wszystkie formularze',
   configChildComponent: [
@@ -17,10 +13,6 @@ export const administratorAdoptionConfig = {
       title: 'Opis: ',
       value: 'content',
       helper: false,
-    },
-    {
-      title: 'Użytkownik: ',
-      value: 'userID',
     },
     {
       title: 'Zwierze: ',

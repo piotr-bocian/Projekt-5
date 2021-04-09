@@ -1,4 +1,3 @@
-import { validatePayment } from '../helpers/paymentHelpers/paymentValidate';
 import { URL } from '../helpers/URL/url';
 const type = ['', 'pies', 'kot', 'inne'];
 const gender = ['', 'męska', 'żeńska'];
@@ -6,7 +5,7 @@ const size = [' ', 'mały', 'mały/średni', 'średni', 'średni/duży', 'duży'
 export const administratorAnimalsConfig = {
   url: `${URL}/animals`,
   dataKey: ['animal', 'animals', 'results'],
-  validate: validatePayment,
+  validate: null,
   select: [
     {
       label: 'Filtr gatunek',
