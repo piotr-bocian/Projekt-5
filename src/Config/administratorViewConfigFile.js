@@ -11,12 +11,12 @@ export const administratorPaymentConfig = {
   select: [
     {
       label: 'Filtr metoda płatności',
-      id: 'Metody płatności',
+      id: 'paymentMethod',
       filterOptions: paymentMethod,
     },
     {
       label: 'Filtr typ płatności',
-      id: 'Typ płatności',
+      id: 'typeOfPayment',
       filterOptions: typeOfPayment,
     },
   ],

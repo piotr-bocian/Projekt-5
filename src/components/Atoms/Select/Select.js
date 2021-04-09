@@ -26,7 +26,7 @@ const SelectPay = ({ onChange, optionType, name=null, id, label='Filtr płatnoś
           onChange={onChange}
         >
           {optionType.map((type, index) => (
-            <option key={index} value={type}>
+            <option key={index} value={type} id={id}>
               {type}
             </option>
           ))}

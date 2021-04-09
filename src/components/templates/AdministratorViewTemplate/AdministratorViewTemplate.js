@@ -23,8 +23,9 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const [dataFromAPI, setDataFromAPI] = useState([]);
   const [filter, setFilter] = useState('');
   const [id, setId] = useState('');
+  const [search, setSearch] = useState('search');
 
-  const querry = filter.length === 0 ? `${id}` : `?search=${filter}`;
+  const querry = filter.length === 0 ? `${id}` : `?${search}=${filter}`;
   const { makeHttpRequest, isLoading } = useHttp(
     administratorConfig.url + querry,
     state.request,
@@ -32,11 +33,11 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     state.validate
   );
 
-console.log( administratorConfig.url + querry)
+  console.log(administratorConfig.url + querry);
   useEffect(() => {
     const getData = async () => {
       const data = await makeHttpRequest();
-      console.log(data)
+      console.log(data);
       try {
         if (data[administratorConfig.dataKey[0]]) {
           setDataFromAPI(data[administratorConfig.dataKey[0]]);
@@ -52,9 +53,11 @@ console.log( administratorConfig.url + querry)
     getData();
   }, [filter, id, state, administratorConfig.dataKey]);
 
-
-//actions to api
-  const searchBy = (e) => setFilter(e.target.value);
+  //actions to api
+  const searchBy = (e) => {
+    setSearch(e.target.id)
+    setFilter(e.target.value);
+  };
 
   const onLoadAllData = async () => {
     setFilter('');

@@ -10,18 +10,23 @@ export const administratorAnimalsConfig = {
   select: [
     {
       label: 'Filtr gatunek',
-      id: 'Gatunek',
+      id: 'animalType',
       filterOptions: type,
     },
     {
       label: 'Filtr płeć',
-      id: 'Płeć',
+      id: 'gender',
       filterOptions: gender,
     },
     {
       label: 'Filtr wielkość',
-      id: 'Wielkośc',
+      id: 'size',
       filterOptions: size,
+    },
+    {
+      label: 'Status Adopcji',
+      id: 'isAdopted',
+      filterOptions: ['', 'true', 'false'],
     },
   ],
   buttonText: 'Wyświetl wszystkie zwierzęta',

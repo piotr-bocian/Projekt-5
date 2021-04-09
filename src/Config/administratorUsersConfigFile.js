@@ -6,23 +6,23 @@ export const administratorUsersConfig = {
   validate: null,
   select: [
     {
-      label: 'Godzina',
-      id: 'Godzina wizyty',
-      filterOptions: ['dopisać', 'filtr'],
+      label: 'Wyszukaj wszystkich pracowników',
+      id: 'isAdmin',
+      filterOptions: ['', 'true', 'false'],
+    },
+    {
+      label: 'Wyszukaj wszystkich wolontariuszy',
+      id: 'isVolunteer',
+      filterOptions: ['', 'true', 'false'],
     },
   ],
-  buttonText: 'Wyświetl wszystkich pracowników',
+  buttonText: 'Wyświetl wszystkich użytkowników',
   configChildComponent: [
     { title: 'Imie :', value: 'firstName', helper: false },
     { title: 'Nazwisko :', value: 'lastName', helper: false },
     { title: 'Email :', value: 'email', helper: false },
     { title: 'Telefon :', value: 'mobile', helper: false },
     //  { title: 'Zdjęcie :', value: 'image', helper: false },
-    {
-      title: 'Super Admin :',
-      value: 'isSuperAdmin',
-      helper: false,
-    },
     {
       title: 'Super Admin :',
       value: 'isSuperAdmin',
