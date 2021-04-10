@@ -1,10 +1,13 @@
 import React from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 const UserPage = () => {
     const { currentUser, err, logout } = useAuth();
+    const history = useHistory();
     function handleLogout() {
         logout();
+        history.push("/");
     }
 
     if(err){

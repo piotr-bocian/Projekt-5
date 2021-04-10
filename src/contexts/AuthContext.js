@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext();
 
@@ -12,26 +11,24 @@ export function AuthProvider({ children }) {
     // const url = 'https://best-animal-shelter.herokuapp.com/api/users/me;
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
-    const history = useHistory()
+    const [isLogged, setIsLogged] = useState(false);
 
     const[err, setErr] = useState('');
     const authToken = window.localStorage.getItem('x-auth-token');
 
 
     function logout(){
-        if(localStorage['x-auth-token']){
-            window.localStorage.removeItem('x-auth-token');
-            history.push("/");
-            return;
+        if(!localStorage['x-auth-token']){
+            return alert("Żaden użytkownik nie jest zalogowany.");
         }
-        
-        return alert("Żaden użytkownik nie jest zalogowany.");
+        window.localStorage.removeItem('x-auth-token');
+        setIsLogged(false);
     }
-
     useEffect(() => {
         setCurrentUser('');
         if(localStorage['x-auth-token']) {
             setLoading(true);
+            setIsLogged(true);
             ( async() => {
                 try {
                     setErr('');
@@ -39,17 +36,15 @@ export function AuthProvider({ children }) {
                         headers: {
                             Accept: 'application/json',
                             'Content-Type': 'application/json',
-                            // 'x-auth-token': window.localStorage.getItem('x-auth-token')
                             'x-auth-token': authToken
                         },
                     });
                     const userData = await response.json();
-                    console.log('userData: ',userData);
                     if(response.status >= 200 && response.status < 300) {
                         setCurrentUser(userData);
+                        setIsLogged(true);
                     } else {
                         setErr(userData.message);
-                        // alert(userData.message);
                     }
     
                 } catch (err) {
@@ -66,7 +61,8 @@ export function AuthProvider({ children }) {
     const value = {
         currentUser,
         err,
-        logout
+        logout,
+        isLogged
     }
 
     return (

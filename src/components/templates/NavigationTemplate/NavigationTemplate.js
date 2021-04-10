@@ -14,6 +14,7 @@ import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider } from '../../../contexts/AuthContext';
+import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,6 +40,7 @@ function NavigationView() {
     <ThemeProvider theme={theme}>
         <Router>
           <NavigationTemplate>
+            {/* <AuthProvider> */}
             <Switch>
               <AuthProvider>
                 <Route path="/" exact>
@@ -71,11 +73,10 @@ function NavigationView() {
                 </Route>
                 <Route path="/about"></Route>
                 <Route path="/contact"></Route>
-                <Route path="/useraccount">
-                  <UserPage />
-                </Route>
+                <PrivateRoute path="/useraccount" component={UserPage} />
               </AuthProvider>
             </Switch>
+            {/* </AuthProvider> */}
           </NavigationTemplate>
         </Router>
     </ThemeProvider>
