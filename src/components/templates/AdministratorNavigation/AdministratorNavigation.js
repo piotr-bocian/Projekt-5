@@ -16,6 +16,7 @@ import { administratorVisitsConfig } from '../../../Config/adoptionVisitConfigFi
 import { administratorPostConfig } from '../../../Config/postConfigFile';
 import { administratorVolunteerFormConfig } from '../../../Config/administratorVolunteerFormConfig';
 import { administratorUsersConfig } from '../../../Config/administratorUsersConfigFile';
+import AdministratorHomePage from '../../Organisms/AdministratorHomePage/AdministratorHomePage';
 
 const NavigationTemplate = ({ children }) => {
   return (
@@ -37,7 +38,7 @@ function AdministratorNavigation() {
         </Title>
         <Switch>
           <Route path="/" exact>
-            {/* odpowiedni komponent */}
+            <AdministratorHomePage />
           </Route>
           <Route path="/login"></Route>
 

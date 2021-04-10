@@ -1,6 +1,6 @@
 import React, { cloneElement, useEffect, useReducer, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { Button, Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import SelectPay from '../../Atoms/Select/Select';
@@ -31,7 +31,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     administratorConfig.url + querry,
     state.request,
     state.payload,
-    state.validate
+    state.validate,
   );
 
   useEffect(() => {

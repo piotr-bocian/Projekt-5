@@ -30,21 +30,21 @@ function AdministratorPayment({
   deletePayment,
   updatePayment = null,
 }) {
-  //PROBLEM, TWORZY SIE TYLKO JEDNO POLE STANU, W INPUTACH NIE WIDAĆ DANYCH W MOMENCIE AKTUALIZACJI
   let initialState;
   for (let [key, value] of Object.entries(createState)) {
-    initialState = {
-      [key]: payment[value],
-    };
+    initialState = { [key]: payment[value], ...initialState };
   }
-
   let deleteOnePayment = () => deletePayment(payment._id);
   if (!deletePayment) {
     deleteOnePayment = null;
   }
 
+  //PROBLEM, STAN WYMAG PRZELADOWANIA
   const [toggle, setToggle] = useState(false);
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState((prevState) => {
+      return { ...prevState, ...initialState };
+    });
+
   const inputPaymentHandler = (e) => {
     setState({
       ...state,
@@ -52,6 +52,8 @@ function AdministratorPayment({
     });
   };
 
+  // console.log('initialState', initialState);
+  // console.log('State', state);
   return payment.length === 0 ? (
     <FlexWrapper>
       <StyledTypography style={{ fontSize: '40px' }}>
@@ -75,15 +77,6 @@ function AdministratorPayment({
           <StyledPaymentText>Id dokumentu: </StyledPaymentText>
           {payment._id}
         </StyledTypography>
-
-        {/* <StyledTypography>
-          <StyledPaymentText>Data płatności: </StyledPaymentText>
-          <StyledPaymentText
-            text="Data płatności: "
-            value={payment.paymentDate}
-          />
-          {payment.paymentDate ? payment.paymentDate.substr(0, 10) : ''}
-        </StyledTypography> */}
 
         {renderData.map((iterate, id) => {
           return (
@@ -148,4 +141,4 @@ function AdministratorPayment({
   );
 }
 
-export default React.memo(AdministratorPayment);
+export default AdministratorPayment;
