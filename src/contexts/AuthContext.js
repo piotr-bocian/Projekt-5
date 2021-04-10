@@ -15,7 +15,8 @@ export function AuthProvider({ children }) {
     const history = useHistory()
 
     const[err, setErr] = useState('');
-    // const authToken = window.localStorage.getItem('x-auth-token');
+    const authToken = window.localStorage.getItem('x-auth-token');
+
 
     function logout(){
         if(localStorage['x-auth-token']){
@@ -38,7 +39,8 @@ export function AuthProvider({ children }) {
                         headers: {
                             Accept: 'application/json',
                             'Content-Type': 'application/json',
-                            'x-auth-token': window.localStorage.getItem('x-auth-token')
+                            // 'x-auth-token': window.localStorage.getItem('x-auth-token')
+                            'x-auth-token': authToken
                         },
                     });
                     const userData = await response.json();
@@ -56,10 +58,10 @@ export function AuthProvider({ children }) {
                 setLoading(false);
             })()
         }
-        // setLoading(false);
+        setLoading(false);
         return;
         
-    }, []);
+    }, [authToken]);
 
     const value = {
         currentUser,
