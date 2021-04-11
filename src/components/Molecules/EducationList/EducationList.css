@@ -31,3 +31,10 @@
 .wrong-ul .icon{
     color: rgb(204, 25, 61);
 }
+
+@media (max-width: 768px){
+    .education-list-wrapper{
+        align-items: flex-start;
+        margin: 0 1rem;
+    }
+}

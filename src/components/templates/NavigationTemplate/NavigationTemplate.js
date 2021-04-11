@@ -78,6 +78,7 @@ function NavigationView() {
             <Route path="/education">
               <Wrapper>
                 <Education />
+                {/* <VolunteerForm /> */}
               </Wrapper>
             </Route>
           </Switch>

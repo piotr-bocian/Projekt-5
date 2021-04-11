@@ -42,3 +42,18 @@
     margin-left: 0.5rem;
     font-size: 1.1rem;
 }
+
+@media (max-width: 768px){
+    .footer{
+        display: block;
+    }
+
+    .footer-section:first-child{
+        flex-direction: column;
+    }
+
+    .logo{
+        transform: translateX(0);
+    }
+    
+}
