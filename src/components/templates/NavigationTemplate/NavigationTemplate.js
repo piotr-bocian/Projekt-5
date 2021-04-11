@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
@@ -7,6 +7,7 @@ import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
+import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
@@ -14,6 +15,8 @@ import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+
+// export const Wrapper = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,7 +30,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation />
+        <Navigation makeNavigation={navigationArrayWithRoutes} />
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -37,61 +40,37 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <NavigationTemplate>
-          <Switch>
-            <Route path="/" exact>
-              {/* odpowiedni komponent */}
-              <MainPage />
-              {/* <Wrapper>
-                <AdotpionForm />
-              </Wrapper> */}
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/registration">
-              <SignUpForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/login">
-              <SignInForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/news"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/animals" exact component={Animals} />
-            <Route path="/animals/:id" component={AnimalPage} />
-          </Switch>
-          <Switch>
-            <Route path="/adoption">
-              <Wrapper>
-                <AdoptionVisitPage />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/education">
-              <Wrapper>
-                <VolunteerForm />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/howtohelp">
-              <PaymentForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/about"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/contact"></Route>
-          </Switch>
-        </NavigationTemplate>
-      </Router>
+      <NavigationTemplate>
+        <Switch>
+          <Route path="/" exact>
+            <MainPage />
+          </Route>
+          <Route path="/registration">
+            <SignUpForm />
+          </Route>
+          <Route path="/login">
+            <SignInForm />
+          </Route>
+          <Route path="/news"></Route>
+          <Route path="/animals" exact component={Animals} />
+          <Route path="/animals/:id" component={AnimalPage} />
+          <Route path="/adoption">
+            <Wrapper>
+              <AdoptionVisitPage />
+            </Wrapper>
+          </Route>
+          <Route path="/education">
+            <Wrapper>
+              <VolunteerForm />
+            </Wrapper>
+          </Route>
+          <Route path="/howtohelp">
+            <PaymentForm />
+          </Route>
+          <Route path="/about"></Route>
+          <Route path="/contact"></Route>
+        </Switch>
+      </NavigationTemplate>
     </ThemeProvider>
   );
 }

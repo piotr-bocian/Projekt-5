@@ -1,6 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+// import { ThemeProvider } from 'styled-components';
+// import { theme } from '../styles/styles';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
+import AdministratorNavigation from '../components/templates/AdministratorNavigation/AdministratorNavigation';
 
 const theme = createMuiTheme({
   palette: {
@@ -14,9 +18,14 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <NavigationView />
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <AdministratorNavigation />
+          {/* <NavigationView/> */}
+        </Router>
+      </ThemeProvider>
+    </>
   );
 }
 
