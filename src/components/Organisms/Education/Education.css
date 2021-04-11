@@ -1,3 +1,5 @@
-.grid-container{
-    margin-top: 10rem;
+@media (max-width: 768px){
+    .grid-container{
+        margin-top: 10rem;
+    }
 }
