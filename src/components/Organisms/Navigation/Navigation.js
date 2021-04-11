@@ -8,17 +8,7 @@ import { GridItemRegistrationWrapper, StyledNavLink } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
 
-const Navigation = () => {
-  const navigationArrayWithRoutes = [
-    { name: 'Aktualności', route: '/news' },
-    { name: 'Zwierzęta', route: '/animals' },
-    { name: 'Adopcja', route: '/adoption' },
-    { name: 'Edukacja', route: '/education' },
-    { name: 'Jak pomóc', route: '/howtohelp' },
-    { name: 'O nas', route: '/about' },
-    { name: 'Kontakt', route: '/contact' },
-  ];
-
+const Navigation = ({ makeNavigation, user=true }) => {
   return (
     <>
       <NavLink to="/" exact>
@@ -26,10 +16,15 @@ const Navigation = () => {
       </NavLink>
 
       <GridItemRegistrationWrapper>
-        <StyledNavLink to="/registration">
-          <NavigationText margin="0" mainText="Rejestracja" />
-        </StyledNavLink>
-        <TextSeparator />
+        {user && (
+          <>
+            <StyledNavLink to="/registration">
+              <NavigationText margin="0" mainText="Rejestracja" />
+            </StyledNavLink>
+            <TextSeparator />
+          </>
+        )}
+
         <StyledNavLink to="/login">
           <NavigationText mainText="Logowanie" />
         </StyledNavLink>
@@ -37,7 +32,7 @@ const Navigation = () => {
 
       <GridItemMenuWrapper>
         <FlexWrapper>
-          {navigationArrayWithRoutes.map((nav, id) => {
+          {makeNavigation.map((nav, id) => {
             return (
               <NavigationTextWithRoutes
                 key={id}

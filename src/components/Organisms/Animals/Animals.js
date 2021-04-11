@@ -3,10 +3,11 @@ import { AnimalsForAdoption } from '../../Atoms/HeaderAnimalsForAdoption/HeaderA
 import { WaitingFiltersFrame } from '../../Molecules/WaitingFiltersFrame/WaitingFiltersFrame.js';
 import { AllAnimalsGrid } from '../../Molecules/AnimalsGrid/AnimalsGrid.js';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
+import AnimalLoader from '../../Loaders/AnimalLoader/AnimalLoader';
 import useHttp from '../../../hooks/useHttp/useHttp';
 
 
-export function Animals (props) {
+export function Animals () {
     // const classes = useStyles();
     const [animals, setAnimals] = useState([]);
     // const [selectedButton, setSelectedButton] = useState('');
@@ -19,17 +20,16 @@ export function Animals (props) {
     useEffect(() => {
         handler.makeHttpRequest()
             .then((result) => {                
-                    setAnimals(result.animals.results);
-                    console.log('elo')
+                setAnimals(result.animals.results);
+                console.log('elo')
             });
     }, [])
 
 
-    console.log(animals);
     return handler.isLoading ? (
-        <div></div>) :
+        <AnimalLoader></AnimalLoader>) :
         (
-        <div>
+        <div className='animals'>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
             <WaitingFiltersFrame setAnimals={setAnimals}></WaitingFiltersFrame>
             <AllAnimalsGrid animals={animals}></AllAnimalsGrid>

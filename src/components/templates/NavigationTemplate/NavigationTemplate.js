@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
@@ -7,15 +7,21 @@ import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
-import { Animals } from '../../Organisms/Animals.js/Animals';
+import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
+import { Animals } from '../../Organisms/Animals/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+<<<<<<< HEAD
 import Education from '../../Organisms/Education/Education';
 
+=======
+
+// export const Wrapper = styled.div`
+>>>>>>> development
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,7 +35,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation />
+        <Navigation makeNavigation={navigationArrayWithRoutes} />
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -39,6 +45,7 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
+<<<<<<< HEAD
       <Router>
         <NavigationTemplate>
           <Switch>
@@ -95,6 +102,39 @@ function NavigationView() {
           </Switch>
         </NavigationTemplate>
       </Router>
+=======
+      <NavigationTemplate>
+        <Switch>
+          <Route path="/" exact>
+            <MainPage />
+          </Route>
+          <Route path="/registration">
+            <SignUpForm />
+          </Route>
+          <Route path="/login">
+            <SignInForm />
+          </Route>
+          <Route path="/news"></Route>
+          <Route path="/animals" exact component={Animals} />
+          <Route path="/animals/:id" component={AnimalPage} />
+          <Route path="/adoption">
+            <Wrapper>
+              <AdoptionVisitPage />
+            </Wrapper>
+          </Route>
+          <Route path="/education">
+            <Wrapper>
+              <VolunteerForm />
+            </Wrapper>
+          </Route>
+          <Route path="/howtohelp">
+            <PaymentForm />
+          </Route>
+          <Route path="/about"></Route>
+          <Route path="/contact"></Route>
+        </Switch>
+      </NavigationTemplate>
+>>>>>>> development
     </ThemeProvider>
   );
 }
