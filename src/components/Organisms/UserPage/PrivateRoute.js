@@ -9,7 +9,21 @@ export default function PrivateRoute({ component: Component, ...rest }) {
         <Route
          {...rest}
          render={props => {
-            return isLogged ? <Component {...props} /> : <Redirect to="/" exact />
+            if(isLogged) {
+                return <Component {...props} /> 
+            } else {
+                return(
+                    <Redirect 
+                        to={{
+                            pathname: "/",
+                            state: {
+                                from: props.location
+                            }
+                        }}
+                    />
+                );
+                
+            } 
          }}
         ></Route>
     )

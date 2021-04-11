@@ -5,6 +5,7 @@ import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import RememberMeCheckbox from '../../Atoms/SignUpInAtoms/rememberMeCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const SignInRawForm = () => {
     const classes = useStyles();
@@ -16,6 +17,8 @@ const SignInRawForm = () => {
     });
 
     const [apiError, setApiError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { signIn, err } = useAuth();
     const history = useHistory();
 
     const updateForm = (e) => {
@@ -51,28 +54,14 @@ const SignInRawForm = () => {
     }
 
     const handleForm = async (e) => {
-        const url = 'http://localhost:5000/api/login';
-        // const url = 'https://best-animal-shelter.herokuapp.com/api/login';
         e.preventDefault();
-        const err = validateForm();
-        if(!err) {
+        const error = validateForm();
+        if(!error) {
             setApiError('');
-            const loginResponse = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: form.email,
-                    password: form.password
-                })
-            });
-            const data = await loginResponse.json();
-            if(loginResponse.status >= 200 && loginResponse.status < 300){
-                window.localStorage.setItem('x-auth-token', data.token);
-                console.log('Logowanie...');
+            setLoading(true);
+            await signIn(form.email, form.password);
 
+            if(localStorage.getItem('x-auth-token')){
                 setForm({
                     //clear form
                     email: '',
@@ -82,9 +71,37 @@ const SignInRawForm = () => {
                 });
                 history.push("/useraccount");
             } else {
-                setApiError(data.message);
+                setApiError(err);
             }
+            // const loginResponse = await fetch(url, {
+            //     method: 'POST',
+            //     headers: {
+            //         Accept: 'application/json',
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({
+            //         email: form.email,
+            //         password: form.password
+            //     })
+            // });
+            // const data = await loginResponse.json();
+            // if(loginResponse.status >= 200 && loginResponse.status < 300){
+            //     window.localStorage.setItem('x-auth-token', data.token);
+            //     console.log('Logowanie...');
+
+            //     setForm({
+            //         //clear form
+            //         email: '',
+            //         emailErr: '',
+            //         password: '',
+            //         passwordErr: '',
+            //     });
+            //     history.push("/useraccount");
+            // } else {
+            //     setApiError(data.message);
+            // }
         }
+        setLoading(false);
     }
 
     return(
@@ -118,7 +135,7 @@ const SignInRawForm = () => {
                 </Grid>
             </Grid>
             <RememberMeCheckbox />
-            <SignUpInButton btnText="Zaloguj się"/>
+            <SignUpInButton disable={loading} btnText="Zaloguj się"/>
         </form>
     )
 }
