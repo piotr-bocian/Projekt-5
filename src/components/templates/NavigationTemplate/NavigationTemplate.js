@@ -14,6 +14,8 @@ import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import Education from '../../Organisms/Education/Education';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -75,7 +77,7 @@ function NavigationView() {
           <Switch>
             <Route path="/education">
               <Wrapper>
-                <VolunteerForm />
+                <Education />
               </Wrapper>
             </Route>
           </Switch>
