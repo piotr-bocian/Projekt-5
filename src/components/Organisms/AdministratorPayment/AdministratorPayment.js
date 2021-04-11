@@ -23,12 +23,25 @@ const StyledTypography = withStyles(() => ({
   },
 }))(Typography);
 
+const StyledButton = withStyles(() => ({
+  root: {
+    margin: '0 auto',
+    fontFamily: 'Roboto',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '15px',
+    flexWrap: 'wrap',
+  },
+}))(Button);
+
 function AdministratorPayment({
   renderData,
   createState,
   payment,
   deletePayment,
   updatePayment = null,
+  take = null,
 }) {
   let initialState;
   for (let [key, value] of Object.entries(createState)) {
@@ -42,18 +55,22 @@ function AdministratorPayment({
   //PROBLEM, STAN WYMAG PRZELADOWANIA
   const [toggle, setToggle] = useState(false);
   const [state, setState] = useState((prevState) => {
-      return { ...prevState, ...initialState };
-    });
+    return { ...prevState, ...initialState };
+  });
 
   const inputPaymentHandler = (e) => {
     setState({
       ...state,
+      ...initialState,
       [e.target.name]: e.target.value,
     });
   };
-
+  // console.log('RENDER');
   // console.log('initialState', initialState);
   // console.log('State', state);
+
+
+
   return payment.length === 0 ? (
     <FlexWrapper>
       <StyledTypography style={{ fontSize: '40px' }}>
@@ -107,10 +124,13 @@ function AdministratorPayment({
         })}
 
         {payment.userID ? (
-          <StyledTypography>
+          <StyledButton
+            style={{ border: '2px solid black' }}
+            onClick={() => take(payment.userId || payment.userID)}
+          >
             <StyledPaymentText>Użytkownik: </StyledPaymentText>
             {payment.userId || payment.userID}
-          </StyledTypography>
+          </StyledButton>
         ) : null}
 
         <FlexWrapper style={{ margin: '20px 20px 0' }}>

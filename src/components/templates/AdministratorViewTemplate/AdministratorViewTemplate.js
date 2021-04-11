@@ -7,11 +7,11 @@ import SelectPay from '../../Atoms/Select/Select';
 import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 import httpReducer from '../../../helpers/httpReducer/httpReducer';
 import { Center } from './AdministratorViewTemplate.styles';
+import { administratorUsersConfig } from '../../../Config/administratorUsersConfigFile';
 
 const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const renderData = administratorConfig.configChildComponent;
   const makeState = administratorConfig.initialState;
-
   const initialState = {
     url: administratorConfig.url,
     request: 'GET',
@@ -24,14 +24,15 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const [filter, setFilter] = useState('');
   const [id, setId] = useState('');
   const [search, setSearch] = useState('search');
-
+  const [renderDataForUser, setRenderDataForUser] = useState(null);
+  const [makeStateForUser, setMakeStateForUser] = useState(null);
   const querry = filter.length === 0 ? `${id}` : `?${search}=${filter}`;
 
   const { makeHttpRequest, isLoading } = useHttp(
     administratorConfig.url + querry,
     state.request,
     state.payload,
-    state.validate,
+    state.validate
   );
 
   useEffect(() => {
@@ -77,6 +78,15 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     setId('');
     setSearch('');
     dispatch({ type: httpMethods.GET });
+  };
+
+  const takeOneId = async (handler) => {
+    const route = '/' + handler;
+    const userIdRaw = await fetch('http://localhost:5000/api/users' + route);
+    const userId = await userIdRaw.json();
+    setDataFromAPI(userId.user);
+    setRenderDataForUser(administratorUsersConfig.configChildComponent);
+    setMakeStateForUser(administratorUsersConfig.initialState);
   };
 
   const deleteOne = async (handler) => {
@@ -147,13 +157,14 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
                   key: id,
                   deletePayment: deleteOne,
                   updatePayment: updateOne,
+                  take: takeOneId,
                 });
               })
             : cloneElement(componentName, {
                 payment: dataFromAPI,
                 key: id,
-                renderData: renderData,
-                createState: makeState,
+                renderData: renderDataForUser || renderData,
+                createState: makeStateForUser || makeState,
               })}
         </Grid>
       </Grid>
