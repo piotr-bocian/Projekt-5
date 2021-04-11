@@ -33,7 +33,7 @@ export function WaitingFiltersFrame (props) {
       <div>
         <div className={classes.root}>
             <WaitingText>
-                Czekam na Ciebie
+                CZEKAM WŁAŚNIE NA CIEBIE
                 <AnimalPaw></AnimalPaw>
             </WaitingText>
         </div>

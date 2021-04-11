@@ -6,8 +6,8 @@ export const AnimalPaw = styled.div`
    background: url(${paw});
    background-repeat: no-repeat;
    object-fit: contain;
-   width: 1.1em;
-   height: 1.1em;
+   width: 1.3em;
+   height: 1.3em;
    display: inline-block;
    margin-left: 10px;
 `;
