@@ -15,7 +15,7 @@ const wrong2 = ['Nie dotykaj psów znajdujących się w boksach', 'Nie dokarmiaj
 const Education = () => {
 
     return (
-        <Grid container spacing={3} justify={'center'} className="grid-container">
+        <Grid container justify={'center'} className="grid-container">
             <Grid item xs={12} sm={6}>
                 <EducationList title={title1} correct={correct1} wrong={wrong1}/>
             </Grid>
