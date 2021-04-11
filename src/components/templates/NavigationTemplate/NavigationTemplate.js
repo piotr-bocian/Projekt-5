@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
@@ -15,6 +15,8 @@ import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import Education from '../../Organisms/Education/Education';
+
 
 // export const Wrapper = styled.div`
 const Wrapper = styled.div`
@@ -40,37 +42,62 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationTemplate>
-        <Switch>
-          <Route path="/" exact>
-            <MainPage />
-          </Route>
-          <Route path="/registration">
-            <SignUpForm />
-          </Route>
-          <Route path="/login">
-            <SignInForm />
-          </Route>
-          <Route path="/news"></Route>
-          <Route path="/animals" exact component={Animals} />
-          <Route path="/animals/:id" component={AnimalPage} />
-          <Route path="/adoption">
-            <Wrapper>
-              <AdoptionVisitPage />
-            </Wrapper>
-          </Route>
-          <Route path="/education">
-            <Wrapper>
-              <VolunteerForm />
-            </Wrapper>
-          </Route>
-          <Route path="/howtohelp">
-            <PaymentForm />
-          </Route>
-          <Route path="/about"></Route>
-          <Route path="/contact"></Route>
-        </Switch>
-      </NavigationTemplate>
+      <Router>
+        <NavigationTemplate>
+          <Switch>
+            <Route path="/" exact>
+              {/* odpowiedni komponent */}
+              <MainPage />
+              {/* <Wrapper>
+                <AdotpionForm />
+              </Wrapper> */}
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/registration">
+              <SignUpForm />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/login">
+              <SignInForm />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/news"></Route>
+          </Switch>
+          <Switch>
+            <Route path="/animals" exact component={Animals} />
+            <Route path="/animals/:id" component={AnimalPage} />
+          </Switch>
+          <Switch>
+            <Route path="/adoption">
+              <Wrapper>
+                <AdoptionVisitPage />
+              </Wrapper>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/education">
+              <Wrapper>
+                <Education />
+                {/* <VolunteerForm /> */}
+              </Wrapper>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/howtohelp">
+              <PaymentForm />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/about"></Route>
+          </Switch>
+          <Switch>
+            <Route path="/contact"></Route>
+          </Switch>
+        </NavigationTemplate>
+      </Router>
     </ThemeProvider>
   );
 }
