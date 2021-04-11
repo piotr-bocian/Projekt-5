@@ -47,29 +47,20 @@ function AdministratorPayment({
   for (let [key, value] of Object.entries(createState)) {
     initialState = { [key]: payment[value], ...initialState };
   }
+
+  const [activeData, setActiveData] = useState(initialState);
+  const [toggle, setToggle] = useState(false);
+
   let deleteOnePayment = () => deletePayment(payment._id);
   if (!deletePayment) {
     deleteOnePayment = null;
   }
 
-  //PROBLEM, STAN WYMAG PRZELADOWANIA
-  const [toggle, setToggle] = useState(false);
-  const [state, setState] = useState((prevState) => {
-    return { ...prevState, ...initialState };
-  });
-
   const inputPaymentHandler = (e) => {
-    setState({
-      ...state,
-      ...initialState,
-      [e.target.name]: e.target.value,
+    setActiveData((prevState) => {
+      return { ...prevState, [e.target.name]: e.target.value };
     });
   };
-  // console.log('RENDER');
-  // console.log('initialState', initialState);
-  // console.log('State', state);
-
-
 
   return payment.length === 0 ? (
     <FlexWrapper>
@@ -104,7 +95,7 @@ function AdministratorPayment({
                   <TextField
                     fullWidth
                     name={iterate.value}
-                    value={state[iterate.value]}
+                    value={activeData[iterate.value]}
                     onChange={inputPaymentHandler}
                   />
                   {iterate.helper && (
@@ -150,7 +141,7 @@ function AdministratorPayment({
           </Button>
           <Button
             onClick={() => {
-              updatePayment(payment._id, state);
+              updatePayment(payment._id, activeData);
             }}
           >
             Uaktualnij
