@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import { AnimalPageBackBtn } from '../../Atoms/AnimalPage/AnimalPageBackButton/AnimalPageBackBtn.js';
 import { AnimalsForAdoption  } from '../../Atoms/HeaderAnimalsForAdoption/HeaderAnimalsForAdoption.js';
 import { AnimalPagePhoto } from '../../Atoms/AnimalPage/AnimalPagePhoto/AnimalPagePhoto';
 import { AnimalData } from '../../Atoms/AnimalPage/AnimalPageAnimalData/AnimalPageAnimalData';
 import { AnimalName } from '../../Atoms/AnimalPage/AnimalPageAnimalName/AnimalPageAnimalName';
+import { AnimalButtons } from '../../Molecules/AnimalPage/AnimalButtons';
 
 
 export function AnimalPage(match) {
@@ -28,6 +28,7 @@ export function AnimalPage(match) {
             <AnimalPagePhoto animal={props.animal}></AnimalPagePhoto>
             <AnimalName animal={props.animal}></AnimalName>
             <AnimalData animal={props.animal}></AnimalData>
+            <AnimalButtons></AnimalButtons>
         </div>           
             :null
     }

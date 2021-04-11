@@ -7,7 +7,7 @@ import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
-import { Animals } from '../../Organisms/Animals.js/Animals';
+import { Animals } from '../../Organisms/Animals/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import { MainPage } from '../../Organisms/MainPage/MainPage';

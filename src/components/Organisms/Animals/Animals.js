@@ -3,6 +3,7 @@ import { AnimalsForAdoption } from '../../Atoms/HeaderAnimalsForAdoption/HeaderA
 import { WaitingFiltersFrame } from '../../Molecules/WaitingFiltersFrame/WaitingFiltersFrame.js';
 import { AllAnimalsGrid } from '../../Molecules/AnimalsGrid/AnimalsGrid.js';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
+import AnimalLoader from '../../Loaders/AnimalLoader/AnimalLoader';
 import useHttp from '../../../hooks/useHttp/useHttp';
 
 
@@ -19,14 +20,14 @@ export function Animals () {
     useEffect(() => {
         handler.makeHttpRequest()
             .then((result) => {                
-                    setAnimals(result.animals.results);
-                    console.log('elo')
+                setAnimals(result.animals.results);
+                console.log('elo')
             });
     }, [])
 
 
     return handler.isLoading ? (
-        <div data-testid="loading"></div>) :
+        <AnimalLoader></AnimalLoader>) :
         (
         <div className='animals'>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
