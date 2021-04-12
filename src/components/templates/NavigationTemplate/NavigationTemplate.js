@@ -28,7 +28,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation />
+        <Navigation props={info}/>
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -89,13 +89,22 @@ function NavigationView() {
           </Switch>
           <Switch>
             <Route path="/contact">
-              <UserNavigationPage props={defaultuser}/>
             </Route>
           </Switch>
           {/* USER PROFILE ROUTES */}
           <Switch>
+            <Route path="/useraccount">
+            <UserNavigationPage props={defaultuser}/>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/logout">
+              <h3>WYLOGOWANO</h3>
+            </Route>
+          </Switch>
+          <Switch>
             <Route path="/volunteerform">
-              <UserPageVolunteerForm link={"/contact"}/>
+              <UserPageVolunteerForm link={{link:"/useraccount"}}/>
             </Route>
           </Switch>
           <Switch>
@@ -104,7 +113,7 @@ function NavigationView() {
           </Switch>
           <Switch>
             <Route path="/adoptionvist">
-              <UserPageVisitForm link={"/contact"}/>
+              <UserPageVisitForm link={{link:"/useraccount"}}/>
             </Route>
           </Switch>
           <Switch>
@@ -130,6 +139,7 @@ function NavigationView() {
   );
 }
 
-let defaultuser={name: "Robert", lastName: "Makłowicz", email: "robert.maklowicz@gmail.com", mobile: "123-456-789", isVolunteer: true, userID: "123"}
+// let defaultuser={name: "Robert", lastName: "Makłowicz", email: "robert.maklowicz@gmail.com", mobile: "123-456-789", isVolunteer: true, userID: "123", image:''}
+// let info={isLogged:true};
 
 export default NavigationView;

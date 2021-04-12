@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const ButtonStyle = styled.div`
     & button {
         background-color: transparent;
-        color: #000;
+        color: #0093CA;
         &:hover {
-            background-color: transparent;
-            color: #0292c9;
+            background-color: rgba(0, 147, 202, 0.04);
+            color: #0093CA;
         }
     }
 `;

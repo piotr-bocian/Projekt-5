@@ -1,13 +1,13 @@
 import React from 'react';
 import { UserCardWrapper, ButtonStyle } from './UserNavigationPage.style';
-import UserAvatar from '../../../assets/pies.png';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
+import UserPageImage from '../../Atoms/UserNavigationPage/UserPageImage';
 
 
 function UserCard({ props }) {
   return (
     <UserCardWrapper>
-        <img src={UserAvatar} alt="avatar" height="250px"/>
+        <UserPageImage props={props}/>
         <div>
             <h2>
                 MOJE DANE:

@@ -8,7 +8,7 @@ import { GridItemRegistrationWrapper, StyledNavLink } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
 
-const Navigation = () => {
+const Navigation = ({ props }) => {
   const navigationArrayWithRoutes = [
     { name: 'Aktualności', route: '/news' },
     { name: 'Zwierzęta', route: '/animals' },
@@ -25,7 +25,18 @@ const Navigation = () => {
         <AnimaShelterLogo />
       </NavLink>
 
-      <GridItemRegistrationWrapper>
+      {props.isLogged ? (
+        <GridItemRegistrationWrapper>
+        <StyledNavLink to="/useraccount">
+          <NavigationText margin="0" mainText="Profil" />
+        </StyledNavLink>
+        <TextSeparator />
+        <StyledNavLink to="/logout">
+          <NavigationText mainText="Wyloguj" />
+        </StyledNavLink>
+      </GridItemRegistrationWrapper>
+      ):(
+        <GridItemRegistrationWrapper>
         <StyledNavLink to="/registration">
           <NavigationText margin="0" mainText="Rejestracja" />
         </StyledNavLink>
@@ -34,6 +45,7 @@ const Navigation = () => {
           <NavigationText mainText="Logowanie" />
         </StyledNavLink>
       </GridItemRegistrationWrapper>
+      )}
 
       <GridItemMenuWrapper>
         <FlexWrapper>

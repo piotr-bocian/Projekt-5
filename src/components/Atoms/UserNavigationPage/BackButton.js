@@ -6,16 +6,14 @@ import { ButtonStyle } from './BackButton.style';
 
 const BackButton = ({ link }) => {
     return (
-    <StyledNavLink to={link}>
-        <ButtonStyle>
+    <StyledNavLink to={link.link}>
         <Button
             variant="outlined"
             color="primary"
             startIcon={<ArrowBackIcon />}
         >
-        POWRÓT
+        POWRÓT {link.text}
       </Button>
-      </ButtonStyle>
     </StyledNavLink>
     );
 };
