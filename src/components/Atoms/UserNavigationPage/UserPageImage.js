@@ -21,9 +21,8 @@ function UserPageImage({ props }) {
 
     function UserImage(p){
         console.log(p.isImage)
-        if(p.isImage !== ''){
-          return <img src={UserAvatar} alt="avatar" className={classes.image}/>;
-          // return <img src={`data:image/jpeg;base64,${Buffer.from(props.user.image.data).toString('base64')}`} alt="avatar" className={classes.image}/>
+        if(p.isImage && p.isImage.data.length !== 0){
+          return <img src={`data:image/jpeg;base64,${Buffer.from(props.user.image.data).toString('base64')}`} alt="avatar" className={classes.image}/>
         }
         return <img src={UserAvatar} alt="avatar" className={classes.image}/>;
     }
