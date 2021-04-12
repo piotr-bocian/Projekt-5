@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
-import SelectPay from '../../Atoms/Select/Select';
+import SelectPay from '../../Atoms/Select/SelectPaymentHandler';
 import PaymentFormField from '../../Molecules/PaymentFormField/PaymentFormField';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';

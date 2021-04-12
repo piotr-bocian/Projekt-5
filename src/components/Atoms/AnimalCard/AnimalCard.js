@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexWrap: 'wrap',
         width: '300px',
+        marginLeft: '30px',
+        marginBottom: '30px',
     },
     image: {
         height: '100%',
@@ -36,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   export function AnimalCard(props) {
     const classes = useStyles();
 
+
     function AnimalImage(p){
         if(p.isImage !== undefined){
           return <img src={`data:image/jpeg;base64,${Buffer.from(props.animal.image).toString('base64')}`} alt="animal" className={classes.image}/>
@@ -44,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     }
    
     return (
-      <ButtonBase key={props.animal.id} className={classes.root}>
+      <ButtonBase key={props.animal._id} className={classes.root}>
         <AnimalImage isImage={typeof props.animal.image} className={classes.image}/>
         <Typography variant="subtitle1" color="inherit" className={classes.imageTitle}>
           {props.animal.name}

@@ -6,11 +6,18 @@ import { theme } from '../../../styles/styles';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
-import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
-import { Animals } from '../../Organisms/Animals.js/Animals';
+import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
+import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
+import { Animals } from '../../Organisms/Animals/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import { MainPage } from '../../Organisms/MainPage/MainPage';
+import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
+import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
+import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import Education from '../../Organisms/Education/Education';
 
+// export const Wrapper = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,7 +31,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation />
+        <Navigation makeNavigation={navigationArrayWithRoutes} />
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -37,39 +44,54 @@ function NavigationView() {
       <NavigationTemplate>
         <Switch>
           <Route path="/" exact>
-            <Wrapper>
-              <AdotpionForm />
-            </Wrapper>
+            {/* odpowiedni komponent */}
+            <MainPage />
+            {/* <Wrapper>
+                <AdotpionForm />
+              </Wrapper> */}
           </Route>
-
-          <Route path="/registration"></Route>
-
-          <Route path="/login"></Route>
-
+        </Switch>
+        <Switch>
+          <Route path="/registration">
+            <SignUpForm />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/login">
+            <SignInForm />
+          </Route>
+        </Switch>
+        <Switch>
           <Route path="/news"></Route>
-
-          <Route path="/animals">
-            <Animals />
-          </Route>
-
+        </Switch>
+        <Switch>
+          <Route path="/animals" exact component={Animals} />
+          <Route path="/animals/:id" component={AnimalPage} />
+        </Switch>
+        <Switch>
           <Route path="/adoption">
             <Wrapper>
-              <VisitForm />
+              <AdoptionVisitPage />
             </Wrapper>
           </Route>
-
+        </Switch>
+        <Switch>
           <Route path="/education">
             <Wrapper>
-              <VolunteerForm />
+              <Education />
+              {/* <VolunteerForm /> */}
             </Wrapper>
           </Route>
-
+        </Switch>
+        <Switch>
           <Route path="/howtohelp">
             <PaymentForm />
           </Route>
-
+        </Switch>
+        <Switch>
           <Route path="/about"></Route>
-
+        </Switch>
+        <Switch>
           <Route path="/contact"></Route>
         </Switch>
       </NavigationTemplate>
