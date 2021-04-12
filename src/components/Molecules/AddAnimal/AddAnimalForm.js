@@ -3,7 +3,6 @@ import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/AddAnimal/AddAnimalStyles';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
-import useHttp from '../../../hooks/useHttp/useHttp';
 import { RadioGroup, FormControlLabel, Radio, FormControl, FormLabel } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -81,6 +80,7 @@ const AddAnimal = () => {
         formData.append("name", form.animalName) ;
         formData.append("animalType", form.animalType) ;
         formData.append("gender", form.animalGender) ;
+        formData.append("age", form.animalAge) ;
         formData.append("size", form.animalSize) ;
         formData.append("description", form.animalDescription) ;
         formData.append("breed", form.animalBreed) ;
@@ -92,27 +92,11 @@ const AddAnimal = () => {
         fetch('https://best-animal-shelter.herokuapp.com/api/animals/adminanimals', {
         method: 'POST',
         headers: {
-            'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODE3NzAyNywiZXhwIjoxNjE4MTgwNjI3fQ.dWPa_i_73zWJD0p1BMenVcR86RR_FW--3rCsKcWHACY'
+            'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODI1MTQyNCwiZXhwIjoxNjE4MjU1MDI0fQ.Z3fAFZNEcgzDzA6xmg_7Oc0SEo4kfjcXlYsR0OCCpqE'
         },
         body: formData   
     });        
     } 
-    // const httpHandler = useHttp(
-    //     'https://best-animal-shelter.herokuapp.com/api/animals/adminanimals',
-    //     // 'http://localhost:5000/api/adminanimals',
-    //     'POST',
-        // {
-        //     name: form.animalName,
-        //     animalType: form.animalType,
-        //     gender: form.animalGender,
-        //     size: form.animalSize,
-        //     description: form.animalDescription,
-        //     breed: form.animalBreed,
-        //     image: '',
-        //     isAdopted: form.isAdopted,
-        //     registrationDate: form.registrationDate
-        // }
-    // );
 
     const handleForm = (e) => {
         e.preventDefault();

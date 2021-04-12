@@ -1,17 +1,14 @@
 import React from 'react';
-import { CssBaseline, Container } from '@material-ui/core';
-import useStyles from '../SignUpInForms/signUpInStyles';
+import { Container } from '@material-ui/core';
+import useStyles from './AddAnimalStyles';
 import SignUpInTitle from '../../Atoms/SignUpInAtoms/signUpInTitle';
-// import Avatar from '../../Atoms/SignUpInAtoms/avatar';
 import AddAnimalFormMolecule from '../../Molecules/AddAnimal/AddAnimalForm';
 
 const AddAnimalForm = () => {
     const classes = useStyles();
     return(
-        <Container className={classes.container} component='main' maxWidth="xs">
-            <CssBaseline />
+        <Container className={classes.container} component='main' maxWidth="md" minHeight='none'>
             <div className={classes.formContainer}>
-                {/* <Avatar/> */}
                 <SignUpInTitle title="Dodaj nowego zwierzaka" />
                 <AddAnimalFormMolecule />
             </div>

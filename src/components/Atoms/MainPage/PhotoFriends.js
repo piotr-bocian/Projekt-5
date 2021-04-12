@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
         backgroundImage: `url(${friends})`,
         backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
     },
   }));
 
@@ -17,7 +18,6 @@ export function PhotoFriends() {
     const classes = useStyles();
    
     return (
-      <div className={classes.root}>
-      </div>
+      <div className={classes.root}></div>
     );
   }

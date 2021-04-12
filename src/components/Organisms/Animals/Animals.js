@@ -21,13 +21,12 @@ export function Animals () {
         handler.makeHttpRequest()
             .then((result) => {                
                 setAnimals(result.animals.results);
-                console.log('elo')
             });
     }, [])
 
 
     return handler.isLoading ? (
-        <AnimalLoader></AnimalLoader>) :
+        <div><AnimalLoader></AnimalLoader></div>) :
         (
         <div className='animals'>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>

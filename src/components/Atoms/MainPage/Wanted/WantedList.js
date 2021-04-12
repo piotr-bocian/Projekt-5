@@ -13,10 +13,18 @@ const useStyles = makeStyles((theme) => ({
   listItemText: {
       padding: '0px 10px',
       margin: '2px 8px',
+      [theme.breakpoints.down('lg')]: {
+        padding: '0px 3px',
+        margin: '1px 2px',
+      }
   },
   listItem: {
     padding: '0px 10px',
     marginLeft: '10px',
+    [theme.breakpoints.down('lg')]: {
+      padding: '0px 3px',
+      marginLeft: '10px',
+    }
 }
 }));
 

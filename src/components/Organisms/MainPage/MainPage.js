@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react';
+import React from 'react';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { PhotoFriends } from '../../Atoms/MainPage/PhotoFriends';
@@ -7,24 +7,12 @@ import { WorkingHours } from '../../Atoms/MainPage/WorkingHours';
 import { Info } from '../../Atoms/MainPage/Info';
 
 export function MainPage () {
-    // const classes = useStyles();
-    // const [animals, setAnimals] = useState([]);
-    // const [selectedButton, setSelectedButton] = useState('');
 
     const handler = useHttp(
         `https://best-animal-shelter.herokuapp.com`,
         httpMethods.GET
     );
 
-    // useEffect(() => {
-    //     handler.makeHttpRequest()
-    //         .then((result) => {
-    //             console.log(result)
-    //         });
-    // }, [])
-
-
-    // console.log(animals);
     return handler.isLoading ? (
         <div></div>) :
         (

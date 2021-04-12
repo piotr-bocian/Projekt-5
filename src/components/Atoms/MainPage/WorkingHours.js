@@ -8,4 +8,7 @@ export const WorkingHours = styled.h2`
   color: black;
   text-align: center;
   margin: auto;
+  @media (max-width: 1300px) {
+    font-size: 1.25em;
+  }
 `;
