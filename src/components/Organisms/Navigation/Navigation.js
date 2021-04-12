@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AnimaShelterLogo } from '../../Atoms/Logo/AnimalShelterLogo';
 import { FlexWrapper } from '../../../styles/stylesContainer/FlexWrapper';
@@ -8,11 +8,13 @@ import { GridItemRegistrationWrapper, StyledNavLink } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
 import useWindowDimensions from '../../../hooks/useWindowDimensions/useWindowDimensions';
-import { Divider } from '@material-ui/core';
+import HamburgerButton from '../../Atoms/HamburgerButton/HamburgerButton';
 
 
 const Navigation = ({ makeNavigation, user=true }) => {
   const { height, width } = useWindowDimensions();
+  const MOBILE_BREAKPOINT = 768;
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <>
@@ -33,24 +35,27 @@ const Navigation = ({ makeNavigation, user=true }) => {
         <StyledNavLink to="/login">
           <NavigationText mainText="Logowanie" />
         </StyledNavLink>
-      </GridItemRegistrationWrapper>
-      
-      {width <= 768 ? <div>123</div> : 
 
-      <GridItemMenuWrapper>
-        <FlexWrapper>
-          {makeNavigation.map((nav, id) => {
-            return (
-              <NavigationTextWithRoutes
-                key={id}
-                text={nav.name}
-                route={nav.route}
-              />
-            );
-          })}
-        </FlexWrapper>
-      </GridItemMenuWrapper>
-}
+        {width <= MOBILE_BREAKPOINT &&
+          <HamburgerButton setShowMenu={setShowMenu}/>
+        }
+      </GridItemRegistrationWrapper>
+
+    {(showMenu || width > MOBILE_BREAKPOINT) &&
+    <GridItemMenuWrapper>
+      <FlexWrapper>
+        {makeNavigation.map((nav, id) => {
+          return (
+            <NavigationTextWithRoutes
+              key={id}
+              text={nav.name}
+              route={nav.route}
+            />
+          );
+        })}
+      </FlexWrapper>
+    </GridItemMenuWrapper>
+    }
     </>
   );
 };
