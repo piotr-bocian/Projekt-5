@@ -6,7 +6,6 @@ import PetsIcon from '@material-ui/icons/Pets';
 
 import { Wrapper, centerText, avatarStyle, FormWrapper, closeIconStyle, ConfirmationWrapper, confirmationHeader } from './AdoptionVisitForm.style';
 
-import useHttp from '../../../hooks/useHttp/useHttp';
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
 import SelectDateTime from '../../Molecules/AdoptionVisit/SelectDateTime';
 import FormButton from '../../Atoms/AdoptionVisit/FormButton';
@@ -74,7 +73,7 @@ const VisitForm = ({ animal }) => {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    'x-auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDc0MmE4NWVlYzU3YzAwMTU4MDRjYmQiLCJlbWFpbCI6ImFuaWFAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTgyMjU3OTcsImV4cCI6MTYxODIyOTM5N30.7YJn2ixyEGdAcKIfWNjHclkakoHQjkH_gCmMxqCkZhA",
+                    'x-auth-token': "",
                 },
                 body: JSON.stringify(visitState)
             });
