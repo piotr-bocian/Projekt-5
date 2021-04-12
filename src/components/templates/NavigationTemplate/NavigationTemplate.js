@@ -77,7 +77,6 @@ function NavigationView() {
           <Switch>
             <Route path="/education">
               <Wrapper>
-                <AddAnimalForm />
               </Wrapper>
             </Route>
           </Switch>
