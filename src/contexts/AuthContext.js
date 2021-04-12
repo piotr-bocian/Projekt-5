@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
     const[err, setErr] = useState('');
     const authToken = window.localStorage.getItem('x-auth-token');
     let user = {...currentUser};
-    let admin = currentUser.isAdmin;
+    // let admin = currentUser.isAdmin;
 
     function userLogged() {
         if(localStorage.getItem("x-auth-token")){
@@ -95,7 +95,7 @@ export function AuthProvider({ children }) {
     }, [authToken]);
 
     const value = {
-        admin,
+        // admin,
         user,
         err,
         token,

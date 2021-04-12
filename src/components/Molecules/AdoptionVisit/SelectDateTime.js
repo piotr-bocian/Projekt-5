@@ -27,7 +27,7 @@ const SelectDateTime = ({ onChangeDate, labelDate, valueDate, idDate, minDate, m
                 ampm={false}
                 cancelLabel="Anuluj"
                 error = {error}
-                helperText = {helperText ? helperText : 'Schronisko działa w godzinach 09:00-16:00'}
+                helperText = {helperText ? helperText : 'Wizytę adopcyjną można zarezerwować w godzinach 09:00-16:00'}
             />
         </MuiPickersUtilsProvider>
     );
