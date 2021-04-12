@@ -6,6 +6,7 @@ import PetsIcon from '@material-ui/icons/Pets';
 
 import { Wrapper, centerText, avatarStyle, FormWrapper, closeIconStyle, ConfirmationWrapper, confirmationHeader } from './AdoptionVisitForm.style';
 
+import useHttp from '../../../hooks/useHttp/useHttp';
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
 import SelectDateTime from '../../Molecules/AdoptionVisit/SelectDateTime';
 import FormButton from '../../Atoms/AdoptionVisit/FormButton';
@@ -44,31 +45,44 @@ const VisitForm = ({ animal }) => {
     const [duration, setDuration] = useState(30);
     const [errors, setErrors] = useState();
     const [open, setOpen] = useState(false);
-    const [confirmation, setConfirmation] = useState(false)
+    const [confirmation, setConfirmation] = useState(false);
 
-    const sendForm = (e) => {
-        e.preventDefault();
-        let visitState;
-        if (animal) {
-            visitState = {
-                visitDate: visitDate,
-                visitTime: visitTime,
-                duration: duration,
-                animalID: animal.id
-            }
-        } else {
-            visitState = {
-                visitDate: visitDate,
-                visitTime: visitTime,
-                duration: duration
-            }
+    let visitState;
+    if (animal) {
+        visitState = {
+            visitDate: visitDate,
+            visitTime: visitTime,
+            duration: duration,
+            animalID: animal.id
         }
+    } else {
+        visitState = {
+            visitDate: visitDate,
+            visitTime: visitTime,
+            duration: duration
+        }
+    }
 
-        if (Boolean(errors?.timeError)) {
-            console.log('Popraw formularz')
+    const sendForm = async (e) => {
+        const url = 'https://best-animal-shelter.herokuapp.com/api/visits/me';
+        // const url = 'http://localhost:3001/api/visits/me';
+        e.preventDefault();
+
+        if (!Boolean(errors?.timeError)) {
+            const signUpResponse = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDc0MmE4NWVlYzU3YzAwMTU4MDRjYmQiLCJlbWFpbCI6ImFuaWFAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTgyMjU3OTcsImV4cCI6MTYxODIyOTM5N30.7YJn2ixyEGdAcKIfWNjHclkakoHQjkH_gCmMxqCkZhA",
+                },
+                body: JSON.stringify(visitState)
+            });
+            if (signUpResponse.status === 201){
+                setConfirmation(true)
+            }
         } else {
-            console.log(visitState);
-            setConfirmation(true);
+            console.log('Popraw formularz')
         }
     }
 
