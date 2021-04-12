@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
+import { AuthProvider } from '../contexts/AuthContext';
 
 const theme = createMuiTheme({
   palette: {
@@ -15,7 +16,9 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationView />
+      <AuthProvider>
+        <NavigationView />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

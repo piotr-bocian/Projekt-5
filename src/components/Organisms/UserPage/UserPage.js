@@ -8,7 +8,7 @@ const UserPage = () => {
     const history = useHistory();
     function handleLogout() {
         logout();
-        history.push("/");
+        // history.push("/");
     }
 
     if(err){

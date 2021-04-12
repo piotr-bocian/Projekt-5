@@ -70,6 +70,7 @@ const SignInRawForm = () => {
                     passwordErr: '',
                 });
                 history.push("/useraccount");
+                window.location.reload();
             } else {
                 setApiError(err);
             }

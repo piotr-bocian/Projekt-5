@@ -135,6 +135,7 @@ const SignUpRawForm = () => {
                 });
                 
                 history.push("/useraccount");
+                window.location.reload();
             } else {
                 setApiError(data.message);
             }

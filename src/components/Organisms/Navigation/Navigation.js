@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { AnimaShelterLogo } from '../../Atoms/Logo/AnimalShelterLogo';
 import { FlexWrapper } from '../../../styles/stylesContainer/FlexWrapper';
@@ -7,6 +6,7 @@ import GridItemMenuWrapper from '../../../styles/stylesContainer/GridItemMenuWra
 import { GridItemRegistrationWrapper, StyledNavLink } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const Navigation = ({ props }) => {
   const navigationArrayWithRoutes = [
@@ -19,20 +19,23 @@ const Navigation = ({ props }) => {
     { name: 'Kontakt', route: '/contact' },
   ];
 
+  const { isLogged, logout } = useAuth();
+
+
   return (
     <>
       <NavLink to="/" exact>
         <AnimaShelterLogo />
       </NavLink>
 
-      {props.isLogged ? (
+      {isLogged ? (
         <GridItemRegistrationWrapper>
         <StyledNavLink to="/useraccount">
           <NavigationText margin="0" mainText="Profil" />
         </StyledNavLink>
         <TextSeparator />
-        <StyledNavLink to="/logout">
-          <NavigationText mainText="Wyloguj" />
+        <StyledNavLink to="/">
+          <NavigationText mainText="Wyloguj" handleClick={ logout } />
         </StyledNavLink>
       </GridItemRegistrationWrapper>
       ):(

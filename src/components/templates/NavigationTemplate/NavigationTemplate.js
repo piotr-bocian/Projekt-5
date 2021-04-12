@@ -28,12 +28,13 @@ const Wrapper = styled.div`
   height: 70vh;
 `;
 const NavigationTemplate = ({ children }) => {
-  // const { isLogged } = useAuth();
+  const { isLogged } = useAuth();
+  console.log(isLogged);
   return (
     <>
       <GridContainerNavigationWrapper>
         <AuthProvider>
-          <Navigation props={false}/>
+          <Navigation props={{isLogged}}/>
         </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}
@@ -76,12 +77,9 @@ function NavigationView() {
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />
-              {/* <Route path="/useraccount">
-                <UserNavigationPage props={defaultuser}/>
-              </Route> */}
-              <Route path="/logout">
+              {/* <Route path="/logout">
                 <h3>WYLOGOWANO</h3>
-              </Route>
+              </Route> */}
               <Route path="/volunteerform">
                 <UserPageVolunteerForm link={{link:"/useraccount"}}/>
               </Route>

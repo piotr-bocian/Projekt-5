@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext();
 
@@ -15,7 +16,7 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
     const [isLogged, setIsLogged] = useState(false);
     const [token, setToken] = useState('');
-
+    const history = useHistory();
     const[err, setErr] = useState('');
     const authToken = window.localStorage.getItem('x-auth-token');
     let user = {...currentUser};
