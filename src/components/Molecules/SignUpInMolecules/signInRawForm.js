@@ -73,33 +73,6 @@ const SignInRawForm = () => {
             } else {
                 setApiError(err);
             }
-            // const loginResponse = await fetch(url, {
-            //     method: 'POST',
-            //     headers: {
-            //         Accept: 'application/json',
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify({
-            //         email: form.email,
-            //         password: form.password
-            //     })
-            // });
-            // const data = await loginResponse.json();
-            // if(loginResponse.status >= 200 && loginResponse.status < 300){
-            //     window.localStorage.setItem('x-auth-token', data.token);
-            //     console.log('Logowanie...');
-
-            //     setForm({
-            //         //clear form
-            //         email: '',
-            //         emailErr: '',
-            //         password: '',
-            //         passwordErr: '',
-            //     });
-            //     history.push("/useraccount");
-            // } else {
-            //     setApiError(data.message);
-            // }
         }
         setLoading(false);
     }

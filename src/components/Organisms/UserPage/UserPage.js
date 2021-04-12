@@ -3,7 +3,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
 
 const UserPage = () => {
-    const { currentUser, err, logout } = useAuth();
+    const { user, err, logout } = useAuth();
     const history = useHistory();
     function handleLogout() {
         logout();
@@ -19,9 +19,9 @@ const UserPage = () => {
     } else {
         return(
             <div>
-                Hi { currentUser.firstName }
+                Hi { user.firstName }
                 <pre>
-                    { JSON.stringify(currentUser) }
+                    { JSON.stringify(user) }
                 </pre>
 
                 <button onClick={ handleLogout }>Wyloguj</button>

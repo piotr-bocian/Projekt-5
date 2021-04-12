@@ -18,12 +18,14 @@ export function AuthProvider({ children }) {
 
     const[err, setErr] = useState('');
     const authToken = window.localStorage.getItem('x-auth-token');
+    let user = {...currentUser};
+    let admin = currentUser.isAdmin;
 
-    // function userLogged() {
-    //     if(localStorage.getItem("x-auth-token")){
-    //         setIsLogged(true);
-    //     }
-    // }
+    function userLogged() {
+        if(localStorage.getItem("x-auth-token")){
+            return setIsLogged(true);
+        }
+    }
 
     async function signIn(email, password) {
         const loginResponse = await fetch(loginUrl, {
@@ -42,6 +44,7 @@ export function AuthProvider({ children }) {
             window.localStorage.setItem('x-auth-token', data.token);
             setToken(window.localStorage.getItem('x-auth-token'));
             console.log('Logowanie...');
+            setIsLogged(true);
             return;
         } else {
             setErr(data.message);
@@ -57,44 +60,43 @@ export function AuthProvider({ children }) {
         window.localStorage.removeItem('x-auth-token');
         setToken('');
         setIsLogged(false);
+        setCurrentUser('');
+        user = '';
     }
     useEffect(() => {
-        // setLoading(true);
+        userLogged();
         setCurrentUser('');
-        // console.log(token);
-        if(authToken) {
-            setLoading(true);
-            setIsLogged(true);
-            ( async() => {
-                try {
-                    setErr('');
-                    const response = await fetch(userUrl, {
-                        headers: {
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json',
-                            'x-auth-token': authToken
-                        },
-                    });
-                    const userData = await response.json();
-                    if(response.status >= 200 && response.status < 300) {
-                        await setCurrentUser(userData);
-                    } else {
-                        setErr(userData.message);
-                    }
-    
-                } catch (err) {
-                    setErr(err.message);
+        setLoading(true);
+        ( async() => {
+            try {
+                setErr('');
+                const response = await fetch(userUrl, {
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'x-auth-token': authToken
+                    },
+                });
+                const userData = await response.json();
+                if(response.status >= 200 && response.status < 300) {
+                    await setCurrentUser(userData);
+                } else {
+                    setErr(userData.message);
                 }
-                setLoading(false);
-            })()
-        }
+
+            } catch (err) {
+                setErr(err.message);
+            }
+            setLoading(false);
+        })()
         setLoading(false);
         return;
         
     }, [authToken]);
 
     const value = {
-        currentUser,
+        admin,
+        user,
         err,
         token,
         signIn,

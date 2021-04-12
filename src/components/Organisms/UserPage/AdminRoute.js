@@ -2,14 +2,14 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 
-export default function PrivateRoute({ component: Component, ...rest }) {
+export default function AdminRoute({ component: Component, ...rest }) {
     const { isLogged, user } = useAuth();
 
     return (
         <Route
          {...rest}
          render={props => {
-            if(isLogged && user) {
+            if(isLogged && user && user.isAdmin) {
                 console.log(user);
                 return <Component {...props} /> 
             } else {

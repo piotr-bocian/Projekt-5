@@ -15,6 +15,7 @@ import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
+// import AdminRoute from '../../Organisms/UserPage/AdminRoute';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
