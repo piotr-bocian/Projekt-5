@@ -3,14 +3,15 @@ import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 
 export default function AdminRoute({ component: Component, ...rest }) {
-    const { isLogged, user } = useAuth();
+    const { isLogged, admin } = useAuth();
 
-    return (
+    return admin ? 
+     (
         <Route
          {...rest}
          render={props => {
-            if(isLogged && user && user.isAdmin) {
-                console.log(user);
+            if(isLogged && admin) {
+                console.log('adminRoute', admin);
                 return <Component {...props} /> 
             } else {
                 return(
@@ -27,5 +28,7 @@ export default function AdminRoute({ component: Component, ...rest }) {
             } 
          }}
         ></Route>
-    )
+    ) : (
+        <div></div>
+    );
 }
