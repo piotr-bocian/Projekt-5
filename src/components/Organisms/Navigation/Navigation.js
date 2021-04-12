@@ -7,12 +7,17 @@ import GridItemMenuWrapper from '../../../styles/stylesContainer/GridItemMenuWra
 import { GridItemRegistrationWrapper, StyledNavLink } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
+import useWindowDimensions from '../../../hooks/useWindowDimensions/useWindowDimensions';
+import { Divider } from '@material-ui/core';
+
 
 const Navigation = ({ makeNavigation, user=true }) => {
+  const { height, width } = useWindowDimensions();
+
   return (
     <>
       <NavLink to="/" exact>
-        <AnimaShelterLogo />
+        <AnimaShelterLogo className="main-logo"/>
       </NavLink>
 
       <GridItemRegistrationWrapper>
@@ -29,6 +34,8 @@ const Navigation = ({ makeNavigation, user=true }) => {
           <NavigationText mainText="Logowanie" />
         </StyledNavLink>
       </GridItemRegistrationWrapper>
+      
+      {width <= 768 ? <div>123</div> : 
 
       <GridItemMenuWrapper>
         <FlexWrapper>
@@ -43,6 +50,7 @@ const Navigation = ({ makeNavigation, user=true }) => {
           })}
         </FlexWrapper>
       </GridItemMenuWrapper>
+}
     </>
   );
 };
