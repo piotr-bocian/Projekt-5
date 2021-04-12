@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext();
 
@@ -15,12 +14,10 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
     const [isLogged, setIsLogged] = useState(false);
-    const [token, setToken] = useState('');
-    const history = useHistory();
     const[err, setErr] = useState('');
     const authToken = window.localStorage.getItem('x-auth-token');
     let user = {...currentUser};
-    // let admin = currentUser.isAdmin;
+    let admin = user.isAdmin;
 
     function userLogged() {
         if(localStorage.getItem("x-auth-token")){
@@ -43,7 +40,6 @@ export function AuthProvider({ children }) {
         const data = await loginResponse.json();
         if(loginResponse.status >= 200 && loginResponse.status < 300){
             window.localStorage.setItem('x-auth-token', data.token);
-            setToken(window.localStorage.getItem('x-auth-token'));
             console.log('Logowanie...');
             setIsLogged(true);
             return;
@@ -59,7 +55,6 @@ export function AuthProvider({ children }) {
             return alert("Żaden użytkownik nie jest zalogowany.");
         }
         window.localStorage.removeItem('x-auth-token');
-        setToken('');
         setIsLogged(false);
         setCurrentUser('');
         user = '';
@@ -96,10 +91,10 @@ export function AuthProvider({ children }) {
     }, [authToken]);
 
     const value = {
-        // admin,
+        admin,
         user,
         err,
-        token,
+        authToken,
         signIn,
         logout,
         isLogged

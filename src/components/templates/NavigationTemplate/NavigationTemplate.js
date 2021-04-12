@@ -15,8 +15,8 @@ import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
-// import AdminRoute from '../../Organisms/UserPage/AdminRoute';
-import UserNavigationPage from '../../Organisms/UserNavigationPage/UserNavigationPage'
+import AdminRoute from '../../Organisms/UserPage/AdminRoute';
+// import UserNavigationPage from '../../Organisms/UserNavigationPage/UserNavigationPage'
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 const Wrapper = styled.div`
@@ -29,7 +29,6 @@ const Wrapper = styled.div`
 `;
 const NavigationTemplate = ({ children }) => {
   const { isLogged } = useAuth();
-  console.log(isLogged);
   return (
     <>
       <GridContainerNavigationWrapper>
@@ -47,7 +46,6 @@ function NavigationView() {
     <ThemeProvider theme={theme}>
       <Router>
         <NavigationTemplate>
-          {/* <AuthProvider> */}
           <Switch>
             <AuthProvider>
               <Route path="/" exact>
@@ -77,9 +75,6 @@ function NavigationView() {
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />
-              {/* <Route path="/logout">
-                <h3>WYLOGOWANO</h3>
-              </Route> */}
               <Route path="/volunteerform">
                 <UserPageVolunteerForm link={{link:"/useraccount"}}/>
               </Route>
@@ -93,7 +88,6 @@ function NavigationView() {
               <Route path="/editprofile"/>
             </AuthProvider>
           </Switch>
-          {/* </AuthProvider> */}
         </NavigationTemplate>
       </Router>
     </ThemeProvider>
