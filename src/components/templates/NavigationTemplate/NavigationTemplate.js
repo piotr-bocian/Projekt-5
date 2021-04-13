@@ -16,7 +16,6 @@ import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
 import AdminRoute from '../../Organisms/UserPage/AdminRoute';
-// import UserNavigationPage from '../../Organisms/UserNavigationPage/UserNavigationPage'
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
@@ -99,8 +98,5 @@ function NavigationView() {
     </ThemeProvider>
   );
 }
-
-// let defaultuser={name: "Robert", lastName: "Makłowicz", email: "robert.maklowicz@gmail.com", mobile: "123-456-789", isVolunteer: true, userID: "123", image:''}
-// let info={isLogged:true};
 
 export default NavigationView;
