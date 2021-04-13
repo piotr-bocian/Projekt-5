@@ -29,7 +29,7 @@ const UserNavigationPage = ({ props }) => {
     <>
       <PageWrapper>
         <h2>
-          STRONA UŻYTKOWNIKA - {props.name} {props.lastName}
+          STRONA UŻYTKOWNIKA - {props.firstName} {props.lastName}
         </h2>
         <NavigationWrapper>
           <UserCard props={props}/>

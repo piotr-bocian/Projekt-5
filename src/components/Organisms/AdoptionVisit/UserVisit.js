@@ -29,8 +29,9 @@ import BackButton from '../../Atoms/UserNavigationPage/BackButton';
             const data = await response.json();
             setVisits(data.results);
         }
-        fetchData();     
-    });
+        fetchData(); 
+        return fetchData();     
+    },);
 
     const disableButton = (date) => {
         let d = Date.parse(date);
@@ -57,13 +58,14 @@ import BackButton from '../../Atoms/UserNavigationPage/BackButton';
       }
     
     return isLoading ? (
-        <div><AnimalLoader /></div>) :
+        <div></div>) :
         (
         <PageWrapper>
             <NavWrapper>
                 <div><BackButton link={link}/></div>
                 <h2> Moje wizyty adopcyjne </h2>
             </NavWrapper>
+            {visits.length === 0 ? (<></>):(
             <BodyWrapper>
                 <div style={{ padding: '0 10em' }}>
                     <Grid container spacing={10} justify="center">
@@ -93,7 +95,7 @@ import BackButton from '../../Atoms/UserNavigationPage/BackButton';
                         ))}
                     </Grid>
                 </div>
-            </BodyWrapper>
+            </BodyWrapper> )}
         </PageWrapper>
     );
 }
