@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     box-shadow: 0px 0.25em 0.25em #0292C9;
     background-color: white;
     @media only screen and (min-width : 1824px) {
-        width: 20vw
+        width: 20vw;
     }
 `;
 export const FormWrapper = styled.form`
