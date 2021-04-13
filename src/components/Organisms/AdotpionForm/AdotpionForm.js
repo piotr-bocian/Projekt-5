@@ -57,8 +57,8 @@ const AdotpionForm = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-auth-token': 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODMzNDUwOCwiZXhwIjoxNjE4MzM4MTA4fQ.C2letvEBgOGMdc8MAN_7JcD4Y4MHbq7peY5pBzxu8Hc',
-                },
+                    'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODM0NjY3NCwiZXhwIjoxNjE4MzUwMjc0fQ.B1ytIucLHyUC3URceRIeUk9ut1mnbbx_N81mFfWmnj0',
+                  },
                 body: JSON.stringify(post)
             };
             fetch('https://best-animal-shelter.herokuapp.com/api/adoptionforms', requestOptions)
