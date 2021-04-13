@@ -33,7 +33,6 @@ export function Animals() {
       setAnimals(result.animals.results);
     });
   }, []);
-//      {/* <CircularIndeterminate />  */}
   return (handler.isLoading = true ? (
       <AnimalLoader />
   ) : (

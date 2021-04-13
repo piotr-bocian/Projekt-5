@@ -60,7 +60,6 @@ function NavigationView() {
         </Switch>
         <Switch>
           <Route path="/news">
-            <AnimalLoader/>
           </Route>
         </Switch>
         <Switch>
