@@ -1,34 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
-// import AdotpionForm from '../components/Organisms/AdotpionForm/AdotpionForm';
+import { BrowserRouter as Router } from 'react-router-dom';
+// import { ThemeProvider } from 'styled-components';
+// import { theme } from '../styles/styles';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
-import VolunteerForm from '../components/Organisms/VolunteerForm/VolunteerForm';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-`;
+import Footer from '../components/Organisms/Footer/Footer';
+import AdministratorNavigation from '../components/templates/AdministratorNavigation/AdministratorNavigation';
 
 const theme = createMuiTheme({
-  palette:{
-    primary:{
+  palette: {
+    primary: {
       light: '#0292c9',
       main: '#0093CA',
-      dark: '#0274A2'
-    }
-  }
+      dark: '#0274A2',
+    },
+  },
 });
-
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationView />
+      <Router>
+        {/* <NavigationView /> */}
+        <AdministratorNavigation />
+      </Router>
+      <Footer />
     </ThemeProvider>
   );
 }

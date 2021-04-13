@@ -1,0 +1,40 @@
+.education-list-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.education-list-wrapper h3{
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+}
+
+.education-ul{
+    list-style-type: none;
+    margin-bottom: 1rem;
+}
+
+.education-ul li{
+    display: flex;
+    align-items: center;
+}
+
+.education-ul p{
+    margin-left: .5rem;
+}
+
+.correct-ul .icon{
+    color: rgb(10, 177, 74);
+}
+
+.wrong-ul .icon{
+    color: rgb(204, 25, 61);
+}
+
+@media (max-width: 768px){
+    .education-list-wrapper{
+        align-items: flex-start;
+        margin: 0 1rem;
+    }
+}

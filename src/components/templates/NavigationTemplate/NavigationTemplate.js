@@ -1,13 +1,27 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
+<<<<<<< HEAD
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import { Animals } from '../../Organisms/Animals.js/Animals';
+=======
+import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
+import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
+import { Animals } from '../../Organisms/Animals/Animals';
+import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
+import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import { MainPage } from '../../Organisms/MainPage/MainPage';
+import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
+import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
+import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
+import Education from '../../Organisms/Education/Education';
+>>>>>>> 99ce1bef57d20d4ee6fdc75bf0ca6038f921aa60
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,7 +36,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation />
+        <Navigation makeNavigation={navigationArrayWithRoutes} />
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -37,31 +51,47 @@ function NavigationView() {
           <Switch>
             <Route path="/" exact>
               {/* odpowiedni komponent */}
+              <MainPage />
+              {/* <Wrapper>
+                <AdotpionForm />
+              </Wrapper> */}
             </Route>
           </Switch>
           <Switch>
-            <Route path="/registration"></Route>
+            <Route path="/registration">
+              <SignUpForm />
+            </Route>
           </Switch>
           <Switch>
-            <Route path="/login"></Route>
+            <Route path="/login">
+              <SignInForm />
+            </Route>
           </Switch>
           <Switch>
             <Route path="/news"></Route>
           </Switch>
           <Switch>
-            <Route path="/animals">
-              <Animals />
-            </Route>
+            <Route path="/animals" exact component={Animals} />
+            <Route path="/animals/:id" component={AnimalPage} />
           </Switch>
           <Switch>
             <Route path="/adoption">
               <Wrapper>
-                <VisitForm />
+                <AdoptionVisitPage />
               </Wrapper>
             </Route>
           </Switch>
           <Switch>
+<<<<<<< HEAD
             <Route path="/education"></Route>
+=======
+            <Route path="/education">
+              <Wrapper>
+                <Education />
+                {/* <VolunteerForm /> */}
+              </Wrapper>
+            </Route>
+>>>>>>> 99ce1bef57d20d4ee6fdc75bf0ca6038f921aa60
           </Switch>
           <Switch>
             <Route path="/howtohelp">
@@ -69,8 +99,7 @@ function NavigationView() {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/about">
-            </Route>
+            <Route path="/about"></Route>
           </Switch>
           <Switch>
             <Route path="/contact"></Route>
