@@ -10,7 +10,7 @@ import DogLoader from '../../Loaders/NewLoader/DogLoader';
 
 export function UserVisits({ link }) {
   const [visits, setVisits] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [method, setMethod] = useState('GET');
   const [visitId, setVisitId] = useState('');
   const url = 'https://best-animal-shelter.herokuapp.com/api/visits/me/';
@@ -19,6 +19,7 @@ export function UserVisits({ link }) {
   useEffect(() => {
     async function fetchData() {
       setMethod('GET');
+      setLoading(true);
 
       const response = await fetch(url + visitId, {
         method: method,
@@ -39,6 +40,7 @@ export function UserVisits({ link }) {
     }
     fetchData();
     // return fetchData();
+    setLoading(false);
   }, [authToken, method, visitId]);
 
   const disableButton = (date) => {
