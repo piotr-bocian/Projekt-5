@@ -52,7 +52,7 @@ const Navigation = ({ props }) => {
 
       <GridItemMenuWrapper>
         <FlexWrapper>
-          {makeNavigation.map((nav, id) => {
+          {navigationArrayWithRoutes.map((nav, id) => {
             return (
               <NavigationTextWithRoutes
                 key={id}

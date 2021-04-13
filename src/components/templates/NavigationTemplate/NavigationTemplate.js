@@ -10,7 +10,7 @@ import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
-import { Animals } from '../../Organisms/Animals.js/Animals';
+// import { Animals } from '../../Organisms/Animals.js/Animals';
 // import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import { MainPage } from '../../Organisms/MainPage/MainPage';
