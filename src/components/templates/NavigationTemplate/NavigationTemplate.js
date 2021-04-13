@@ -12,6 +12,7 @@ import NewPosts from '../../Organisms/Posts/newPosts';
 import LatestPosts from '../../Organisms/Posts/LatestPosts';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import OnePost from '../../Organisms/Posts/OnePost';
+import PostForm from '../../Organisms/Posts/postForm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -51,7 +52,10 @@ function NavigationView() {
             <Route path="/login"></Route>
           </Switch>
           <Switch>
-            <Route path="/news" exact component={NewPosts} />
+            <Route path="/news" exact> 
+              {/* <PostForm /> */}
+              <NewPosts />
+            </Route>
             <Route path="/news/:id" component={OnePost} />
           </Switch>
           <Switch>

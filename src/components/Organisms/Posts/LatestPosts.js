@@ -29,11 +29,8 @@ const LatestPosts = () => {
 
     useEffect(() => {
         handler.makeHttpRequest()
-            .then((result) => {
-                // posts.map((post)=>{
-                //     console.log(post)
-                // })
-                setPosts(result)
+        .then((result) => {
+            setPosts(result.posts.results)
             });
     }, [])
 

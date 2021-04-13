@@ -8,7 +8,7 @@ import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import Paper from '@material-ui/core/Paper';
 import { AllPostsGrid } from '../../Molecules/Posts/allPostsGrid.js';
-
+import PostForm from './postForm';
 
 import './newPosts.css';
 
@@ -33,9 +33,10 @@ const NewPosts = () => {
     useEffect(() => {
         handler.makeHttpRequest()
             .then((result) => {
-                posts.map((post)=>{
+                console.log(result.posts.results)
+                    result.posts.results.map((post)=>{
                 })
-                setPosts(result)
+                setPosts(result.posts.results)
             });
     }, [])
 
@@ -45,6 +46,7 @@ const NewPosts = () => {
             Aktualności
         </Typography>
         <Container>
+        <PostForm />
             <Grid container spacing={3}>
                 {posts.map((post) => (
                     <AllPostsGrid post={post}/>
