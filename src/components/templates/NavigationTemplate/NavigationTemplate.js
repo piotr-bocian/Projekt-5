@@ -18,7 +18,7 @@ import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
-
+import EditProfile from '../../Organisms/EditProfile/EditProfile';
 
 // export const Wrapper = styled.div`
 import UserPage from '../../Organisms/UserPage/UserPage';
@@ -98,7 +98,9 @@ function NavigationView() {
               </Route>
               <Route path="/post" />
               <Route path="/myposts" />
-              <Route path="/editprofile"/>
+              <Route path="/editprofile">
+                <EditProfile />
+              </Route>
             </AuthProvider>
           </Switch>
         </NavigationTemplate>
