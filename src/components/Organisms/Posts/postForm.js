@@ -36,7 +36,10 @@ const PostForm = () => {
         let temp = {}
             temp.title = title?"":"This field is required"
             temp.photo = photo?"":"This field is required"
-            temp.content = content.length < 50 ? "":"This field is required"
+            temp.content = content?"":"This field is required"
+            if(content.length < 50){
+                temp.content = "This field is required"
+            }
             setErrors({
                 ...temp
             })
@@ -51,24 +54,28 @@ const PostForm = () => {
         })
         e.preventDefault();
          if(validate()){
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODMzNjE4OSwiZXhwIjoxNjE4MzM5Nzg5fQ.V4iLTuw_ucQum1F_LsJ2fIpI15d4hEwl9XXLdR6JqR4',
-                },
-                body: JSON.stringify(post)
-            };
-            fetch('https://best-animal-shelter.herokuapp.com/api/posts', requestOptions)
-            .then(response => {
-                handleSendInfo()
-                console.log(response)
-            }).catch(error =>{
-                console.log(error)
-            })
-            setTitle('')
-            setPhoto('')
-            setContent('')
+             if(content.length > 50){
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-auth-token': 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODM0MTUwMywiZXhwIjoxNjE4MzQ1MTAzfQ.DEbm79ujoAdo1rQgVso5UV1PfgqJRbiCOop6vz9a6LY',
+                    },
+                    body: JSON.stringify(post)
+                };
+                fetch('https://best-animal-shelter.herokuapp.com/api/posts', requestOptions)
+                .then(response => {
+                    if(response.status == 200 || 201){
+                        handleSendInfo()
+                        console.log(response.status)
+                    }
+                }).catch(error =>{
+                    console.log(error)
+                })
+                setTitle('')
+                setPhoto('')
+                setContent('')
+             }
          }
          else{
              console.log('error nie wszystko uzupełnione')
@@ -132,15 +139,17 @@ const PostForm = () => {
                                 rows={6}
                                 value={content} onChange={(e) => setContent(e.target.value)}
                                 fullWidth
-                                helperText="Treść Wymagana"
+                                helperText="Tytuł wymagany - min 50 znaków"
                             />
                         </Grid>
                         <Grid item xs={12} sm={12} md={12}>
                             <TextField
+                                error={errors.photo}
                                 variant="outlined"
                                 label="Link do fotografii*"
                                 value={photo} onChange={(e) => setPhoto(e.target.value)}
                                 fullWidth
+                                helperText="Dodaj zdjęcie zwierzaka"
                             />
                         </Grid>
                         <Grid item xs={4}>
