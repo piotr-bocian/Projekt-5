@@ -70,9 +70,9 @@ function NavigationView() {
                 </Wrapper>
               </Route>
               <Route path="/education" />
-              <Route path="/howtohelp">
-                <PaymentForm />
-              </Route>
+              <AdminRoute path="/howtohelp" component={PaymentForm} />
+                {/* <PaymentForm />
+              </AdminRoute> */}
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />
