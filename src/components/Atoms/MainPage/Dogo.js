@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       opacity: '70%',
       [theme.breakpoints.down('lg')]: {
         height: '100%',
-        paddingTop: '25px'
+        paddingTop: '25%'
       }
     },
   }));

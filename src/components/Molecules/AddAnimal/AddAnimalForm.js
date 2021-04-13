@@ -89,10 +89,12 @@ const AddAnimal = () => {
         formData.set('image', image, 'image')   
         console.log(...formData.entries());
 
+        const authToken = window.localStorage.getItem('x-auth-token');
+
         fetch('https://best-animal-shelter.herokuapp.com/api/animals/adminanimals', {
         method: 'POST',
         headers: {
-            'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODI1MTQyNCwiZXhwIjoxNjE4MjU1MDI0fQ.Z3fAFZNEcgzDzA6xmg_7Oc0SEo4kfjcXlYsR0OCCpqE'
+            'x-auth-token': authToken,
         },
         body: formData   
     });        

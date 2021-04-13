@@ -20,7 +20,10 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationView />
+      <Router>
+        {/* <NavigationView /> */}
+        <AdministratorNavigation />
+      </Router>
       <Footer />
     </ThemeProvider>
   );
