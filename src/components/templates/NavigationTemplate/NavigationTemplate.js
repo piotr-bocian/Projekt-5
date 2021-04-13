@@ -20,6 +20,7 @@ import AdminRoute from '../../Organisms/UserPage/AdminRoute';
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
+import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,7 +87,9 @@ function NavigationView() {
               <Route path="/myadoptionvisits" >
                 <UserVisits link={{link:"/useraccount"}}/>
               </Route>
-              <Route path="/post" />
+              <Route path="/payment" >
+                <UserPagePaymentForm link={{link:"/useraccount"}}/>
+              </Route>
               <Route path="/myposts" />
               <Route path="/editprofile"/>
             </AuthProvider>
