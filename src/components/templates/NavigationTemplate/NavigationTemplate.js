@@ -17,6 +17,12 @@ import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
+import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
+import NewPosts from '../../Organisms/Posts/newPosts';
+import LatestPosts from '../../Organisms/Posts/LatestPosts';
+import OnePost from '../../Organisms/Posts/OnePost';
+import PostForm from '../../Organisms/Posts/postForm';
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,6 +56,7 @@ function NavigationView() {
               {/* <Wrapper>
                 <AdotpionForm />
               </Wrapper> */}
+              <LatestPosts />
             </Route>
           </Switch>
           <Switch>
@@ -63,7 +70,11 @@ function NavigationView() {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/news"></Route>
+            <Route path="/news" exact> 
+              {/* <PostForm /> */}
+              <NewPosts />
+            </Route>
+            <Route path="/news/:id" component={OnePost} />
           </Switch>
           <Switch>
             <Route path="/animals" exact component={Animals} />

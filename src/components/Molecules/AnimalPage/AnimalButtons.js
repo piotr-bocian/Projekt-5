@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import BackButton from '../../Atoms/UserNavigationPage/BackButton'
+import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 
 const useStyles = makeStyles((theme) => ({
   rootGrid: {
@@ -31,6 +32,9 @@ export function AnimalButtons (props) {
             </Grid>
             <Grid item>
               <VisitForm animal={props.animal}/>
+            </Grid>
+            <Grid item>
+              <AdotpionForm />
             </Grid>
             </Grid>
           </div>

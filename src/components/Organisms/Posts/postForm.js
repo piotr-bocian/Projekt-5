@@ -1,45 +1,89 @@
 import React, { useState } from 'react';
-import { Typography, TextField, Button, Dialog } from '@material-ui/core';
+import { Typography, TextField, Button, Dialog  } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import LocalPostOfficeIcon  from '@material-ui/icons/LocalPostOffice';
+import ControlPoint  from '@material-ui/icons/ControlPoint';
 import { Grid } from '@material-ui/core';
+import Tooltip from '@material-ui/core/Tooltip';
 import TelegramIcon from '@material-ui/icons/Telegram';
 
-import './AdotpionForm.css';
+// import './AdotpionForm.css';
 
-const AdotpionForm = () => {
-
+const PostForm = () => {
     const setupJson = ()=>{
         let jsonToSend = {}
         jsonToSend = {
-            content: question,
-            userID:'6036925f8146b60b78d3508d',
-            animalID:'6036925f8146b60b7853d081'
+            title: title,
+            postDate: new Date(),
+            content: content,
+            photo: photo
         }
         setPost(jsonToSend)
     }
+    const [photo, setPhoto] = useState('');
     const [title, setTitle] = useState('');
-    const [question, setQuestion] = useState('');
-    const [open, setOpen] = useState(false);
+    const [content, setContent] = useState('');
+    const [open, setOpen] = React.useState(false);
     const [sendInfo, setSendInfo] = useState(false);
     const [errors, setErrors] = useState({});
     const [post, setPost] = useState({
+        title:'',
+        postDate:'',
         content:'',
-        userID:'6036925f8146b60b78d3508d',
-        animalID:'6036925f8146b60b7853d081'
+        photo:''
     });
-    const animalName = "Rudy"
     const validate = () => {
         console.log(post)
         let temp = {}
             temp.title = title?"":"This field is required"
-            temp.question = question?"":"This field is required"
+            temp.photo = photo?"":"This field is required"
+            temp.content = content?"":"This field is required"
+            if(content.length < 50){
+                temp.content = "This field is required"
+            }
             setErrors({
                 ...temp
             })
         return Object.values(temp).every(x => x =='')
     }
+    const handeSubmit = (e) => {
+        setPost({
+            title: title,
+            postDate: new Date(),
+            content: content,
+            photo: photo
+        })
+        e.preventDefault();
+         if(validate()){
+             if(content.length > 50){
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-auth-token': 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODM0MTUwMywiZXhwIjoxNjE4MzQ1MTAzfQ.DEbm79ujoAdo1rQgVso5UV1PfgqJRbiCOop6vz9a6LY',
+                    },
+                    body: JSON.stringify(post)
+                };
+                fetch('https://best-animal-shelter.herokuapp.com/api/posts', requestOptions)
+                .then(response => {
+                    if(response.status == 200 || 201){
+                        handleSendInfo()
+                        console.log(response.status)
+                    }
+                }).catch(error =>{
+                    console.log(error)
+                })
+                setTitle('')
+                setPhoto('')
+                setContent('')
+             }
+         }
+         else{
+             console.log('error nie wszystko uzupełnione')
+         }
+    }
+
     const handleClickOpen = () => {
+
         setOpen(true);
     };
     const handleSendInfo = () =>{
@@ -50,49 +94,22 @@ const AdotpionForm = () => {
         setSendInfo(false);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-         if(validate()){
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODMzNDUwOCwiZXhwIjoxNjE4MzM4MTA4fQ.C2letvEBgOGMdc8MAN_7JcD4Y4MHbq7peY5pBzxu8Hc',
-                },
-                body: JSON.stringify(post)
-            };
-            fetch('https://best-animal-shelter.herokuapp.com/api/adoptionforms', requestOptions)
-            .then(response => {
-                if(response.status === 200 || 201){
-
-                    handleSendInfo()
-                }
-            }).catch(error =>{
-                console.log(error)
-            })
-            setTitle('')
-            setQuestion('')
-         }
-         else{
-             console.log('error nie wszystko uzupełnione')
-         }
-    }
     return (
-        <div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Zapytaj o zwięrzę
-        </Button>
+        <div className="cardActions">
+            <Button variant="none" color="primary" onClick={handleClickOpen}>
+                <Tooltip title="Dodaj Nowy Post" aria-label="add" placement="top">
+                    <ControlPoint color="primary" style={{ fontSize: 50 }}/>
+                </Tooltip>
+            </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <form
-                    className="formAdoption"
-                    onSubmit={handleSubmit}
+                <form className="formAdoption" onSubmit={handeSubmit} noValidate
                     autoComplete="off">
                     <Grid container spacing={3} justify="center">
                         <Grid item xs={12} sm={12} md={12}>
                             <CloseIcon className="exitButton" onClick={handleClose} color="primary" />
                         </Grid>
                         <Grid item xs={1} sm={1} md={1} jusify="center" >
-                            <LocalPostOfficeIcon color="primary" style={{ fontSize: 50 }}/>
+                            <ControlPoint color="primary" style={{ fontSize: 50 }}/>
                         </Grid>
                         <Grid item xs={12} sm={12} md={12}>
                             <Typography
@@ -100,17 +117,8 @@ const AdotpionForm = () => {
                                 align="center"
                                 color="textPrimary"
                             >
-                            Zadaj pytanie
+                            Dodaj nowy post
                             </Typography>
-                        </Grid>
-
-                        <Grid item xs={12} sm={12} md={12}>
-                            <TextField
-                                variant="outlined"
-                                disabled
-                                label="Imię zwierzaka*" value={animalName}
-                                fullWidth
-                            />
                         </Grid>
                         <Grid item xs={12} sm={12} md={12}>
                             <TextField
@@ -124,14 +132,24 @@ const AdotpionForm = () => {
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                error={errors.question}
+                                error={errors.content}
                                 variant="outlined"
                                 label="Treść *"
                                 multiline
                                 rows={6}
-                                value={question} onChange={(e) => setQuestion(e.target.value)}
+                                value={content} onChange={(e) => setContent(e.target.value)}
                                 fullWidth
-                                helperText="Napisz coś"
+                                helperText="Tytuł wymagany - min 50 znaków"
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12}>
+                            <TextField
+                                error={errors.photo}
+                                variant="outlined"
+                                label="Link do fotografii*"
+                                value={photo} onChange={(e) => setPhoto(e.target.value)}
+                                fullWidth
+                                helperText="Dodaj zdjęcie zwierzaka"
                             />
                         </Grid>
                         <Grid item xs={4}>
@@ -159,7 +177,7 @@ const AdotpionForm = () => {
                                 align="center"
                                 color="green"
                         >
-                            Formularz został wysłany
+                            Wpis został wysłany do zatwierdzenia
                         </Typography>
                     </Grid>
                     <Grid item xs={2} sm={2} md={2} jusify="center" style={{ textAlign: "center" }}>
@@ -170,4 +188,4 @@ const AdotpionForm = () => {
         </div>
     )
 }
-export default AdotpionForm;
+export default PostForm;
