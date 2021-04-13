@@ -83,7 +83,9 @@ function NavigationView() {
               <Route path="/adoptionvist">
                 <UserPageVisitForm link={{link:"/useraccount"}}/>
               </Route>
-              <Route path="/myadoptionvisits" component={UserVisits}/>
+              <Route path="/myadoptionvisits" >
+                <UserVisits link={{link:"/useraccount"}}/>
+              </Route>
               <Route path="/post" />
               <Route path="/myposts" />
               <Route path="/editprofile"/>

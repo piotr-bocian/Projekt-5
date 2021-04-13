@@ -45,19 +45,32 @@ const UserPageVisitForm = ({ link }) => {
     const [errors, setErrors] = useState();
     const [confirmation, setConfirmation] = useState(false)
 
-    const sendForm = (e) => {
-        e.preventDefault();
-        let visitState = {
-                visitDate: visitDate,
-                visitTime: visitTime,
-                duration: duration
-            }
+    let visitState = {
+            visitDate: visitDate,
+            visitTime: visitTime,
+            duration: duration
+        }
 
-        if (Boolean(errors?.timeError)) {
-            console.log('Popraw formularz')
+    const sendForm = async (e) => {
+        const url = 'https://best-animal-shelter.herokuapp.com/api/visits/me';
+        const authToken = window.localStorage.getItem('x-auth-token');
+        e.preventDefault();
+
+        if (!Boolean(errors?.timeError)) {
+            const signUpResponse = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-auth-token': authToken,
+                },
+                body: JSON.stringify(visitState)
+            });
+            if (signUpResponse.status === 201){
+                setConfirmation(true)
+            }
         } else {
-            console.log(visitState);
-            setConfirmation(true);
+            console.log('Popraw formularz')
         }
     }
 

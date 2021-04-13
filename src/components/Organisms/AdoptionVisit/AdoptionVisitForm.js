@@ -64,7 +64,7 @@ const VisitForm = ({ animal }) => {
 
     const sendForm = async (e) => {
         const url = 'https://best-animal-shelter.herokuapp.com/api/visits/me';
-        // const url = 'http://localhost:3001/api/visits/me';
+        const authToken = window.localStorage.getItem('x-auth-token');
         e.preventDefault();
 
         if (!Boolean(errors?.timeError)) {
@@ -73,7 +73,7 @@ const VisitForm = ({ animal }) => {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    'x-auth-token': "",
+                    'x-auth-token': authToken,
                 },
                 body: JSON.stringify(visitState)
             });
