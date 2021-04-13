@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
+import DogLoader from '../../Loaders/NewLoader/DogLoader';
 import UserNavigationPage from '../UserNavigationPage/UserNavigationPage';
 
 const UserPage = () => {
@@ -13,9 +14,11 @@ const UserPage = () => {
             </div>
         )
     } else {
-        return(
+        return( !user.image ? (
+            <DogLoader/>
+          ) : (
             <UserNavigationPage props = {user} />
-        )
+        ))
     }
     
 }

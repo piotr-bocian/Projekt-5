@@ -6,6 +6,7 @@ import PetsIcon from '@material-ui/icons/Pets';
 
 import { Wrapper, centerText, avatarStyle, FormWrapper, closeIconStyle, ConfirmationWrapper, confirmationHeader } from './AdoptionVisitForm.style';
 
+import { useAuth } from '../../../contexts/AuthContext';
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
 import SelectDateTime from '../../Molecules/AdoptionVisit/SelectDateTime';
 import FormButton from '../../Atoms/AdoptionVisit/FormButton';
@@ -39,6 +40,8 @@ const durationValues = [
 ];
 
 const VisitForm = ({ animal }) => {
+    const { isLogged } = useAuth();
+
     const [visitDate, setVisitDate] = useState(minDate);
     const [visitTime, setVisitTime] = useState("09:00");
     const [duration, setDuration] = useState(30);
@@ -116,7 +119,7 @@ const VisitForm = ({ animal }) => {
 
     return  (
     <div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen} disabled={!isLogged}>
             Zarezerwuj wizytę
         </Button>
 
