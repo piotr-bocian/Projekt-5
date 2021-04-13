@@ -10,18 +10,16 @@ const UserNavigationPage = ({ props }) => {
     navigationArrayWithRoutes = [
       { name: 'Umów wizytę adopcyjną', route: '/adoptionvist' },
       { name: 'Moje wizyty adopcyjne', route: '/myadoptionvisits' },
+      { name: 'Wesprzyj schronisko', route: '/payment' },
       { name: 'Dodaj post', route: '/post' },
-      { name: 'Moje posty', route: '/myposts' },
-      { name: 'Moje płatności', route: '/mypayments' },
       { name: 'Wypełnij formularz wolontariusza', route: '/volunteerform' },
     ];
   } else {
     navigationArrayWithRoutes = [
       { name: 'Umów wizytę adopcyjną', route: '/adoptionvist' },
       { name: 'Moje wizyty adopcyjne', route: '/myadoptionvisits' },
+      { name: 'Wesprzyj schronisko', route: '/payment' },
       { name: 'Dodaj post', route: '/post' },
-      { name: 'Moje posty', route: '/myposts' },
-      { name: 'Moje płatności', route: '/mypayments' },
     ];
   }
 
@@ -29,7 +27,7 @@ const UserNavigationPage = ({ props }) => {
     <>
       <PageWrapper>
         <h2>
-          STRONA UŻYTKOWNIKA - {props.name} {props.lastName}
+          STRONA UŻYTKOWNIKA - {props.firstName} {props.lastName}
         </h2>
         <NavigationWrapper>
           <UserCard props={props}/>

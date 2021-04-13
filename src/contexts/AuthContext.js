@@ -7,10 +7,10 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const userUrl = 'http://localhost:5000/api/users/me';
-    // const userUrl = 'https://best-animal-shelter.herokuapp.com/api/users/me;
-    const loginUrl = 'http://localhost:5000/api/login';
-    // const loginUrl = 'https://best-animal-shelter.herokuapp.com/api/login;
+    // const userUrl = 'http://localhost:5000/api/users/me';
+    const userUrl = 'https://best-animal-shelter.herokuapp.com/api/users/me';
+    // const loginUrl = 'http://localhost:5000/api/login';
+    const loginUrl = 'https://best-animal-shelter.herokuapp.com/api/login';
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
     const [isLogged, setIsLogged] = useState(false);

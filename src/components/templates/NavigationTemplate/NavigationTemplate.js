@@ -16,9 +16,10 @@ import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
 import AdminRoute from '../../Organisms/UserPage/AdminRoute';
-// import UserNavigationPage from '../../Organisms/UserNavigationPage/UserNavigationPage'
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
+import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
+import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,8 +83,12 @@ function NavigationView() {
               <Route path="/adoptionvist">
                 <UserPageVisitForm link={{link:"/useraccount"}}/>
               </Route>
-              <Route path="/myadoptionvisits" />
-              <Route path="/post" />
+              <Route path="/myadoptionvisits" >
+                <UserVisits link={{link:"/useraccount"}}/>
+              </Route>
+              <Route path="/payment" >
+                <UserPagePaymentForm link={{link:"/useraccount"}}/>
+              </Route>
               <Route path="/myposts" />
               <Route path="/editprofile"/>
             </AuthProvider>
@@ -93,8 +98,5 @@ function NavigationView() {
     </ThemeProvider>
   );
 }
-
-// let defaultuser={name: "Robert", lastName: "Makłowicz", email: "robert.maklowicz@gmail.com", mobile: "123-456-789", isVolunteer: true, userID: "123", image:''}
-// let info={isLogged:true};
 
 export default NavigationView;
