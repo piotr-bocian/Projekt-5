@@ -46,7 +46,7 @@
 @media (max-width: 768px){
     .footer{
         display: block;
-        margin-top: 10rem;
+        margin-top: 5rem;
     }
 
     .footer-section:first-child{

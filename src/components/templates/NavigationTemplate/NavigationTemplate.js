@@ -26,6 +26,10 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 70vh;
+
+  @media (max-width: 768px){
+    height: auto;
+  }
 `;
 
 const NavigationTemplate = ({ children }) => {
@@ -94,7 +98,11 @@ function NavigationView() {
             <Route path="/about"></Route>
           </Switch>
           <Switch>
-            <Route path="/contact"></Route>
+            <Route path="/contact">
+              {/* <Wrapper>
+                <VolunteerForm />
+              </Wrapper> */}
+            </Route>
           </Switch>
         </NavigationTemplate>
       </Router>
