@@ -22,6 +22,7 @@ function App() {
         <NavigationView />
         {/* <AdministratorNavigation /> */}
       </Router>
+      <Footer />
     </ThemeProvider>
   );
 }

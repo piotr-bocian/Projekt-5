@@ -33,7 +33,7 @@ export function Animals() {
       setAnimals(result.animals.results);
     });
   }, []);
-  return (handler.isLoading = true ? (
+  return (handler.isLoading ? (
       <AnimalLoader />
   ) : (
     <>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import gsap from 'gsap';
 
 const StyledLoader = styled(Loader)`
-  background-color: red;
   height: 50%;
   width: auto;
   position: absolute;
