@@ -7,6 +7,7 @@ import AnimalLoader from '../../../components/Loaders/AnimalLoader/AnimalLoader'
 import { Wrapper, ConfirmationWrapper, confirmationHeader } from './AdoptionVisitForm.style';
 import { PageWrapper, NavWrapper, BodyWrapper } from './UserPageVisitForm.style';
 import BackButton from '../../Atoms/UserNavigationPage/BackButton';
+import DogLoader from '../../Loaders/NewLoader/DogLoader';
 
  export function UserVisits ({ link }) {
 
@@ -58,7 +59,7 @@ import BackButton from '../../Atoms/UserNavigationPage/BackButton';
       }
     
     return isLoading ? (
-        <div></div>) :
+        <DogLoader/>) :
         (
         <PageWrapper>
             <NavWrapper>

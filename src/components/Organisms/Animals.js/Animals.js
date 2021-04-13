@@ -4,6 +4,7 @@ import { WaitingFiltersFrame } from '../../Molecules/WaitingFiltersFrame/Waiting
 import { AllAnimalsGrid } from '../../Molecules/AnimalsGrid/AnimalsGrid.js';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import useHttp from '../../../hooks/useHttp/useHttp';
+import DogLoader from '../../Loaders/NewLoader/DogLoader.js';
 
 
 export function Animals () {
@@ -29,7 +30,7 @@ export function Animals () {
 
     // console.log(animals);
     return handler.isLoading ? (
-        <div></div>) :
+        <DogLoader/>) :
         (
         <div>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
