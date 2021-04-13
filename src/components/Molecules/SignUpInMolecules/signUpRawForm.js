@@ -5,6 +5,7 @@ import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import { TermsCheckbox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import Alert from '@material-ui/lab/Alert';
 
 const SignUpRawForm = () => {
     const classes = useStyles();
@@ -147,7 +148,9 @@ const SignUpRawForm = () => {
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>
             <Grid container spacing={2}>
-                {apiError && <h4 style={{color:'red', marginBottom:'5px'}}>{apiError}</h4>}
+                <Grid item xs={12}>
+                    {apiError && <Alert severity="error" >{apiError}</Alert>}
+                </Grid>
                 <Grid item xs={12} sm={6}>
                     <SignUpInTxtField
                         name="firstName"

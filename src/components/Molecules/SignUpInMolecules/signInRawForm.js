@@ -6,6 +6,7 @@ import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import RememberMeCheckbox from '../../Atoms/SignUpInAtoms/rememberMeCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
 import { useAuth } from '../../../contexts/AuthContext';
+import Alert from '@material-ui/lab/Alert';
 
 const SignInRawForm = () => {
     const classes = useStyles();
@@ -81,7 +82,9 @@ const SignInRawForm = () => {
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>
             <Grid container spacing={2}>
-                {apiError && <h4 style={{color:'red', marginBottom:'5px'}}>{apiError}</h4>}
+                <Grid item xs={12}>
+                    {apiError && <Alert severity="error" >{apiError}</Alert>}
+                </Grid>
                 <Grid item xs={12}>
                     <SignUpInTxtField 
                         name="email"
