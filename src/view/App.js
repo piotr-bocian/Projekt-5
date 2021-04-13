@@ -7,6 +7,34 @@ import NavigationView from '../components/templates/NavigationTemplate/Navigatio
 import Footer from '../components/Organisms/Footer/Footer';
 import AdministratorNavigation from '../components/templates/AdministratorNavigation/AdministratorNavigation';
 
+
+
+
+
+
+
+
+
+
+
+import AnimalLoader from '../components/Loaders/AnimalLoader/AnimalLoader';
+import { Center } from '../components/templates/AdministratorViewTemplate/AdministratorViewTemplate.styles';
+import styled from 'styled-components';
+import paw from '../assets/catAndDogLoader/Loader_Animal_Sheltercat_dog.svg';
+
+export const AnimalPaw = styled.div`
+  background: url(${paw});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 50vh;
+`;
+
+// export const AnimalPaw = styled.img.attrs({
+//   src: paw,
+// })
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -22,9 +50,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <NavigationView />
+        {/* <AdministratorNavigation /> */}
       </Router>
-
-      <Footer />
+      <Center>
+        <AnimalLoader />
+      </Center>
     </ThemeProvider>
   );
 }

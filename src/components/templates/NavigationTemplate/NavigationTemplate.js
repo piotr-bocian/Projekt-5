@@ -16,6 +16,7 @@ import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
+import AnimalLoader from '../../Loaders/AnimalLoader/AnimalLoader';
 
 // export const Wrapper = styled.div`
 const Wrapper = styled.div`
@@ -44,11 +45,7 @@ function NavigationView() {
       <NavigationTemplate>
         <Switch>
           <Route path="/" exact>
-            {/* odpowiedni komponent */}
             <MainPage />
-            {/* <Wrapper>
-                <AdotpionForm />
-              </Wrapper> */}
           </Route>
         </Switch>
         <Switch>
@@ -62,7 +59,9 @@ function NavigationView() {
           </Route>
         </Switch>
         <Switch>
-          <Route path="/news"></Route>
+          <Route path="/news">
+            <AnimalLoader/>
+          </Route>
         </Switch>
         <Switch>
           <Route path="/animals" exact component={Animals} />
