@@ -28,7 +28,7 @@ export function AnimalPage(match) {
             <AnimalPagePhoto animal={props.animal}></AnimalPagePhoto>
             <AnimalName animal={props.animal}></AnimalName>
             <AnimalData animal={props.animal}></AnimalData>
-            <AnimalButtons></AnimalButtons>
+            <AnimalButtons animal={props.animal}></AnimalButtons>
         </div>           
             :null
     }

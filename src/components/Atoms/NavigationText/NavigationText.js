@@ -6,7 +6,7 @@ const StyledButton = withStyles(() => ({
   root: {
     margin: '0 auto',
     fontWeight: 400,
-    fontSize: 18,
+    fontSize: 16,
     '&:hover': {
       transition: '.3s ease-in',
       backgroundColor: 'transparent',
