@@ -21,8 +21,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        {/* <NavigationView /> */}
-        <AdministratorNavigation />
+        <NavigationView />
+        {/* <AdministratorNavigation /> */}
       </Router>
       <Footer />
     </ThemeProvider>

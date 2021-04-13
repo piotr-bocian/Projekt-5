@@ -6,10 +6,6 @@ import { theme } from '../../../styles/styles';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
-<<<<<<< HEAD
-import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
-import { Animals } from '../../Organisms/Animals.js/Animals';
-=======
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
@@ -21,7 +17,6 @@ import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
->>>>>>> 99ce1bef57d20d4ee6fdc75bf0ca6038f921aa60
 
 const Wrapper = styled.div`
   display: flex;
@@ -82,16 +77,12 @@ function NavigationView() {
             </Route>
           </Switch>
           <Switch>
-<<<<<<< HEAD
-            <Route path="/education"></Route>
-=======
             <Route path="/education">
               <Wrapper>
                 <Education />
                 {/* <VolunteerForm /> */}
               </Wrapper>
             </Route>
->>>>>>> 99ce1bef57d20d4ee6fdc75bf0ca6038f921aa60
           </Switch>
           <Switch>
             <Route path="/howtohelp">
