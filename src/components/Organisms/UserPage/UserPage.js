@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
+
 import UserNavigationPage from '../UserNavigationPage/UserNavigationPage';
 
 const UserPage = () => {
@@ -21,3 +22,9 @@ const UserPage = () => {
 }
 
 export default UserPage;
+
+// !user.image ? (
+//     <DogLoader/>
+//   ) : (
+//     <UserNavigationPage props = {user} />
+// ))

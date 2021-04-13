@@ -91,6 +91,7 @@ export function AuthProvider({ children }) {
     }, [authToken]);
 
     const value = {
+        loading,
         admin,
         user,
         err,
@@ -99,7 +100,7 @@ export function AuthProvider({ children }) {
         logout,
         isLogged
     }
-
+    console.log(loading);
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}

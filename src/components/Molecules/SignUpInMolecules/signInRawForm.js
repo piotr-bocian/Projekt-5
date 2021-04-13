@@ -61,7 +61,6 @@ const SignInRawForm = () => {
             setApiError('');
             setLoading(true);
             await signIn(form.email, form.password);
-
             if(localStorage.getItem('x-auth-token')){
                 setForm({
                     //clear form
