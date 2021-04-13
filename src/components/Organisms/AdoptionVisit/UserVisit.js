@@ -11,6 +11,7 @@ import { Wrapper, ConfirmationWrapper, confirmationHeader } from './AdoptionVisi
     const [isLoading, setIsLoading] = useState(false);
 
     const url = 'https://best-animal-shelter.herokuapp.com/api/visits/me';
+    const authToken = window.localStorage.getItem('x-auth-token');
 
     useEffect(() => {
 
@@ -21,7 +22,7 @@ import { Wrapper, ConfirmationWrapper, confirmationHeader } from './AdoptionVisi
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    'x-auth-token': "",
+                    'x-auth-token': authToken,
                 },
             });
             const data = await response.json();

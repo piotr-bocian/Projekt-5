@@ -19,6 +19,7 @@ import AdminRoute from '../../Organisms/UserPage/AdminRoute';
 // import UserNavigationPage from '../../Organisms/UserNavigationPage/UserNavigationPage'
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
+import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,7 +83,7 @@ function NavigationView() {
               <Route path="/adoptionvist">
                 <UserPageVisitForm link={{link:"/useraccount"}}/>
               </Route>
-              <Route path="/myadoptionvisits" />
+              <Route path="/myadoptionvisits" component={UserVisits}/>
               <Route path="/post" />
               <Route path="/myposts" />
               <Route path="/editprofile"/>
