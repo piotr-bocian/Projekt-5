@@ -60,7 +60,7 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      {/* <Router> */}
         <NavigationTemplate>
           <Switch>
             <AuthProvider>
@@ -102,7 +102,7 @@ function NavigationView() {
             </AuthProvider>
           </Switch>
         </NavigationTemplate>
-      </Router>
+      {/* </Router> */}
     </ThemeProvider>
   );
 }

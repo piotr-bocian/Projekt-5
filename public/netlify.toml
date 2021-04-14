@@ -4,6 +4,11 @@ publish = "/build"
 base="/"
 
 [[redirects]]
-from = "/*"
+from = "/login"
+to = "/useraccount"
+status = 200
+
+[[redirects]]
+from = "/registration"
 to = "/useraccount"
 status = 200
