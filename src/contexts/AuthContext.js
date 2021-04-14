@@ -21,6 +21,8 @@ export function AuthProvider({ children }) {
     function userLogged() {
         if(localStorage.getItem("x-auth-token")){
             return setIsLogged(true);
+        } else {
+            return setIsLogged(false);
         }
     }
 
