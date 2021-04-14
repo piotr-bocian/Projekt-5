@@ -7,6 +7,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import VisitForm from './AdoptionVisitForm';
 
 const AdoptionVisitPage = () => {
+    let url = `${window.location.href.slice(0, -9)}/animals`
     return (
         
             <PageWrapper>
@@ -27,7 +28,7 @@ const AdoptionVisitPage = () => {
                         <p>
                             Przychodząc do nas zarezerwuj sobie kilka godzin na oglądanie i poznanie naszych zwierząt. <br />
                             Zawsze możesz podpytać opiekunów o konkretnego psa bądź kota lub sprawdzić informacje o zwierzaku <br />
-                            w zakładce - <Link href="http://localhost:3000/animals" ><span>ZWIERZĘTA</span></Link> i tam zarezerwować wizytę adopcyjną dla konkretnego zwierzaka. <br />
+                            w zakładce - <Link href={url} ><span>ZWIERZĘTA</span></Link> i tam zarezerwować wizytę adopcyjną dla konkretnego zwierzaka. <br />
                         </p>
                     </Step>
                     <Step>

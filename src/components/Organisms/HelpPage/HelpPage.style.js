@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
-    width: 90%;
+    width: 100vw;
     height: 100%;
     display: grid;
     grid-template-rows: 0.2fr 0.6fr 0.2fr;
@@ -13,13 +13,15 @@ export const PageWrapper = styled.div`
         justify-self: center;
         align-self: center;
         padding: 1em 0;
+        margin-top: 1em;
+        margin-bottom: 1em;
     }
     & button {
         font-size: 0.8em;
         margin-top: 1em;
     }
     @media only screen and (min-width : 1824px) {
-        width: 80%;
+        width: 100%;
         & h2 {
             font-size: 1.75em;
             padding: 0;
@@ -28,6 +30,10 @@ export const PageWrapper = styled.div`
             font-size: 1.25em;
             margin-top: 0;
         }
+    }
+
+    @media(max-width: 768px){
+        height: auto;
     }
 `;
 
@@ -38,6 +44,7 @@ export const Wrapper = styled.div`
     @media(max-width: 768px){
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 `;
 
@@ -81,6 +88,16 @@ export const Step = styled.div`
 export const ButtonWrapper = styled.div`
     justify-self: center;
     align-self: center;
+
+    & > button{
+        margin-bottom: 1rem;
+    }
+
+    @media(max-width: 768px){
+        & > button{
+            width: 100%;
+        }
+    }
 `;
 
 export const iconStyle = {

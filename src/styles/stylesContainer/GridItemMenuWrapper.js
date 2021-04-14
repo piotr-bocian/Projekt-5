@@ -10,5 +10,8 @@ margin-right: 20px;
     grid-row: 2/2;
     grid-column: 1/4;
   } */
+  @media(max-width: 768px){
+    margin-right: 0;
+  }
 `;
 export default GridItemMenuWrapper;

@@ -65,7 +65,6 @@ const VolunteerForm = () => {
     }
 
     const handler = useHttp(
-        // 'http://localhost:4000/api/volunteerForms',
         'https://best-animal-shelter.herokuapp.com/api/volunteerForms',
         'POST',
         {
@@ -81,12 +80,10 @@ const VolunteerForm = () => {
 
         if(validateForm()){
             handler.makeHttpRequest();
-            //console.log('Wysylam zapytanie');
         }
     }
 
     return (
-        // <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis animi excepturi architecto officiis optio est esse et perferendis maxime labore. Cumque libero quis obcaecati quam voluptate ad molestiae dolores provident aliquid totam a, quo illo esse harum molestias, optio, aperiam iure eum quas. Exercitationem delectus rem, alias ut odio obcaecati quia illo? Obcaecati eius voluptatum laborum unde. Dolorum magnam aliquam velit repudiandae ut eaque maiores ducimus perferendis, optio eligendi accusamus officia qui ratione? Nihil explicabo, omnis perspiciatis amet adipisci ipsum harum veniam quisquam. Repellat, beatae accusamus, laboriosam quia incidunt libero, nesciunt voluptatem facere consectetur non amet suscipit earum esse error deserunt culpa eius dolorem iste! Reprehenderit veniam fuga odio architecto, error, dolorem ex tempore facilis dolore sint numquam quisquam, sit provident? Ducimus debitis a quos fuga saepe voluptas aliquid sit quisquam voluptates veniam, laborum cum nesciunt. Eveniet odio sit pariatur vitae architecto necessitatibus dolore illo dolorum nulla, voluptate dicta provident natus neque, animi alias itaque fuga explicabo suscipit excepturi expedita modi. Ipsum voluptates sequi voluptatibus dolor dolores odit. Quisquam dolores commodi quasi, velit odio voluptas sunt libero veniam, assumenda pariatur cum! Perferendis fuga maiores architecto atque! Temporibus, quisquam esse dolor assumenda incidunt explicabo ducimus repellendus autem laboriosam praesentium fugit corrupti.</div>
         <form className="form" onSubmit={handleSubmit}>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>

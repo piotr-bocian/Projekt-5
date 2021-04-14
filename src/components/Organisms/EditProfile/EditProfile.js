@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import useHttp from '../../../hooks/useHttp/useHttp';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Input, Button, Grid, TextField } from '@material-ui/core';
 
@@ -7,7 +6,7 @@ import './EditProfile.css';
 
 const EditProfile = () => {
   const [image, setImage] = useState();
-  const [mobile, setMobile] = useState();
+  const [mobile, setMobile] = useState('');
   const [mobileErr, setMobileErr] = useState();
   const { authToken } = useAuth();
 
@@ -18,6 +17,9 @@ const EditProfile = () => {
 
   const handleImageSubmit = (e) => {
     e.preventDefault();
+
+    if(!image)
+      return;
 
     const formData = new FormData();
     formData.set('image', image, 'image');

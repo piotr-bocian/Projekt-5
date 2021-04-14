@@ -8,6 +8,8 @@ import { PageWrapper, NavWrapper, BodyWrapper } from './UserPageVisitForm.style'
 import BackButton from '../../Atoms/UserNavigationPage/BackButton';
 import DogLoader from '../../Loaders/NewLoader/DogLoader';
 
+import './UserVisit.css';
+
 export function UserVisits() {
   const [visits, setVisits] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -68,21 +70,13 @@ export function UserVisits() {
         <></>
       ) : (
         <BodyWrapper>
-          <div style={{ padding: '0 10em' }}>
+          <div className="padding-container">
             <Grid container spacing={10} justify="center">
               {visits.map((item) => (
                 <Grid item key={item._id}>
                   <Wrapper>
                     <h2 style={confirmationHeader}>WIZYTA ADOPCYJNA</h2>
                     <ConfirmationWrapper>
-                      {item.animalID ? (
-                        <>
-                          <PetsIcon color="primary" />{' '}
-                          <p>
-                            Imię zwierzaka: <span>{item.animalID}</span>
-                          </p>
-                        </>
-                      ) : null}
                       <PetsIcon color="primary" />{' '}
                       <p>
                         Data wizyty:{' '}
