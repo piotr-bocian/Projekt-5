@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import { PageWrapper, Wrapper, Step, ButtonWrapper, iconStyle} from './HelpPage.style';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import PetsIcon from '@material-ui/icons/Pets';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PaymentForm from '../PaymentForm/PaymentForm';
@@ -57,7 +58,7 @@ const HelpPage = () => {
                         </p>
                     </Step>
                     <Step>
-                        <AssignmentIcon style={iconStyle}/>
+                        <PetsIcon style={iconStyle}/>
                         <h4>POMOC RZECZOWA</h4>
                         <p>
                             Nasze schronisko w dużej mierze polega na hojności kochających zwierzaki daroczyńców. <br />
@@ -66,7 +67,7 @@ const HelpPage = () => {
                         </p>
                     </Step>
                     <Step>
-                        <PetsIcon style={iconStyle}/>
+                        <CardGiftcardIcon style={iconStyle}/>
                         <h4>POMOC FINANSOWA</h4>
                         <p>
                             Nasi podopieczni trafiając do schroniska niejednokrotnie wymagają leczenia weterynaryjnego, niektóre zwierzaki wymagają stałej opieki weterynaryjnej lub leków. <br />
