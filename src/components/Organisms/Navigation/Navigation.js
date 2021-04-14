@@ -44,6 +44,10 @@ const Navigation = ({ props }) => {
         <StyledNavLink to="/">
           <NavigationText mainText="Wyloguj" handleClick={ logout } />
         </StyledNavLink>
+
+        {width <= MOBILE_BREAKPOINT &&
+          <HamburgerButton setShowMenu={setShowMenu}/>
+        }
       </GridItemRegistrationWrapper>
       ):(
         <GridItemRegistrationWrapper>

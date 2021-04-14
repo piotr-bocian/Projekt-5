@@ -64,7 +64,7 @@ function NavigationView() {
             <AuthProvider>
               <Route path="/" exact>
                 <Wrapper>
-                  <AdotpionForm />
+                  <MainPage />
                 </Wrapper>
               </Route>
               <Route path="/registration">
@@ -82,7 +82,11 @@ function NavigationView() {
                   <AdoptionVisitPage />
                 </Wrapper>
               </Route>
-              <Route path="/education" />
+              <Route path="/education">
+                <Wrapper>
+                  <Education />
+                </Wrapper>
+              </Route>
               <AdminRoute path="/howtohelp" component={PaymentForm} />
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
