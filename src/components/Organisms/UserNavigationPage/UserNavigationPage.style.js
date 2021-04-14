@@ -20,6 +20,13 @@ export const PageWrapper = styled.div`
             font-size: 1.75em;
         }
     }
+
+    @media(max-width: 768px){
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const NavigationWrapper = styled.div`
@@ -30,6 +37,13 @@ export const NavigationWrapper = styled.div`
     font-family: Montserrat, sans-serif;
     justify-self: center;
     align-self: center;
+
+    @media(max-width: 768px){
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const OptionsWrapper = styled.div`
@@ -50,6 +64,25 @@ export const OptionsWrapper = styled.div`
     @media only screen and (min-width : 1824px) {
         & a > div > button {
             font-size: 1.2em;
+        }
+    }
+
+    @media(max-width: 768px){
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & a {
+            width: 100%;
+        }
+
+        & a:first-child{
+            margin-top: 6rem;
+        }
+
+        & a > div > button{
+            width: 100%;
         }
     }
 `;
@@ -108,6 +141,17 @@ export const UserCardWrapper = styled.div`
             display: flex;
             margin: auto;
             margin-bottom: 1em;
+        }
+    }
+
+    @media(max-width: 768px){
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > div {
+            text-align: center;
         }
     }
 `;

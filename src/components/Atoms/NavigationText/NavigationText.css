@@ -1,0 +1,9 @@
+.mr{
+    margin-right: 30px;
+}
+
+@media (max-width: 768px){
+    .mr{
+        margin-right: 0;
+    }
+}

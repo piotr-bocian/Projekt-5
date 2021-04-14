@@ -6,5 +6,6 @@ justify-content: space-between;
 align-items: center;
 
 @media (max-width: 768px){
-    display: block;
+    flex-direction: column;
+    align-items: center;
 `;

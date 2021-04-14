@@ -2,6 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
+import './NavigationText.css'
+
 const StyledButton = withStyles(() => ({
   root: {
     margin: '0 auto',
@@ -24,11 +26,11 @@ const NavigationText = ({
   return (
     <div>
       <StyledButton
+        className="mr"
         aria-controls="customized-menu"
         aria-haspopup="true"
         variant={variant}
         onClick={handleClick}
-        style={{ marginRight: margin }}
       >
         {mainText}
       </StyledButton>
