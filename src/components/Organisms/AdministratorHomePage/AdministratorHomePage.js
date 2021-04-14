@@ -6,6 +6,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import AddAnimalForm from '../AddAnimal/AddAnimalForm';
 import Fade from '@material-ui/core/Fade';
+import SignUpForm from '../SignUpInForms/SignUpForm';
+import AddEmployeeForm from '../SignUpInForms/AddEmployeeForm';
 
 const AdministratorSectionTitles = styled.h3`
   font-family: Montserrat, sans-serif;
@@ -31,14 +33,15 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     '&:focus': {
       outline: 'none',
-    }
-  } 
+    },
+  },
 }));
 
 const AdministratorHomePage = () => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -46,6 +49,14 @@ const AdministratorHomePage = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleOpenAdminModal = () => {
+    setAdmin(true);
+  };
+
+  const handleCloseAdminModal = () => {
+    setAdmin(false);
   };
 
   return (
@@ -69,24 +80,28 @@ const AdministratorHomePage = () => {
             alignItems="baseline"
           >
             <AdministratorSectionTitles>
-            <button type="button" onClick={handleOpen} className={classes.button}>
-              Dodaj zwierzaka
-            </button>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              open={open}
-              onClose={handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-               >
-                 <Fade in={open}>
+              <button
+                type="button"
+                onClick={handleOpen}
+                className={classes.button}
+              >
+                Dodaj zwierzaka
+              </button>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={open}>
                   <AddAnimalForm></AddAnimalForm>
                 </Fade>
-               </Modal>
+              </Modal>
             </AdministratorSectionTitles>
           </Grid>
 
@@ -113,7 +128,28 @@ const AdministratorHomePage = () => {
             alignItems="baseline"
           >
             <AdministratorSectionTitles>
-              Dodaj Pracownika
+              <button
+                type="button"
+                onClick={handleOpenAdminModal}
+                className={classes.button}
+              >
+                Dodaj Pracownika
+              </button>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={admin}
+                onClose={handleCloseAdminModal}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={open}>
+                  <AddEmployeeForm />
+                </Fade>
+              </Modal>
             </AdministratorSectionTitles>
           </Grid>
         </Grid>
