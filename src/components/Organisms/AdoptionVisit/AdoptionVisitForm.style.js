@@ -9,9 +9,22 @@ export const Wrapper = styled.div`
     box-shadow: 0px 0.25em 0.25em #0292C9;
     background-color: white;
     @media only screen and (min-width : 1824px) {
-        width: 20vw
+        width: 20vw;
     }
 `;
+export const PostWrapper = styled.div`
+    width: 40vw;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    padding: 1.5em;
+    border: 0.06em solid #0292C9;
+    box-shadow: 0px 0.25em 0.25em #0292C9;
+    background-color: white;
+    @media only screen and (min-width : 1824px) {
+        width: 40vw;
+    }
+`;
+
 export const FormWrapper = styled.form`
     display: grid;
     grid-template-columns: repeat(1, 1fr);

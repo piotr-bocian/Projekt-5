@@ -10,18 +10,12 @@ const Footer = () => {
     return (
         <footer className="footer">
             <section className="footer-section">
-                <Logo className="logo"/>
-                <div className="socials">
-                    <a href="https://www.facebook.com/" target="_blank"><FacebookIcon /></a>
-                    <a href="https://www.instagram.com/" target="_blank"><InstagramIcon /></a>
-                    <a href="https://twitter.com/?lang=pl" target="_blank"><TwitterIcon /></a>
-                </div>
-            </section>
-            <section className="footer-section">
                 <ul>
+                    <div className="socials">
                     <li>NAZWA SCHRONISKA</li>
                     <li>Backendowa Street 01</li>
                     <li>10-255 Frontendowo</li>
+                    </div>
                 </ul>
             </section>
             <section className="footer-section">
@@ -32,9 +26,11 @@ const Footer = () => {
             </section>
             <section className="footer-section">
                 <ul>
-                    <li>Dummy Text</li>
-                    <li>Dummy Text</li>
-                    <li>Dummy Text</li>
+                <div className="socials">
+                    <li><a href="https://www.facebook.com/" target="_blank"><FacebookIcon /></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><InstagramIcon /></a></li>
+                    <li><a href="https://twitter.com/?lang=pl" target="_blank"><TwitterIcon /></a></li>
+                </div>
                 </ul>
             </section>
             <section className="footer-section">

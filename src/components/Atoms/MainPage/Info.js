@@ -7,4 +7,7 @@ export const Info = styled.h3`
   color: black;
   text-align: center;
   margin: 20px auto;
+  @media (max-width: 1300px) {
+    font-size: 1.25em;
+  }
 `;
