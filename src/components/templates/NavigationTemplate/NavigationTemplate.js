@@ -19,7 +19,7 @@ import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
 import EditProfile from '../../Organisms/EditProfile/EditProfile';
-
+import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
 // export const Wrapper = styled.div`
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
@@ -101,9 +101,7 @@ function NavigationView() {
               </Route>
               <Route path="/myposts" />
               <Route path="/editprofile">
-                <Wrapper>
-                  <EditProfile />
-                </Wrapper>
+                  <UserPageEditProfile link={{link:"/useraccount"}}/>
               </Route>
             </AuthProvider>
           </Switch>

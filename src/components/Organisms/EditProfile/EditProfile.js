@@ -52,6 +52,8 @@ const EditProfile = () => {
                 },
                 body: formData
             });
+
+            setMobile('');
         }
     }
 
@@ -70,7 +72,8 @@ const EditProfile = () => {
             </form>
             <form class="edit-form" onSubmit={handleMobileSubmit}>
                 <h3>Zmień numer telefonu</h3>
-                <TextField 
+                <TextField
+                    value={mobile} 
                     label={'Nr telefonu'} 
                     error={mobileErr} 
                     onChange={(e) => {
