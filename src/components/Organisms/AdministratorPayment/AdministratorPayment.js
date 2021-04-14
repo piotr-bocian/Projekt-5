@@ -42,11 +42,13 @@ function AdministratorPayment({
   deletePayment,
   updatePayment = null,
   take = null,
+  patch = null
 }) {
   let initialState;
   for (let [key, value] of Object.entries(createState)) {
     initialState = { [key]: payment[value], ...initialState };
   }
+
 
   const [activeData, setActiveData] = useState(initialState);
   const [toggle, setToggle] = useState(false);
@@ -141,7 +143,11 @@ function AdministratorPayment({
           </Button>
           <Button
             onClick={() => {
-              updatePayment(payment._id, activeData);
+              if(createState.firstName){
+                return patch(payment._id, activeData)
+              } else{
+                updatePayment(payment._id, activeData);
+              }
             }}
           >
             Uaktualnij
