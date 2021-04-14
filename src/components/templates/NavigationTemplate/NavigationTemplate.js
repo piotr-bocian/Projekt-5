@@ -31,6 +31,7 @@ import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunte
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
 import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
 import UserPagePostForm from '../../Organisms/Posts/UserPagePostForm';
+import AdministratorNavigation from '../AdministratorNavigation/AdministratorNavigation';
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,7 +48,7 @@ const NavigationTemplate = ({ children }) => {
       <GridContainerNavigationWrapper>
         {/* <Navigation makeNavigation={navigationArrayWithRoutes} /> */}
         <AuthProvider>
-          <Navigation props={{isLogged}}/>
+          <Navigation props={{ isLogged }} />
         </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}
@@ -74,9 +75,8 @@ function NavigationView() {
                 <SignInForm />
               </Route>
               <Route path="/news"></Route>
-              <Route path="/animals">
-                <Animals />
-              </Route>
+              <Route path="/animals" exact component={Animals} />
+              <Route path="/animals/:id" component={AnimalPage} />
               <Route path="/adoption">
                 <Wrapper>
                   <AdoptionVisitPage />
@@ -87,7 +87,8 @@ function NavigationView() {
                   <Education />
                 </Wrapper>
               </Route>
-              <AdminRoute path="/howtohelp" component={PaymentForm} />
+              <Route path="/howtohelp" component={PaymentForm} />
+              <AdminRoute path="/admin" component={AdministratorNavigation} />
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />

@@ -21,8 +21,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <NavigationView />
-        <Footer />
       </AuthProvider>
+      <Footer />
     </ThemeProvider>
   );
 }
