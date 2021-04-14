@@ -8,6 +8,8 @@ import CircularLoader from '../../Loaders/CircularLoader/CircularLoader';
 import httpReducer from '../../../helpers/httpReducer/httpReducer';
 import { Center } from './AdministratorViewTemplate.styles';
 import { administratorUsersConfig } from '../../../Config/administratorUsersConfigFile';
+import { useAuth } from '../../../contexts/AuthContext';
+import { URL } from '../../../helpers/URL/url';
 
 const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
   const renderData = administratorConfig.configChildComponent;
@@ -18,7 +20,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     validate: null,
     payload: null,
   };
-
+  const { authToken } = useAuth();
   const [state, dispatch] = useReducer(httpReducer, initialState);
   const [dataFromAPI, setDataFromAPI] = useState([]);
   const [filter, setFilter] = useState('');
@@ -32,7 +34,8 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     administratorConfig.url + querry,
     state.request,
     state.payload,
-    state.validate
+    state.validate,
+    authToken
   );
 
   useEffect(() => {
@@ -82,9 +85,17 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
 
   const takeOneId = async (handler) => {
     const route = '/' + handler;
-    const userIdRaw = await fetch('http://localhost:5000/api/users' + route);
+    const userIdRaw = await fetch(`${URL}/users` + route, {
+      headers: {
+        method: 'GET',
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'x-auth-token': authToken,
+      },
+    });
     const userId = await userIdRaw.json();
-    setDataFromAPI(userId.user);
+    console.log(userId);
+    setDataFromAPI(userId);
     setRenderDataForUser(administratorUsersConfig.configChildComponent);
     setMakeStateForUser(administratorUsersConfig.initialState);
   };
@@ -104,6 +115,18 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     setSearch('');
     dispatch({
       type: httpMethods.PUT,
+      validate: administratorConfig.validate,
+      payload: payload,
+    });
+  };
+
+  const patchOne = async (handler, payload) => {
+    const route = '/' + handler;
+    setId(route);
+    setFilter('');
+    setSearch('');
+    dispatch({
+      type: httpMethods.PATCH,
       validate: administratorConfig.validate,
       payload: payload,
     });
@@ -157,6 +180,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
                   key: id,
                   deletePayment: deleteOne,
                   updatePayment: updateOne,
+                  patch: patchOne,
                   take: takeOneId,
                 });
               })

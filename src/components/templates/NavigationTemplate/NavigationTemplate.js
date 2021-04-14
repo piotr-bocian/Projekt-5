@@ -9,15 +9,33 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
+<<<<<<< HEAD
+=======
+import {AnimalPage} from '../../Organisms/AnimalPage/AnimalPage';
+>>>>>>> fixPutRequest
 import { MainPage } from '../../Organisms/MainPage/MainPage';
-import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
+<<<<<<< HEAD
 import NewPosts from '../../Organisms/Posts/newPosts';
 import LatestPosts from '../../Organisms/Posts/LatestPosts';
 import OnePost from '../../Organisms/Posts/OnePost';
 import Contact from '../../Organisms/Contact/Contact';
+=======
+import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
+
+import UserPage from '../../Organisms/UserPage/UserPage';
+import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
+import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
+import AdminRoute from '../../Organisms/UserPage/AdminRoute';
+import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
+import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
+import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
+import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
+import UserPagePostForm from '../../Organisms/Posts/UserPagePostForm';
+import AdministratorNavigation from '../AdministratorNavigation/AdministratorNavigation';
+>>>>>>> fixPutRequest
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,13 +44,22 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 70vh;
-`;
 
+  @media (max-width: 768px) {
+    height: auto;
+  }
+`;
 const NavigationTemplate = ({ children }) => {
+  const { isLogged } = useAuth();
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation makeNavigation={navigationArrayWithRoutes} />
+        <AuthProvider>
+          <Navigation
+            props={{ isLogged }}
+            makeNavigation={navigationArrayWithRoutes}
+          />
+        </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -45,6 +72,7 @@ function NavigationView() {
       <Router>
         <NavigationTemplate>
           <Switch>
+<<<<<<< HEAD
             <Route path="/" exact>
               {/* odpowiedni komponent */}
               <MainPage />
@@ -100,6 +128,45 @@ function NavigationView() {
           </Switch>
           <Switch>
             <Route path="/contact" component={Contact}></Route>
+=======
+            <AuthProvider>
+              <Route path="/" exact>
+                <Wrapper>
+                  <MainPage />
+                </Wrapper>
+              </Route>
+              <Route path="/registration">
+                <SignUpForm />
+              </Route>
+              <Route path="/login">
+                <SignInForm />
+              </Route>
+              <Route path="/news"></Route>
+              <Route path="/animals" exact component={Animals} />
+              <Route path="/animals/:id" component={AnimalPage} />
+              <Route path="/adoption">
+                <Wrapper>
+                  <AdoptionVisitPage />
+                </Wrapper>
+              </Route>
+              <Route path="/education">
+                <Wrapper>
+                  <Education />
+                </Wrapper>
+              </Route>
+              <Route path="/howtohelp" component={PaymentForm} />
+              {/* <AdminRoute path="/admin" component={AdministratorNavigation} /> */}
+              <Route path="/about"></Route>
+              <Route path="/contact"></Route>
+              <PrivateRoute path="/useraccount" component={UserPage} />
+              <Route path="/volunteerform" component={UserPageVolunteerForm} />
+              <Route path="/adoptionvist" component={UserPageVisitForm} />
+              <Route path="/myadoptionvisits" component={UserVisits} />
+              <Route path="/payment" component={UserPagePaymentForm} />
+              <Route path="/post" component={UserPagePostForm} />
+              <Route path="/editprofile" component={UserPageEditProfile} />
+            </AuthProvider>
+>>>>>>> fixPutRequest
           </Switch>
         </NavigationTemplate>
       </Router>

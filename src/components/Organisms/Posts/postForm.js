@@ -13,6 +13,7 @@ const PostForm = () => {
 
     // const { authToken } = useAuth();
 
+const PostForm = () => {
     const setupJson = ()=>{
         let jsonToSend = {}
         jsonToSend = {

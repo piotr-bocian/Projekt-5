@@ -13,17 +13,17 @@ import { StyledNavLink } from '../Navigation/Navigation.style';
 const SignInForm = () => {
     const classes = useStyles();
     return(
-        <Container className={classes.container} component='main' maxWidth="xs">
-            <CssBaseline />
-            <div className={classes.formContainer}>
-                <Avatar/>
-                <SignUpInTitle title="Logowanie" />
-                <SignInRawForm />
-                <StyledNavLink to={"/registration"} className={classes.alignRight}>
-                    <SignUpInLink linkText="Nie masz konta? Zarejestruj się"/>
-                </StyledNavLink>
-            </div>
-        </Container>
+            <Container className={classes.container} component='main' maxWidth="xs">
+                <CssBaseline />
+                <div className={classes.formContainer}>
+                    <Avatar/>
+                    <SignUpInTitle title="Logowanie" />
+                    <SignInRawForm />
+                    <StyledNavLink to={"/registration"} className={classes.alignRight}>
+                        <SignUpInLink linkText="Nie masz konta? Zarejestruj się"/>
+                    </StyledNavLink>
+                </div>
+            </Container>
 )}
 
 export default SignInForm

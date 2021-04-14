@@ -2,7 +2,7 @@ import { URL } from '../helpers/URL/url';
 
 export const administratorPostConfig = {
   url: `${URL}/posts/`,
-  dataKey: ['results', 'post', 'results'],
+  dataKey: ['post', 'posts', 'results'],
   validate: null,
   select: [
   ],

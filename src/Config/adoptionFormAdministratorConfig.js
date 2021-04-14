@@ -2,11 +2,9 @@ import { URL } from '../helpers/URL/url';
 
 export const administratorAdoptionConfig = {
   url: `${URL}/adoptionforms`,
-  dataKey: [false, 'adoption', 'results'], //DO POPRAWY NA BACKENDZIE
+  dataKey: ['adoptionForm', 'adoptionForms', 'results'], //DO POPRAWY NA BACKENDZIE
   validate: null,
-    select: [
-
-    ],
+  select: [],
   buttonText: 'Wyświetl wszystkie formularze',
   configChildComponent: [
     {

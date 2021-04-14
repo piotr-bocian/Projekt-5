@@ -12,6 +12,7 @@ const StyledLoader = styled(Loader)`
 
 const AnimalLoader = () => {
   const wrapper = useRef(null);
+
   useEffect(() => {
     const [elements] = wrapper.current.children;
     const cat = elements.getElementById('Cat');
@@ -44,14 +45,10 @@ const AnimalLoader = () => {
         { x: '+=10', y: '+=10' },
         { duration: 0.6, x: '+=10', y: '-=10', autoAlpha: 1 }
       )
-      .fromTo(
-         dog,
-         {  y: '-=5' },
-         { duration: 0.6, y: '-=15', autoAlpha: 1 }
-       )
+      .fromTo(dog, { y: '-=5' }, { duration: 0.6, y: '-=15', autoAlpha: 1 })
       .fromTo(worsted, { y: '-=20' }, { duration: 0.5, y: '+=5', autoAlpha: 1 })
       .to(bone, { autoAlpha: 1 });
-      timeline.repeat(-1).repeatDelay(1.2);
+    timeline.repeat(-1).repeatDelay(1.2);
   });
   return (
     <div ref={wrapper}>
