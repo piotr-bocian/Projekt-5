@@ -9,17 +9,11 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
-import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
-// import { Animals } from '../../Organisms/Animals.js/Animals';
-// import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
-import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+
 import { MainPage } from '../../Organisms/MainPage/MainPage';
-import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
-import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
-import EditProfile from '../../Organisms/EditProfile/EditProfile';
 import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
 // export const Wrapper = styled.div`
 import UserPage from '../../Organisms/UserPage/UserPage';
@@ -41,13 +35,13 @@ const Wrapper = styled.div`
   height: 70vh;
 `;
 const NavigationTemplate = ({ children }) => {
-  const { isLogged } = useAuth();
+
   return (
     <>
       <GridContainerNavigationWrapper>
         {/* <Navigation makeNavigation={navigationArrayWithRoutes} /> */}
         <AuthProvider>
-          <Navigation props={{isLogged}}/>
+          <Navigation />
         </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}

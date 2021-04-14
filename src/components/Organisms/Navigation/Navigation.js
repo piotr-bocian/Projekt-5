@@ -11,7 +11,7 @@ import useWindowDimensions from '../../../hooks/useWindowDimensions/useWindowDim
 import HamburgerButton from '../../Atoms/HamburgerButton/HamburgerButton';
 import { useAuth } from '../../../contexts/AuthContext';
 
-const Navigation = ({ props }) => {
+const Navigation = () => {
   const navigationArrayWithRoutes = [
     { name: 'Aktualności', route: '/news' },
     { name: 'Zwierzęta', route: '/animals' },

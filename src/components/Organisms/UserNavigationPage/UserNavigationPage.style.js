@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
     width: 90%;
-    height: 100%;
+    padding-bottom: 3em;
     display: grid;
     grid-template-rows: 0.1fr 0.9fr;
     font-family: Montserrat, sans-serif;
