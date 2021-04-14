@@ -30,13 +30,13 @@ const LatestPosts = () => {
     useEffect(() => {
         handler.makeHttpRequest()
         .then((result) => {
-            setPosts(result.posts.results)
+            setPosts(result.posts.results.reverse())
             });
     }, [])
 
     return (
     <>
-        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 20 }}>
+        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 85 }}>
             Aktualności
         </Typography>
         <Container>

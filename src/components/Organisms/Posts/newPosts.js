@@ -20,7 +20,6 @@ const useStyles = makeStyles({
       padding: 15,
     },
   });
-
 const NewPosts = () => {
     const [posts, setPosts] = useState([]);
     const classes = useStyles();
@@ -33,21 +32,23 @@ const NewPosts = () => {
     useEffect(() => {
         handler.makeHttpRequest()
             .then((result) => {
-                console.log(result.posts.results)
                     result.posts.results.map((post)=>{
                 })
-                setPosts(result.posts.results)
+                setPosts(result.posts.results.reverse())
+
             });
     }, [])
 
     return (
     <>
-        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 20 }}>
+        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 25 }}>
             Aktualności
         </Typography>
         <Container>
         <PostForm />
-            <Grid container spacing={3}>
+            <Grid container spacing={3} justify="center" style={{
+                paddingBottom:25
+                }}>
                 {posts.map((post) => (
                     <AllPostsGrid post={post}/>
                 ))}

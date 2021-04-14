@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export function AllAnimalsGrid (props) {
     const classes = useStyles();
-  
+    // const classes = useStyles();
       return (
           <div className={classes.rootGrid}>
           <Grid container spacing={10} className={classes.gridClass}>

@@ -6,6 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import AddAnimalForm from '../AddAnimal/AddAnimalForm';
 import Fade from '@material-ui/core/Fade';
+import PostForm from '../../Organisms/Posts/postForm';
 import SignUpForm from '../SignUpInForms/SignUpForm';
 import AddEmployeeForm from '../SignUpInForms/AddEmployeeForm';
 
@@ -41,6 +42,7 @@ const AdministratorHomePage = () => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
+  const [postModal, setPostModa] = useState(false);
   const [admin, setAdmin] = useState(false);
 
   const handleOpen = () => {
@@ -51,6 +53,14 @@ const AdministratorHomePage = () => {
     setOpen(false);
   };
 
+
+  const handleOpenPost = () => {
+    setPostModa(true);
+  };
+
+  const handleClosePost = () => {
+    setPostModa(false);
+  };
   const handleOpenAdminModal = () => {
     setAdmin(true);
   };
@@ -114,8 +124,15 @@ const AdministratorHomePage = () => {
             justify="space-around"
             alignItems="baseline"
           >
+            <button type="button" onClick={handleOpenPost} className={classes.button}>
+              <Grid 
+              justify="space-around"
+              alignItems="baseline">
+                Dodaj Nowy Post <PostForm />
+              </Grid>
+            </button>
             <AdministratorSectionTitles>
-              Dodaj nowy Post
+
             </AdministratorSectionTitles>
           </Grid>
           <Grid

@@ -15,6 +15,10 @@ import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
 import HelpPage from '../../Organisms/HelpPage/HelpPage';
 import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
+import NewPosts from '../../Organisms/Posts/newPosts';
+import LatestPosts from '../../Organisms/Posts/LatestPosts';
+import OnePost from '../../Organisms/Posts/OnePost';
+import Contact from '../../Organisms/Contact/Contact';
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
@@ -59,6 +63,7 @@ function NavigationView() {
                 <Wrapper>
                   <MainPage />
                 </Wrapper>
+                <LatestPosts />
               </Route>
               <Route path="/registration">
                 <SignUpForm />
@@ -66,7 +71,10 @@ function NavigationView() {
               <Route path="/login">
                 <SignInForm />
               </Route>
-              <Route path="/news"></Route>
+              <Route path="/news" exact> 
+                <NewPosts />
+              </Route>
+              <Route path="/news/:id" component={OnePost} />
               <Route path="/animals" exact component={Animals} />
               <Route path="/animals/:id" component={AnimalPage} />
               <Route path="/adoption">
@@ -80,11 +88,11 @@ function NavigationView() {
                 </Wrapper>
               </Route>
               <Route path="/howtohelp" component={HelpPage} />
-              <Route path="/about"></Route>
-              <Route path="/contact"></Route>
+              <Route path="/about">elo, to my :)</Route>
               <PrivateRoute path="/useraccount" component={UserPage} />
               <PrivateRoute path="/volunteerform" component={UserPageVolunteerForm} />
-              <Route path="/adoptionvist" component={UserPageVisitForm} />
+              <Route path="/adoptionvist" component={UserPageVisitForm} />            
+              <Route path="/contact" component={Contact}></Route>
               <PrivateRoute path="/myadoptionvisits" component={UserVisits} />
               <PrivateRoute path="/payment" component={UserPagePaymentForm} />
               <PrivateRoute path="/post" component={UserPagePostForm} />

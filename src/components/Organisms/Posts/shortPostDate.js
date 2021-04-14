@@ -5,6 +5,6 @@ export const shortDate = (fulldate)=>{
         const month = convertedStartDate.getMonth() + 1
         const day = convertedStartDate.getDay();
         const year = convertedStartDate.getFullYear();
-        const shortStartDate = month + "/" + day + "/" + year;
+        const shortStartDate = day + "/" + month + "/" + year;
     return shortStartDate
 }

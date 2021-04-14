@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import VisitForm from '../../Organisms/AdoptionVisit/AdoptionVisitForm';
 import BackButton from '../../Atoms/UserNavigationPage/BackButton'
+import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 
 const useStyles = makeStyles((theme) => ({
   rootGrid: {
@@ -24,13 +25,16 @@ export function AnimalButtons (props) {
 
       return (
           <div className={classes.rootGrid}>
-          <Grid container spacing={10} className={classes.gridClass}>
+          <Grid container spacing={10} className={classes.gridClass} justify="center">
             <Grid item>
                 {/* <button className={classes.btn} onClick={handleClick} id='testBtn'> <ArrowBackIosIcon/> Wróć do wszystkich zwierząt </button> */}
                 <BackButton link={{link: "/animals", text: 'do wszystkich zwierząt'}}/>
             </Grid>
             <Grid item>
               <VisitForm animal={props.animal}/>
+            </Grid>
+            <Grid item>
+              <AdotpionForm animal={props.animal}/>
             </Grid>
             </Grid>
           </div>

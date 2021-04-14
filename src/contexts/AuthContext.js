@@ -90,7 +90,6 @@ export function AuthProvider({ children }) {
         })()
         setLoading(false);
         return;
-        
     }, [authToken]);
 
     const value = {
