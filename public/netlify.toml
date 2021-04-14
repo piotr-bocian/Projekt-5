@@ -6,9 +6,4 @@ base="/"
 [[redirects]]
 from = "/*"
 to = "/useraccount"
-status = 302
-
-[[redirects]]
-from = "/"
-to = "/animals?type=pies"
-status = 301
+status = 200
