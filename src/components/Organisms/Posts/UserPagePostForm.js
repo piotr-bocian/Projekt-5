@@ -160,23 +160,25 @@ const PostForm = () => {
             </BodyWrapper>
         </PageWrapper>
         <Dialog open={sendInfo} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <Grid container justify="center" className="formAdoption">
-                <Grid item xs={2} sm={2} md={2} jusify="center" style={{ textAlign: "center" }}>
-                        <TelegramIcon color="Secondary" style={{ fontSize: 50 }}/>
+            <div style={{ padding: 60 }}>
+                <Grid container justify="center" className="formAdoption">
+                    <Grid item xs={2} sm={2} md={2} jusify="center" style={{ textAlign: "center" }}>
+                            <TelegramIcon color="Secondary" style={{ fontSize: 50 }}/>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} style={{ padding: 20 }}>
+                        <Typography
+                                variant="h4"
+                                align="center"
+                                color="green"
+                        >
+                            Wpis został wysłany do zatwierdzenia
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2} sm={2} md={2} jusify="center" style={{ textAlign: "center" }}>
+                        <Button variant="outlined" color="primary" onClick={handleClose}>OK</Button>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} style={{ padding: 20 }}>
-                    <Typography
-                            variant="h4"
-                            align="center"
-                            color="green"
-                    >
-                        Wpis został wysłany do zatwierdzenia
-                    </Typography>
-                </Grid>
-                <Grid item xs={2} sm={2} md={2} jusify="center" style={{ textAlign: "center" }}>
-                    <Button variant="outlined" color="primary" onClick={handleClose}>OK</Button>
-                </Grid>
-            </Grid>
+            </div>
         </Dialog>
     </>
     )

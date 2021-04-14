@@ -90,10 +90,8 @@ function NavigationView() {
               <Route path="/adoptionvist" component={UserPageVisitForm} />
               <Route path="/myadoptionvisits" component={UserVisits} />
               <Route path="/payment" component={UserPagePaymentForm} />
-              <Route path="/post" component={UserPagePostForm}/>
-              <Route path="/editprofile">
-                  <UserPageEditProfile link={{link:"/useraccount"}}/>
-              </Route>
+              <Route path="/post" component={UserPagePostForm} />
+              <Route path="/editprofile" component={UserPageEditProfile} />
             </AuthProvider>
           </Switch>
         </NavigationTemplate>

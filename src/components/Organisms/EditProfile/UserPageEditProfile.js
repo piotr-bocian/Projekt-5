@@ -3,11 +3,11 @@ import { NavWrapper, PageWrapper } from '../../Organisms/AdoptionVisit/UserPageV
 import EditProfile from './EditProfile';
 import BackButton from '../../Atoms/UserNavigationPage/BackButton';
 
-const UserPageEditProfile = ({ link }) => {
+const UserPageEditProfile = () => {
     return (
         <PageWrapper>
             <NavWrapper>
-                <div><BackButton link={link}/></div>
+                <div><BackButton link={{link:"/useraccount"}}/></div>
                 <h2> Edytuj profil </h2>
             </NavWrapper>
             <BodyWrapper>
