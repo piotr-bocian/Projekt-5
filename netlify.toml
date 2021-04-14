@@ -1,3 +1,0 @@
-[[redirects]]   from = "/*"   to = "/userPage"   status = 200
-[[redirects]]   from = "/*"   to = "/animals?type=pies"   status = 200
-[[redirects]]   from = "/*"   to = "/animals?type=kot"   status = 200
