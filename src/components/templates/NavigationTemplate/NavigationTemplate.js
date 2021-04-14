@@ -9,19 +9,13 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
-import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
-// import { Animals } from '../../Organisms/Animals.js/Animals';
-// import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
-import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import AnimalPage from '../../Organisms/AnimalPage/AnimalPage';
 import { MainPage } from '../../Organisms/MainPage/MainPage';
-import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
-import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
-import EditProfile from '../../Organisms/EditProfile/EditProfile';
 import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
-// export const Wrapper = styled.div`
+
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
@@ -40,6 +34,10 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 70vh;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `;
 const NavigationTemplate = ({ children }) => {
   const { isLogged } = useAuth();
@@ -48,7 +46,10 @@ const NavigationTemplate = ({ children }) => {
       <GridContainerNavigationWrapper>
         {/* <Navigation  /> */}
         <AuthProvider>
-          <Navigation props={{ isLogged }} makeNavigation={navigationArrayWithRoutes}/>
+          <Navigation
+            props={{ isLogged }}
+            makeNavigation={navigationArrayWithRoutes}
+          />
         </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}

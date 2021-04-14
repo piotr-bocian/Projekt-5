@@ -4,6 +4,7 @@ export const PageWrapper = styled.div`
     display: grid;
     grid-template-rows: 0.1fr 0.9fr;
     grid-gap: 0em;
+    padding-bottom: 3em;
     font-family: Montserrat, sans-serif;
     @media only screen and (min-width : 1824px) {
         grid-gap: 1.5em;
