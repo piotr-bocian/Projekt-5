@@ -10,6 +10,11 @@ const GridContainerNavigationWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 1em;
+
+  @media (max-width: 768px){
+    display: block;
+    position: static;
+ }
 `;
 
 export default GridContainerNavigationWrapper;

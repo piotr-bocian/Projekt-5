@@ -24,7 +24,6 @@ export function AnimalPagePhoto(props) {
 
     function AnimalImage(p){
         if(p.isImage !== undefined){
-          console.log(props.animal)
           return <img src={`data:image/jpeg;base64,${Buffer.from(props.animal.image.data).toString('base64')}`} alt="animal" className={classes.image}/>
         }
         return null;

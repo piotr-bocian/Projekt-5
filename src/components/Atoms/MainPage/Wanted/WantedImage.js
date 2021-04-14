@@ -4,17 +4,16 @@ import wanted from '../../../../assets/wanted/wanted.png'
 
 const useStyles = makeStyles((theme) => ({
     imageWanted: {
-        height: '130px',
-        width: '130px',
+        height: '13vh',
+        width: '9vw',
         display: 'inline-block',
         margin: 'auto 40px',
         backgroundImage: `url(${wanted})`,
         boxSizing: 'border-box',
         backgroundRepeat: 'no-repeat',
-        [theme.breakpoints.down('xs')]: {
-          width: '100% !important', // Overrides inline-style
-          height: '100%',
-        },
+        [theme.breakpoints.down('lg')]: {
+          display: 'none',
+        }
     },
   }));
   

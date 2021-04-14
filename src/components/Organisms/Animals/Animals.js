@@ -3,20 +3,9 @@ import { AnimalsForAdoption } from '../../Atoms/HeaderAnimalsForAdoption/HeaderA
 import { WaitingFiltersFrame } from '../../Molecules/WaitingFiltersFrame/WaitingFiltersFrame.js';
 import { AllAnimalsGrid } from '../../Molecules/AnimalsGrid/AnimalsGrid.js';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
-import AnimalLoader from '../../Loaders/AnimalLoader/AnimalLoader';
 import useHttp from '../../../hooks/useHttp/useHttp';
-import CircularIndeterminate from '../../Loaders/CircularLoader/CircularLoader.js';
-import styled from 'styled-components';
-import gsap from 'gsap';
+import DogLoader from '../../Loaders/NewLoader/DogLoader.js';
 
-const Center = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 70vh;
-`;
 
 export function Animals() {
   // const classes = useStyles();
@@ -28,18 +17,21 @@ export function Animals() {
     httpMethods.GET
   );
 
-  useEffect(() => {
-    handler.makeHttpRequest().then((result) => {
-      setAnimals(result.animals.results);
-    });
-  }, []);
-  return (handler.isLoading ? (
-      <AnimalLoader />
-  ) : (
-    <>
-      <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
-      <WaitingFiltersFrame setAnimals={setAnimals}></WaitingFiltersFrame>
-      <AllAnimalsGrid animals={animals}></AllAnimalsGrid>
-    </>
-  ));
-}
+    useEffect(() => {
+        handler.makeHttpRequest()
+            .then((result) => {
+                setAnimals(result.animals.results);
+            });
+    }, [])
+
+
+    return handler.isLoading ? (
+        <DogLoader/>) :
+        (
+        <div className='animals'>
+            <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
+            <WaitingFiltersFrame setAnimals={setAnimals}></WaitingFiltersFrame>
+            <AllAnimalsGrid animals={animals}></AllAnimalsGrid>
+        </div>
+    );
+};

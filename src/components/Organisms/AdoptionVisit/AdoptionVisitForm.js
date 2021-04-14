@@ -6,6 +6,7 @@ import PetsIcon from '@material-ui/icons/Pets';
 
 import { Wrapper, centerText, avatarStyle, FormWrapper, closeIconStyle, ConfirmationWrapper, confirmationHeader } from './AdoptionVisitForm.style';
 
+import { useAuth } from '../../../contexts/AuthContext';
 import SelectDuration from '../../Atoms/AdoptionVisit/SelectDuration';
 import SelectDateTime from '../../Molecules/AdoptionVisit/SelectDateTime';
 import FormButton from '../../Atoms/AdoptionVisit/FormButton';
@@ -39,36 +40,50 @@ const durationValues = [
 ];
 
 const VisitForm = ({ animal }) => {
+
     const [visitDate, setVisitDate] = useState(minDate);
     const [visitTime, setVisitTime] = useState("09:00");
     const [duration, setDuration] = useState(30);
     const [errors, setErrors] = useState();
     const [open, setOpen] = useState(false);
-    const [confirmation, setConfirmation] = useState(false)
+    const [confirmation, setConfirmation] = useState(false);
 
-    const sendForm = (e) => {
-        e.preventDefault();
-        let visitState;
-        if (animal) {
-            visitState = {
-                visitDate: visitDate,
-                visitTime: visitTime,
-                duration: duration,
-                animalID: animal.id
-            }
-        } else {
-            visitState = {
-                visitDate: visitDate,
-                visitTime: visitTime,
-                duration: duration
-            }
+    let visitState;
+    if (animal) {
+        visitState = {
+            visitDate: visitDate,
+            visitTime: visitTime,
+            duration: duration,
+            animalID: animal.id
         }
+    } else {
+        visitState = {
+            visitDate: visitDate,
+            visitTime: visitTime,
+            duration: duration
+        }
+    }
 
-        if (Boolean(errors?.timeError)) {
-            console.log('Popraw formularz')
+    const sendForm = async (e) => {
+        const url = 'https://best-animal-shelter.herokuapp.com/api/visits/me';
+        const authToken = window.localStorage.getItem('x-auth-token');
+        e.preventDefault();
+
+        if (!Boolean(errors?.timeError)) {
+            const signUpResponse = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-auth-token': authToken,
+                },
+                body: JSON.stringify(visitState)
+            });
+            if (signUpResponse.status === 201){
+                setConfirmation(true)
+            }
         } else {
-            console.log(visitState);
-            setConfirmation(true);
+            console.log('Popraw formularz')
         }
     }
 

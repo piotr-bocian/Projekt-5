@@ -15,9 +15,10 @@ const useStyles = makeStyles((theme) => ({
         filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5))',
     },
     image: {
-        height: '50%',
+        height: '45%',
         width: '45%',
         backgroundImage: `url(${cato})`,
+        backgroundSize: 'cover',
         boxSizing: 'border-box',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('xs')]: {
@@ -37,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 'bold',
       backgroundColor: '#0292C9',
       opacity: '70%',
+      [theme.breakpoints.down('lg')]: {
+        height: '100%',
+        paddingTop: '25%'
+      }
     },
   }));
   
@@ -44,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
    
     return (
-      <Link href='/animals'>
+      <Link href='/animals?type=kot'>
         <ButtonBase className={classes.root}>
           <div className={classes.image}></div>
           <Typography variant="subtitle1" color="inherit" className={classes.imageTitle}>KOTY DO ADOPCJI</Typography>

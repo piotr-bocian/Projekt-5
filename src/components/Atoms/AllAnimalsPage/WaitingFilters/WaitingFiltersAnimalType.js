@@ -6,6 +6,12 @@ export const WaitingFiltersAnimalType = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type')
+    if (type) setSearchTerm(`?search=${type}`);
+  }, [])
+
+  useEffect(() => {
     fetch(`https://best-animal-shelter.herokuapp.com/api/animals${searchTerm}`)
       .then(res => res.json())
       .then(result => {

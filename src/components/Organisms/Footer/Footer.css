@@ -1,7 +1,7 @@
 .footer{
     background-color: #e7d9d1;
     margin-top: auto;
-    padding: 1rem 4rem 3rem;
+    padding: 1rem 4rem 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
@@ -11,16 +11,7 @@
     text-align: center;
     font-size: 0.9rem;
     align-self: center;
-    margin-top: 1rem;
-}
-
-.footer-section:first-child{
-    grid-column: 1/4;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgb(196, 201, 201);
+    margin-top: 0.3rem;
 }
 
 .footer-section:last-child{
@@ -32,12 +23,7 @@
     list-style-type: none;
 }
 
-.logo{
-    height: 50px;
-    transform: translateX(-33%);
-}
-
-.socials a{
+.socials li a{
     color: #0093CA;
     margin-left: 0.5rem;
     font-size: 1.1rem;

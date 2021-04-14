@@ -26,6 +26,7 @@ export function AnimalButtons (props) {
           <div className={classes.rootGrid}>
           <Grid container spacing={10} className={classes.gridClass}>
             <Grid item>
+                {/* <button className={classes.btn} onClick={handleClick} id='testBtn'> <ArrowBackIosIcon/> Wróć do wszystkich zwierząt </button> */}
                 <BackButton link={{link: "/animals", text: 'do wszystkich zwierząt'}}/>
             </Grid>
             <Grid item>

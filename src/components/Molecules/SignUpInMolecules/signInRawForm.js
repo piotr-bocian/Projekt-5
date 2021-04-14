@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import RememberMeCheckbox from '../../Atoms/SignUpInAtoms/rememberMeCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
-// import useHttp from '../../../hooks/useHttp/useHttp';
+import { useAuth } from '../../../contexts/AuthContext';
+import Alert from '@material-ui/lab/Alert';
 
 const SignInRawForm = () => {
     const classes = useStyles();
@@ -14,6 +16,11 @@ const SignInRawForm = () => {
         password: '',
         passwordErr: '',
     });
+
+    const [apiError, setApiError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { signIn, err } = useAuth();
+    const history = useHistory();
 
     const updateForm = (e) => {
         setForm({
@@ -47,56 +54,40 @@ const SignInRawForm = () => {
         return isError;
     }
 
-    // const httpHandler = useHttp(
-    //     // 'https://best-animal-shelter.herokuapp.com/api/login',
-    //     'http://localhost:5000/api/login',
-    //     'POST',        
-    //     {
-    //         email: form.email,
-    //         password: form.password
-    //     }
-    // );
-
-    // const setTokenInLocalStorage = async () => {
-    //     const resData = await httpHandler.makeHttpRequest();
-    //     const authToken = resData.token;
-    //     window.localStorage.setItem('x-auth-token', authToken);
-    //     return;
-    // }
-
     const handleForm = async (e) => {
-        const url = 'http://localhost:3000/api/login';
-        // const url = 'https://best-animal-shelter.herokuapp.com/api/login';
         e.preventDefault();
-        const err = validateForm();
-        if(!err) {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    email: form.email,
-                    password: form.password
-                })
-            });
-            const content = await response.json();
-            console.log('Logowanie...');
-            console.log(content);
-            // setTokenInLocalStorage();
-            setForm({
-                //clear form
-                email: '',
-                emailErr: '',
-                password: '',
-                passwordErr: '',
-            });
+        const error = validateForm();
+        if(!error) {
+            setApiError('');
+            setLoading(true);
+            const login = await signIn(form.email, form.password);
+            if ( login ) {
+                console.log(login);
+                setApiError(login)
+            }
+            if(localStorage.getItem('x-auth-token')){
+                setForm({
+                    //clear form
+                    email: '',
+                    emailErr: '',
+                    password: '',
+                    passwordErr: '',
+                });
+                history.push("/useraccount");
+                window.location.reload();
+            } else {
+                // setApiError(err);
+            }
         }
+        setLoading(false);
     }
 
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>
             <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    {apiError && <Alert severity="error" >{apiError}</Alert>}
+                </Grid>
                 <Grid item xs={12}>
                     <SignUpInTxtField 
                         name="email"
@@ -124,7 +115,7 @@ const SignInRawForm = () => {
                 </Grid>
             </Grid>
             <RememberMeCheckbox />
-            <SignUpInButton btnText="Zaloguj się"/>
+            <SignUpInButton disable={loading} btnText="Zaloguj się"/>
         </form>
     )
 }

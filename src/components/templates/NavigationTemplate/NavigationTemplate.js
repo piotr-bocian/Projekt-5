@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
@@ -10,15 +10,28 @@ import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
 import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
+// import { Animals } from '../../Organisms/Animals.js/Animals';
+// import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
 import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
-import AnimalLoader from '../../Loaders/AnimalLoader/AnimalLoader';
-
+import EditProfile from '../../Organisms/EditProfile/EditProfile';
+import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
 // export const Wrapper = styled.div`
+import UserPage from '../../Organisms/UserPage/UserPage';
+import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
+import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
+import AdminRoute from '../../Organisms/UserPage/AdminRoute';
+import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
+import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
+import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
+import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
+import UserPagePostForm from '../../Organisms/Posts/UserPagePostForm';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,12 +40,15 @@ const Wrapper = styled.div`
   width: 100%;
   height: 70vh;
 `;
-
 const NavigationTemplate = ({ children }) => {
+  const { isLogged } = useAuth();
   return (
     <>
       <GridContainerNavigationWrapper>
-        <Navigation makeNavigation={navigationArrayWithRoutes} />
+        {/* <Navigation makeNavigation={navigationArrayWithRoutes} /> */}
+        <AuthProvider>
+          <Navigation props={{isLogged}}/>
+        </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -42,57 +58,49 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationTemplate>
-        <Switch>
-          <Route path="/" exact>
-            <MainPage />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/registration">
-            <SignUpForm />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/login">
-            <SignInForm />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/news">
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/animals" exact component={Animals} />
-          <Route path="/animals/:id" component={AnimalPage} />
-        </Switch>
-        <Switch>
-          <Route path="/adoption">
-            <Wrapper>
-              <AdoptionVisitPage />
-            </Wrapper>
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/education">
-            <Wrapper>
-              <Education />
-              {/* <VolunteerForm /> */}
-            </Wrapper>
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/howtohelp">
-            <PaymentForm />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/about"></Route>
-        </Switch>
-        <Switch>
-          <Route path="/contact"></Route>
-        </Switch>
-      </NavigationTemplate>
+      <Router>
+        <NavigationTemplate>
+          <Switch>
+            <AuthProvider>
+              <Route path="/" exact>
+                <Wrapper>
+                  <MainPage />
+                </Wrapper>
+              </Route>
+              <Route path="/registration">
+                <SignUpForm />
+              </Route>
+              <Route path="/login">
+                <SignInForm />
+              </Route>
+              <Route path="/news"></Route>
+              <Route path="/animals">
+                <Animals />
+              </Route>
+              <Route path="/adoption">
+                <Wrapper>
+                  <AdoptionVisitPage />
+                </Wrapper>
+              </Route>
+              <Route path="/education">
+                <Wrapper>
+                  <Education />
+                </Wrapper>
+              </Route>
+              <AdminRoute path="/howtohelp" component={PaymentForm} />
+              <Route path="/about"></Route>
+              <Route path="/contact"></Route>
+              <PrivateRoute path="/useraccount" component={UserPage} />
+              <Route path="/volunteerform" component={UserPageVolunteerForm} />
+              <Route path="/adoptionvist" component={UserPageVisitForm} />
+              <Route path="/myadoptionvisits" component={UserVisits} />
+              <Route path="/payment" component={UserPagePaymentForm} />
+              <Route path="/post" component={UserPagePostForm} />
+              <Route path="/editprofile" component={UserPageEditProfile} />
+            </AuthProvider>
+          </Switch>
+        </NavigationTemplate>
+      </Router>
     </ThemeProvider>
   );
 }

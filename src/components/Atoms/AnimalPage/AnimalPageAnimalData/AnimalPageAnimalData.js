@@ -29,9 +29,6 @@ export function AnimalData(props) {
         <Typography variant="h6" color="inherit" className={classes.data}>
           GATUNEK: {props.animal.animalType}
         </Typography>
-        {/* <Typography variant="h6" color="inherit" className={classes.data}>
-          DATA REJESTRACJI: {props.animal.registrationDate}
-        </Typography> */}
         <Typography variant="h6" color="inherit" className={classes.data}>
           PŁEĆ: {props.animal.gender}
         </Typography>
