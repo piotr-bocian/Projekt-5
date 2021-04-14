@@ -20,6 +20,13 @@ const httpReducer = (initialState, action) => {
         validate: action.validate,
         payload: action.payload,
       };
+    case httpMethods.PATCH:
+      return {
+        ...initialState,
+        request: httpMethods.PATCH,
+        validate: action.validate,
+        payload: action.payload,
+      };
     default:
       return initialState;
   }
