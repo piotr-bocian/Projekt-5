@@ -110,7 +110,11 @@ const AdministratorHomePage = () => {
             alignItems="baseline"
           >
             <button type="button" onClick={handleOpenPost} className={classes.button}>
-              Dodaj Nowy Post <PostForm />
+              <Grid 
+              justify="space-around"
+              alignItems="baseline">
+                Dodaj Nowy Post <PostForm />
+              </Grid>
             </button>
             <AdministratorSectionTitles>
 
