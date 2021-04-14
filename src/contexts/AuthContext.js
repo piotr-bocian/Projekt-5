@@ -17,7 +17,6 @@ export function AuthProvider({ children }) {
     const[err, setErr] = useState('');
     const authToken = window.localStorage.getItem('x-auth-token');
     let user = {...currentUser};
-    let admin = user.isAdmin;
 
     function userLogged() {
         if(localStorage.getItem("x-auth-token")){
@@ -44,7 +43,6 @@ export function AuthProvider({ children }) {
             setIsLogged(true);
             return;
         } else {
-            // setErr(data.message);
             return data.message;
         }
     }
@@ -55,9 +53,12 @@ export function AuthProvider({ children }) {
             return alert("Żaden użytkownik nie jest zalogowany.");
         }
         window.localStorage.removeItem('x-auth-token');
+        setLoading(true);
         setIsLogged(false);
         setCurrentUser('');
         user = '';
+        window.location.reload();
+        setLoading(false);
     }
     useEffect(() => {
         userLogged();
@@ -92,7 +93,6 @@ export function AuthProvider({ children }) {
 
     const value = {
         loading,
-        admin,
         user,
         err,
         authToken,
