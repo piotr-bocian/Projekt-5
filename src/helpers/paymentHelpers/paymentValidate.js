@@ -1,4 +1,4 @@
-export const validatePayment = (paymentState) => {
+export const validatePayment = (paymentState, validationRules) => {
    if (paymentState.amount.lenght < 0 || paymentState.amount === 0) {
      return 'Pole Kwota Przelewu jest wymagane';
    } else if (paymentState.amount < 5) {

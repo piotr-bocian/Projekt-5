@@ -9,13 +9,13 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
-
+import AnimalPage from '../../Organisms/AnimalPage/AnimalPage';
 import { MainPage } from '../../Organisms/MainPage/MainPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
 import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
-// export const Wrapper = styled.div`
+
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
@@ -25,6 +25,7 @@ import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunte
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
 import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
 import UserPagePostForm from '../../Organisms/Posts/UserPagePostForm';
+import AdministratorNavigation from '../AdministratorNavigation/AdministratorNavigation';
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,18 +35,21 @@ const Wrapper = styled.div`
   width: 100%;
   height: 70vh;
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     height: auto;
   }
 `;
 const NavigationTemplate = ({ children }) => {
-
+  const { isLogged } = useAuth();
   return (
     <>
       <GridContainerNavigationWrapper>
-        {/* <Navigation makeNavigation={navigationArrayWithRoutes} /> */}
+        {/* <Navigation  /> */}
         <AuthProvider>
-          <Navigation />
+          <Navigation
+            props={{ isLogged }}
+            makeNavigation={navigationArrayWithRoutes}
+          />
         </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}
@@ -72,9 +76,8 @@ function NavigationView() {
                 <SignInForm />
               </Route>
               <Route path="/news"></Route>
-              <Route path="/animals">
-                <Animals />
-              </Route>
+              <Route path="/animals" exact component={Animals} />
+              <Route path="/animals/:id" component={AnimalPage} />
               <Route path="/adoption">
                 <Wrapper>
                   <AdoptionVisitPage />
@@ -85,7 +88,8 @@ function NavigationView() {
                   <Education />
                 </Wrapper>
               </Route>
-              <AdminRoute path="/howtohelp" component={PaymentForm} />
+              <Route path="/howtohelp" component={PaymentForm} />
+              {/* <AdminRoute path="/admin" component={AdministratorNavigation} /> */}
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />

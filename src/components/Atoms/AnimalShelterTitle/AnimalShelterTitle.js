@@ -11,7 +11,7 @@ const AnimalShelterTitle = styled.div`
   height: 88px;
   left: 246px;
   top: 39px;
-  @media (max-width: 1090px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `;

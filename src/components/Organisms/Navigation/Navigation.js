@@ -11,16 +11,7 @@ import useWindowDimensions from '../../../hooks/useWindowDimensions/useWindowDim
 import HamburgerButton from '../../Atoms/HamburgerButton/HamburgerButton';
 import { useAuth } from '../../../contexts/AuthContext';
 
-const Navigation = () => {
-  const navigationArrayWithRoutes = [
-    { name: 'Aktualności', route: '/news' },
-    { name: 'Zwierzęta', route: '/animals' },
-    { name: 'Adopcja', route: '/adoption' },
-    { name: 'Edukacja', route: '/education' },
-    { name: 'Jak pomóc', route: '/howtohelp' },
-    { name: 'O nas', route: '/about' },
-    { name: 'Kontakt', route: '/contact' },
-  ];
+const Navigation = ({ props, makeNavigation}) => {
 
   const { isLogged, logout } = useAuth();
 
@@ -68,7 +59,7 @@ const Navigation = () => {
     {(showMenu || width > MOBILE_BREAKPOINT) &&
     <GridItemMenuWrapper>
       <FlexWrapper>
-        {navigationArrayWithRoutes.map((nav, id) => {
+        {makeNavigation.map((nav, id) => {
           return (
             <NavigationTextWithRoutes
               key={id}

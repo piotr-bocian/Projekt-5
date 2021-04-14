@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import { validatePayment } from '../../../helpers/paymentHelpers/paymentValidate';
-import SelectPay from '../../Atoms/Select/Select';
+import SelectPay from '../../Atoms/Select/SelectPaymentHandler';
 import PaymentFormField from '../../Molecules/PaymentFormField/PaymentFormField';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
@@ -12,6 +12,7 @@ import {
   typeOfPayment,
 } from '../../../helpers/paymentHelpers/paymenttypeAndMethodConst';
 import SpringModal from '../../Molecules/Modal/Modal';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const PaymentForm = ({ title }) => {
   const initialState = {
@@ -20,7 +21,6 @@ const PaymentForm = ({ title }) => {
     paymentMethod: '',
   };
   const [paymentState, setPaymentState] = useState(initialState);
-
 
   const handler = useHttp(
     'https://best-animal-shelter.herokuapp.com/api/payments',
@@ -53,6 +53,11 @@ const PaymentForm = ({ title }) => {
         name="amount"
         value={paymentState.amount}
         onChange={inputPaymentHandler}
+        errorHandler={
+          handler.error === 'Kwota przelewu musi być większa niż 5PLN'
+            ? handler.error
+            : null
+        }
       />
       <SelectPay
         label="Typ płatności"
@@ -61,6 +66,11 @@ const PaymentForm = ({ title }) => {
         value={paymentState.typeOfPayment}
         optionType={typeOfPayment}
         onChange={inputPaymentHandler}
+        error={
+          handler.error === 'Proszę określic typ przelewu'
+            ? handler.error
+            : null
+        }
       />
       <SelectPay
         label="Metoda płatności"
@@ -69,7 +79,17 @@ const PaymentForm = ({ title }) => {
         value={paymentState.paymentMethod}
         optionType={paymentMethod}
         onChange={inputPaymentHandler}
+        error={
+          handler.error === 'Proszę wybrać metodę płatności'
+            ? handler.error
+            : null
+        }
       />
+      <FormHelperText style={{ textAlign: 'center', color: 'red' }}>
+        {handler.error === 'Pole Kwota Przelewu jest wymagane'
+          ? handler.error
+          : null}
+      </FormHelperText>
       <Button
         style={{ marginTop: 10 }}
         color="primary"

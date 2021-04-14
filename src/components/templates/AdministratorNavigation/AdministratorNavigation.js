@@ -17,6 +17,9 @@ import { administratorPostConfig } from '../../../Config/postConfigFile';
 import { administratorVolunteerFormConfig } from '../../../Config/administratorVolunteerFormConfig';
 import { administratorUsersConfig } from '../../../Config/administratorUsersConfigFile';
 import AdministratorHomePage from '../../Organisms/AdministratorHomePage/AdministratorHomePage';
+import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
+import UserPage from '../../Organisms/UserPage/UserPage';
+import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
 
 const NavigationTemplate = ({ children }) => {
   return (
@@ -40,14 +43,15 @@ function AdministratorNavigation() {
           <Route path="/" exact>
             <AdministratorHomePage />
           </Route>
-          <Route path="/login"></Route>
-
+          <PrivateRoute path="/useraccount" component={UserPage} />
+          <PrivateRoute path="/editprofile" component={UserPageEditProfile} />
           <Route path="/payments">
             <AdministratorViewTemplate
               administratorConfig={administratorPaymentConfig}
               componentName={<AdministratorPayment />}
             />
           </Route>
+
           <Route path="/shelteranimals">
             <AdministratorViewTemplate
               administratorConfig={administratorAnimalsConfig}
