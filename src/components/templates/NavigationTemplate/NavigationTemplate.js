@@ -17,6 +17,7 @@ import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
+import HelpPage from '../../Organisms/HelpPage/HelpPage';
 
 const Wrapper = styled.div`
   display: flex;
@@ -80,13 +81,12 @@ function NavigationView() {
             <Route path="/education">
               <Wrapper>
                 <Education />
-                {/* <VolunteerForm /> */}
               </Wrapper>
             </Route>
           </Switch>
           <Switch>
             <Route path="/howtohelp">
-              <PaymentForm />
+              <HelpPage />
             </Route>
           </Switch>
           <Switch>
