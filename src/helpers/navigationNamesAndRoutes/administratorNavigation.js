@@ -6,5 +6,4 @@ export const administratorNavigation = [
   { name: 'Użytkownicy', route: '/users' },
   { name: 'Wolontariusze', route: '/volunteers' },
   { name: 'Wizyty Adopcyjne', route: '/adoptionvisit' },
-  { name: 'Pracownicy', route: '/employees' },
 ];

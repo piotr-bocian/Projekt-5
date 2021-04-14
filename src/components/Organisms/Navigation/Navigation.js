@@ -9,12 +9,16 @@ import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/Na
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
 import useWindowDimensions from '../../../hooks/useWindowDimensions/useWindowDimensions';
 import HamburgerButton from '../../Atoms/HamburgerButton/HamburgerButton';
+import { useAuth } from '../../../contexts/AuthContext';
 
+const Navigation = ({ props, makeNavigation}) => {
 
-const Navigation = ({ makeNavigation, user=true }) => {
+  const { isLogged, logout } = useAuth();
+
   const { height, width } = useWindowDimensions();
   const MOBILE_BREAKPOINT = 768;
   const [showMenu, setShowMenu] = useState(false);
+
 
   return (
     <>
@@ -22,16 +26,26 @@ const Navigation = ({ makeNavigation, user=true }) => {
         <AnimaShelterLogo className="main-logo"/>
       </NavLink>
 
-      <GridItemRegistrationWrapper>
-        {user && (
-          <>
-            <StyledNavLink to="/registration">
-              <NavigationText margin="0" mainText="Rejestracja" />
-            </StyledNavLink>
-            <TextSeparator />
-          </>
-        )}
+      {isLogged ? (
+        <GridItemRegistrationWrapper>
+        <StyledNavLink to="/useraccount">
+          <NavigationText margin="0" mainText="Profil" />
+        </StyledNavLink>
+        <TextSeparator />
+        <StyledNavLink to="/">
+          <NavigationText mainText="Wyloguj" handleClick={ logout } />
+        </StyledNavLink>
 
+        {width <= MOBILE_BREAKPOINT &&
+          <HamburgerButton setShowMenu={setShowMenu}/>
+        }
+      </GridItemRegistrationWrapper>
+      ):(
+        <GridItemRegistrationWrapper>
+        <StyledNavLink to="/registration">
+          <NavigationText margin="0" mainText="Rejestracja" />
+        </StyledNavLink>
+        <TextSeparator />
         <StyledNavLink to="/login">
           <NavigationText mainText="Logowanie" />
         </StyledNavLink>
@@ -40,6 +54,7 @@ const Navigation = ({ makeNavigation, user=true }) => {
           <HamburgerButton setShowMenu={setShowMenu}/>
         }
       </GridItemRegistrationWrapper>
+      )}
 
     {(showMenu || width > MOBILE_BREAKPOINT) &&
     <GridItemMenuWrapper>

@@ -2,11 +2,9 @@ import { URL } from '../helpers/URL/url';
 
 export const administratorVisitsConfig = {
   url: `${URL}/visits`,
-  dataKey: ['results', 'adoption', 'results'],
+  dataKey: ['visit', 'adoptionVisits', 'results'],
   validate: null,
-  select: [
-
-  ],
+  select: [],
   buttonText: 'Wyświetl wszystkie wizyty',
   configChildComponent: [
     { title: 'Data wizyty :', value: 'visitDate', helper: false },
