@@ -48,4 +48,7 @@ export const BodyWrapper = styled.div`
     display: grid;
     justify-items: center;
     align-items: center;
+    & form {
+        margin-top: 0em;
+    }
 `;

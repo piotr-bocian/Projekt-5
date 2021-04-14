@@ -38,14 +38,14 @@ export function AuthProvider({ children }) {
             })
         });
         const data = await loginResponse.json();
-        if(loginResponse.status >= 200 && loginResponse.status < 300){
+        if(loginResponse.ok){
             window.localStorage.setItem('x-auth-token', data.token);
             console.log('Logowanie...');
             setIsLogged(true);
             return;
         } else {
-            setErr(data.message);
-            return err;
+            // setErr(data.message);
+            return data.message;
         }
     }
 
@@ -91,6 +91,7 @@ export function AuthProvider({ children }) {
     }, [authToken]);
 
     const value = {
+        loading,
         admin,
         user,
         err,
@@ -99,7 +100,6 @@ export function AuthProvider({ children }) {
         logout,
         isLogged
     }
-
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}

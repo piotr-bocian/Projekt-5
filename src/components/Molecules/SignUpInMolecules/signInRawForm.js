@@ -6,6 +6,7 @@ import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import RememberMeCheckbox from '../../Atoms/SignUpInAtoms/rememberMeCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
 import { useAuth } from '../../../contexts/AuthContext';
+import Alert from '@material-ui/lab/Alert';
 
 const SignInRawForm = () => {
     const classes = useStyles();
@@ -59,8 +60,11 @@ const SignInRawForm = () => {
         if(!error) {
             setApiError('');
             setLoading(true);
-            await signIn(form.email, form.password);
-
+            const login = await signIn(form.email, form.password);
+            if ( login ) {
+                console.log(login);
+                setApiError(login)
+            }
             if(localStorage.getItem('x-auth-token')){
                 setForm({
                     //clear form
@@ -72,7 +76,7 @@ const SignInRawForm = () => {
                 history.push("/useraccount");
                 window.location.reload();
             } else {
-                setApiError(err);
+                // setApiError(err);
             }
         }
         setLoading(false);
@@ -81,7 +85,9 @@ const SignInRawForm = () => {
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>
             <Grid container spacing={2}>
-                {apiError && <h4 style={{color:'red', marginBottom:'5px'}}>{apiError}</h4>}
+                <Grid item xs={12}>
+                    {apiError && <Alert severity="error" >{apiError}</Alert>}
+                </Grid>
                 <Grid item xs={12}>
                     <SignUpInTxtField 
                         name="email"
