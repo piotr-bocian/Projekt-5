@@ -54,7 +54,7 @@ const VisitForm = ({ animal }) => {
             visitDate: visitDate,
             visitTime: visitTime,
             duration: duration,
-            animalID: animal.id
+            animalID: animal._id
         }
     } else {
         visitState = {
