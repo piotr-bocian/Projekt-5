@@ -3,6 +3,7 @@ import { AnimalsForAdoption } from '../../Atoms/HeaderAnimalsForAdoption/HeaderA
 import { WaitingFiltersFrame } from '../../Molecules/WaitingFiltersFrame/WaitingFiltersFrame.js';
 import { AllAnimalsGrid } from '../../Molecules/AnimalsGrid/AnimalsGrid.js';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
+import AnimalLoader from '../../Loaders/AnimalLoader/AnimalLoader';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import DogLoader from '../../Loaders/NewLoader/DogLoader.js';
 
@@ -15,26 +16,23 @@ export function Animals () {
     const handler = useHttp(
         `https://best-animal-shelter.herokuapp.com/api/animals`,
         httpMethods.GET
-    );
+    );    
 
     useEffect(() => {
         handler.makeHttpRequest()
-            .then((result) => {
-                console.log(result)
-                result.animals.results.forEach(e => {
-                        setAnimals(a =>[...a, e])
-                })
+            .then((result) => {                
+                setAnimals(result.animals.results);
+                console.log('elo')
             });
     }, [])
 
 
-    // console.log(animals);
     return handler.isLoading ? (
         <DogLoader/>) :
         (
-        <div>
+        <div className='animals'>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
-            <WaitingFiltersFrame></WaitingFiltersFrame>
+            <WaitingFiltersFrame setAnimals={setAnimals}></WaitingFiltersFrame>
             <AllAnimalsGrid animals={animals}></AllAnimalsGrid>
         </div>
     );

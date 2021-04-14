@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
@@ -7,11 +7,20 @@ import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
 import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
-import { Animals } from '../../Organisms/Animals.js/Animals';
+import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
+import { Animals } from '../../Organisms/Animals/Animals';
+import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
+// import { Animals } from '../../Organisms/Animals.js/Animals';
 // import VolunteerForm from '../../Organisms/VolunteerForm/VolunteerForm';
 import AdotpionForm from '../../Organisms/AdotpionForm/AdotpionForm';
+import { MainPage } from '../../Organisms/MainPage/MainPage';
+import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import Education from '../../Organisms/Education/Education';
+import EditProfile from '../../Organisms/EditProfile/EditProfile';
+import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
+// export const Wrapper = styled.div`
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
@@ -35,6 +44,7 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
+        {/* <Navigation makeNavigation={navigationArrayWithRoutes} /> */}
         <AuthProvider>
           <Navigation props={{isLogged}}/>
         </AuthProvider>
@@ -81,7 +91,9 @@ function NavigationView() {
               <Route path="/myadoptionvisits" component={UserVisits} />
               <Route path="/payment" component={UserPagePaymentForm} />
               <Route path="/post" component={UserPagePostForm}/>
-              <Route path="/editprofile"/>
+              <Route path="/editprofile">
+                  <UserPageEditProfile link={{link:"/useraccount"}}/>
+              </Route>
             </AuthProvider>
           </Switch>
         </NavigationTemplate>

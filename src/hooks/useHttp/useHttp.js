@@ -1,17 +1,19 @@
 import { useState } from 'react';
 
-const useHttp = (url, method, payload = '', validateFunction = null) => {
+const useHttp = (url, method, payload = '', validateFunction = null, authToken=null) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [data, setData] = useState('');
+
   const httpRequest = async () => {
     const fetchOptions =
-      method === 'GET'
+      method === 'GET' || method === 'DELETE'
         ? {
             method: method,
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/json',
+              'x-auth-token': authToken
             },
           }
         : {
@@ -19,10 +21,11 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/json',
+              'x-auth-token': authToken
             },
             body: JSON.stringify(payload),
           };
-          console.log(url);
+
     return fetch(url, fetchOptions);
   };
 
@@ -36,7 +39,6 @@ const useHttp = (url, method, payload = '', validateFunction = null) => {
       return data;
     } catch (error) {
       setError(error);
-      console.log(error);
       return error;
     }
   };

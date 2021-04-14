@@ -3,6 +3,7 @@ import { TextField, RadioGroup, FormControlLabel, Radio, Button, FormControl, Fo
 import { Grid } from '@material-ui/core';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import VolunteerFormTextField from '../../Atoms/VolunteerFormTextField/VolunteerFormTextField';
+import { useAuth } from '../../../contexts/AuthContext';
 
 import './VolunteerForm.css';
 
@@ -16,6 +17,8 @@ const VolunteerForm = () => {
         preferredTasks: ''
     });
 
+    const { authToken } = useAuth();
+
     const [firstNameErr, setFirstNameErr] = useState(false);
     const [lastNameErr, setLastNameErr] = useState(false);
     const [mobileErr, setMobileErr] = useState(false);
@@ -26,7 +29,7 @@ const VolunteerForm = () => {
     const updateForm = (e) => {
         setForm({
             ...form,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         })
     }
 
@@ -41,7 +44,7 @@ const VolunteerForm = () => {
             setLastNameErr(true);
             valid = false;
         }
-        if(form.mobile.length !== 9 || isNaN(parseInt(form.mobile))){
+        if(form.mobile.length !== 9 || isNaN(Number(form.mobile))){
             setMobileErr(true);
             valid = false;
         }
@@ -62,9 +65,15 @@ const VolunteerForm = () => {
     }
 
     const handler = useHttp(
+        // 'http://localhost:4000/api/volunteerForms',
         'https://best-animal-shelter.herokuapp.com/api/volunteerForms',
         'POST',
-        form
+        {
+            ...form,
+            mobile: form.mobile.slice(0, 3) + '-' + form.mobile.slice(3, 6) + '-' + form.mobile.slice(6, 9)
+        },
+        null,
+        authToken
     );
 
     const handleSubmit = (e) => {
@@ -72,7 +81,7 @@ const VolunteerForm = () => {
 
         if(validateForm()){
             handler.makeHttpRequest();
-            console.log('Wysylam zapytanie')
+            //console.log('Wysylam zapytanie');
         }
     }
 
