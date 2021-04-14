@@ -102,7 +102,7 @@ const EmployeeFormLogic = () => {
   };
 
   const handleForm = async (e) => {
-    const url = 'https://best-animal-shelter.herokuapp.com/api/users';
+    const url = 'https://best-animal-shelter.herokuapp.com/api/users/addEmployee';
     e.preventDefault();
     const err = validateForm();
     if (!err) {
