@@ -79,7 +79,12 @@ function NavigationView() {
                   <AdoptionVisitPage />
                 </Wrapper>
               </Route>
-              <Route path="/education" />
+              <Route path="/education">
+              <Wrapper>
+                <Education />
+                {/* <VolunteerForm /> */}
+              </Wrapper>
+              </Route>
               <Route path="/howtohelp">
                 <PaymentForm />
               </Route>
@@ -99,7 +104,9 @@ function NavigationView() {
               <Route path="/post" />
               <Route path="/myposts" />
               <Route path="/editprofile">
-                <EditProfile />
+                <Wrapper>
+                  <EditProfile />
+                </Wrapper>
               </Route>
             </AuthProvider>
           </Switch>

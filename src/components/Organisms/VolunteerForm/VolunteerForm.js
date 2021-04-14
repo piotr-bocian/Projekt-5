@@ -3,6 +3,7 @@ import { TextField, RadioGroup, FormControlLabel, Radio, Button, FormControl, Fo
 import { Grid } from '@material-ui/core';
 import useHttp from '../../../hooks/useHttp/useHttp';
 import VolunteerFormTextField from '../../Atoms/VolunteerFormTextField/VolunteerFormTextField';
+import { useAuth } from '../../../contexts/AuthContext';
 
 import './VolunteerForm.css';
 
@@ -15,6 +16,8 @@ const VolunteerForm = () => {
         occupation: '',
         preferredTasks: ''
     });
+
+    const { authToken } = useAuth();
 
     const [firstNameErr, setFirstNameErr] = useState(false);
     const [lastNameErr, setLastNameErr] = useState(false);
@@ -68,7 +71,9 @@ const VolunteerForm = () => {
         {
             ...form,
             mobile: form.mobile.slice(0, 3) + '-' + form.mobile.slice(3, 6) + '-' + form.mobile.slice(6, 9)
-        }
+        },
+        null,
+        authToken
     );
 
     const handleSubmit = (e) => {
