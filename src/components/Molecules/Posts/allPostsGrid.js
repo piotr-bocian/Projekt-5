@@ -22,7 +22,7 @@ export function AllPostsGrid (props) {
     const classes = useStyles();
 
     const shortContent = (text) =>{
-        let string = text.slice(0, 39) + " ...";
+        let string = text.slice(0, 30) + " ...";
         return  string;
     }
     console.log(props)

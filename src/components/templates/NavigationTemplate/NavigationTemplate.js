@@ -22,8 +22,6 @@ import Contact from '../../Organisms/Contact/Contact';
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
-import AdminRoute from '../../Organisms/UserPage/AdminRoute';
-import newPosts from '../../Organisms/Posts/newPosts';
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
