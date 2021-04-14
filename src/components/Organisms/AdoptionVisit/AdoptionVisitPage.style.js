@@ -29,11 +29,20 @@ export const PageWrapper = styled.div`
             margin-top: 0;
         }
     }
+
+    @media(max-width: 768px){
+        height: auto;
+    }
 `;
 
 export const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
+    @media(max-width: 768px){
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 export const Step = styled.div`
