@@ -80,6 +80,8 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     setFilter('');
     setId('');
     setSearch('');
+    setRenderDataForUser(null);
+    setMakeStateForUser(null);
     dispatch({ type: httpMethods.GET });
   };
 
@@ -105,6 +107,8 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     setId(route);
     setFilter('');
     setSearch('');
+    setRenderDataForUser(null);
+    setMakeStateForUser(null);
     dispatch({ type: httpMethods.DELETE });
   };
 
@@ -113,6 +117,8 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     setId(route);
     setFilter('');
     setSearch('');
+    setRenderDataForUser(null);
+    setMakeStateForUser(null);
     dispatch({
       type: httpMethods.PUT,
       validate: administratorConfig.validate,
@@ -125,6 +131,8 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     setId(route);
     setFilter('');
     setSearch('');
+    setRenderDataForUser(null);
+    setMakeStateForUser(null);
     dispatch({
       type: httpMethods.PATCH,
       validate: administratorConfig.validate,
