@@ -36,14 +36,11 @@ const LatestPosts = () => {
 
     return (
     <>
-        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 35 }}>
+        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 85 }}>
             Aktualności
         </Typography>
         <Container>
-            <Grid container spacing={3} style={{
-                paddingTop:1,
-                paddingBottom:25
-                }}>
+            <Grid container spacing={3} style={{padding:50}}>
                 {posts
                 .filter((post, index) => (index < 3))
                 .map((post) => (

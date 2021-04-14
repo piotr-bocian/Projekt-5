@@ -4,6 +4,7 @@ import NavigationView from '../components/templates/NavigationTemplate/Navigatio
 import Footer from '../components/Organisms/Footer/Footer';
 import AdministratorNavigation from '../components/templates/AdministratorNavigation/AdministratorNavigation';
 import styled from 'styled-components';
+import { AuthProvider, useAuth } from '../contexts/AuthContext';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,8 +14,6 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
 `;
-
-import { AuthProvider, useAuth } from '../contexts/AuthContext';
 
 const theme = createMuiTheme({
   palette: {

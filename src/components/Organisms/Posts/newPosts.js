@@ -41,7 +41,7 @@ const NewPosts = () => {
 
     return (
     <>
-        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 15 }}>
+        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 25 }}>
             Aktualności
         </Typography>
         <Container>

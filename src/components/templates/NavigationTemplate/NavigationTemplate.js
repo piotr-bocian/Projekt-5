@@ -9,33 +9,27 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
-<<<<<<< HEAD
-=======
 import {AnimalPage} from '../../Organisms/AnimalPage/AnimalPage';
->>>>>>> fixPutRequest
 import { MainPage } from '../../Organisms/MainPage/MainPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
-<<<<<<< HEAD
+import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
 import NewPosts from '../../Organisms/Posts/newPosts';
 import LatestPosts from '../../Organisms/Posts/LatestPosts';
 import OnePost from '../../Organisms/Posts/OnePost';
 import Contact from '../../Organisms/Contact/Contact';
-=======
-import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
-
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
 import AdminRoute from '../../Organisms/UserPage/AdminRoute';
+import newPosts from '../../Organisms/Posts/newPosts';
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
 import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
 import UserPagePostForm from '../../Organisms/Posts/UserPagePostForm';
 import AdministratorNavigation from '../AdministratorNavigation/AdministratorNavigation';
->>>>>>> fixPutRequest
 
 const Wrapper = styled.div`
   display: flex;
@@ -72,68 +66,12 @@ function NavigationView() {
       <Router>
         <NavigationTemplate>
           <Switch>
-<<<<<<< HEAD
-            <Route path="/" exact>
-              {/* odpowiedni komponent */}
-              <MainPage />
-              {/* <Wrapper>
-                <AdotpionForm />
-              </Wrapper> */}
-              <LatestPosts />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/registration">
-              <SignUpForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/login">
-              <SignInForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/news" exact> 
-              {/* <PostForm /> */}
-              <NewPosts />
-            </Route>
-            <Route path="/news/:id" component={OnePost} />
-          </Switch>
-          <Switch>
-            <Route path="/animals" exact component={Animals} />
-            <Route path="/animals/:id" component={AnimalPage} />
-          </Switch>
-          <Switch>
-            <Route path="/adoption">
-              <Wrapper>
-                <AdoptionVisitPage />
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/education">
-              <Wrapper>
-                <Education />
-                {/* <VolunteerForm /> */}
-              </Wrapper>
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/howtohelp">
-              <PaymentForm />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/about"></Route>
-          </Switch>
-          <Switch>
-            <Route path="/contact" component={Contact}></Route>
-=======
             <AuthProvider>
               <Route path="/" exact>
                 <Wrapper>
                   <MainPage />
                 </Wrapper>
+                <LatestPosts />
               </Route>
               <Route path="/registration">
                 <SignUpForm />
@@ -141,7 +79,11 @@ function NavigationView() {
               <Route path="/login">
                 <SignInForm />
               </Route>
-              <Route path="/news"></Route>
+              <Route path="/news" exact> 
+                {/* <PostForm /> */}
+                <NewPosts />
+              </Route>
+              <Route path="/news/:id" component={OnePost} />
               <Route path="/animals" exact component={Animals} />
               <Route path="/animals/:id" component={AnimalPage} />
               <Route path="/adoption">
@@ -165,8 +107,8 @@ function NavigationView() {
               <Route path="/payment" component={UserPagePaymentForm} />
               <Route path="/post" component={UserPagePostForm} />
               <Route path="/editprofile" component={UserPageEditProfile} />
+              <Route path="/contact" component={Contact}></Route>
             </AuthProvider>
->>>>>>> fixPutRequest
           </Switch>
         </NavigationTemplate>
       </Router>

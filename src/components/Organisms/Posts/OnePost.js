@@ -32,9 +32,7 @@ const OnePost = (match) => {
     const fetchItem = async () =>{
         const fetchItem = await fetch(`https://best-animal-shelter.herokuapp.com/api/posts/${itemId}`)
         const item = await fetchItem.json();
-        console.log(item.post)
         setItem(item.post)
-        console.log(item.post.photo)
     }
     return (
     <>
