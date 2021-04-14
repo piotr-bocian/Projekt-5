@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AnimaShelterLogo } from '../../Atoms/Logo/AnimalShelterLogo';
 import { FlexWrapper } from '../../../styles/stylesContainer/FlexWrapper';
@@ -6,6 +7,8 @@ import GridItemMenuWrapper from '../../../styles/stylesContainer/GridItemMenuWra
 import { GridItemRegistrationWrapper, StyledNavLink } from './Navigation.style';
 import NavigationTextWithRoutes from '../../Molecules/NavigationTextAndRoutes/NavigationTextAndRoutes';
 import TextSeparator from '../../Atoms/TextSeparator/TextSeparator';
+import useWindowDimensions from '../../../hooks/useWindowDimensions/useWindowDimensions';
+import HamburgerButton from '../../Atoms/HamburgerButton/HamburgerButton';
 import { useAuth } from '../../../contexts/AuthContext';
 
 const Navigation = ({ props }) => {
@@ -21,11 +24,15 @@ const Navigation = ({ props }) => {
 
   const { isLogged, logout } = useAuth();
 
+  const { height, width } = useWindowDimensions();
+  const MOBILE_BREAKPOINT = 768;
+  const [showMenu, setShowMenu] = useState(false);
+
 
   return (
     <>
       <NavLink to="/" exact>
-        <AnimaShelterLogo />
+        <AnimaShelterLogo className="main-logo"/>
       </NavLink>
 
       {isLogged ? (
@@ -47,22 +54,28 @@ const Navigation = ({ props }) => {
         <StyledNavLink to="/login">
           <NavigationText mainText="Logowanie" />
         </StyledNavLink>
+
+        {width <= MOBILE_BREAKPOINT &&
+          <HamburgerButton setShowMenu={setShowMenu}/>
+        }
       </GridItemRegistrationWrapper>
       )}
 
-      <GridItemMenuWrapper>
-        <FlexWrapper>
-          {navigationArrayWithRoutes.map((nav, id) => {
-            return (
-              <NavigationTextWithRoutes
-                key={id}
-                text={nav.name}
-                route={nav.route}
-              />
-            );
-          })}
-        </FlexWrapper>
-      </GridItemMenuWrapper>
+    {(showMenu || width > MOBILE_BREAKPOINT) &&
+    <GridItemMenuWrapper>
+      <FlexWrapper>
+        {navigationArrayWithRoutes.map((nav, id) => {
+          return (
+            <NavigationTextWithRoutes
+              key={id}
+              text={nav.name}
+              route={nav.route}
+            />
+          );
+        })}
+      </FlexWrapper>
+    </GridItemMenuWrapper>
+    }
     </>
   );
 };

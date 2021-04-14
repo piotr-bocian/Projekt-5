@@ -22,7 +22,6 @@ export function Animals () {
         handler.makeHttpRequest()
             .then((result) => {                
                 setAnimals(result.animals.results);
-                console.log('elo')
             });
     }, [])
 

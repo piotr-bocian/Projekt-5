@@ -9,24 +9,33 @@ const useStyles = makeStyles((theme) => ({
       height: '25vh',
       display: 'flex',
       flexWrap: 'wrap',
-      width: '25vw',
+      width: '27vw',
       backgroundColor: 'white',
       filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5))',
+      [theme.breakpoints.down('lg')]: {
+        height: '27vh',
+      }
     },
     header1: {
       color: 'red',
       fontFamily: 'Montserrat, sans-sarif',
       fontWeight: 'bold',
       fontSize: '1.4em',
-      margin: '15px auto 0 auto',
-      height: 'fit-content'
+      margin: 'auto',
+      height: 'fit-content',
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '1em',
+      }
     },
     header2: {
       fontFamily: 'Montserrat, sans-sarif',
       fontWeight: 'bold',
       fontSize: '1.3em',
-      margin: '-15px auto',
-      height: 'fit-content'
+      margin: 'auto',
+      height: 'fit-content',
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '0.9em',
+      }
     },
 }));
   

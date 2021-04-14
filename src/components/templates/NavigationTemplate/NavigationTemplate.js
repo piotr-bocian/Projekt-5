@@ -17,6 +17,7 @@ import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
+import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
 import EditProfile from '../../Organisms/EditProfile/EditProfile';
 import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
