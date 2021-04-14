@@ -11,7 +11,7 @@ const Footer = () => {
         <footer className="footer">
             <section className="footer-section">
                 <ul>
-                    <div className="socials">
+                    <div>
                     <li>NAZWA SCHRONISKA</li>
                     <li>Backendowa Street 01</li>
                     <li>10-255 Frontendowo</li>

@@ -5,7 +5,7 @@ export const StyledButton = withStyles(() => ({
     root: {
       'font-family': 'Montserrat, sans-sarif',
       'letter-spacing': '0.1em',
-      'font-size': '1.5em',
+      'font-size': '1rem',
       'font-weight': 'bold',
       'padding': '0 0.5em',
       'margin': '0',

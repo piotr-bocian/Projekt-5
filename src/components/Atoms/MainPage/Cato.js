@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'white',
         width: '15vw',
         filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5))',
+        [theme.breakpoints.down('xs')]: {
+          width: '80vw'
+        }
     },
     image: {
         height: '45%',
@@ -41,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.down('lg')]: {
         height: '100%',
         paddingTop: '25%'
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: '80vw'
       }
     },
   }));

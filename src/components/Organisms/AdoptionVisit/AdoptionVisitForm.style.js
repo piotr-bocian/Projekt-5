@@ -11,6 +11,10 @@ export const Wrapper = styled.div`
     @media only screen and (min-width : 1824px) {
         width: 20vw;
     }
+
+    @media(max-width: 768px){
+        width: 90vw;
+    }
 `;
 export const PostWrapper = styled.div`
     width: 40vw;
@@ -22,6 +26,10 @@ export const PostWrapper = styled.div`
     background-color: white;
     @media only screen and (min-width : 1824px) {
         width: 40vw;
+    }
+
+    @media(max-width: 768px){
+        width: 90vw;
     }
 `;
 

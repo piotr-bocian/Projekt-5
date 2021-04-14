@@ -31,11 +31,21 @@ export const PageWrapper = styled.div`
             margin-top: 0;
         }
     }
+
+    @media(max-width: 768px){
+        height: auto;
+    }
 `;
 
 export const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
+    @media(max-width: 768px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const Step = styled.div`
@@ -78,6 +88,16 @@ export const Step = styled.div`
 export const ButtonWrapper = styled.div`
     justify-self: center;
     align-self: center;
+
+    & > button{
+        margin-bottom: 1rem;
+    }
+
+    @media(max-width: 768px){
+        & > button{
+            width: 100%;
+        }
+    }
 `;
 
 export const iconStyle = {

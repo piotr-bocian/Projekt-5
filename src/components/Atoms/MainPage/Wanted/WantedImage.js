@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('lg')]: {
           display: 'none',
-        }
+        }  
     },
   }));
   

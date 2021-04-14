@@ -43,4 +43,8 @@
         transform: translateX(0);
     }
     
+    .socials{
+        display: flex;
+        justify-content: center;
+    }
 }

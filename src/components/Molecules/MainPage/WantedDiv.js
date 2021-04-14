@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
       filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5))',
       [theme.breakpoints.down('lg')]: {
         height: '27vh',
+      },
+      [theme.breakpoints.down('xs')]: {
+        display: 'none'
       }
     },
     header1: {

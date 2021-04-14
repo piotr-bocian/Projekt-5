@@ -8,7 +8,7 @@ function UserCard({ props }) {
   return (
     <UserCardWrapper>
         <UserPageImage props={props}/>
-        <div>
+        <div className="user-info">
             <h2>
                 MOJE DANE:
             </h2>

@@ -11,6 +11,7 @@ const BackButton = ({ link }) => {
             variant="outlined"
             color="primary"
             startIcon={<ArrowBackIcon />}
+            style={{marginLeft: '1rem'}}
         >
         POWRÓT {link.text}
       </Button>

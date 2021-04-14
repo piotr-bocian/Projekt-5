@@ -9,4 +9,8 @@ export const Wrapper = styled.form`
   border: 1px solid ${({ theme }) => theme.colors.blue};
   box-shadow: ${({ theme }) => theme.border.shadow};
   background-color: ${({ theme }) => theme.colors.white};
+
+  @media(max-width: 768px){
+    width: 90vw;
+  }
 `;

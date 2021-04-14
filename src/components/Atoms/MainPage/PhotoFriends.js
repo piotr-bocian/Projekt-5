@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: `url(${friends})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
+        [theme.breakpoints.down('xs')]: {
+          backgroundPosition: 'center'
+        }
     },
   }));
 
