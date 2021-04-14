@@ -4,7 +4,6 @@ const useHttp = (url, method, payload = '', validateFunction = null, authToken=n
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [data, setData] = useState('');
-console.log(payload)
   const httpRequest = async () => {
     const fetchOptions =
       method === 'GET' || method === 'DELETE'

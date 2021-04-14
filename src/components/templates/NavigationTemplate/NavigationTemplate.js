@@ -44,7 +44,6 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        {/* <Navigation  /> */}
         <AuthProvider>
           <Navigation
             props={{ isLogged }}
