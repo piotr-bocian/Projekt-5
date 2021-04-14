@@ -19,7 +19,7 @@ const SignInRawForm = () => {
 
     const [apiError, setApiError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { signIn, err } = useAuth();
+    const { signIn } = useAuth();
     const history = useHistory();
 
     const updateForm = (e) => {
@@ -64,8 +64,7 @@ const SignInRawForm = () => {
             if ( login ) {
                 console.log(login);
                 setApiError(login)
-            }
-            if(localStorage.getItem('x-auth-token')){
+            } else {
                 setForm({
                     //clear form
                     email: '',
@@ -75,8 +74,6 @@ const SignInRawForm = () => {
                 });
                 history.push("/useraccount");
                 window.location.reload();
-            } else {
-                // setApiError(err);
             }
         }
         setLoading(false);

@@ -1,1 +1,0 @@
-Do folderu Atoms wrzucamy komponenty 'podstawowe' takie, których nie da się rozbić na nic mniejszego bo straciłyby wtedy swoją funkcjonalnośc. Tutaj mogą wylądować na przykład buttony czy labele.

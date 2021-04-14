@@ -15,7 +15,7 @@ const Navigation = ({ props, makeNavigation}) => {
 
   const { isLogged, logout } = useAuth();
 
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const MOBILE_BREAKPOINT = 768;
   const [showMenu, setShowMenu] = useState(false);
 

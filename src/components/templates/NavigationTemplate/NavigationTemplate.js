@@ -1,11 +1,10 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styles/styles';
 import Navigation from '../../Organisms/Navigation/Navigation';
 import GridContainerNavigationWrapper from '../../../styles/stylesContainer/GridContainerNavigationWrapper';
-import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
@@ -19,13 +18,11 @@ import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
-import AdminRoute from '../../Organisms/UserPage/AdminRoute';
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
 import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
 import UserPagePostForm from '../../Organisms/Posts/UserPagePostForm';
-import AdministratorNavigation from '../AdministratorNavigation/AdministratorNavigation';
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,12 +41,10 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        <AuthProvider>
           <Navigation
             props={{ isLogged }}
             makeNavigation={navigationArrayWithRoutes}
           />
-        </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}
     </>
@@ -59,7 +54,6 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      {/* <Router> */}
         <NavigationTemplate>
           <Switch>
             <AuthProvider>
@@ -88,20 +82,18 @@ function NavigationView() {
                 </Wrapper>
               </Route>
               <Route path="/howtohelp" component={HelpPage} />
-              {/* <AdminRoute path="/admin" component={AdministratorNavigation} /> */}
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />
-              <Route path="/volunteerform" component={UserPageVolunteerForm} />
+              <PrivateRoute path="/volunteerform" component={UserPageVolunteerForm} />
               <Route path="/adoptionvist" component={UserPageVisitForm} />
-              <Route path="/myadoptionvisits" component={UserVisits} />
-              <Route path="/payment" component={UserPagePaymentForm} />
-              <Route path="/post" component={UserPagePostForm} />
-              <Route path="/editprofile" component={UserPageEditProfile} />
+              <PrivateRoute path="/myadoptionvisits" component={UserVisits} />
+              <PrivateRoute path="/payment" component={UserPagePaymentForm} />
+              <PrivateRoute path="/post" component={UserPagePostForm} />
+              <PrivateRoute path="/editprofile" component={UserPageEditProfile} />
             </AuthProvider>
           </Switch>
         </NavigationTemplate>
-      {/* </Router> */}
     </ThemeProvider>
   );
 }
