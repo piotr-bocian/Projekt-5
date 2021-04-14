@@ -10,10 +10,16 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: '15vw',
         marginTop: '-7.5vh',
         width: '85vw',
+        [theme.breakpoints.down('xs')]: {
+            marginLeft: '0'
+        }
     },
     gridClasses: {
         margin: '0 auto',
         width: '100%',
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: 'column'
+        }
     },
     gridItem: {
         marginTop: '-7.5vh',
@@ -29,7 +35,7 @@ export function MainPageGrid (props) {
                 <Grid item className={classes.gridItem}>
                     <Dogo></Dogo>
                 </Grid>
-                <Grid item>
+                <Grid item >
                     <WantedDiv></WantedDiv>
                 </Grid>
                 <Grid item className={classes.gridItem}>
