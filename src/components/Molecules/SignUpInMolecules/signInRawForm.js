@@ -89,7 +89,7 @@ const SignInRawForm = () => {
                     {apiError && <Alert severity="error" >{apiError}</Alert>}
                 </Grid>
                 <Grid item xs={12}>
-                    <SignUpInTxtField 
+                    <SignUpInTxtField
                         name="email"
                         id="email"
                         label="Adres email"
@@ -102,7 +102,7 @@ const SignInRawForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <SignUpInTxtField 
+                    <SignUpInTxtField
                         name="password"
                         id="password"
                         label="Hasło"

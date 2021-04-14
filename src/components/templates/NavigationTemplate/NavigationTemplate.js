@@ -46,9 +46,9 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        {/* <Navigation makeNavigation={navigationArrayWithRoutes} /> */}
+        {/* <Navigation  /> */}
         <AuthProvider>
-          <Navigation props={{ isLogged }} />
+          <Navigation props={{ isLogged }} makeNavigation={navigationArrayWithRoutes}/>
         </AuthProvider>
       </GridContainerNavigationWrapper>
       {children}
@@ -88,7 +88,7 @@ function NavigationView() {
                 </Wrapper>
               </Route>
               <Route path="/howtohelp" component={PaymentForm} />
-              <AdminRoute path="/admin" component={AdministratorNavigation} />
+              {/* <AdminRoute path="/admin" component={AdministratorNavigation} /> */}
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />

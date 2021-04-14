@@ -1,10 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import NavigationView from '../components/templates/NavigationTemplate/NavigationTemplate';
 import Footer from '../components/Organisms/Footer/Footer';
 import AdministratorNavigation from '../components/templates/AdministratorNavigation/AdministratorNavigation';
-import { AuthProvider } from '../contexts/AuthContext';
+import { AuthProvider, useAuth } from '../contexts/AuthContext';
 
 const theme = createMuiTheme({
   palette: {
@@ -17,11 +16,10 @@ const theme = createMuiTheme({
 });
 
 function App() {
+  const { user } = useAuth();
   return (
     <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <NavigationView />
-      </AuthProvider>
+      {!user.isAdmin ? <NavigationView /> : <AdministratorNavigation />}
       <Footer />
     </ThemeProvider>
   );

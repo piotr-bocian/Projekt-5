@@ -2,10 +2,9 @@ import { URL } from '../helpers/URL/url';
 
 export const administratorVolunteerFormConfig = {
   url: `${URL}/volunteerForms`,
-  dataKey: ['results', 'volunteerForms', 'results'],
+  dataKey: ['volunteerForm', 'volunteerForms', 'results'],
   validate: null,
-  select: [
-  ],
+  select: [],
   buttonText: 'Wyświetl wszystkich wolontariuszy',
   configChildComponent: [
     { title: 'Imie :', value: 'firstName', helper: false },
