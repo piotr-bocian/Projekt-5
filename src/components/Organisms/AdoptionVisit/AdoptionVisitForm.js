@@ -40,7 +40,6 @@ const durationValues = [
 ];
 
 const VisitForm = ({ animal }) => {
-    const { isLogged } = useAuth();
 
     const [visitDate, setVisitDate] = useState(minDate);
     const [visitTime, setVisitTime] = useState("09:00");
@@ -119,7 +118,7 @@ const VisitForm = ({ animal }) => {
 
     return  (
     <div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen} disabled={!isLogged}>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
             Zarezerwuj wizytę
         </Button>
 

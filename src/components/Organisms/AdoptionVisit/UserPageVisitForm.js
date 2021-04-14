@@ -38,7 +38,7 @@ const durationValues = [
     }
 ];
 
-const UserPageVisitForm = ({ link }) => {
+const UserPageVisitForm = () => {
     const [visitDate, setVisitDate] = useState(minDate);
     const [visitTime, setVisitTime] = useState("09:00");
     const [duration, setDuration] = useState(30);
@@ -97,7 +97,7 @@ const UserPageVisitForm = ({ link }) => {
     return  (
     <PageWrapper>
         <NavWrapper >
-            <div><BackButton link={link}/></div>
+            <div><BackButton link={{link:"/useraccount"}}/></div>
             <h2> Formularz - Wizyta adopcyjna </h2>
         </NavWrapper>
         <BodyWrapper>

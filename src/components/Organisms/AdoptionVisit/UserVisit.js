@@ -8,7 +8,7 @@ import { PageWrapper, NavWrapper, BodyWrapper } from './UserPageVisitForm.style'
 import BackButton from '../../Atoms/UserNavigationPage/BackButton';
 import DogLoader from '../../Loaders/NewLoader/DogLoader';
 
-export function UserVisits({ link }) {
+export function UserVisits() {
   const [visits, setVisits] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [method, setMethod] = useState('GET');
@@ -39,7 +39,6 @@ export function UserVisits({ link }) {
       setVisitId('');
     }
     fetchData();
-    // return fetchData();
     setLoading(false);
   }, [authToken, method, visitId]);
 
@@ -61,7 +60,7 @@ export function UserVisits({ link }) {
     <PageWrapper>
       <NavWrapper>
         <div>
-          <BackButton link={link} />
+          <BackButton link={{link:"/useraccount"}} />
         </div>
         <h2> Moje wizyty adopcyjne </h2>
       </NavWrapper>

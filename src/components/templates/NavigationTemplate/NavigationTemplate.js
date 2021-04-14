@@ -20,6 +20,8 @@ import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
 import { UserVisits } from '../../Organisms/AdoptionVisit/UserVisit';
 import UserPagePaymentForm from '../../Organisms/PaymentForm/UserPagePaymentForm';
+import UserPagePostForm from '../../Organisms/Posts/UserPagePostForm';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -71,25 +73,14 @@ function NavigationView() {
               </Route>
               <Route path="/education" />
               <AdminRoute path="/howtohelp" component={PaymentForm} />
-                {/* <PaymentForm />
-              </AdminRoute> */}
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
               <PrivateRoute path="/useraccount" component={UserPage} />
-              <Route path="/volunteerform">
-                <UserPageVolunteerForm link={{link:"/useraccount"}}/>
-              </Route>
-              <Route path="/mypayments" />
-              <Route path="/adoptionvist">
-                <UserPageVisitForm link={{link:"/useraccount"}}/>
-              </Route>
-              <Route path="/myadoptionvisits" >
-                <UserVisits link={{link:"/useraccount"}}/>
-              </Route>
-              <Route path="/payment" >
-                <UserPagePaymentForm link={{link:"/useraccount"}}/>
-              </Route>
-              <Route path="/myposts" />
+              <Route path="/volunteerform" component={UserPageVolunteerForm} />
+              <Route path="/adoptionvist" component={UserPageVisitForm} />
+              <Route path="/myadoptionvisits" component={UserVisits} />
+              <Route path="/payment" component={UserPagePaymentForm} />
+              <Route path="/post" component={UserPagePostForm}/>
               <Route path="/editprofile"/>
             </AuthProvider>
           </Switch>

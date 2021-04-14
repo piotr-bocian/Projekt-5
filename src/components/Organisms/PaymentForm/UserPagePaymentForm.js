@@ -3,11 +3,11 @@ import { NavWrapper, PageWrapper } from '../../Organisms/AdoptionVisit/UserPageV
 import PaymentForm from './PaymentForm';
 import BackButton from '../../Atoms/UserNavigationPage/BackButton';
 
-const UserPagePaymentForm = ({ link }) => {
+const UserPagePaymentForm = () => {
     return (
         <PageWrapper>
             <NavWrapper>
-                <div><BackButton link={link}/></div>
+                <div><BackButton link={{link:"/useraccount"}}/></div>
                 <h2> Wesprzyj schronisko </h2>
             </NavWrapper>
             <BodyWrapper>
