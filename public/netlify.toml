@@ -5,10 +5,10 @@ base="/"
 
 [[redirects]]
 from = "/*"
-to = "/userPage"
+to = "/useraccount"
 status = 302
 
 [[redirects]]
-from = "/*"
+from = "/"
 to = "/animals?type=pies"
 status = 301
