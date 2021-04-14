@@ -4,10 +4,14 @@ import CloseIcon from '@material-ui/icons/Close';
 import LocalPostOfficeIcon  from '@material-ui/icons/LocalPostOffice';
 import { Grid } from '@material-ui/core';
 import TelegramIcon from '@material-ui/icons/Telegram';
+import { useAuth } from '../../../contexts/AuthContext';
 
 import './AdotpionForm.css';
 
 const AdotpionForm = ({animal}) => {
+
+    const { authToken } = useAuth();
+
     const setupJson = ()=>{
         let jsonToSend = {}
         jsonToSend = {
@@ -55,14 +59,13 @@ const AdotpionForm = ({animal}) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODQxOTgwMywiZXhwIjoxNjE4NDIzNDAzfQ.9YoplEND09p_XONA4oz0_hNIMdniqrS4lwzEQ4eWqLw',
+                    'x-auth-token': authToken,
                   },
                 body: JSON.stringify(post)
             };
             fetch('https://best-animal-shelter.herokuapp.com/api/adoptionforms', requestOptions)
             .then(response => {
                 if(response.status === 200 || 201){
-
                     handleSendInfo()
                 }
             }).catch(error =>{
@@ -78,7 +81,7 @@ const AdotpionForm = ({animal}) => {
     return (
         <div>
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Zapytaj o zwięrzę
+            Zapytaj o zwierzę
         </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <form
