@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       '&:focus': {
         outline: 'none',
       }
-    } 
+    }
   }));
 
 const HelpPage = () => {

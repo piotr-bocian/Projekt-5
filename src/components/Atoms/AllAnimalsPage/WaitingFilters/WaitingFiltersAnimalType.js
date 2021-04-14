@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { StyledButton } from './StyledButton.js';
 
+
 export const WaitingFiltersAnimalType = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -22,8 +23,8 @@ export const WaitingFiltersAnimalType = (props) => {
     return (
       <div>
         <ButtonGroup variant="text">
-          <StyledButton onClick={e => setSearchTerm('?search=Kot')}>Kot</StyledButton>
-          <StyledButton onClick={e => setSearchTerm('?search=Pies')}>Pies</StyledButton>
+          <StyledButton className="btn" onClick={e => setSearchTerm('?search=Kot')}>Kot</StyledButton>
+          <StyledButton className="btn" onClick={e => setSearchTerm('?search=Pies')}>Pies</StyledButton>
           <StyledButton onClick={e => setSearchTerm('?search=Inne')}>Inne</StyledButton>
           <StyledButton onClick={e => setSearchTerm('')}>Wszystkie</StyledButton>
         </ButtonGroup>
