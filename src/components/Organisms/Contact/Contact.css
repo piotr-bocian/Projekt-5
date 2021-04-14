@@ -1,0 +1,13 @@
+.iconsCenter{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.stringCenter{
+    display: flex;
+    align-items: center;
+}
+
+.italic{
+    font-style: italic;
+}

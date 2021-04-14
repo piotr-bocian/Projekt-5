@@ -28,7 +28,7 @@ export function AllPostsGrid (props) {
     console.log(props)
       return (
         <>
-            <Grid item xs={4} sm={4}>
+            <Grid item xs={11} sm={11} md={4} justify="center">
                 <Paper className={classes.paper}>
                     <Card className="postCard">
                         <CardMedia className={classes.media} image={props.post.photo} title="Dog Reptile" />

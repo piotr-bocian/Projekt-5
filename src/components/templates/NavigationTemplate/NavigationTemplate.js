@@ -22,7 +22,7 @@ import NewPosts from '../../Organisms/Posts/newPosts';
 import LatestPosts from '../../Organisms/Posts/LatestPosts';
 import OnePost from '../../Organisms/Posts/OnePost';
 import PostForm from '../../Organisms/Posts/postForm';
-
+import Contact from '../../Organisms/Contact/Contact';
 
 const Wrapper = styled.div`
   display: flex;
@@ -104,7 +104,7 @@ function NavigationView() {
             <Route path="/about"></Route>
           </Switch>
           <Switch>
-            <Route path="/contact"></Route>
+            <Route path="/contact" component={Contact}></Route>
           </Switch>
         </NavigationTemplate>
       </Router>

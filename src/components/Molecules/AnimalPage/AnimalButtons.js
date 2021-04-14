@@ -25,7 +25,7 @@ export function AnimalButtons (props) {
 
       return (
           <div className={classes.rootGrid}>
-          <Grid container spacing={10} className={classes.gridClass}>
+          <Grid container spacing={10} className={classes.gridClass} justify="center">
             <Grid item>
                 {/* <button className={classes.btn} onClick={handleClick} id='testBtn'> <ArrowBackIosIcon/> Wróć do wszystkich zwierząt </button> */}
                 <BackButton link={{link: "/animals", text: 'do wszystkich zwierząt'}}/>
@@ -34,7 +34,7 @@ export function AnimalButtons (props) {
               <VisitForm animal={props.animal}/>
             </Grid>
             <Grid item>
-              <AdotpionForm />
+              <AdotpionForm animal={props.animal}/>
             </Grid>
             </Grid>
           </div>

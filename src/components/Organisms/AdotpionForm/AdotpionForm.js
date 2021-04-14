@@ -7,14 +7,13 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 
 import './AdotpionForm.css';
 
-const AdotpionForm = () => {
-
+const AdotpionForm = ({animal}) => {
     const setupJson = ()=>{
         let jsonToSend = {}
         jsonToSend = {
             content: question,
             userID:'6036925f8146b60b78d3508d',
-            animalID:'6036925f8146b60b7853d081'
+            animalID: animal._id
         }
         setPost(jsonToSend)
     }
@@ -26,11 +25,10 @@ const AdotpionForm = () => {
     const [post, setPost] = useState({
         content:'',
         userID:'6036925f8146b60b78d3508d',
-        animalID:'6036925f8146b60b7853d081'
+        animalID: animal._id
     });
     const animalName = "Rudy"
     const validate = () => {
-        console.log(post)
         let temp = {}
             temp.title = title?"":"This field is required"
             temp.question = question?"":"This field is required"
@@ -57,7 +55,7 @@ const AdotpionForm = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODM0NjY3NCwiZXhwIjoxNjE4MzUwMjc0fQ.B1ytIucLHyUC3URceRIeUk9ut1mnbbx_N81mFfWmnj0',
+                    'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDQzOWQ4YWJkNTZmMzM4NTU0ZGU2MmYiLCJlbWFpbCI6InN1cGVyQWRtaW5AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaXNWb2x1bnRlZXIiOmZhbHNlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTYxODQxOTgwMywiZXhwIjoxNjE4NDIzNDAzfQ.9YoplEND09p_XONA4oz0_hNIMdniqrS4lwzEQ4eWqLw',
                   },
                 body: JSON.stringify(post)
             };

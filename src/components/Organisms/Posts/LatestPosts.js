@@ -30,17 +30,20 @@ const LatestPosts = () => {
     useEffect(() => {
         handler.makeHttpRequest()
         .then((result) => {
-            setPosts(result.posts.results)
+            setPosts(result.posts.results.reverse())
             });
     }, [])
 
     return (
     <>
-        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 20 }}>
+        <Typography gutterBottom variant="h2" align="center" color="textPrimary" style={{ marginTop: 35 }}>
             Aktualności
         </Typography>
         <Container>
-            <Grid container spacing={3} style={{padding:50}}>
+            <Grid container spacing={3} style={{
+                paddingTop:1,
+                paddingBottom:25
+                }}>
                 {posts
                 .filter((post, index) => (index < 3))
                 .map((post) => (
