@@ -29,10 +29,6 @@ export const PageWrapper = styled.div`
             margin-top: 0;
         }
     }
-
-    @media(max-width: 768px){
-        height: auto;
-    }
 `;
 
 export const Wrapper = styled.div`

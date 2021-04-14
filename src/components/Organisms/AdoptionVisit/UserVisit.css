@@ -1,0 +1,9 @@
+.padding-container{
+    padding: 0 10rem;
+}
+
+@media(max-width: 768px){
+    .padding-container{
+        padding: 0;
+    }
+}
