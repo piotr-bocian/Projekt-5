@@ -3,7 +3,7 @@ const type = ['', 'pies', 'kot', 'inne'];
 const gender = ['', 'męska', 'żeńska'];
 const size = [' ', 'mały', 'mały/średni', 'średni', 'średni/duży', 'duży'];
 export const administratorAnimalsConfig = {
-  url: `${URL}/animals`,
+  url: `${URL}/animals/adminanimals`,
   dataKey: ['animal', 'animals', 'results'],
   validate: null,
   select: [

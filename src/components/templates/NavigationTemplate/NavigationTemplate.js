@@ -14,8 +14,8 @@ import { MainPage } from '../../Organisms/MainPage/MainPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
 import Education from '../../Organisms/Education/Education';
+import HelpPage from '../../Organisms/HelpPage/HelpPage';
 import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
-
 import UserPage from '../../Organisms/UserPage/UserPage';
 import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
@@ -44,7 +44,6 @@ const NavigationTemplate = ({ children }) => {
   return (
     <>
       <GridContainerNavigationWrapper>
-        {/* <Navigation  /> */}
         <AuthProvider>
           <Navigation
             props={{ isLogged }}
@@ -60,7 +59,7 @@ const NavigationTemplate = ({ children }) => {
 function NavigationView() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      {/* <Router> */}
         <NavigationTemplate>
           <Switch>
             <AuthProvider>
@@ -88,7 +87,7 @@ function NavigationView() {
                   <Education />
                 </Wrapper>
               </Route>
-              <Route path="/howtohelp" component={PaymentForm} />
+              <Route path="/howtohelp" component={HelpPage} />
               {/* <AdminRoute path="/admin" component={AdministratorNavigation} /> */}
               <Route path="/about"></Route>
               <Route path="/contact"></Route>
@@ -102,7 +101,7 @@ function NavigationView() {
             </AuthProvider>
           </Switch>
         </NavigationTemplate>
-      </Router>
+      {/* </Router> */}
     </ThemeProvider>
   );
 }

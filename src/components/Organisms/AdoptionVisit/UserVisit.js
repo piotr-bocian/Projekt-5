@@ -77,14 +77,6 @@ export function UserVisits() {
                   <Wrapper>
                     <h2 style={confirmationHeader}>WIZYTA ADOPCYJNA</h2>
                     <ConfirmationWrapper>
-                      {item.animalID ? (
-                        <>
-                          <PetsIcon color="primary" />{' '}
-                          <p>
-                            Imię zwierzaka: <span>{item.animalID}</span>
-                          </p>
-                        </>
-                      ) : null}
                       <PetsIcon color="primary" />{' '}
                       <p>
                         Data wizyty:{' '}

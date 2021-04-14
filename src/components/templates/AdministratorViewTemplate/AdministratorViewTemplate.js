@@ -120,6 +120,18 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
     });
   };
 
+  const patchOne = async (handler, payload) => {
+    const route = '/' + handler;
+    setId(route);
+    setFilter('');
+    setSearch('');
+    dispatch({
+      type: httpMethods.PATCH,
+      validate: administratorConfig.validate,
+      payload: payload,
+    });
+  };
+
   return isLoading ? (
     <Center>
       <CircularLoader />
@@ -168,6 +180,7 @@ const AdministratorViewTemplate = ({ administratorConfig, componentName }) => {
                   key: id,
                   deletePayment: deleteOne,
                   updatePayment: updateOne,
+                  patch: patchOne,
                   take: takeOneId,
                 });
               })
