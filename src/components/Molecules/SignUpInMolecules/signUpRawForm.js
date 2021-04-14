@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import { TermsCheckbox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
-import useHttp from '../../../hooks/useHttp/useHttp';
+import Alert from '@material-ui/lab/Alert';
 
 const SignUpRawForm = () => {
     const classes = useStyles();
@@ -23,6 +24,9 @@ const SignUpRawForm = () => {
         repPassword: '',
         repPasswordErr: '',
     });
+    const [apiError, setApiError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     const updateForm = (e) => {
         setForm({
@@ -87,48 +91,66 @@ const SignUpRawForm = () => {
         return isError;
     }
 
-    const httpHandler = useHttp(
-        // 'https://best-animal-shelter.herokuapp.com/api/users',
-        'http://localhost:5000/api/users',
-        'POST',        
-        {
-            firstName: form.firstName,
-            lastName: form.lastName,
-            mobile: form.mobile,
-            email: form.email,
-            image: '',
-            password: form.password
-        }
-    );
-
-    const handleForm = (e) => {
+    const handleForm = async (e) => {
+        // const url = 'http://localhost:5000/api/users';
+        const url = 'https://best-animal-shelter.herokuapp.com/api/users';
         e.preventDefault();
         const err = validateForm();
         if(!err) {
-            // console.log(form);
-            httpHandler.makeHttpRequest();
-            console.log('Wysłano dane do rejestracji konta');
-            setForm({
-                //clear form
-                firstName: '',
-                firstNameErr: '',
-                lastName: '',
-                lastNameErr: '',
-                mobile: '',
-                mobileErr: '',
-                email: '',
-                emailErr: '',
-                password: '',
-                passwordErr: '',
-                repPassword: '',
-                repPasswordErr: ''
+            setApiError('');
+            setLoading(true);
+            const signUpResponse = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    firstName: form.firstName,
+                    lastName: form.lastName,
+                    mobile: form.mobile,
+                    email: form.email,
+                    password: form.password,
+                    image: ''
+                })
             });
+            const data = await signUpResponse.json();
+            if (signUpResponse.status === 201){
+                window.localStorage.setItem('x-auth-token', data.token);
+                console.log('Wysłano dane do rejestracji konta');
+                console.log('Logowanie...');
+                console.log(form);
+                //clear form
+                setForm({
+                    firstName: '',
+                    firstNameErr: '',
+                    lastName: '',
+                    lastNameErr: '',
+                    mobile: '',
+                    mobileErr: '',
+                    email: '',
+                    emailErr: '',
+                    password: '',
+                    passwordErr: '',
+                    repPassword: '',
+                    repPasswordErr: ''
+                });
+                
+                history.push("/useraccount");
+                window.location.reload();
+            } else {
+                setApiError(data.message);
+            }
+            
         }
-        
+        setLoading(false);
     }
+
     return(
         <form className={classes.accountForm} onSubmit={handleForm}>
             <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    {apiError && <Alert severity="error" >{apiError}</Alert>}
+                </Grid>
                 <Grid item xs={12} sm={6}>
                     <SignUpInTxtField
                         name="firstName"
@@ -201,7 +223,7 @@ const SignUpRawForm = () => {
                 </Grid>
             </Grid>
             <TermsCheckbox />
-            <SignUpInButton btnText="Zarejestruj się"/>
+            <SignUpInButton disabled={loading} btnText="Zarejestruj się"/>
         </form>
     )
 }

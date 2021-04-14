@@ -5,6 +5,7 @@ import { AllAnimalsGrid } from '../../Molecules/AnimalsGrid/AnimalsGrid.js';
 import { httpMethods } from '../../../helpers/httpMethods/httpMethods';
 import AnimalLoader from '../../Loaders/AnimalLoader/AnimalLoader';
 import useHttp from '../../../hooks/useHttp/useHttp';
+import DogLoader from '../../Loaders/NewLoader/DogLoader.js';
 
 
 export function Animals () {
@@ -26,7 +27,7 @@ export function Animals () {
 
 
     return handler.isLoading ? (
-        <div><AnimalLoader></AnimalLoader></div>) :
+        <DogLoader/>) :
         (
         <div className='animals'>
             <AnimalsForAdoption>ZWIERZĘTA DO ADOPCJI</AnimalsForAdoption>
