@@ -5,6 +5,7 @@
 @media (max-width: 768px){
     .form{
         width: 80vw;
-        margin-bottom: 16rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
     }
 }

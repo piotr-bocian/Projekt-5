@@ -33,6 +33,10 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 70vh;
+
+  @media (max-width: 768px){
+    height: auto;
+  }
 `;
 const NavigationTemplate = ({ children }) => {
 
