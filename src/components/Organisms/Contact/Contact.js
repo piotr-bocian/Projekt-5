@@ -14,7 +14,7 @@ const Concat = () => {
 
     return (
         <div>
-    <Grid container spacing={1} style={{padding:50}}>
+    <Grid container style={{padding:50}}>
         <Grid item xs={12} sm={12} md={12} style={{padding:10}}>
                     <Typography
                         variant="h2"
@@ -25,11 +25,11 @@ const Concat = () => {
             </Typography>
         </Grid>
     </Grid>
-    <Grid container spacing={1} style={{padding:15}}>
-        <Grid item xs={12} sm={6} md={6} style={{textAlign:"center"}}>
+    <Grid container style={{padding:15}} xs={12} >
+        <Grid item xs={12} sm={12} md={6} style={{textAlign:"center"}}>
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d40035.80416884232!2d16.98449301792752!3d51.15940593716131!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdc999b67e10768ea!2sTOZ%20Schronisko%20dla%20Bezdomnych%20Zwierz%C4%85t%20we%20Wroc%C5%82awiu!5e0!3m2!1spl!2spl!4v1618421213166!5m2!1spl!2spl" width="600" height="600"></iframe>
         </Grid>
-            <Grid item xs={12} sm={6} md={6} >
+            <Grid item xs={12} sm={12} md={6} >
                         <Typography
                             variant="h3"
                             align="center"
@@ -89,7 +89,7 @@ const Concat = () => {
                 </Typography>
             </Grid>
         </Grid>
-
+        
         </div>
     )
 }
