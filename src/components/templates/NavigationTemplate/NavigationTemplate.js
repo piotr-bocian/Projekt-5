@@ -9,7 +9,7 @@ import PaymentForm from '../../Organisms/PaymentForm/PaymentForm';
 import AdoptionVisitPage from '../../Organisms/AdoptionVisit/AdoptionVisitPage';
 import { navigationArrayWithRoutes } from '../../../helpers/navigationNamesAndRoutes/userNavigation';
 import { Animals } from '../../Organisms/Animals/Animals';
-import AnimalPage from '../../Organisms/AnimalPage/AnimalPage';
+import {AnimalPage} from '../../Organisms/AnimalPage/AnimalPage';
 import { MainPage } from '../../Organisms/MainPage/MainPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
