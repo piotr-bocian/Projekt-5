@@ -16,7 +16,7 @@ import Education from '../../Organisms/Education/Education';
 import HelpPage from '../../Organisms/HelpPage/HelpPage';
 import UserPageEditProfile from '../../Organisms/EditProfile/UserPageEditProfile';
 import UserPage from '../../Organisms/UserPage/UserPage';
-import { AuthProvider, useAuth } from '../../../contexts/AuthContext';
+import { AuthProvider } from '../../../contexts/AuthContext';
 import PrivateRoute from '../../Organisms/UserPage/PrivateRoute';
 import UserPageVisitForm from '../../Organisms/AdoptionVisit/UserPageVisitForm';
 import UserPageVolunteerForm from '../../Organisms/VolunteerForm/UserPageVolunteerForm';
@@ -37,12 +37,10 @@ const Wrapper = styled.div`
   }
 `;
 const NavigationTemplate = ({ children }) => {
-  const { isLogged } = useAuth();
   return (
     <>
       <GridContainerNavigationWrapper>
           <Navigation
-            props={{ isLogged }}
             makeNavigation={navigationArrayWithRoutes}
           />
       </GridContainerNavigationWrapper>
