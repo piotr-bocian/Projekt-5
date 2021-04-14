@@ -4,13 +4,13 @@ import CloseIcon from '@material-ui/icons/Close';
 import LocalPostOfficeIcon  from '@material-ui/icons/LocalPostOffice';
 import { Grid } from '@material-ui/core';
 import TelegramIcon from '@material-ui/icons/Telegram';
-import { useAuth } from '../../../contexts/AuthContext';
+// import { useAuth } from '../../../contexts/AuthContext';
 
 import './AdotpionForm.css';
 
 const AdotpionForm = ({animal}) => {
 
-    const { authToken } = useAuth();
+    // const { authToken } = useAuth();
 
     const setupJson = ()=>{
         let jsonToSend = {}
@@ -59,7 +59,7 @@ const AdotpionForm = ({animal}) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-auth-token': authToken,
+                    'x-auth-token': '',
                   },
                 body: JSON.stringify(post)
             };

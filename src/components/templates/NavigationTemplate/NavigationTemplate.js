@@ -13,12 +13,10 @@ import { MainPage } from '../../Organisms/MainPage/MainPage';
 import { AnimalPage } from '../../Organisms/AnimalPage/AnimalPage';
 import SignInForm from '../../Organisms/SignUpInForms/SignInForm';
 import SignUpForm from '../../Organisms/SignUpInForms/SignUpForm';
-import AddAnimalForm from '../../Organisms/AddAnimal/AddAnimalForm';
 import Education from '../../Organisms/Education/Education';
 import NewPosts from '../../Organisms/Posts/newPosts';
 import LatestPosts from '../../Organisms/Posts/LatestPosts';
 import OnePost from '../../Organisms/Posts/OnePost';
-import PostForm from '../../Organisms/Posts/postForm';
 import Contact from '../../Organisms/Contact/Contact';
 
 const Wrapper = styled.div`

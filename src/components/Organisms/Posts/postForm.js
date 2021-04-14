@@ -6,12 +6,12 @@ import { Grid } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import LocalPostOfficeIcon  from '@material-ui/icons/LocalPostOffice';
-import { useAuth } from '../../../contexts/AuthContext';
+// import { useAuth } from '../../../contexts/AuthContext';
 
 
 const PostForm = () => {
 
-    const { authToken } = useAuth();
+    // const { authToken } = useAuth();
 
     const setupJson = ()=>{
         let jsonToSend = {}
@@ -63,7 +63,7 @@ const PostForm = () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'x-auth-token': authToken,
+                        'x-auth-token': '',
                     },
                     body: JSON.stringify(post)
                 };
