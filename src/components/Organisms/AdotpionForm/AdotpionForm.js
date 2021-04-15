@@ -9,7 +9,6 @@ import { useAuth } from '../../../contexts/AuthContext';
 import './AdotpionForm.css';
 
 const AdotpionForm = ({animal}) => {
-
     const { authToken } = useAuth();
 
     const setupJson = ()=>{
@@ -31,7 +30,7 @@ const AdotpionForm = ({animal}) => {
         userID:'6036925f8146b60b78d3508d',
         animalID: animal._id
     });
-    const animalName = "Rudy"
+    const animalName = animal.name;
     const validate = () => {
         let temp = {}
             temp.title = title?"":"This field is required"
@@ -42,6 +41,7 @@ const AdotpionForm = ({animal}) => {
         return Object.values(temp).every(x => x =='')
     }
     const handleClickOpen = () => {
+        console.log('click')
         setOpen(true);
     };
     const handleSendInfo = () =>{

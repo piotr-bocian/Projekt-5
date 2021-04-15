@@ -6,7 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import AddAnimalForm from '../AddAnimal/AddAnimalForm';
 import Fade from '@material-ui/core/Fade';
-import PostForm from '../../Organisms/Posts/postForm';
+import SendPostModal from '../../Molecules/Posts/sendPostModal';
 import SignUpForm from '../SignUpInForms/SignUpForm';
 import AddEmployeeForm from '../SignUpInForms/AddEmployeeForm';
 
@@ -124,15 +124,14 @@ const AdministratorHomePage = () => {
             justify="space-around"
             alignItems="baseline"
           >
-            <button type="button" onClick={handleOpenPost} className={classes.button}>
-              <Grid 
-              justify="space-around"
-              alignItems="baseline">
-                Dodaj Nowy Post <PostForm />
-              </Grid>
-            </button>
             <AdministratorSectionTitles>
-
+              <button type="button" onClick={handleOpenPost} className={classes.button}>
+                <Grid 
+                justify="space-around"
+                alignItems="baseline">
+                  <SendPostModal button={classes.button}/>
+                </Grid>
+              </button>
             </AdministratorSectionTitles>
           </Grid>
           <Grid

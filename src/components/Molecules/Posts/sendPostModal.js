@@ -6,10 +6,11 @@ import { Grid } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import LocalPostOfficeIcon  from '@material-ui/icons/LocalPostOffice';
+import { useAuth } from '../../../contexts/AuthContext';
 
-const SendPostModal = () => {
+const PostForm = (button) => {
 
-    // const { authToken } = useAuth();
+    const { authToken, isLogged } = useAuth();
 
     const setupJson = ()=>{
         let jsonToSend = {}
@@ -61,7 +62,7 @@ const SendPostModal = () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'x-auth-token': '',
+                        'x-auth-token': authToken,
                     },
                     body: JSON.stringify(post)
                 };
@@ -83,6 +84,11 @@ const SendPostModal = () => {
              console.log('error nie wszystko uzupełnione')
          }
     }
+
+    const handleClickOpen = () => {
+
+        setOpen(true);
+    };
     const handleSendInfo = () =>{
         setSendInfo(true);
     };
@@ -93,6 +99,9 @@ const SendPostModal = () => {
 
     return (
         <div>
+            <Button className={button} style={{ fontSize: 25 }} justify="center" align="center" variant="body" color="primary" onClick={handleClickOpen} disabled={!isLogged}>
+                Dodaj Nowy Post
+            </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <form className="formAdoption" onSubmit={handeSubmit} noValidate
                     autoComplete="off">
@@ -180,4 +189,4 @@ const SendPostModal = () => {
         </div>
     )
 }
-export default SendPostModal;
+export default PostForm;
