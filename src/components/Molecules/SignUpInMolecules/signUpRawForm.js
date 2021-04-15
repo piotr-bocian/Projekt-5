@@ -5,6 +5,7 @@ import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
 import { TermsCheckbox } from '../../Atoms/SignUpInAtoms/termsCheckbox';
 import SignUpInButton from '../../Atoms/SignUpInAtoms/signUpInButton';
+import { useAuth } from '../../../contexts/AuthContext';
 import Alert from '@material-ui/lab/Alert';
 
 const SignUpRawForm = () => {
@@ -26,6 +27,7 @@ const SignUpRawForm = () => {
     });
     const [apiError, setApiError] = useState('');
     const [loading, setLoading] = useState(false);
+    const { signUp } = useAuth();
     const history = useHistory();
 
     const updateForm = (e) => {
@@ -92,34 +94,16 @@ const SignUpRawForm = () => {
     }
 
     const handleForm = async (e) => {
-        // const url = 'http://localhost:5000/api/users';
-        const url = 'https://best-animal-shelter.herokuapp.com/api/users';
         e.preventDefault();
         const err = validateForm();
         if(!err) {
             setApiError('');
             setLoading(true);
-            const signUpResponse = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    firstName: form.firstName,
-                    lastName: form.lastName,
-                    mobile: form.mobile,
-                    email: form.email,
-                    password: form.password,
-                    image: ''
-                })
-            });
-            const data = await signUpResponse.json();
-            if (signUpResponse.status === 201){
-                window.localStorage.setItem('x-auth-token', data.token);
-                console.log('Wysłano dane do rejestracji konta');
-                console.log('Logowanie...');
-                console.log(form);
-                //clear form
+            const signup = await signUp(form);
+            if (signup){
+                console.log(signup);
+                setApiError(signup);
+            } else {
                 setForm({
                     firstName: '',
                     firstNameErr: '',
@@ -133,14 +117,10 @@ const SignUpRawForm = () => {
                     passwordErr: '',
                     repPassword: '',
                     repPasswordErr: ''
-                });
-                
+                });     
                 history.push("/useraccount");
                 window.location.reload();
-            } else {
-                setApiError(data.message);
             }
-            
         }
         setLoading(false);
     }

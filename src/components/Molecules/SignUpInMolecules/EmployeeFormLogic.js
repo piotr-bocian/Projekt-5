@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import SignUpInTxtField from '../../Atoms/SignUpInAtoms/signUpInTxtField';
 import useStyles from '../../Organisms/SignUpInForms/signUpInStyles';
@@ -9,7 +8,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 
 const EmployeeFormLogic = () => {
   const classes = useStyles();
-  const { authToken } = useAuth();
+  const { addEmployee } = useAuth();
   const [form, setForm] = useState({
     firstName: '',
     firstNameErr: '',
@@ -108,50 +107,27 @@ const EmployeeFormLogic = () => {
     if (!err) {
       setApiError('');
       setLoading(true);
-      const signUpResponse = await fetch(url, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'x-auth-token': authToken,
-        },
-        body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          mobile: form.mobile,
-          email: form.email,
-          password: form.password,
-          image: '',
-          isAdmin: true
-        }),
-      });
-      const data = await signUpResponse.json();
-      if (signUpResponse.status === 201) {
-        window.localStorage.setItem('x-auth-token', data.token);
-        console.log('Wysłano dane do rejestracji konta');
-        console.log('Logowanie...');
-        console.log(form);
-        //clear form
-        setForm({
-          firstName: '',
-          firstNameErr: '',
-          lastName: '',
-          lastNameErr: '',
-          mobile: '',
-          mobileErr: '',
-          email: '',
-          emailErr: '',
-          password: '',
-          passwordErr: '',
-          repPassword: '',
-          repPasswordErr: '',
-        });
-
-        //  history.push("/useraccount");
-        window.location.reload();
-      } else {
-        setApiError(data.message);
-      }
+      const addemployee = await addEmployee(url,form);
+            if (addemployee){
+                console.log(addemployee);
+                setApiError(addemployee);
+            } else {
+                setForm({
+                    firstName: '',
+                    firstNameErr: '',
+                    lastName: '',
+                    lastNameErr: '',
+                    mobile: '',
+                    mobileErr: '',
+                    email: '',
+                    emailErr: '',
+                    password: '',
+                    passwordErr: '',
+                    repPassword: '',
+                    repPasswordErr: ''
+                });     
+                alert("Pomyślnie dodano pracownika.");
+            }
     }
     setLoading(false);
   };

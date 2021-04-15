@@ -7,6 +7,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+    const signUpUrl = 'https://best-animal-shelter.herokuapp.com/api/users';
     // const userUrl = 'http://localhost:5000/api/users/me';
     const userUrl = 'https://best-animal-shelter.herokuapp.com/api/users/me';
     // const loginUrl = 'http://localhost:5000/api/login';
@@ -49,6 +50,60 @@ export function AuthProvider({ children }) {
         }
     }
 
+    async function signUp(user){
+        const signUpResponse = await fetch(signUpUrl, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                firstName: user.firstName,
+                lastName: user.lastName,
+                mobile: user.mobile,
+                email: user.email,
+                password: user.password,
+                image: ''
+            })
+        });
+        const data = await signUpResponse.json();
+        if (signUpResponse.ok){
+            window.localStorage.setItem('x-auth-token', data.token);
+            console.log('Wysłano dane do rejestracji konta');
+            console.log('Logowanie...');
+            setIsLogged(true);
+            return;
+        } else {
+            return data.message;
+        }
+     
+    }
+
+    async function addEmployee(url, user){
+        const signUpResponse = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'x-auth-token': authToken
+            },
+            body: JSON.stringify({
+                firstName: user.firstName,
+                lastName: user.lastName,
+                mobile: user.mobile,
+                email: user.email,
+                password: user.password,
+                image: ''
+            })
+        });
+        const data = await signUpResponse.json();
+        if (signUpResponse.ok){
+            console.log('Pomyślnie dodano pracownika');
+            return;
+        } else {
+            return data.message;
+        }
+     
+    }
 
     function logout(){
         if(!localStorage['x-auth-token']){
@@ -97,8 +152,10 @@ export function AuthProvider({ children }) {
         user,
         err,
         authToken,
+        signUp,
         signIn,
         logout,
+        addEmployee,
         isLogged
     }
     return (
