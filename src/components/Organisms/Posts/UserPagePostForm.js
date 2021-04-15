@@ -5,7 +5,6 @@ import { Grid } from '@material-ui/core';
 import TelegramIcon from '@material-ui/icons/Telegram';
 
 import { NavWrapper, PageWrapper, BodyWrapper } from '../../Organisms/AdoptionVisit/UserPageVisitForm.style';
-import { PostWrapper } from '../../Organisms/AdoptionVisit/AdoptionVisitForm.style';
 import BackButton from '../../Atoms/UserNavigationPage/BackButton';
 
 const PostForm = () => {
@@ -97,7 +96,6 @@ const PostForm = () => {
                 <h2> Dodaj post do aktualności </h2>
             </NavWrapper>
             <BodyWrapper>
-                <PostWrapper>
                     <form className="formAdoption" onSubmit={handeSubmit} noValidate
                         autoComplete="off">
                         <Grid container spacing={3} justify="center">
@@ -156,11 +154,9 @@ const PostForm = () => {
                             </Grid>
                         </Grid>
                     </form>
-                </PostWrapper>
             </BodyWrapper>
         </PageWrapper>
         <Dialog open={sendInfo} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <div style={{ padding: 60 }}>
                 <Grid container justify="center" className="formAdoption">
                     <Grid item xs={2} sm={2} md={2} jusify="center" style={{ textAlign: "center" }}>
                             <TelegramIcon color="Secondary" style={{ fontSize: 50 }}/>
@@ -178,7 +174,6 @@ const PostForm = () => {
                         <Button variant="outlined" color="primary" onClick={handleClose}>OK</Button>
                     </Grid>
                 </Grid>
-            </div>
         </Dialog>
     </>
     )
