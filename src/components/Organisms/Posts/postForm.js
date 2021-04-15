@@ -10,7 +10,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 
 const PostForm = () => {
 
-    const { authToken } = useAuth();
+    const { authToken, isLogged } = useAuth();
 
     const setupJson = ()=>{
         let jsonToSend = {}
@@ -99,7 +99,7 @@ const PostForm = () => {
 
     return (
         <div className="cardActions">
-            <Button variant="none" color="primary" onClick={handleClickOpen}>
+            <Button variant="none" color="primary" onClick={handleClickOpen} disabled={!isLogged}>
                 <Tooltip title="Dodaj Nowy Post" aria-label="add" placement="top">
                     <ControlPoint color="primary" style={{ fontSize: 50 }}/>
                 </Tooltip>
