@@ -92,6 +92,7 @@ export function AuthProvider({ children }) {
                 mobile: user.mobile,
                 email: user.email,
                 password: user.password,
+                isAdmin: true,
                 image: ''
             })
         });
